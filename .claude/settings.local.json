@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.apple.com)",
+      "WebFetch(domain:9to5mac.com)",
+      "WebFetch(domain:applescoop.org)",
+      "WebFetch(domain:www.figma.com)",
+      "WebFetch(domain:dev.to)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
