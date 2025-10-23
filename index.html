@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -78,44 +79,13 @@
         }
 
         /* Flash Sale Banner */
-        .flash-banner {
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.95) 0%, rgba(184, 145, 95, 0.95) 100%);
-            backdrop-filter: blur(10px);
-            color: white;
-            text-align: center;
-            padding: 12px 20px;
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .flash-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            to {
-                left: 100%;
-            }
-        }
 
         /* Navigation */
         nav {
             position: relative;
-            background: rgba(248, 248, 248, 0.35);
-            backdrop-filter: blur(30px) saturate(200%) contrast(110%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%) contrast(110%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%) contrast(105%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%) contrast(105%);
             border: 0.5px solid rgba(255, 255, 255, 0.4);
             border-left: none;
             border-right: none;
@@ -126,6 +96,9 @@
             top: 0;
             z-index: 1000;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: backdrop-filter;
+            transform: translateZ(0);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0s both;
         }
 
         nav::before {
@@ -209,13 +182,15 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh;
+            height: calc(100vh + 160px);
             width: 100vw;
-            min-height: 700px;
+            min-height: 810px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            z-index: 1;
+            margin-top: -160px;
         }
 
         .hero-bg {
@@ -242,6 +217,7 @@
             max-width: 1100px;
             padding: 0 40px;
             width: 100%;
+            margin-top: 80px;
         }
 
         .hero-badge {
@@ -2371,6 +2347,8 @@
             margin-top: 48px;
             padding-top: 48px;
             border-top: 1px solid rgba(10, 25, 41, 0.1);
+            width: 100%;
+            display: block;
         }
 
         .cruise-results-info p {
@@ -2379,6 +2357,9 @@
             opacity: 0.7;
             font-weight: 500;
             letter-spacing: 0.3px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .cruise-results-info span {
@@ -2748,8 +2729,11 @@
         /* Newsletter */
         .newsletter-section {
             padding: 60px 0 100px;
-            background: linear-gradient(135deg, #d4a574 0%, #c9a961 100%);
-            color: #1a1a2e;
+            background-image: url('images/cta.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -2762,11 +2746,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image:
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 L60 30 L80 30 L65 42 L70 60 L50 48 L30 60 L35 42 L20 30 L40 30 Z' fill='rgba(255,255,255,0.08)' /%3E%3C/svg%3E");
-            background-size: 150px 150px;
-            background-repeat: repeat;
-            opacity: 0.4;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.85) 0%, rgba(201, 169, 97, 0.85) 100%);
             pointer-events: none;
         }
 
@@ -2919,9 +2899,138 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .reveal.active {
+        .reveal.active,
+        .reveal.revealed {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Card animations removed to prevent conflicts */
+
+        /* Luxury Popover/Tooltip System */
+        .luxury-tooltip {
+            position: absolute;
+            background: rgba(10, 25, 41, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 280px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(212, 175, 55, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10000;
+            pointer-events: none;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .luxury-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: rgba(10, 25, 41, 0.98);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .has-tooltip:hover .luxury-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Read More Expandable Sections */
+        .read-more-container {
+            position: relative;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .read-more-content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .read-more-container.expanded .read-more-content {
+            opacity: 1;
+            max-height: 1000px;
+            margin-top: 20px;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 8px 0;
+        }
+
+        .read-more-btn:hover {
+            gap: 12px;
+            color: #c9a84b;
+        }
+
+        .read-more-btn svg {
+            transition: transform 0.3s;
+        }
+
+        .read-more-container.expanded .read-more-btn svg {
+            transform: rotate(180deg);
+        }
+
+        /* Animated gradient border effect for featured items */
+        @keyframes gradient-border {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .featured-highlight {
+            position: relative;
+        }
+
+        .featured-highlight::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--gold), #c9a84b, var(--gold), #c9a84b);
+            background-size: 300% 300%;
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.3;
+            animation: gradient-border 3s ease infinite;
         }
 
         /* Responsive */
@@ -3262,6 +3371,413 @@
                 right: 5px;
             }
         }
+
+        /* Comprehensive Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            /* Prevent horizontal overflow */
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Header Mobile Styles */
+            header {
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+            }
+
+            /* Top Header Bar - More compact on mobile */
+            header > div:first-child {
+                padding: 10px 0 !important;
+            }
+
+            header > div:first-child > div > div {
+                display: grid !important;
+                grid-template-columns: 1fr auto 1fr !important;
+                gap: 12px !important;
+                align-items: center !important;
+            }
+
+            /* Reviews.io widget - hide on mobile to save space */
+            header > div:first-child > div > div > div:first-child {
+                display: none !important;
+            }
+
+            /* Logo container - centered, smaller */
+            header > div:first-child > div > div > div:nth-child(2) {
+                text-align: center !important;
+                grid-column: 2 !important;
+            }
+
+            header > div:first-child > div > div > div:nth-child(2) img {
+                height: 40px !important;
+            }
+
+            /* Contact info - hide on mobile */
+            header > div:first-child > div > div > div:nth-child(3) {
+                display: none !important;
+            }
+
+            /* Hide navigation bar visually but keep in DOM */
+            nav {
+                height: 0 !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+
+            nav > div {
+                height: 0 !important;
+                overflow: visible !important;
+            }
+
+            nav > div > div {
+                height: 0 !important;
+                overflow: visible !important;
+            }
+
+            /* Hide the navbar wishlist on mobile (it's in the burger menu instead) */
+            nav > div > div > div:last-child {
+                display: none !important;
+            }
+
+            /* Hamburger Menu Button - Show in top header on mobile */
+            #mobileMenuBtn {
+                display: block !important;
+                position: absolute !important;
+                top: 50% !important;
+                right: 20px !important;
+                left: auto !important;
+                transform: translateY(-50%) !important;
+                padding: 8px !important;
+                z-index: 10000 !important;
+            }
+
+            /* Mobile Menu Panel - Hidden by default, slides from right when open */
+            #navLinks {
+                display: none !important;
+                position: fixed !important;
+                inset: 0 !important;
+                top: 0 !important;
+                right: 0 !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important; /* Dynamic viewport height for mobile browsers */
+                min-height: 100vh !important;
+                max-width: none !important;
+                max-height: none !important;
+                background: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(20, 45, 75) 50%, rgb(15, 50, 85) 100%) !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 0 !important;
+                padding: 80px 20px 80px 20px !important;
+                margin: 0 !important;
+                z-index: 999999 !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior: contain !important;
+                box-shadow: none !important;
+                transform: translateZ(0) !important;
+                -webkit-transform: translateZ(0) !important;
+                clip-path: none !important;
+                contain: none !important;
+            }
+
+            #navLinks.mobile-menu-open {
+                display: flex !important;
+                position: fixed !important;
+            }
+
+            /* Ensure parent containers don't clip the menu when open */
+            nav:has(#navLinks.mobile-menu-open) {
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            nav:has(#navLinks.mobile-menu-open) > div {
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            nav:has(#navLinks.mobile-menu-open) > div > div {
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            /* Show mobile menu info section on mobile */
+            .mobile-menu-info {
+                display: block !important;
+            }
+
+            /* Navigation links in mobile menu - centered */
+            #navLinks a.nav-link {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 12px !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                padding: 16px 24px !important;
+                font-size: 13px !important;
+                color: white !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: none !important;
+                border-radius: 12px !important;
+                margin: 4px 0 !important;
+                text-align: left !important;
+                text-decoration: none !important;
+                flex-shrink: 0 !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.5px !important;
+                transition: all 0.3s !important;
+            }
+
+            #navLinks a.nav-link .nav-icon {
+                flex-shrink: 0 !important;
+            }
+
+            #navLinks a.nav-link:hover {
+                background: rgba(212, 175, 55, 0.25) !important;
+                color: var(--gold) !important;
+                transform: translateX(5px) !important;
+            }
+
+            /* Wishlist in mobile menu - centered and styled */
+            #navLinks > div:last-of-type {
+                display: flex !important;
+                justify-content: center !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                padding: 16px 32px !important;
+                background: rgba(212, 175, 55, 0.15) !important;
+                border: 1px solid rgba(212, 175, 55, 0.3) !important;
+                border-radius: 12px !important;
+                margin: 12px 0 8px 0 !important;
+                flex-shrink: 0 !important;
+            }
+
+            #navLinks > div:last-of-type a {
+                color: white !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.5px !important;
+            }
+
+            /* Mobile menu overlay - not needed for full screen menu */
+            .mobile-menu-overlay {
+                display: none !important;
+            }
+
+            /* Footer Mobile Styles - Stack 5 columns vertically */
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            .footer-grid > div {
+                text-align: center;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-heading {
+                font-size: 14px !important;
+                margin-bottom: 16px !important;
+            }
+
+            .footer-link {
+                font-size: 13px !important;
+                padding: 8px 0 !important;
+            }
+
+            /* Footer logos and social - stack on mobile */
+            footer > div > div:last-child {
+                margin-top: 40px !important;
+                padding-top: 32px !important;
+            }
+
+            footer > div > div:last-child > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            footer > div > div:last-child > div:first-child > div {
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+
+            footer > div > div:last-child > div:first-child img {
+                max-width: 120px !important;
+                height: auto !important;
+            }
+
+            /* Footer legal text */
+            footer p {
+                font-size: 11px !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Testimonials Mobile */
+            .testimonials-section-wrapper {
+                padding: 60px 0 !important;
+            }
+
+            /* Featured testimonial - reduce padding */
+            .testimonials-section > div:nth-child(2) > div {
+                padding: 32px 24px !important;
+            }
+
+            .testimonials-section > div:nth-child(2) > div > div:first-child {
+                font-size: 48px !important;
+            }
+
+            .testimonials-section > div:nth-child(2) > div > div:last-child {
+                flex-direction: column !important;
+                gap: 24px !important;
+            }
+
+            .testimonials-section > div:nth-child(2) > div > div:last-child > div:first-child p {
+                font-size: 16px !important;
+            }
+
+            /* Small testimonials carousel - show 1 card on mobile */
+            .small-testimonial-item {
+                min-width: 85% !important;
+            }
+
+            /* Stats container - stack vertically */
+            .testimonials-section > div:last-child {
+                padding: 32px 24px !important;
+            }
+
+            .testimonials-section > div:last-child > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            .testimonials-section > div:last-child > div:first-child > div:nth-child(2) > div {
+                display: none !important;
+            }
+
+            .testimonials-section > div:last-child > div:first-child > div div:first-child {
+                font-size: 48px !important;
+            }
+
+            /* Newsletter/CTA Section Mobile */
+            .newsletter-section {
+                padding: 40px 0 60px !important;
+            }
+
+            .newsletter-section > div > div {
+                padding: 40px 24px !important;
+            }
+
+            .newsletter-section .section-title {
+                font-size: 28px !important;
+            }
+
+            .newsletter-section .section-desc {
+                font-size: 14px !important;
+            }
+
+            .newsletter-form {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            .newsletter-input {
+                width: 100% !important;
+            }
+
+            .newsletter-form .btn-primary {
+                width: 100% !important;
+                padding: 14px 24px !important;
+            }
+
+            /* Section spacing */
+            .section-dark {
+                padding: 60px 0 !important;
+            }
+
+            .section-header {
+                margin-bottom: 32px !important;
+            }
+
+            .section-title {
+                font-size: 32px !important;
+            }
+
+            .section-label {
+                font-size: 10px !important;
+            }
+
+            /* Glassmorphism cards - reduce padding on mobile */
+            .max-w-7xl,
+            .max-w-4xl {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
+            /* USP Section Mobile - Reduce size and height */
+            .usp-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+
+            .usp-icon img {
+                height: 40px !important;
+                max-width: 90px !important;
+            }
+
+            .usp-text {
+                font-size: 10px !important;
+                line-height: 1.3 !important;
+            }
+
+            .usp-item {
+                padding: 16px 12px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small mobile adjustments */
+            .section-title {
+                font-size: 28px !important;
+            }
+
+            .hero-title-main {
+                font-size: 32px !important;
+            }
+
+            .hero-title-sub {
+                font-size: 26px !important;
+            }
+
+            /* Reduce testimonial card size further */
+            .small-testimonial-item {
+                min-width: 90% !important;
+                padding: 24px 20px !important;
+            }
+
+            /* Newsletter */
+            .newsletter-section .section-title {
+                font-size: 24px !important;
+            }
+
+            /* Stats in testimonials */
+            .testimonials-section > div:last-child > div:first-child > div div:first-child {
+                font-size: 40px !important;
+            }
+        }
     </style>
 </head>
 
@@ -3270,32 +3786,171 @@
     <div class="stars" id="stars"></div>
 
     <!-- Flash Sale Banner -->
-    <div class="flash-banner">
-        EXCLUSIVE LUXURY COLLECTION • SAVE UP TO £500 • LIMITED TIME OFFER ENDS 13TH OCTOBER
-    </div>
+    <!-- Header -->
+    <header style="background: transparent; border-bottom: 1px solid rgba(212, 175, 55, 0.2);">
+        <!-- Top Header Bar -->
+        <div style="background: linear-gradient(135deg, #0a1929 0%, #1e3a52 100%); padding: 16px 0; position: relative; z-index: 2000;">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Hamburger Menu Button (Mobile Only) -->
+                <button id="mobileMenuBtn" style="display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 8px; z-index: 1001;" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-    <!-- Navigation -->
-    <nav id="mainNav">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h1 class="text-2xl font-bold">SIXSTAR<span style="color: var(--gold);">CRUISES</span></h1>
-                </div>
+                <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 40px;">
+                    <!-- Reviews.io Widget -->
+                    <div style="max-height: 79px; filter: invert(1) brightness(1.2);">
+                        <script src="https://widget.reviews.io/badge-ribbon/dist.js"></script>
+                        <div id="badge-ribbon"></div>
+                        <script>
+                            reviewsBadgeRibbon("badge-ribbon", {
+                                store: "six-star-cruises1",
+                                size: "medium",
+                            });
+                        </script>
+                    </div>
 
-                <div class="hidden lg:flex items-center gap-10">
-                    <a href="#" class="nav-link">DESTINATIONS</a>
-                    <a href="#" class="nav-link">CRUISE LINES</a>
-                    <a href="#" class="nav-link">DEALS</a>
-                    <a href="#" class="nav-link">ABOUT US</a>
-                </div>
+                    <!-- Logo -->
+                    <div style="text-align: center;">
+                        <a href="/"><img src="https://www.sixstarcruises.co.uk/img/logo/ssc-logo.png" alt="SixStarCruises" style="height: 70px; width: auto; filter: brightness(0) invert(1);"></a>
+                    </div>
 
-                <div class="hidden lg:flex items-center gap-3">
-                    <a href="mailto:bookings@sixstarcruises.co.uk" class="btn-secondary" style="padding: 12px 24px; text-decoration: none; color: var(--navy); background: white; border: 1px solid #e5e7eb; font-size: 13px;">ENQUIRE</a>
-                    <a href="tel:08082026105" class="btn-primary" style="padding: 12px 24px; text-decoration: none; color: white; font-size: 13px;">CONTACT</a>
+                    <!-- Contact Info -->
+                    <div style="text-align: right; color: white;">
+                        <div style="font-size: 11px; text-transform: uppercase; margin-bottom: 4px;">
+                            <span style="color: var(--gold); margin-right: 8px;">Freephone</span>
+                            <span>9am - 8pm</span>
+                        </div>
+                        <a href="tel:08082026105" class="InfinityNumber" data-ict-discovery-number="0808 202 6105" style="text-decoration: none;">
+                            <div style="font-size: 28px; font-weight: 700; color: white; letter-spacing: 1px;">0808 202 6105</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
+
+        <!-- Navigation Bar -->
+        <nav style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000;">
+            <div class="max-w-7xl mx-auto">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 24px; position: relative;">
+                    <!-- Main Navigation Links -->
+                    <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
+                        <!-- Mobile Menu Header (Only visible on mobile) -->
+                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 20px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 16px; backdrop-filter: blur(10px);">
+                            <!-- Reviews.io Widget for Mobile -->
+                            <div style="margin-bottom: 12px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
+                                <div id="badge-ribbon-mobile"></div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div style="text-align: center; color: white;">
+                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
+                                    <span style="color: var(--gold); margin-right: 6px;">FREEPHONE</span>
+                                    <span>9am - 8pm</span>
+                                </div>
+                                <a href="tel:08082026105" style="text-decoration: none; display: block;">
+                                    <div style="font-size: 18px; font-weight: 700; color: white; letter-spacing: 0.5px;">0808 202 6105</div>
+                                </a>
+                            </div>
+
+                            <script>
+                                // Initialize Reviews.io for mobile menu
+                                if (typeof reviewsBadgeRibbon === 'function') {
+                                    reviewsBadgeRibbon("badge-ribbon-mobile", {
+                                        store: "six-star-cruises1",
+                                        size: "small",
+                                    });
+                                }
+                            </script>
+                        </div>
+
+                        <a href="/" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <path d="M20 7h-9M14 17H5M9 3 5 7l4 4M15 21l4-4-4-4"/>
+                            </svg>
+                            <span>Cruise Offers</span>
+                        </a>
+
+                        <a href="/cruise-line" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <path d="M2 12h20M2 5h20M2 19h20M12 3v18"/>
+                            </svg>
+                            <span>Cruise Lines</span>
+                        </a>
+
+                        <a href="#" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <path d="M3 21h18M4 18h16M6 18V9M18 18V9M8 18V12M16 18V12M12 9V3M12 3 8 7M12 3l4 4"/>
+                            </svg>
+                            <span>Popular Ships</span>
+                        </a>
+
+                        <a href="/destinations" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <span>Destinations</span>
+                        </a>
+
+                        <a href="#" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span>My Booking</span>
+                        </a>
+
+                        <a href="#" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                            <span>Cruise Type</span>
+                        </a>
+
+                        <a href="https://www.sixstarcruises.co.uk/finest-collection" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px) rotate(5deg)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0) rotate(0deg)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                            <span>Finest Collection</span>
+                        </a>
+
+                        <a href="https://www.sixstarcruises.co.uk/expeditions" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                <line x1="9" y1="15" x2="15" y2="15"/>
+                            </svg>
+                            <span>Expeditions</span>
+                        </a>
+
+                        <a href="https://www.sixstarcruises.co.uk/river-cruises" class="nav-link nav-link-with-icon" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'; this.style.borderBottom='3px solid var(--gold)'; this.querySelector('.nav-icon').style.transform='translateY(-2px)'" onmouseout="this.style.color='white'; this.style.borderBottom='3px solid transparent'; this.querySelector('.nav-icon').style.transform='translateY(0)'">
+                            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                                <path d="M3 15s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                                <path d="M3 20s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                                <path d="M3 10s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                            </svg>
+                            <span>River Cruises</span>
+                        </a>
+                    </div>
+
+                    <!-- Wishlist Icon -->
+                    <div style="padding: 18px 0;">
+                        <a href="https://www.sixstarcruises.co.uk/wishlist" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                            <i class="fa-solid fa-heart" style="font-size: 16px;"></i>
+                            <span>Wishlist</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -3314,7 +3969,7 @@
             <p class="hero-tagline">Where Royal Elegance Meets the Open Seas</p>
 
             <p class="hero-description">
-                Limited-time offer ends 13th October. Discover the world's most exquisite destinations aboard
+                Limited-time offer ends 20th October. Discover the world's most exquisite destinations aboard
                 the finest vessels, curated exclusively for the discerning traveler.
             </p>
 
@@ -3540,45 +4195,45 @@
                 <div class="usp-grid">
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Experience">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-concierge.webp" alt="Concierge Expertise">
                         </div>
-                        <p class="usp-text">Over 100 Years<br>Experience</p>
+                        <p class="usp-text">CONCIERGE<br>EXPERTISE</p>
                     </div>
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2904/2904947.png" alt="Award">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-first-class.webp" alt="First-Class Service">
                         </div>
-                        <p class="usp-text">Award Winning<br>Service</p>
+                        <p class="usp-text">FIRST-CLASS<br>SERVICE</p>
                     </div>
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Partner">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-long-established.webp" alt="Long-Established Business">
                         </div>
-                        <p class="usp-text">Preferred<br>Partner Status</p>
+                        <p class="usp-text">LONG-ESTABLISHED<br>BUSINESS</p>
                     </div>
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Exclusive">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-cruise.webp" alt="Cruise Line Relationships">
                         </div>
-                        <p class="usp-text">Exclusive<br>Offers</p>
+                        <p class="usp-text">CRUISE LINE<br>RELATIONSHIPS</p>
                     </div>
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3524/3524388.png" alt="Price">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-booking-condidence.webp" alt="Booking Confidence">
                         </div>
-                        <p class="usp-text">Best Price<br>Guarantee</p>
+                        <p class="usp-text">BOOKING<br>CONFIDENCE</p>
                     </div>
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3059/3059502.png" alt="Support">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-atol.webp" alt="ATOL & ABTA Security">
                         </div>
-                        <p class="usp-text">24/7<br>Support</p>
+                        <p class="usp-text">ATOL & ABTA<br>SECURITY</p>
                     </div>
                     <div class="usp-item usp-item-glass">
                         <div class="usp-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1089/1089390.png" alt="Protected">
+                            <img loading="lazy" src="https://www.sixstarcruises.co.uk/assets/images/sixstarcruises/icon-excellent.webp" alt="Excellent Customer Service" style="max-width: 120px;">
                         </div>
-                        <p class="usp-text">ATOL<br>Protected</p>
+                        <p class="usp-text">EXCELLENT CUSTOMER<br>SERVICE</p>
                     </div>
                 </div>
             </div>
@@ -3616,209 +4271,190 @@
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Andy-Whittle-resize-concierge_full.jpg" alt="Andy Whittle">
+                                <img src="images/members/Lisa-Mallon-concierge_full.jpg" alt="Lisa M">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Andy Whittle</h4>
-                                    <p class="team-role">Luxury Cruise Specialist</p>
-                                    <p class="team-exp">20+ years experience</p>
+                                    <h4 class="team-name">Lisa M</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Dan-McMahon-resize-concierge_full.jpg" alt="Dan McMahon">
+                                <img src="images/members/Elizabeth-Wright-concierge_full.jpg" alt="Elizabeth">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Dan McMahon</h4>
-                                    <p class="team-role">Senior Concierge</p>
-                                    <p class="team-exp">18+ years experience</p>
+                                    <h4 class="team-name">Elizabeth</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Donna-Worsnip-concierge_full.jpg" alt="Donna Worsnip">
+                                <img src="images/members/Emma-Gray-concierge_full.jpg" alt="Emma">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Donna Worsnip</h4>
-                                    <p class="team-role">World Cruise Expert</p>
-                                    <p class="team-exp">22+ years experience</p>
+                                    <h4 class="team-name">Emma</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Elizabeth-Wright-concierge_full.jpg" alt="Elizabeth Wright">
+                                <img src="images/members/Lisa-Paterson-concierge_full.jpg" alt="Lisa P">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Elizabeth Wright</h4>
-                                    <p class="team-role">Luxury Cruise Director</p>
-                                    <p class="team-exp">25+ years experience</p>
+                                    <h4 class="team-name">Lisa P</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Emma-Gray-concierge_full.jpg" alt="Emma Gray">
+                                <img src="images/members/Paula-Molloy-concierge_full.jpg" alt="Paula">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Emma Gray</h4>
-                                    <p class="team-role">Senior Travel Advisor</p>
-                                    <p class="team-exp">15+ years experience</p>
+                                    <h4 class="team-name">Paula</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Erin-Madine-concierge_full.jpg" alt="Erin Madine">
+                                <img src="images/members/Richard-Wishaw-concierge_full.jpg" alt="Richard">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Erin Madine</h4>
-                                    <p class="team-role">Cruise Concierge</p>
-                                    <p class="team-exp">12+ years experience</p>
+                                    <h4 class="team-name">Richard</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Kathryn-Trinder-concierge_full.jpg" alt="Kathryn Trinder">
+                                <img src="images/members/Sandie-Collier-concierge_full.jpg" alt="Sandie">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Kathryn Trinder</h4>
-                                    <p class="team-role">Expedition Cruise Specialist</p>
-                                    <p class="team-exp">16+ years experience</p>
+                                    <h4 class="team-name">Sandie</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Katie-Austin-concierge_full.jpg" alt="Katie Austin">
+                                <img src="images/members/Stacey-Williams-concierge_full.jpg" alt="Stacey">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Katie Austin</h4>
-                                    <p class="team-role">Luxury Travel Expert</p>
-                                    <p class="team-exp">19+ years experience</p>
+                                    <h4 class="team-name">Stacey</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Laura-Wing-resize-concierge_full.jpg" alt="Laura Wing">
+                                <img src="images/members/Donna-Worsnip-concierge_full.jpg" alt="Donna">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Laura Wing</h4>
-                                    <p class="team-role">River Cruise Specialist</p>
-                                    <p class="team-exp">14+ years experience</p>
+                                    <h4 class="team-name">Donna</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Lisa-Mallon-concierge_full.jpg" alt="Lisa Mallon">
+                                <img src="images/members/Erin-Madine-concierge_full.jpg" alt="Erin">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Lisa Mallon</h4>
-                                    <p class="team-role">Senior Cruise Advisor</p>
-                                    <p class="team-exp">21+ years experience</p>
+                                    <h4 class="team-name">Erin</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Lisa-Paterson-concierge_full.jpg" alt="Lisa Paterson">
+                                <img src="images/members/Kathryn-Trinder-concierge_full.jpg" alt="Kathryn">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Lisa Paterson</h4>
-                                    <p class="team-role">Luxury Concierge</p>
-                                    <p class="team-exp">17+ years experience</p>
+                                    <h4 class="team-name">Kathryn</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Paula-Molloy-concierge_full.jpg" alt="Paula Molloy">
+                                <img src="images/members/Rebecca-Rimmer-concierge_full.jpg" alt="Rebecca">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Paula Molloy</h4>
-                                    <p class="team-role">World Cruise Specialist</p>
-                                    <p class="team-exp">23+ years experience</p>
+                                    <h4 class="team-name">Rebecca</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Rebecca-Rimmer-concierge_full.jpg" alt="Rebecca Rimmer">
+                                <img src="images/members/Shirley-Anne-Mccue-2-concierge_full.jpg" alt="Shirley">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Rebecca Rimmer</h4>
-                                    <p class="team-role">Cruise Travel Advisor</p>
-                                    <p class="team-exp">13+ years experience</p>
+                                    <h4 class="team-name">Shirley</h4>
+                                    <p class="team-role">Specialist Cruise Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Richard-Wishaw-concierge_full.jpg" alt="Richard Wishaw">
+                                <img src="images/members/resize-image00030-concierge_full.jpg" alt="Laura H">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Richard Wishaw</h4>
-                                    <p class="team-role">Senior Cruise Director</p>
-                                    <p class="team-exp">24+ years experience</p>
+                                    <h4 class="team-name">Laura H</h4>
+                                    <p class="team-role">SixStarCruises Manager</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Sandie-Collier-concierge_full.jpg" alt="Sandie Collier">
+                                <img src="images/members/Dan-McMahon-resize-concierge_full.jpg" alt="Dan">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Sandie Collier</h4>
-                                    <p class="team-role">Luxury Voyage Planner</p>
-                                    <p class="team-exp">20+ years experience</p>
+                                    <h4 class="team-name">Dan</h4>
+                                    <p class="team-role">Specialist Travel Concierge</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Shirley-Anne-Mccue-2-concierge_full.jpg" alt="Shirley Anne McCue">
+                                <img src="images/members/image-(1)-(1)-concierge_full.jpg" alt="Claire">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Shirley Anne McCue</h4>
-                                    <p class="team-role">Executive Cruise Specialist</p>
-                                    <p class="team-exp">26+ years experience</p>
+                                    <h4 class="team-name">Claire</h4>
+                                    <p class="team-role">Specialist Cruise Concierge and Expedition Specialist</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/Stacey-Williams-concierge_full.jpg" alt="Stacey Williams">
+                                <img src="images/members/Katie-Austin-concierge_full.jpg" alt="Katie">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Stacey Williams</h4>
-                                    <p class="team-role">Cruise Concierge</p>
-                                    <p class="team-exp">15+ years experience</p>
+                                    <h4 class="team-name">Katie</h4>
+                                    <p class="team-role">Specialist Cruise Concierge and Expedition Specialist</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/image-(1)-(1)-concierge_full.jpg" alt="Senior Advisor">
+                                <img src="images/members/Andy-Whittle-resize-concierge_full.jpg" alt="Andrew W">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Travel Specialist</h4>
-                                    <p class="team-role">Senior Travel Advisor</p>
-                                    <p class="team-exp">18+ years experience</p>
+                                    <h4 class="team-name">Andrew W</h4>
+                                    <p class="team-role">Sales Manager for SixStarCruises</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="team-carousel-card">
                             <div class="team-card-inner">
-                                <img src="images/members/resize-image00030-concierge_full.jpg" alt="Cruise Expert">
+                                <img src="images/members/Laura-Wing-resize-concierge_full.jpg" alt="Laura W">
                                 <div class="team-card-content">
-                                    <h4 class="team-name">Cruise Expert</h4>
-                                    <p class="team-role">Luxury Cruise Consultant</p>
-                                    <p class="team-exp">22+ years experience</p>
+                                    <h4 class="team-name">Laura W</h4>
+                                    <p class="team-role">Senior Specialist Cruise Concierge and Expedition Specialist</p>
                                 </div>
                             </div>
                         </div>
@@ -4144,6 +4780,9 @@
             <div class="cruise-carousel-dots">
                 <span class="cruise-carousel-dot active"></span>
                 <span class="cruise-carousel-dot"></span>
+                <span class="cruise-carousel-dot"></span>
+                <span class="cruise-carousel-dot"></span>
+                <span class="cruise-carousel-dot"></span>
             </div>
 
             <div style="text-align: center; margin-top: 48px;" class="reveal">
@@ -4210,7 +4849,7 @@
 
                 <!-- Luxury Mediterranean Cruises -->
                 <div class="destination-card" data-category="europe">
-                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=800&h=1000&fit=crop"
+                    <img src="images/luxury-cruises-medditeranean-thumb-thumb.jpg"
                         alt="Mediterranean">
                     <div class="destination-content">
                         <p class="destination-label">CLASSIC DESTINATIONS</p>
@@ -4250,7 +4889,7 @@
                         alt="Alaska">
                     <div class="destination-content">
                         <p class="destination-label">WILD BEAUTY</p>
-                        <h3 class="destination-title">Alaska<br>Cruises</h3>
+                        <h3 class="destination-title">Alaska Cruises</h3>
                         <p class="destination-description">Discover the best of nature</p>
                         <a href="#" class="destination-link">
                             View Alaska
@@ -4278,11 +4917,12 @@
                             </svg>
                         </a>
                     </div>
+                </div>
 
             </div>
 
             <!-- Results Counter -->
-            <div class="cruise-results-info reveal" style="display: flex; justify-content: center; align-items: center;">
+            <div class="cruise-results-info reveal">
                 <p>Showing <span id="destinationResultsCount">6</span> destinations</p>
             </div>
         </div>
@@ -4329,7 +4969,7 @@
 
                 <!-- 2027 Luxury Cruises -->
                 <div class="destination-card" data-category="2027 luxury">
-                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=800&h=1000&fit=crop"
+                    <img src="images/best-cruise/2027-luxury-cruises-thumb-thumb.jpg"
                         alt="2027 Luxury Cruises">
                     <div class="destination-content">
                         <p class="destination-label">EARLY BOOKING SAVINGS</p>
@@ -4347,7 +4987,7 @@
 
                 <!-- 2028 Luxury Cruises -->
                 <div class="destination-card" data-category="2028 luxury">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1000&fit=crop"
+                    <img src="images/best-cruise/2028_luxury_cruises-thumb-thumb.jpg"
                         alt="2028 Luxury Cruises">
                     <div class="destination-content">
                         <p class="destination-label">PLAN AHEAD</p>
@@ -4415,10 +5055,11 @@
                             </svg>
                         </a>
                     </div>
+                </div>
             </div>
 
             <!-- Results Counter -->
-            <div class="cruise-results-info reveal" style="display: flex; justify-content: center; align-items: center;">
+            <div class="cruise-results-info reveal">
                 <p>Showing <span id="planningResultsCount">6</span> options</p>
             </div>
         </div>
@@ -4431,54 +5072,67 @@
                 <span class="section-label">OUR AWARD WINNING SERVICE</span>
                 <h2 class="section-title">Recognised Excellence</h2>
             </div>
-
+    
             <div class="awards-grid reveal">
                 <div class="award-item">
                     <div class="award-image-box">
-                        <img src="images/Best-Luxury-Travel-Agent-large_thumb-removebg-preview.png" alt="Best Luxury Travel Agent">
+                        <img src="images/AAA's-2023-winner-full-large_thumb-(1)-large_thumb.jpg"
+                            alt="Travel Weekly Large Cruise Agency of the Year 2023">
                     </div>
-                    <p class="award-name">Best Luxury Travel Agent</p>
+                    <p class="award-name">Travel Weekly Large Cruise Agency of the Year 2023</p>
                     <p class="award-desc">Excellence in Service</p>
                 </div>
-
                 <div class="award-item">
                     <div class="award-image-box">
-                        <img src="images/Lux-Awards-winner-logos-blk_LUXURY-CRUISE-AGENCY-large_thumb-removebg-preview.png" alt="Luxury Cruise Agency Award">
+                        <img src="images/Best-Luxury-Travel-Agent-large_thumb-removebg-preview.png"
+                            alt="Best Luxury Travel Agent">
                     </div>
-                    <p class="award-name">Luxury Cruise Agency</p>
-                    <p class="award-desc">Winner 2024</p>
+                    <p class="award-name">Best Luxury Travel Agent 2022</p>
+                    <p class="award-desc">Excellence in Service</p>
                 </div>
-
+    
                 <div class="award-item">
                     <div class="award-image-box">
-                        <img src="images/Specialist-cuise-agent-large_thumb-large_thumb-removebg-preview.png" alt="Specialist Cruise Agent">
+                        <img src="images/image-large_thumb-removebg-preview.png" alt="UK Cruise Awards">
                     </div>
-                    <p class="award-name">Specialist Cruise Agent</p>
+                    <p class="award-name">UK Cruise Awards</p>
+                    <p class="award-desc">Winner 2023</p>
+                </div>
+    
+                <div class="award-item">
+                    <div class="award-image-box">
+                        <img src="images/Specialist-cuise-agent-large_thumb-large_thumb-removebg-preview.png"
+                            alt="Best Specialist Cruise Agent 2023">
+                    </div>
+                    <p class="award-name">Best Specialist Cruise Agent 2023</p>
                     <p class="award-desc">Industry Leader</p>
                 </div>
-
-                <div class="award-item">
-                    <div class="award-image-box">
-                        <img src="images/image-large_thumb-removebg-preview.png" alt="Award">
-                    </div>
-                    <p class="award-name">Travel Awards</p>
-                    <p class="award-desc">Gold Tier 2024</p>
-                </div>
-
+    
                 <div class="award-item">
                     <div class="award-image-box">
                         <img src="images/use-of-content-large_thumb-large_thumb-removebg-preview.png" alt="Content Award">
                     </div>
-                    <p class="award-name">Excellence in Content</p>
+                    <p class="award-name">Best Use Of Content 2023</p>
                     <p class="award-desc">Certified Provider</p>
                 </div>
-
+    
                 <div class="award-item">
                     <div class="award-image-box">
-                        <img src="images/Best-Luxury-Travel-Agent-large_thumb-removebg-preview.png" alt="Trustpilot">
+                        <img src="images/Lux-Awards-winner-logos-blk_LUXURY-CRUISE-AGENCY-large_thumb-removebg-preview.png"
+                            alt="TTG Luxury Cruise Agency Of The Year">
                     </div>
-                    <p class="award-name">Trustpilot Excellent</p>
-                    <p class="award-desc">5-Star Rated</p>
+                    <p class="award-name">TTG Luxury Cruise Agency Of The Year</p>
+                    <p class="award-desc">Luxury Certified</p>
+                </div>
+    
+    
+    
+                <div class="award-item">
+                    <div class="award-image-box">
+                        <img src="images/best-workplaces.jpg" alt="Trustpilot">
+                    </div>
+                    <p class="award-name">Best Workplaces</p>
+                    <p class="award-desc">Travel 2024</p>
                 </div>
             </div>
         </div>
@@ -4690,117 +5344,137 @@
     <!-- Newsletter -->
     <section class="newsletter-section">
         <div class="max-w-4xl mx-auto px-6 reveal">
-            <h2 class="section-title" style="color: #1a1a2e;">Join Our Exclusive Circle</h2>
-            <p class="section-desc" style="color: rgba(26, 26, 46, 0.8); margin-bottom: 40px;">Be the first to discover
-                luxury cruise deals, insider tips, and exclusive offers</p>
-            <div class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" class="newsletter-input">
-                <button class="btn-primary">SUBSCRIBE NOW</button>
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 24px; padding: 60px 48px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+                <h2 class="section-title" style="color: white;">Join Our Exclusive Circle</h2>
+                <p class="section-desc" style="color: rgba(255, 255, 255, 0.95); margin-bottom: 40px;">Be the first to discover
+                    luxury cruise deals, insider tips, and exclusive offers</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" class="newsletter-input">
+                    <button class="btn-primary">SUBSCRIBE NOW</button>
+                </div>
+                <p style="margin-top: 16px; font-size: 13px; color: rgba(255, 255, 255, 0.85);">We respect your privacy. Unsubscribe at any
+                    time.</p>
             </div>
-            <p style="margin-top: 16px; font-size: 13px; color: rgba(26, 26, 46, 0.7);">We respect your privacy. Unsubscribe at any
-                time.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="max-w-7xl mx-auto px-6">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>SIXSTAR<span style="color: var(--gold);">CRUISES</span></h3>
-                    <p>Europe's Leading Luxury Cruise Specialist. Over 100 years combined experience creating
-                        unforgettable voyages.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
-                            </svg>
-                        </a>
+            <div class="footer-grid" style="grid-template-columns: repeat(5, 1fr); gap: 40px;">
+                <div>
+                    <h4 class="footer-heading">EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="/blog" class="footer-link">Blog</a>
+                        <a href="/cruise-hub/" class="footer-link">Travel Advice</a>
+                        <a href="/terms-of-use/" class="footer-link">Terms and Conditions</a>
+                        <a href="/luxury-cruises/privacy/" class="footer-link">Privacy Policy</a>
+                        <a href="/contact-us/" class="footer-link">Contact Us</a>
+                        <a href="/careers/" class="footer-link">Careers</a>
+                        <a href="/support-centre/frequently-asked-questions/" class="footer-link">Frequently Asked Questions</a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="footer-heading">Cruise Lines</h4>
+                    <h4 class="footer-heading">CRUISE DEALS</h4>
                     <div class="footer-links">
-                        <a href="#" class="footer-link">Regent Seven Seas</a>
-                        <a href="#" class="footer-link">Silversea Cruises</a>
-                        <a href="#" class="footer-link">Seabourn</a>
-                        <a href="#" class="footer-link">Oceania Cruises</a>
-                        <a href="#" class="footer-link">Azamara</a>
-                        <a href="#" class="footer-link">Viking Ocean</a>
+                        <a href="/luxury-cruise-deals" class="footer-link">Luxury Cruise Deals</a>
+                        <a href="/luxury-cruises-2025" class="footer-link">2025 Luxury Cruises</a>
+                        <a href="/exclusives" class="footer-link">Exclusive Luxury Cruise Deals & Offers</a>
+                        <a href="/luxury-cruises-2026" class="footer-link">2026 Luxury Cruises</a>
+                        <a href="/luxury-cruises-2027" class="footer-link">2027 Luxury Cruises</a>
+                        <a href="/luxury-solo-cruise-deals" class="footer-link">Luxury Solo Cruise Deals</a>
+                        <a href="/luxury-cruises-2028" class="footer-link">2028 Luxury Cruises</a>
+                        <a href="/the-club-company" class="footer-link">Luxury Cruise Offers for Travel Club Members</a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="footer-heading">Destinations</h4>
+                    <h4 class="footer-heading">CRUISE LINES</h4>
                     <div class="footer-links">
-                        <a href="#" class="footer-link">Mediterranean</a>
-                        <a href="#" class="footer-link">Caribbean</a>
-                        <a href="#" class="footer-link">Northern Europe</a>
-                        <a href="#" class="footer-link">Asia & Far East</a>
-                        <a href="#" class="footer-link">World Cruises</a>
-                        <a href="#" class="footer-link">River Cruises</a>
+                        <a href="/luxury-cruise/azamara-club-cruises" class="footer-link">Azamara</a>
+                        <a href="/luxury-cruise/oceania-cruises" class="footer-link">Oceania Cruises</a>
+                        <a href="/luxury-cruise/regent-seven-seas-cruises" class="footer-link">Regent Seven Seas Cruises</a>
+                        <a href="/luxury-cruise/seabourn-cruise-line" class="footer-link">Seabourn</a>
+                        <a href="/luxury-cruise/silversea-cruises" class="footer-link">Silversea</a>
+                        <a href="/luxury-cruise/explora-journeys" class="footer-link">Explora Journeys</a>
+                        <a href="/luxury-cruise" class="footer-link">All Cruise Lines</a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="footer-heading">Contact Us</h4>
+                    <h4 class="footer-heading">POPULAR SHIPS</h4>
                     <div class="footer-links">
-                        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 12px;">📞 Freephone:
-                            0808 202 6105</p>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 12px;">✉️
-                            bookings@sixstarcruises.co.uk</p>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 12px;">🕐 Mon-Fri:
-                            9am-8pm</p>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 16px;">🕐 Sat-Sun:
-                            9am-7pm</p>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 600; margin-bottom: 8px;">
-                            WTH (UK) Ltd</p>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.6;">110A & 112-114
-                            Market Street<br>Chorley, PR7 2SL</p>
+                        <a href="/luxury-cruise/oceania-marina" class="footer-link">Oceania Marina</a>
+                        <a href="/luxury-cruise/oceania-riviera" class="footer-link">Oceania Riviera</a>
+                        <a href="/luxury-cruise/seabourn-quest" class="footer-link">Seabourn Quest</a>
+                        <a href="/luxury-cruise/seabourn-ovation" class="footer-link">Seabourn Ovation</a>
+                        <a href="/luxury-cruise/seven-seas-splendor" class="footer-link">Seven Seas Splendor</a>
+                        <a href="/luxury-cruise/silversea/silver-dawn" class="footer-link">Silver Dawn</a>
+                        <a href="/luxury-cruise/seven-seas-grandeur" class="footer-link">Seven Seas Grandeur</a>
+                        <a href="/luxury-cruise/silversea/silver-nova" class="footer-link">Silver Nova</a>
+                        <a href="/luxury-cruise/queen-anne" class="footer-link">Queen Anne</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">CRUISE DESTINATIONS</h4>
+                    <div class="footer-links">
+                        <a href="/luxury-caribbean-cruises" class="footer-link">Caribbean</a>
+                        <a href="/luxury-mediterranean-cruises" class="footer-link">Mediterranean</a>
+                        <a href="/luxury-transatlantic-cruises" class="footer-link">Transatlantic</a>
+                        <a href="/luxury-norwegian-fjords-cruises" class="footer-link">Norwegian Fjords</a>
+                        <a href="/luxury-european-cruises" class="footer-link">Europe</a>
+                        <a href="/luxury-antarctica-cruises" class="footer-link">Antarctica</a>
+                        <a href="/destinations" class="footer-link">All Destinations</a>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <div
-                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-                    <p>&copy; 2025 SixStarCruises. All rights reserved.</p>
-                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                        <a href="#" style="color: inherit; transition: color 0.3s ease;"
-                            onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='inherit'">Privacy
-                            Policy</a>
-                        <a href="#" style="color: inherit; transition: color 0.3s ease;"
-                            onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='inherit'">Terms &
-                            Conditions</a>
-                        <a href="#" style="color: inherit; transition: color 0.3s ease;"
-                            onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='inherit'">ATOL
-                            Protected</a>
+            <!-- Logos and Social Section -->
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: center; margin-bottom: 40px;">
+                    <!-- Logos -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                        <img src="https://www.sixstarcruises.co.uk/img/cyber_essentials_plus_logo.png" alt="Cyber Essentials Plus logo" style="height: 80px; width: auto;">
+                        <img src="https://www.sixstarcruises.co.uk/img/abta.png" alt="ABTA" style="height: 56px; width: auto;">
+                    </div>
+
+                    <!-- Social Media -->
+                    <div style="text-align: center;">
+                        <h4 style="font-size: 18px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Follow Us</h4>
+                        <div style="display: flex; justify-content: center; gap: 20px;">
+                            <a href="https://www.facebook.com/SixStarCruises" style="color: white; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/sixstarcruises" style="color: white; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/six_star_cruises/" style="color: white; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- World Travel Holdings Logo -->
+                    <div style="display: flex; justify-content: center;">
+                        <img src="https://www.sixstarcruises.co.uk/assets/images/logo/wth-logo.png" alt="World Travel Holdings" style="width: 50%; max-width: 200px;">
                     </div>
                 </div>
-                <div style="margin-top: 24px; display: flex; justify-content: center; gap: 16px;">
-                    <div
-                        style="background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700;">
-                        VISA</div>
-                    <div
-                        style="background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700;">
-                        MASTERCARD</div>
-                    <div
-                        style="background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700;">
-                        AMEX</div>
+
+                <!-- Legal Text -->
+                <div style="padding: 30px 0; font-size: 13px; line-height: 1.8; color: rgba(255, 255, 255, 0.6); text-align: justify;">
+                    <p style="margin-bottom: 16px;">
+                        This website will provide you with information on the financial protection that applies in the case of each holiday and travel service offered before you make your booking. At the time of booking, our Cruise Concierge will also confirm the financial protection applicable to your specific holiday. Please ask us for further information should you require it. The flight inclusive holidays on this website are financially protected by the ATOL scheme. But ATOL protection does not apply to all holiday and travel services listed on this website. If you do not receive an ATOL Certificate then the booking will not be ATOL protected. If you do receive an ATOL Certificate but all parts of your trip are not listed on it, those parts will not be ATOL protected. The cruise-only holidays on this website are financially protected by ABTA. Please see our booking terms and conditions for further information or for more information about financial protection and the ATOL Certificate, <a href="/terms-of-use" style="color: var(--gold); text-decoration: none;">click here.</a> SixStarCruises acts as a retail agent to you and also as a disclosed agent of the holiday provider (the Organiser of the holiday).
+                    </p>
+                    <p>
+                        The Foreign & Commonwealth Office have up-to-date advice on staying safe and healthy abroad. Visit the foreign travel advice site for the latest travel updates.
+                    </p>
+                </div>
+
+                <!-- Copyright -->
+                <div style="padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 14px; color: rgba(255, 255, 255, 0.6);">
+                    <p>&copy; 2025 SixStarCruises. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -5289,6 +5963,41 @@
 
         // Initialize search modal when page loads
         window.addEventListener('DOMContentLoaded', initSearchModal);
+
+        // ========== ADVANCED SCROLL ANIMATIONS & MICRO-INTERACTIONS ==========
+
+        // Stagger animation for navigation icons on page load
+        window.addEventListener('load', () => {
+            const navIcons = document.querySelectorAll('.nav-icon');
+            navIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.opacity = '1';
+                    icon.style.transform = 'translateY(0) scale(1)';
+                }, index * 50);
+            });
+        });
+
+        // Initialize nav icons with hidden state (only nav icons, nothing else!)
+        document.querySelectorAll('.nav-icon').forEach(icon => {
+            icon.style.opacity = '0';
+            icon.style.transform = 'translateY(-10px) scale(0.8)';
+            icon.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+        });
+
+        // Read More functionality
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const container = this.closest('.read-more-container');
+                container.classList.toggle('expanded');
+
+                // Update button text
+                const isExpanded = container.classList.contains('expanded');
+                const textSpan = this.querySelector('span');
+                if (textSpan) {
+                    textSpan.textContent = isExpanded ? 'Show Less' : 'Read More';
+                }
+            });
+        });
 
         // 3D Carousel Functionality
         function init3DCarousel() {
@@ -5896,6 +6605,224 @@
 
         // Make function global for YouTube API
         window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+    </script>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const nav = navLinks.closest('nav');
+            const navContainer = nav ? nav.querySelector('.max-w-7xl') : null;
+            const navInnerDiv = navContainer ? navContainer.querySelector('div') : null;
+
+            navLinks.classList.toggle('mobile-menu-open');
+            overlay.classList.toggle('active');
+
+            // Change icon between bars and times
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('mobile-menu-open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+
+                // Force parent containers to not clip when menu is open
+                if (nav) {
+                    nav.style.height = 'auto';
+                    nav.style.minHeight = 'auto';
+                    nav.style.overflow = 'visible';
+                    nav.style.zIndex = '100000';
+                }
+                if (navContainer) {
+                    navContainer.style.height = 'auto';
+                    navContainer.style.overflow = 'visible';
+                }
+                if (navInnerDiv) {
+                    navInnerDiv.style.height = 'auto';
+                    navInnerDiv.style.overflow = 'visible';
+                }
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+
+                // Restore parent containers
+                if (nav) {
+                    nav.style.height = '';
+                    nav.style.minHeight = '';
+                    nav.style.overflow = '';
+                    nav.style.zIndex = '';
+                }
+                if (navContainer) {
+                    navContainer.style.height = '';
+                    navContainer.style.overflow = '';
+                }
+                if (navInnerDiv) {
+                    navInnerDiv.style.height = '';
+                    navInnerDiv.style.overflow = '';
+                }
+            }
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('mobile-menu-open')) {
+                document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+            }
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+    </script>
+
+    <!-- Floating Action Button with Multi-Actions -->
+    <div id="fab-container" style="position: fixed; bottom: 32px; right: 32px; z-index: 9999; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 16px;">
+        <!-- Sub-actions (hidden by default) -->
+        <div id="fab-actions" style="display: none; flex-direction: column-reverse; gap: 12px; align-items: flex-end; opacity: 0; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);">
+            <!-- Call Action -->
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="fab-label" style="background: rgba(10, 25, 41, 0.95); color: white; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: all 0.3s;">Call Us Now</div>
+                <a href="tel:08082026105" class="fab-action" style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold) 0%, #c9a84b 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.previousElementSibling.style.opacity='1'; this.previousElementSibling.style.transform='translateX(0)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.previousElementSibling.style.opacity='0'; this.previousElementSibling.style.transform='translateX(10px)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Email Action -->
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="fab-label" style="background: rgba(10, 25, 41, 0.95); color: white; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: all 0.3s;">Email Enquiry</div>
+                <a href="mailto:info@sixstarcruises.co.uk" class="fab-action" style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--navy) 0%, #1e3a52 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 20px rgba(10, 25, 41, 0.3); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.previousElementSibling.style.opacity='1'; this.previousElementSibling.style.transform='translateX(0)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.previousElementSibling.style.opacity='0'; this.previousElementSibling.style.transform='translateX(10px)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Book Now Action -->
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="fab-label" style="background: rgba(10, 25, 41, 0.95); color: white; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: all 0.3s;">Book Your Cruise</div>
+                <a href="#" class="fab-action" style="width: 48px; height: 48px; background: linear-gradient(135deg, #1e3a52 0%, var(--navy) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 20px rgba(10, 25, 41, 0.3); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.previousElementSibling.style.opacity='1'; this.previousElementSibling.style.transform='translateX(0)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.previousElementSibling.style.opacity='0'; this.previousElementSibling.style.transform='translateX(10px)'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main FAB Button -->
+        <button id="fab-main" onclick="toggleFAB()" style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--gold) 0%, #d4af37 50%, #c9a84b 100%); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 8px 32px rgba(212, 175, 55, 0.5), 0 0 0 0 rgba(212, 175, 55, 0.4); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); position: relative; overflow: visible;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 12px 40px rgba(212, 175, 55, 0.6), 0 0 0 8px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 32px rgba(212, 175, 55, 0.5), 0 0 0 0 rgba(212, 175, 55, 0.4)'">
+            <svg id="fab-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </button>
+
+        <!-- Pulse animation for FAB -->
+        <style>
+            @keyframes fab-pulse {
+                0% {
+                    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.5), 0 0 0 0 rgba(212, 175, 55, 0.7);
+                }
+                50% {
+                    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.5), 0 0 0 12px rgba(212, 175, 55, 0);
+                }
+                100% {
+                    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.5), 0 0 0 0 rgba(212, 175, 55, 0);
+                }
+            }
+
+            #fab-main {
+                animation: fab-pulse 2.5s infinite;
+            }
+
+            #fab-main:hover {
+                animation: none;
+            }
+
+            /* Mobile adjustments for FAB */
+            @media (max-width: 768px) {
+                #fab-container {
+                    bottom: 20px !important;
+                    right: 20px !important;
+                }
+
+                #fab-main {
+                    width: 56px !important;
+                    height: 56px !important;
+                }
+
+                .fab-action {
+                    width: 44px !important;
+                    height: 44px !important;
+                }
+
+                .fab-label {
+                    font-size: 11px !important;
+                    padding: 6px 12px !important;
+                }
+            }
+        </style>
+    </div>
+
+    <script>
+        let fabOpen = false;
+
+        function toggleFAB() {
+            const fabActions = document.getElementById('fab-actions');
+            const fabIcon = document.getElementById('fab-icon');
+            const fabMain = document.getElementById('fab-main');
+
+            fabOpen = !fabOpen;
+
+            if (fabOpen) {
+                fabActions.style.display = 'flex';
+                setTimeout(() => {
+                    fabActions.style.opacity = '1';
+                    fabActions.style.transform = 'translateY(0)';
+                }, 10);
+                fabIcon.style.transform = 'rotate(45deg)';
+                fabIcon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+            } else {
+                fabActions.style.opacity = '0';
+                fabActions.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    fabActions.style.display = 'none';
+                }, 400);
+                fabIcon.style.transform = 'rotate(0deg)';
+                fabIcon.innerHTML = '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>';
+            }
+        }
+
+        // Hide FAB when scrolling down, show when scrolling up
+        let lastScrollTop = 0;
+        const fabContainer = document.getElementById('fab-container');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 300) {
+                // Scrolling down
+                fabContainer.style.transform = 'translateY(150px)';
+                fabContainer.style.opacity = '0';
+            } else {
+                // Scrolling up
+                fabContainer.style.transform = 'translateY(0)';
+                fabContainer.style.opacity = '1';
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
     </script>
 </body>
 

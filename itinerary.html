@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-Night Transatlantic Luxury Cruise | SixStarCruises</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0a1929;
+            --navy-light: #1e3a52;
+            --gold: #d4a574;
+            --gold-light: #e8c296;
+            --cream: #f9f7f4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%) contrast(105%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%) contrast(105%);
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            border-left: none;
+            border-right: none;
+            box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.3) inset,
+                        0 8px 32px -4px rgba(0, 0, 0, 0.15),
+                        0 20px 50px -12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: backdrop-filter;
+            transform: translateZ(0);
+        }
+
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.04) 50%,
+                rgba(255, 255, 255, 0.02) 100%
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-icon {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .nav-link:hover {
+            color: var(--gold) !important;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .itinerary-hero {
+            position: relative;
+            height: calc(100vh + 160px);
+            min-height: 760px;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: -160px;
+        }
+
+        .itinerary-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .itinerary-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(10, 25, 41, 0.5) 0%, rgba(10, 25, 41, 0.85) 100%);
+        }
+
+        /* Itinerary Day Accordion */
+        .itinerary-day {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 165, 116, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .itinerary-day:hover {
+            box-shadow: 0 12px 40px rgba(212, 165, 116, 0.2),
+                        0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            border-color: rgba(212, 165, 116, 0.4);
+        }
+
+        .itinerary-day-header {
+            padding: 28px 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 247, 244, 1) 100%);
+        }
+
+        .itinerary-day-header:hover {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%);
+        }
+
+        .itinerary-day.active .itinerary-day-header {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(232, 194, 150, 0.1) 100%);
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .itinerary-day-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .itinerary-day.active .itinerary-day-content {
+            max-height: 1000px;
+        }
+
+        .itinerary-day-arrow {
+            transition: transform 0.3s;
+            color: var(--gold);
+        }
+
+        .itinerary-day.active .itinerary-day-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Booking Sidebar */
+        .booking-sidebar {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 247, 244, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(212, 165, 116, 0.3);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(212, 165, 116, 0.15),
+                        0 16px 64px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .booking-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: white;
+            border: none;
+            padding: 18px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .booking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(212, 165, 116, 0.45);
+        }
+
+        /* Overview Section */
+        .overview-highlight {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+
+        /* Section Headings with Gold Accent */
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            position: relative;
+            padding-bottom: 16px;
+            margin-bottom: 32px;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 2px;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 16px 48px rgba(212, 165, 116, 0.25),
+                        0 8px 24px rgba(0, 0, 0, 0.1);
+            border-color: rgba(212, 165, 116, 0.4);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(212, 165, 116, 0) 0%, rgba(212, 165, 116, 0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 80px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-heading {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+            padding-left: 4px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            /* Top Header Bar - More compact on mobile */
+            header > div:first-child {
+                padding: 10px 0 !important;
+            }
+
+            header > div:first-child > div > div {
+                display: grid !important;
+                grid-template-columns: 1fr auto 1fr !important;
+                gap: 12px !important;
+                align-items: center !important;
+            }
+
+            /* Reviews.io widget - hide on mobile to save space */
+            header > div:first-child > div > div > div:first-child {
+                display: none !important;
+            }
+
+            /* Logo container - centered, smaller */
+            header > div:first-child > div > div > div:nth-child(2) {
+                text-align: center !important;
+                grid-column: 2 !important;
+            }
+
+            header > div:first-child > div > div > div:nth-child(2) img {
+                height: 40px !important;
+            }
+
+            /* Contact info - hide on mobile */
+            header > div:first-child > div > div > div:nth-child(3) {
+                display: none !important;
+            }
+
+            /* Hide navigation bar visually but keep in DOM */
+            nav {
+                height: 0 !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                border: none !important;
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+
+            nav > div {
+                height: 0 !important;
+                overflow: visible !important;
+            }
+
+            nav > div > div {
+                height: 0 !important;
+                overflow: visible !important;
+            }
+
+            /* Hamburger Menu Button - Show in top header on mobile */
+            #mobileMenuBtn {
+                display: block !important;
+                position: absolute !important;
+                top: 50% !important;
+                right: 20px !important;
+                left: auto !important;
+                transform: translateY(-50%) !important;
+                padding: 8px !important;
+                z-index: 10000 !important;
+            }
+
+            /* Hide desktop wishlist on mobile */
+            nav > div:last-of-type:has(a[href*="wishlist"]) {
+                display: none !important;
+            }
+
+            /* Mobile Menu Panel - Hidden by default, slides from right when open */
+            #navLinks {
+                display: none !important;
+                position: fixed !important;
+                inset: 0 !important;
+                top: 0 !important;
+                right: 0 !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important; /* Dynamic viewport height for mobile browsers */
+                min-height: 100vh !important;
+                max-width: none !important;
+                max-height: none !important;
+                background: linear-gradient(135deg, rgba(10, 25, 41, 0.98) 0%, rgba(20, 45, 75, 0.99) 50%, rgba(15, 50, 85, 0.98) 100%) !important;
+                backdrop-filter: blur(80px) saturate(200%) contrast(110%) !important;
+                -webkit-backdrop-filter: blur(80px) saturate(200%) contrast(110%) !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 0 !important;
+                padding: 80px 20px 80px 20px !important;
+                margin: 0 !important;
+                z-index: 999999 !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior: contain !important;
+                box-shadow: none !important;
+                transform: translateZ(0) !important;
+                -webkit-transform: translateZ(0) !important;
+                clip-path: none !important;
+                contain: none !important;
+            }
+
+            #navLinks.mobile-menu-open {
+                display: flex !important;
+                position: fixed !important;
+            }
+
+            /* Ensure parent containers don't clip the menu when open */
+            nav:has(#navLinks.mobile-menu-open) {
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            nav:has(#navLinks.mobile-menu-open) > div {
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            nav:has(#navLinks.mobile-menu-open) > div > div {
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            /* Show mobile menu info section on mobile */
+            .mobile-menu-info {
+                display: block !important;
+            }
+
+            /* Navigation links in mobile menu - centered */
+            #navLinks a.nav-link {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 16px !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                padding: 16px 32px !important;
+                font-size: 14px !important;
+                font-weight: 700 !important;
+                color: white !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 12px !important;
+                margin: 6px 0 !important;
+                border-bottom: none !important;
+                text-align: left !important;
+                transition: all 0.3s ease !important;
+            }
+
+            #navLinks a.nav-link .nav-icon {
+                width: 22px !important;
+                height: 22px !important;
+                flex-shrink: 0 !important;
+            }
+
+            #navLinks a.nav-link:hover {
+                background: rgba(212, 165, 116, 0.2) !important;
+                color: var(--gold) !important;
+                transform: translateX(5px) !important;
+            }
+
+            /* Hero Section - Full Viewport Height */
+            .itinerary-hero {
+                height: 100vh !important;
+                min-height: 100vh !important;
+                margin-top: -80px !important;
+                padding-top: 0 !important;
+            }
+
+            .itinerary-hero > div {
+                padding: 0 20px !important;
+            }
+
+            .itinerary-hero h1 {
+                font-size: 38px !important;
+                margin-bottom: 16px !important;
+            }
+
+            .itinerary-hero p {
+                font-size: 16px !important;
+                margin-bottom: 24px !important;
+            }
+
+            /* Hero Key Details Cards - Stack */
+            .itinerary-hero > div > div:last-child {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+                max-width: 100% !important;
+            }
+
+            .itinerary-hero > div > div:last-child > div {
+                padding: 18px 20px !important;
+            }
+
+            .itinerary-hero > div > div:last-child > div > div:first-child {
+                font-size: 10px !important;
+            }
+
+            .itinerary-hero > div > div:last-child > div > div:last-child {
+                font-size: 18px !important;
+            }
+
+            /* Breadcrumb - Adjust for mobile */
+            .itinerary-hero > div > div:first-child {
+                margin-bottom: 16px !important;
+                font-size: 12px !important;
+            }
+
+            .itinerary-hero > div > div:first-child a,
+            .itinerary-hero > div > div:first-child span {
+                font-size: 12px !important;
+            }
+
+            /* Overview Section - Stack columns */
+            section:has(.section-heading) {
+                margin-top: -60px !important;
+                border-radius: 32px 32px 0 0 !important;
+                padding-top: 60px !important;
+            }
+            section:has(.section-heading) > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            .section-heading {
+                font-size: 32px !important;
+            }
+
+            .booking-sidebar {
+                position: relative !important;
+                top: 0 !important;
+            }
+
+            /* Itinerary Section */
+            section:has(.itinerary-day) {
+                padding: 60px 0 !important;
+            }
+
+            section:has(.itinerary-day) h2 {
+                font-size: 36px !important;
+            }
+
+            .itinerary-day {
+                border-radius: 16px !important;
+            }
+
+            .itinerary-day-header {
+                padding: 20px 18px !important;
+            }
+
+            .itinerary-day-header > div:first-child {
+                gap: 16px !important;
+            }
+
+            .itinerary-day-header > div:first-child > div:first-child {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 18px !important;
+            }
+
+            .itinerary-day-header h3 {
+                font-size: 20px !important;
+            }
+
+            .itinerary-day-header p {
+                font-size: 13px !important;
+            }
+
+            .itinerary-day-content img {
+                height: 200px !important;
+            }
+
+            /* Ship Information Section */
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            section:has(.gallery-grid) h2 {
+                font-size: 36px !important;
+            }
+
+            section:has(.gallery-grid) > div > div:last-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+
+            section:has(.gallery-grid) > div > div:last-child > div {
+                padding: 24px 16px !important;
+            }
+
+            section:has(.gallery-grid) > div > div:last-child > div > div:first-child {
+                font-size: 32px !important;
+            }
+
+            section:has(.gallery-grid) > div > div:last-child > div > div:last-child {
+                font-size: 11px !important;
+            }
+
+            /* Footer mobile */
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+                text-align: center !important;
+            }
+
+            .footer-links {
+                align-items: center !important;
+            }
+
+            footer > div > div:last-child > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            footer > div > div:last-child > div:first-child > div {
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+
+            footer img {
+                max-width: 120px !important;
+            }
+
+            footer p {
+                font-size: 12px !important;
+                line-height: 1.6 !important;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (Same as deals.html) -->
+    <header style="background: transparent; border-bottom: 1px solid rgba(212, 175, 55, 0.2);">
+        <!-- Top Header Bar -->
+        <div style="background: linear-gradient(135deg, #0a1929 0%, #1e3a52 100%); padding: 16px 0; position: relative; z-index: 2000;">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Hamburger Menu Button (Mobile Only) -->
+                <button id="mobileMenuBtn" style="display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer !important; padding: 8px; z-index: 1001;" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 40px;">
+                    <!-- Reviews.io Widget -->
+                    <div style="max-height: 79px; filter: invert(1) brightness(1.2);">
+                        <script src="https://widget.reviews.io/badge-ribbon/dist.js"></script>
+                        <div id="badge-ribbon"></div>
+                        <script>
+                            reviewsBadgeRibbon("badge-ribbon", {
+                                store: "six-star-cruises1",
+                                size: "medium",
+                            });
+                        </script>
+                    </div>
+
+                    <!-- Logo -->
+                    <div style="text-align: center;">
+                        <a href="/"><img src="https://www.sixstarcruises.co.uk/img/logo/ssc-logo.png" alt="SixStarCruises" style="height: 70px; width: auto; filter: brightness(0) invert(1);"></a>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div style="text-align: right; color: white;">
+                        <div style="font-size: 11px; text-transform: uppercase; margin-bottom: 4px;">
+                            <span style="color: var(--gold); margin-right: 8px;">Freephone</span>
+                            <span>9am - 8pm</span>
+                        </div>
+                        <a href="tel:08082026105" style="text-decoration: none;">
+                            <div style="font-size: 28px; font-weight: 700; color: white; letter-spacing: 1px;">0808 202 6105</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="max-w-7xl mx-auto">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 24px; position: relative;">
+                    <!-- Main Navigation Links -->
+                    <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
+                        <!-- Mobile Menu Header (Only visible on mobile) -->
+                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 20px 20px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 16px; backdrop-filter: blur(10px);">
+                            <!-- Reviews.io Widget for Mobile -->
+                            <div style="margin-bottom: 12px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
+                                <div id="badge-ribbon-mobile"></div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div style="text-align: center; color: white;">
+                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
+                                    <span style="color: var(--gold); margin-right: 6px;">FREEPHONE</span>
+                                    <span>9am - 8pm</span>
+                                </div>
+                                <a href="tel:08082026105" style="text-decoration: none; display: block;">
+                                    <div style="font-size: 18px; font-weight: 700; color: white; letter-spacing: 0.5px;">0808 202 6105</div>
+                                </a>
+                            </div>
+
+                            <script>
+                                // Initialize Reviews.io for mobile menu
+                                if (typeof reviewsBadgeRibbon === 'function') {
+                                    reviewsBadgeRibbon("badge-ribbon-mobile", {
+                                        store: "six-star-cruises1",
+                                        size: "small",
+                                    });
+                                }
+                            </script>
+                        </div>
+
+                        <a href="/" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M20 7h-9M14 17H5M9 3 5 7l4 4M15 21l4-4-4-4"/>
+                        </svg>
+                        <span>Cruise Offers</span>
+                    </a>
+
+                    <a href="/cruise-line" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M2 12h20M2 5h20M2 19h20M12 3v18"/>
+                        </svg>
+                        <span>Cruise Lines</span>
+                    </a>
+
+                    <a href="#" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M3 21h18M4 18h16M6 18V9M18 18V9M8 18V12M16 18V12M12 9V3M12 3 8 7M12 3l4 4"/>
+                        </svg>
+                        <span>Popular Ships</span>
+                    </a>
+
+                    <a href="/destinations" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        <span>Destinations</span>
+                    </a>
+
+                    <a href="#" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <span>My Booking</span>
+                    </a>
+
+                    <a href="#" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                        <span>Cruise Type</span>
+                    </a>
+
+                    <a href="https://www.sixstarcruises.co.uk/finest-collection" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <span>Finest Collection</span>
+                    </a>
+
+                    <a href="https://www.sixstarcruises.co.uk/expeditions" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="12" y1="18" x2="12" y2="12"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                        <span>Expeditions</span>
+                    </a>
+
+                    <a href="https://www.sixstarcruises.co.uk/river-cruises" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M3 15s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                            <path d="M3 20s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                            <path d="M3 10s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                        </svg>
+                        <span>River Cruises</span>
+                    </a>
+
+                    <!-- Wishlist -->
+                    <a href="https://www.sixstarcruises.co.uk/wishlist" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <span>Wishlist</span>
+                    </a>
+                    </div>
+
+                    <!-- Wishlist Icon -->
+                    <div style="padding: 18px 0;">
+                        <a href="https://www.sixstarcruises.co.uk/wishlist" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; white-space: nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                            <i class="fa-solid fa-heart" style="font-size: 16px;"></i>
+                            <span>Wishlist</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="itinerary-hero">
+        <img src="itinerary.png" class="itinerary-hero-bg" alt="Mediterranean Cruise">
+        <div class="itinerary-hero-overlay"></div>
+
+        <div style="position: relative; z-index: 10; max-width: 1280px; margin: 0 auto; padding: 160px 24px 0 24px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <!-- Breadcrumb -->
+            <div style="margin-bottom: 24px; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;">
+                <a href="/" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 13px;">Home</a>
+                <span style="color: rgba(255, 255, 255, 0.5); margin: 0 8px;">/</span>
+                <a href="/deals" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 13px;">Cruise Offers</a>
+                <span style="color: rgba(255, 255, 255, 0.5); margin: 0 8px;">/</span>
+                <span style="color: white; font-size: 13px;">Transatlantic Voyage</span>
+            </div>
+
+            <!-- Cruise Title -->
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; color: white; margin-bottom: 16px; line-height: 1.1; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;">
+                <span style="color: var(--gold);">15-Night</span> Transatlantic Voyage
+            </h1>
+
+            <p style="font-size: 18px; color: rgba(255, 255, 255, 0.9); margin-bottom: 32px; max-width: 700px; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;">
+                Barcelona to Miami aboard the luxurious Regent Seven Seas Explorer
+            </p>
+
+            <!-- Key Details Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both;">
+                <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.15) 100%); backdrop-filter: blur(30px); border: 1.5px solid rgba(212, 165, 116, 0.4); border-radius: 18px; padding: 24px 28px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);">
+                    <div style="font-size: 11px; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Departure</div>
+                    <div style="font-size: 22px; font-weight: 700; color: white;">18 May 2026</div>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.15) 100%); backdrop-filter: blur(30px); border: 1.5px solid rgba(212, 165, 116, 0.4); border-radius: 18px; padding: 24px 28px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);">
+                    <div style="font-size: 11px; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Duration</div>
+                    <div style="font-size: 22px; font-weight: 700; color: white;">15 Nights</div>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(232, 194, 150, 0.2) 100%); backdrop-filter: blur(30px); border: 2px solid rgba(212, 165, 116, 0.5); border-radius: 18px; padding: 24px 28px; box-shadow: 0 8px 32px rgba(212, 165, 116, 0.3);">
+                    <div style="font-size: 11px; color: rgba(255, 255, 255, 0.95); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 700;">From</div>
+                    <div style="font-size: 24px; font-weight: 800; color: white;">£4,299 <span style="font-size: 15px; font-weight: 600;">pp</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cruise Overview Section -->
+    <section style="background: white; padding: 80px 0; margin-top: -80px; border-radius: 40px 40px 0 0; position: relative; z-index: 20;">
+        <div class="max-w-7xl mx-auto px-6">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;">
+                <!-- Left Column: Overview -->
+                <div>
+                    <h2 class="section-heading">Cruise Overview</h2>
+
+                    <p style="font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 24px;">
+                        Embark on an unforgettable 15-night transatlantic voyage from the vibrant streets of Barcelona to the sun-soaked shores of Miami. This epic journey crosses the Atlantic Ocean, visiting stunning ports in Spain, Portugal, Madeira, Bermuda, and Florida.
+                    </p>
+
+                    <p style="font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 32px;">
+                        Aboard the award-winning Regent Seven Seas Explorer, you'll experience the pinnacle of luxury cruising with all-inclusive amenities, gourmet dining, and personalized service that exceeds every expectation.
+                    </p>
+
+                    <!-- Highlights -->
+                    <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(232, 194, 150, 0.08) 100%); border-left: 4px solid var(--gold); padding: 28px 32px; border-radius: 12px; margin-bottom: 32px;">
+                        <h3 style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 20px;">Cruise Highlights</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                                <span>Transatlantic crossing from Barcelona to Miami visiting Spain, Madeira, and Bermuda</span>
+                            </li>
+                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                                <span>All-inclusive dining with unlimited specialty restaurants</span>
+                            </li>
+                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                                <span>Complimentary shore excursions in every port of call</span>
+                            </li>
+                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                                <span>Premium beverages including fine wines and champagne</span>
+                            </li>
+                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                                <span>Butler service in all suites for the ultimate luxury experience</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column: Quick Info -->
+                <div>
+                    <div class="booking-sidebar">
+                        <h3 style="font-size: 26px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 28px; font-weight: 700;">Cruise Information</h3>
+
+                        <div style="margin-bottom: 20px;">
+                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Cruise Line</div>
+                            <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 40px; width: auto;">
+                        </div>
+
+                        <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.1);">
+                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Ship</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--navy);">Seven Seas Explorer</div>
+                        </div>
+
+                        <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.1);">
+                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Departure Port</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--navy);">Barcelona, Spain</div>
+                        </div>
+
+                        <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.1);">
+                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Return Port</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--navy);">Miami, Florida, USA</div>
+                        </div>
+
+                        <button class="booking-btn">
+                            <i class="fas fa-calendar-check" style="margin-right: 10px;"></i>
+                            Book Now
+                        </button>
+
+                        <button style="width: 100%; padding: 16px; background: rgba(212, 165, 116, 0.12); color: var(--gold); border: 2px solid var(--gold); border-radius: 14px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 16px; transition: all 0.3s;">
+                            <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                            Request Callback
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section style="background: var(--cream); padding: 80px 0;">
+        <div class="max-w-7xl mx-auto px-6">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--gold); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Day by Day</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 52px; color: var(--navy); margin-top: 16px; font-weight: 800; line-height: 1.2;">Your Itinerary</h2>
+                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); margin: 20px auto; border-radius: 2px;"></div>
+                <p style="font-size: 17px; color: #666; margin-top: 20px; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+                    Discover the carefully planned journey that awaits you on this epic transatlantic voyage
+                </p>
+            </div>
+
+            <!-- Itinerary Days -->
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Day 1 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">1</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Barcelona, Spain</h3>
+                                <p style="font-size: 14px; color: #666;">Embarkation Day - Depart 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Barcelona" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                    Begin your transatlantic adventure in the vibrant city of Barcelona. The infinite variety of street life, the nooks and crannies of the medieval Barri Gòtic, the ceramic tile and stained glass of Art Nouveau facades, Gaudí's masterpiece La Sagrada Família—Barcelona will capture your full attention. Explore the Gothic Quarter, stroll down La Rambla, and savor tapas before embarking on your epic ocean crossing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">2</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Cruising the Mediterranean Sea</h3>
+                                <p style="font-size: 14px; color: #666;">Day at Sea</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                    Relax and enjoy a full day cruising through the beautiful Mediterranean Sea. Take advantage of the ship's world-class spa, attend enrichment lectures, or simply unwind on deck with a cocktail as you prepare for your Spanish coast arrival.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">3</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Málaga, Spain</h3>
+                                <p style="font-size: 14px; color: #666;">8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844082/conversions/ESAGP-Malaga-sunset-Quino-Al-banner_half.jpg" alt="Málaga" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                    As you sail into Málaga, notice its idyllic setting on the famous Costa del Sol. This provincial capital sits between charming fishing villages to the east and vibrant coastal cities to the west. The Penibética Mountains provide a spectacular backdrop, sheltering the province from cold winds and creating a therapeutic climate. Málaga is the gateway to Andalusia's enchanting historic villages and the birthplace of Picasso.
+                                </p>
+                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
+                                    <strong style="color: var(--navy);">Complimentary Shore Excursion:</strong> Picasso Museum & Andalusian Old Town Walking Tour
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">4</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Sailing the Atlantic Ocean</h3>
+                                <p style="font-size: 14px; color: #666;">Day at Sea</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                    Enjoy a relaxing day at sea as we cross into the Atlantic Ocean. Take advantage of the ship's world-class amenities, from the Canyon Ranch SpaClub to enrichment lectures and cooking demonstrations. Unwind by the pool or indulge in afternoon tea as you watch the ocean horizons.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 5 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">5</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Funchal, Madeira</h3>
+                                <p style="font-size: 14px; color: #666;">8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844003/conversions/PTFNC---Funchal,-Madeira,-Portugal---Photo-credit-Reinaldo-Garanito-banner_half.jpg" alt="Funchal" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                    Formed by a volcanic eruption, Madeira lies in the Gulf Stream, about 500 miles due west of Casablanca. This beautiful Portuguese island is known for its dramatic landscapes, lush gardens, and fortified wine. Explore the colorful capital of Funchal with its charming old town, vibrant markets, and stunning botanical gardens perched on hillsides offering breathtaking ocean views.
+                                </p>
+                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
+                                    <strong style="color: var(--navy);">Complimentary Shore Excursion:</strong> Monte Palace Tropical Garden & Historic Funchal Walking Tour
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Days 6-10: At Sea -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;">6-10</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Transatlantic Crossing</h3>
+                                <p style="font-size: 14px; color: #666;">5 Days at Sea - Atlantic Ocean</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                    Experience the romance and tranquility of a true transatlantic crossing. These five days at sea offer the ultimate luxury cruise experience with endless opportunities to relax, rejuvenate, and enjoy world-class entertainment and dining.
+                                </p>
+                                <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(232, 194, 150, 0.08) 100%); border-radius: 12px; padding: 20px; margin-top: 20px;">
+                                    <h4 style="font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Onboard Activities:</h4>
+                                    <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                        <li style="font-size: 14px; color: #555;"><i class="fas fa-spa" style="color: var(--gold); margin-right: 8px;"></i>Canyon Ranch SpaClub</li>
+                                        <li style="font-size: 14px; color: #555;"><i class="fas fa-utensils" style="color: var(--gold); margin-right: 8px;"></i>Specialty Dining</li>
+                                        <li style="font-size: 14px; color: #555;"><i class="fas fa-music" style="color: var(--gold); margin-right: 8px;"></i>Live Entertainment</li>
+                                        <li style="font-size: 14px; color: #555;"><i class="fas fa-book" style="color: var(--gold); margin-right: 8px;"></i>Enrichment Lectures</li>
+                                        <li style="font-size: 14px; color: #555;"><i class="fas fa-swimming-pool" style="color: var(--gold); margin-right: 8px;"></i>Pool & Hot Tubs</li>
+                                        <li style="font-size: 14px; color: #555;"><i class="fas fa-cocktail" style="color: var(--gold); margin-right: 8px;"></i>Observation Lounge</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Days 11-12 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;">11-12</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Hamilton, Bermuda</h3>
+                                <p style="font-size: 14px; color: #666;">2 Days - 8:00 AM - 10:00 PM each day</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938294/conversions/shutterstock_17077726-custom_banner-banner_half.jpg" alt="Hamilton, Bermuda" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                    Spend two glorious days in Bermuda's charming capital. With its colorful pastel buildings, pink sand beaches, and crystal-clear turquoise waters, Hamilton offers a perfect blend of British colonial charm and island paradise. Explore the historic Royal Naval Dockyard, relax on world-famous Horseshoe Bay Beach, or discover the underwater wonders while snorkeling in the coral reefs.
+                                </p>
+                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold); margin-bottom: 16px;">
+                                    <strong style="color: var(--navy);">Day 11 Excursion:</strong> Crystal Caves & St. George's UNESCO World Heritage Town
+                                </div>
+                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
+                                    <strong style="color: var(--navy);">Day 12 Excursion:</strong> Horseshoe Bay Beach Experience & Gibbs Hill Lighthouse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Days 13-14 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;">13-14</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Sailing the Atlantic Ocean</h3>
+                                <p style="font-size: 14px; color: #666;">2 Days at Sea</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                    As we approach the final leg of our transatlantic journey, enjoy two more days of pure luxury at sea. Reflect on your incredible voyage, savor farewell dinners in specialty restaurants, and prepare for your arrival in vibrant Miami.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 15 -->
+                <div class="itinerary-day" onclick="toggleDay(this)">
+                    <div class="itinerary-day-header">
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">15</div>
+                            <div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Miami, Florida</h3>
+                                <p style="font-size: 14px; color: #666;">Disembarkation - Arrive 7:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="itinerary-day-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="itinerary-day-content">
+                        <div style="padding: 0 28px 28px 28px;">
+                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844033/conversions/USMIA---Miami---Destination-Image-banner_half.jpg" alt="Miami" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                    Your unforgettable transatlantic voyage concludes in the sun-drenched Magic City. Disembark in Miami with memories of an epic ocean crossing, stunning ports of call, and the incomparable luxury of Regent Seven Seas Cruises. Consider extending your stay to explore Miami's vibrant Art Deco District, world-class shopping, and beautiful beaches.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ship Information Section -->
+    <section style="background: white; padding: 80px 0;">
+        <div class="max-w-7xl mx-auto px-6">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--gold); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Your Floating Resort</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 52px; color: var(--navy); margin-top: 16px; font-weight: 800; line-height: 1.2;">Seven Seas Explorer</h2>
+                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); margin: 20px auto; border-radius: 2px;"></div>
+                <p style="font-size: 17px; color: #666; margin-top: 20px; font-weight: 500;">The most luxurious ship ever built</p>
+            </div>
+
+            <!-- Ship Gallery -->
+            <div class="gallery-grid" style="margin-bottom: 60px;">
+                <div class="gallery-item">
+                    <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Ship Exterior">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.sixstarcruises.co.uk/storage/media/1843830/conversions/MCMCM-Monte-Carlo-red-coupe-on-road-Jannis-Lucas-banner_half.jpg" alt="Suite">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Dining">
+                </div>
+            </div>
+
+            <!-- Ship Features -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
+                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">750</div>
+                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Guests</div>
+                </div>
+                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
+                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">1:1.4</div>
+                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Staff Ratio</div>
+                </div>
+                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
+                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">6</div>
+                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Restaurants</div>
+                </div>
+                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
+                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">4</div>
+                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Pools</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="footer-grid" style="grid-template-columns: repeat(5, 1fr); gap: 40px;">
+                <div>
+                    <h4 class="footer-heading">EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="/blog" class="footer-link">Blog</a>
+                        <a href="/cruise-hub/" class="footer-link">Travel Advice</a>
+                        <a href="/terms-of-use/" class="footer-link">Terms and Conditions</a>
+                        <a href="/luxury-cruises/privacy/" class="footer-link">Privacy Policy</a>
+                        <a href="/contact-us/" class="footer-link">Contact Us</a>
+                        <a href="/careers/" class="footer-link">Careers</a>
+                        <a href="/support-centre/frequently-asked-questions/" class="footer-link">Frequently Asked Questions</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">CRUISE DEALS</h4>
+                    <div class="footer-links">
+                        <a href="/luxury-cruise-deals" class="footer-link">Luxury Cruise Deals</a>
+                        <a href="/luxury-cruises-2025" class="footer-link">2025 Luxury Cruises</a>
+                        <a href="/exclusives" class="footer-link">Exclusive Luxury Cruise Deals & Offers</a>
+                        <a href="/luxury-cruises-2026" class="footer-link">2026 Luxury Cruises</a>
+                        <a href="/luxury-cruises-2027" class="footer-link">2027 Luxury Cruises</a>
+                        <a href="/luxury-solo-cruise-deals" class="footer-link">Luxury Solo Cruise Deals</a>
+                        <a href="/luxury-cruises-2028" class="footer-link">2028 Luxury Cruises</a>
+                        <a href="/the-club-company" class="footer-link">Luxury Cruise Offers for Travel Club Members</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">CRUISE LINES</h4>
+                    <div class="footer-links">
+                        <a href="/luxury-cruise/azamara-club-cruises" class="footer-link">Azamara</a>
+                        <a href="/luxury-cruise/oceania-cruises" class="footer-link">Oceania Cruises</a>
+                        <a href="/luxury-cruise/regent-seven-seas-cruises" class="footer-link">Regent Seven Seas Cruises</a>
+                        <a href="/luxury-cruise/seabourn-cruise-line" class="footer-link">Seabourn</a>
+                        <a href="/luxury-cruise/silversea-cruises" class="footer-link">Silversea</a>
+                        <a href="/luxury-cruise/explora-journeys" class="footer-link">Explora Journeys</a>
+                        <a href="/luxury-cruise" class="footer-link">All Cruise Lines</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">POPULAR SHIPS</h4>
+                    <div class="footer-links">
+                        <a href="/luxury-cruise/oceania-marina" class="footer-link">Oceania Marina</a>
+                        <a href="/luxury-cruise/oceania-riviera" class="footer-link">Oceania Riviera</a>
+                        <a href="/luxury-cruise/seabourn-quest" class="footer-link">Seabourn Quest</a>
+                        <a href="/luxury-cruise/seabourn-ovation" class="footer-link">Seabourn Ovation</a>
+                        <a href="/luxury-cruise/seven-seas-splendor" class="footer-link">Seven Seas Splendor</a>
+                        <a href="/luxury-cruise/silversea/silver-dawn" class="footer-link">Silver Dawn</a>
+                        <a href="/luxury-cruise/seven-seas-grandeur" class="footer-link">Seven Seas Grandeur</a>
+                        <a href="/luxury-cruise/silversea/silver-nova" class="footer-link">Silver Nova</a>
+                        <a href="/luxury-cruise/queen-anne" class="footer-link">Queen Anne</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">CRUISE DESTINATIONS</h4>
+                    <div class="footer-links">
+                        <a href="/luxury-caribbean-cruises" class="footer-link">Caribbean</a>
+                        <a href="/luxury-mediterranean-cruises" class="footer-link">Mediterranean</a>
+                        <a href="/luxury-transatlantic-cruises" class="footer-link">Transatlantic</a>
+                        <a href="/luxury-norwegian-fjords-cruises" class="footer-link">Norwegian Fjords</a>
+                        <a href="/luxury-european-cruises" class="footer-link">Europe</a>
+                        <a href="/luxury-antarctica-cruises" class="footer-link">Antarctica</a>
+                        <a href="/destinations" class="footer-link">All Destinations</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logos and Social Section -->
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: center; margin-bottom: 40px;">
+                    <!-- Logos -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                        <img src="https://www.sixstarcruises.co.uk/img/cyber_essentials_plus_logo.png" alt="Cyber Essentials Plus logo" style="height: 80px; width: auto;">
+                        <img src="https://www.sixstarcruises.co.uk/img/abta.png" alt="ABTA" style="height: 56px; width: auto;">
+                    </div>
+
+                    <!-- Social Media -->
+                    <div style="text-align: center;">
+                        <h4 style="font-size: 18px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Follow Us</h4>
+                        <div style="display: flex; justify-content: center; gap: 20px;">
+                            <a href="https://www.facebook.com/SixStarCruises" style="color: white; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/sixstarcruises" style="color: white; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/six_star_cruises/" style="color: white; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='white'">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- World Travel Holdings Logo -->
+                    <div style="display: flex; justify-content: center;">
+                        <img src="https://www.sixstarcruises.co.uk/assets/images/logo/wth-logo.png" alt="World Travel Holdings" style="width: 50%; max-width: 200px;">
+                    </div>
+                </div>
+
+                <!-- Legal Text -->
+                <div style="padding: 30px 0; font-size: 13px !important; line-height: 1.8; color: rgba(255, 255, 255, 0.6); text-align: justify;">
+                    <p style="margin-bottom: 16px;">
+                        This website will provide you with information on the financial protection that applies in the case of each holiday and travel service offered before you make your booking. At the time of booking, our Cruise Concierge will also confirm the financial protection applicable to your specific holiday. Please ask us for further information should you require it. The flight inclusive holidays on this website are financially protected by the ATOL scheme. But ATOL protection does not apply to all holiday and travel services listed on this website. If you do not receive an ATOL Certificate then the booking will not be ATOL protected. If you do receive an ATOL Certificate but all parts of your trip are not listed on it, those parts will not be ATOL protected. The cruise-only holidays on this website are financially protected by ABTA. Please see our booking terms and conditions for further information or for more information about financial protection and the ATOL Certificate, <a href="/terms-of-use" style="color: var(--gold); text-decoration: none;">click here.</a> SixStarCruises acts as a retail agent to you and also as a disclosed agent of the holiday provider (the Organiser of the holiday).
+                    </p>
+                    <p>
+                        The Foreign & Commonwealth Office have up-to-date advice on staying safe and healthy abroad. Visit the foreign travel advice site for the latest travel updates.
+                    </p>
+                </div>
+
+                <!-- Copyright -->
+                <div style="padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; font-size: 14px; color: rgba(255, 255, 255, 0.6);">
+                    <p>&copy; 2025 SixStarCruises. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDay(element) {
+            element.classList.toggle('active');
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const nav = navLinks.closest('nav');
+            const navContainer = nav ? nav.querySelector('.max-w-7xl') : null;
+            const navInnerDiv = navContainer ? navContainer.querySelector('div') : null;
+
+            navLinks.classList.toggle('mobile-menu-open');
+
+            // Change icon between bars and times
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('mobile-menu-open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+
+                // Force parent containers to not clip when menu is open
+                if (nav) {
+                    nav.style.height = 'auto';
+                    nav.style.minHeight = 'auto';
+                    nav.style.overflow = 'visible';
+                    nav.style.zIndex = '100000';
+                }
+                if (navContainer) {
+                    navContainer.style.height = 'auto';
+                    navContainer.style.overflow = 'visible';
+                }
+                if (navInnerDiv) {
+                    navInnerDiv.style.height = 'auto';
+                    navInnerDiv.style.overflow = 'visible';
+                }
+
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+
+                // Re-enable body scroll
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ========== NAV ICON FADE-IN ANIMATION ==========
+
+        // Stagger animation for navigation icons on page load
+        window.addEventListener('load', () => {
+            const navIcons = document.querySelectorAll('.nav-icon');
+            navIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.opacity = '1';
+                    icon.style.transform = 'translateY(0) scale(1)';
+                }, index * 50);
+            });
+        });
+    </script>
+</body>
+</html>
