@@ -178,6 +178,13 @@
             animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0s both;
         }
 
+        /* Initial hidden state for nav icons - prevents flash before animation */
+        .nav-icon {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
         nav::before {
             content: '';
             position: absolute;
@@ -3592,7 +3599,13 @@
 
             /* Show mobile menu info section on mobile */
             .mobile-menu-info {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .mobile-menu-info > div {
                 display: block !important;
+                width: 100% !important;
             }
 
             /* Navigation links in mobile menu - centered */
@@ -4247,15 +4260,15 @@
                     <!-- Main Navigation Links -->
                     <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
                         <!-- Mobile Menu Header (Only visible on mobile) -->
-                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 20px 20px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 16px; backdrop-filter: blur(10px);">
+                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 14px 16px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 12px; backdrop-filter: blur(10px);">
                             <!-- Reviews.io Widget for Mobile -->
-                            <div style="margin-bottom: 12px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
+                            <div style="margin-bottom: 8px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
                                 <div id="badge-ribbon-mobile"></div>
                             </div>
 
                             <!-- Contact Information -->
                             <div style="text-align: center; color: white;">
-                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
+                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 3px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
                                     <span style="color: var(--gold); margin-right: 6px;">FREEPHONE</span>
                                     <span>9am - 8pm</span>
                                 </div>
@@ -4802,7 +4815,7 @@ background-position: right 14px center;">
                                                 <!-- Deal Card 1 - Explora Journeys -->
                         <article data-deal-id="-29" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2053834/conversions/brindisi-3310820-banner_half.jpg" alt="A Journey to Adriatic Wonders & Whispered Ancient Secrets" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/brindisi-3310820.jpg" alt="A Journey to Adriatic Wonders & Whispered Ancient Secrets" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -4836,7 +4849,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2032547/conversions/Explora-Journeys-Logo-Gold-banner_half.png" alt="Explora Journeys" style="height: 36px; width: auto;">
+                                    <img src="images/deals/explora-journeys-logo.png" alt="Explora Journeys" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">7 Nights</span>
                                     </div>
@@ -4898,7 +4911,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 2 - Oceania Cruises -->
                                                 <article data-deal-id="-28" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844047/conversions/SESTO---Stockholm,-Sweden---Photo-credit-belongs-to-Raphael-Andres-banner_half.jpg" alt="Baltic Sea &amp; Beyond" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/stockholm-sweden.jpg" alt="Baltic Sea &amp; Beyond" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -4933,7 +4946,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836455/conversions/Oceania-Cruises-Logo-banner_half.jpg" alt="Oceania Cruises" style="height: 36px; width: auto;">
+                                    <img src="images/deals/oceania-cruises-logo.jpg" alt="Oceania Cruises" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">14 Nights</span>
                                     </div>
@@ -4996,7 +5009,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 3 - Regent Seven Seas -->
                                                 <article data-deal-id="-27" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938310/conversions/Istanbul_1-custom_banner-banner_half.jpg" alt="Spring In The Aegean" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/istanbul.jpg" alt="Spring In The Aegean" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5030,7 +5043,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
+                                    <img src="images/deals/regent-seven-seas-logo.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">12 Nights</span>
                                     </div>
@@ -5086,7 +5099,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 4 - Azamara -->
                                                 <article data-deal-id="-26" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938452/conversions/Lutheran_Church_Luderotz-custom_banner-banner_half.jpg" alt="South Africa,  Namibia &amp; Cape Verde Cruise: Cape Town,  Walvis Bay &amp; Saint Helena" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/namibia-luderotz.jpg" alt="South Africa,  Namibia &amp; Cape Verde Cruise: Cape Town,  Walvis Bay &amp; Saint Helena" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5120,7 +5133,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2026598/conversions/Azamara-Cruises-Logo-2024-banner_half.png" alt="Azamara" style="height: 36px; width: auto;">
+                                    <img src="images/deals/azamara-logo.png" alt="Azamara" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">17 Nights</span>
                                     </div>
@@ -5184,7 +5197,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 5 - Seabourn -->
                                                 <article data-deal-id="-25" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843824/conversions/HRDBV---Dubrovnik---Street-banner_half.jpg" alt="7-Day Jewels Of The Dalmatian Coast" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/dubrovnik-street.jpg" alt="7-Day Jewels Of The Dalmatian Coast" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5218,7 +5231,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836469/conversions/Seabourn_Latest-banner_half.jpg" alt="Seabourn" style="height: 36px; width: auto;">
+                                    <img src="images/deals/seabourn-logo.jpg" alt="Seabourn" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">7 Nights</span>
                                     </div>
@@ -5274,7 +5287,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 6 - Crystal Cruises -->
                                                 <article data-deal-id="-24" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843558/conversions/PRSJU---San-Juan---Old-San-Juan-2---Robert-V-Ruggiero-banner_half.jpg" alt="Fort Lauderdale to Bridgetown" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/san-juan.jpg" alt="Fort Lauderdale to Bridgetown" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5308,7 +5321,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2023552/conversions/Crystal-Logo-Black-2024-banner_half.png" alt="Crystal Cruises" style="height: 36px; width: auto;">
+                                    <img src="images/deals/crystal-cruises-logo.png" alt="Crystal Cruises" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">9 Nights</span>
                                     </div>
@@ -5364,7 +5377,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 7 - Explora Journeys -->
                                                 <article data-deal-id="-23" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938525/conversions/Tortola,_British_Virgin_Islands_-_panoramio_(5)-custom_banner-banner_half.jpg" alt="A Grand Journey from Barcelona to Miami" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/tortola.jpg" alt="A Grand Journey from Barcelona to Miami" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5397,7 +5410,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2032547/conversions/Explora-Journeys-Logo-Gold-banner_half.png" alt="Explora Journeys" style="height: 36px; width: auto;">
+                                    <img src="images/deals/explora-journeys-logo.png" alt="Explora Journeys" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">16 Nights</span>
                                     </div>
@@ -5453,7 +5466,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 8 - Explora Journeys -->
                                                 <article data-deal-id="-22" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844003/conversions/PTFNC---Funchal,-Madeira,-Portugal---Photo-credit-Reinaldo-Garanito-banner_half.jpg" alt="A Grand Journey from Andalusian Shores to Coral-Laden Lagoons" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/funchal-madeira.jpg" alt="A Grand Journey from Andalusian Shores to Coral-Laden Lagoons" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5486,7 +5499,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2032547/conversions/Explora-Journeys-Logo-Gold-banner_half.png" alt="Explora Journeys" style="height: 36px; width: auto;">
+                                    <img src="images/deals/explora-journeys-logo.png" alt="Explora Journeys" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">13 Nights</span>
                                     </div>
@@ -5542,7 +5555,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 9 - Silversea -->
                                                 <article data-deal-id="-21" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938242/conversions/image-custom_banner-banner_half.jpg" alt="Cairns to Darwin" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/cairns-darwin.jpg" alt="Cairns to Darwin" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5575,7 +5588,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836473/conversions/Silversea-Logo-2023-banner_half.png" alt="Silversea" style="height: 36px; width: auto;">
+                                    <img src="images/deals/silversea-logo.png" alt="Silversea" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">8 Nights</span>
                                     </div>
@@ -5631,7 +5644,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 10 - Explora Journeys -->
                                                 <article data-deal-id="-20" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1998934/conversions/mitchell-orr-CVBe1hpHEHo-unsplash-banner_half.jpg" alt="A Journey from Cliffs to Cathedrals" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/cliffs-cathedrals.jpg" alt="A Journey from Cliffs to Cathedrals" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5664,7 +5677,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2032547/conversions/Explora-Journeys-Logo-Gold-banner_half.png" alt="Explora Journeys" style="height: 36px; width: auto;">
+                                    <img src="images/deals/explora-journeys-logo.png" alt="Explora Journeys" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">5 Nights</span>
                                     </div>
@@ -5720,7 +5733,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 11 - Oceania Cruises -->
                                                 <article data-deal-id="-19" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843891/conversions/CAMRE-Montreal-Old-port-Walid-Amghar-banner_half.jpg" alt="Colorful East Coast" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/montreal.jpg" alt="Colorful East Coast" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5753,7 +5766,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836455/conversions/Oceania-Cruises-Logo-banner_half.jpg" alt="Oceania Cruises" style="height: 36px; width: auto;">
+                                    <img src="images/deals/oceania-cruises-logo.jpg" alt="Oceania Cruises" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">14 Nights</span>
                                     </div>
@@ -5809,7 +5822,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 12 - Viking -->
                                                 <article data-deal-id="-18" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938141/conversions/Rhodes-Cruises-custom_banner-banner_half.jpg" alt="Greek Odyssey" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/rhodes.jpg" alt="Greek Odyssey" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5842,7 +5855,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1998965/conversions/Viking-Cruises-Logo-2024-banner_half.png" alt="Viking" style="height: 36px; width: auto;">
+                                    <img src="images/deals/viking-logo.png" alt="Viking" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">10 Nights</span>
                                     </div>
@@ -5898,7 +5911,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 13 - Seabourn -->
                                                 <article data-deal-id="-17" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843830/conversions/MCMCM-Monte-Carlo-red-coupe-on-road-Jannis-Lucas-banner_half.jpg" alt="10-Day Mediterranean Overture" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/monte-carlo.jpg" alt="10-Day Mediterranean Overture" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -5931,7 +5944,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836469/conversions/Seabourn_Latest-banner_half.jpg" alt="Seabourn" style="height: 36px; width: auto;">
+                                    <img src="images/deals/seabourn-logo.jpg" alt="Seabourn" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">10 Nights</span>
                                     </div>
@@ -5987,7 +6000,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 14 - Silversea -->
                                                 <article data-deal-id="-16" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843396/conversions/ITNAP---Naples---Stacks-in-Capri---FOTOTECA-ENIT-banner_half.jpg" alt="Athens to Civitavecchia" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/naples-capri.jpg" alt="Athens to Civitavecchia" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6020,7 +6033,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836473/conversions/Silversea-Logo-2023-banner_half.png" alt="Silversea" style="height: 36px; width: auto;">
+                                    <img src="images/deals/silversea-logo.png" alt="Silversea" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">12 Nights</span>
                                     </div>
@@ -6076,7 +6089,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 15 -  -->
                                                 <article data-deal-id="-15" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2022075/conversions/greece-2380692-banner_half.jpg" alt="Discover Mediterranean Wonders" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/greece.jpg" alt="Discover Mediterranean Wonders" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6165,7 +6178,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 16 -  -->
                                                 <article data-deal-id="-14" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2022075/conversions/greece-2380692-banner_half.jpg" alt="Historical echoes,  a voyage from Larnaca to Athens" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/greece.jpg" alt="Historical echoes,  a voyage from Larnaca to Athens" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6254,7 +6267,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 17 - Seabourn -->
                                                 <article data-deal-id="-13" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2007833/conversions/salvador-2379443-banner_half.jpg" alt="12-Day Amazon Delta &amp; Coast Of Brazil" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/salvador-brazil.jpg" alt="12-Day Amazon Delta &amp; Coast Of Brazil" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6287,7 +6300,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836469/conversions/Seabourn_Latest-banner_half.jpg" alt="Seabourn" style="height: 36px; width: auto;">
+                                    <img src="images/deals/seabourn-logo.jpg" alt="Seabourn" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">12 Nights</span>
                                     </div>
@@ -6343,7 +6356,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 18 - Azamara -->
                                                 <article data-deal-id="-12" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Greece,  Italy &amp; France Cruise: Athens,  Amalfi Coast &amp; Nice" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/barcelona.jpg" alt="Greece,  Italy &amp; France Cruise: Athens,  Amalfi Coast &amp; Nice" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6376,7 +6389,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2026598/conversions/Azamara-Cruises-Logo-2024-banner_half.png" alt="Azamara" style="height: 36px; width: auto;">
+                                    <img src="images/deals/azamara-logo.png" alt="Azamara" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">12 Nights</span>
                                     </div>
@@ -6439,7 +6452,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 19 - Viking -->
                                                 <article data-deal-id="-11" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2022006/conversions/chacabuco-4762316-banner_half.jpg" alt="Chilean Fjords &amp; Scenic Shores" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/chacabuco-chile.jpg" alt="Chilean Fjords &amp; Scenic Shores" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6472,7 +6485,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1998965/conversions/Viking-Cruises-Logo-2024-banner_half.png" alt="Viking" style="height: 36px; width: auto;">
+                                    <img src="images/deals/viking-logo.png" alt="Viking" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">12 Nights</span>
                                     </div>
@@ -6528,7 +6541,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 20 - Crystal Cruises -->
                                                 <article data-deal-id="-10" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2022114/conversions/ruth-h-curtis-ZgZuFytbmXY-unsplash-banner_half.jpg" alt="New York City Round Trip" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/new-york.jpg" alt="New York City Round Trip" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6561,7 +6574,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2023552/conversions/Crystal-Logo-Black-2024-banner_half.png" alt="Crystal Cruises" style="height: 36px; width: auto;">
+                                    <img src="images/deals/crystal-cruises-logo.png" alt="Crystal Cruises" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">8 Nights</span>
                                     </div>
@@ -6617,7 +6630,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 21 -  -->
                                                 <article data-deal-id="-9" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843759/conversions/GIGIB-Gibraltar-gray-monkey-sitting-on-concrete-surface-under-blue-sky-aaron-baw-banner_half.jpg" alt="13 Night Italy &amp; Bermuda Transatlantic" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/gibraltar.jpg" alt="13 Night Italy &amp; Bermuda Transatlantic" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6706,7 +6719,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 22 - Silversea -->
                                                 <article data-deal-id="-8" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843396/conversions/ITNAP---Naples---Stacks-in-Capri---FOTOTECA-ENIT-banner_half.jpg" alt="Monte Carlo to Civitavecchia" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/naples-capri.jpg" alt="Monte Carlo to Civitavecchia" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6739,7 +6752,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836473/conversions/Silversea-Logo-2023-banner_half.png" alt="Silversea" style="height: 36px; width: auto;">
+                                    <img src="images/deals/silversea-logo.png" alt="Silversea" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">7 Nights</span>
                                     </div>
@@ -6802,7 +6815,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 23 - Regent Seven Seas -->
                                                 <article data-deal-id="-7" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843416/conversions/MEKOT---Kotor,-Montenegro-Photo-credit-belongs-to-Wladislaw-Peljuchno-banner_half.jpg" alt="Spotlight With Ancestry" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/kotor-montenegro.jpg" alt="Spotlight With Ancestry" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6835,7 +6848,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
+                                    <img src="images/deals/regent-seven-seas-logo.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">14 Nights</span>
                                     </div>
@@ -6891,7 +6904,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 24 - Regent Seven Seas -->
                                                 <article data-deal-id="-6" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938200/conversions/Mahe-custom_banner-banner_half.jpg" alt="Grand Continental Sojourn" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/mahe.jpg" alt="Grand Continental Sojourn" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -6924,7 +6937,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
+                                    <img src="images/deals/regent-seven-seas-logo.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">84 Nights</span>
                                     </div>
@@ -6980,7 +6993,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 25 - Regent Seven Seas -->
                                                 <article data-deal-id="-5" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1938442/conversions/NEW_TAKORADI_COMMUNITY-custom_banner-banner_half.jpg" alt="A Toast To West Africa" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/takoradi-ghana.jpg" alt="A Toast To West Africa" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -7013,7 +7026,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
+                                    <img src="images/deals/regent-seven-seas-logo.png" alt="Regent Seven Seas" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">25 Nights</span>
                                     </div>
@@ -7069,7 +7082,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 26 - Silversea -->
                                                 <article data-deal-id="-4" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/2022055/conversions/syros-banner_half.jpg" alt="Athens to Athens" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/syros.jpg" alt="Athens to Athens" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -7102,7 +7115,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836473/conversions/Silversea-Logo-2023-banner_half.png" alt="Silversea" style="height: 36px; width: auto;">
+                                    <img src="images/deals/silversea-logo.png" alt="Silversea" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">7 Nights</span>
                                     </div>
@@ -7158,7 +7171,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 27 - Silversea -->
                                                 <article data-deal-id="-3" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844018/conversions/AQAPE---Antarctic-Peninsula,-Antarctica-Torsten-Dederichs-banner_half.jpg" alt="King George Island to King George Island" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/antarctic.jpg" alt="King George Island to King George Island" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -7191,7 +7204,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836473/conversions/Silversea-Logo-2023-banner_half.png" alt="Silversea" style="height: 36px; width: auto;">
+                                    <img src="images/deals/silversea-logo.png" alt="Silversea" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">6 Nights</span>
                                     </div>
@@ -7247,7 +7260,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 28 - Silversea -->
                                                 <article data-deal-id="-2" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843654/conversions/ITROM---Rome---Vatican-City---christopher-czermak-banner_half.jpg" alt="Athens to Civitavecchia" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/rome-vatican.jpg" alt="Athens to Civitavecchia" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -7280,7 +7293,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1836473/conversions/Silversea-Logo-2023-banner_half.png" alt="Silversea" style="height: 36px; width: auto;">
+                                    <img src="images/deals/silversea-logo.png" alt="Silversea" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">8 Nights</span>
                                     </div>
@@ -7336,7 +7349,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 29 - Viking -->
                                                 <article data-deal-id="-1" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1843300/conversions/MYPKG---Port-Klang,-Malaysia---PC-Aniq-Danial-banner_half.jpg" alt="Bangkok,  Bali &amp; Beyond" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/port-klang.jpg" alt="Bangkok,  Bali &amp; Beyond" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -7369,7 +7382,7 @@ background-position: right 14px center;">
                             <div style="padding: 28px 32px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px;">
                                 <!-- Header with Cruise Line and Duration -->
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <img src="https://www.sixstarcruises.co.uk/storage/media/1998965/conversions/Viking-Cruises-Logo-2024-banner_half.png" alt="Viking" style="height: 36px; width: auto;">
+                                    <img src="images/deals/viking-logo.png" alt="Viking" style="height: 36px; width: auto;">
                                     <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50px; padding: 6px 16px;">
                                         <span style="color: var(--gold); font-size: 13px; font-weight: 600;">12 Nights</span>
                                     </div>
@@ -7425,7 +7438,7 @@ background-position: right 14px center;">
                         <!-- Deal Card 30 -  -->
                                                 <article data-deal-id="0" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); transition: all 0.4s; display: grid; grid-template-columns: 400px 1fr; border: 1px solid rgba(255,255,255,0.8);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.08)'">
                             <div style="position: relative; overflow: hidden;">
-                                <img src="https://www.sixstarcruises.co.uk/storage/media/1844033/conversions/USMIA---Miami---The-Confident-Hotel-_Kelly-Russo_-banner_half.jpg" alt="7 Night Tortola,  San Juan &amp; Puerto Plata" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/deals/miami.jpg" alt="7 Night Tortola,  San Juan &amp; Puerto Plata" style="width: 100%; height: 100%; object-fit: cover;">
 
                                 <!-- Save/Compare Heart Button -->
                                 <button class="heart-button" onclick="toggleSave(this)" aria-label="Save cruise">
@@ -8360,14 +8373,12 @@ background-position: right 14px center;">
 
         // ========== ADVANCED SCROLL ANIMATIONS & MICRO-INTERACTIONS ==========
 
-        // Stagger animation for navigation icons on page load
+        // Animate navigation icons together with hero (no stagger)
         window.addEventListener('load', () => {
             const navIcons = document.querySelectorAll('.nav-icon');
-            navIcons.forEach((icon, index) => {
-                setTimeout(() => {
-                    icon.style.opacity = '1';
-                    icon.style.transform = 'translateY(0) scale(1)';
-                }, index * 50);
+            navIcons.forEach((icon) => {
+                icon.style.opacity = '1';
+                icon.style.transform = 'translateY(0) scale(1)';
             });
         });
 

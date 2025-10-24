@@ -54,6 +54,14 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: backdrop-filter;
             transform: translateZ(0);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0s both;
+        }
+
+        /* Initial hidden state for nav icons - prevents flash before animation */
+        .nav-icon {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         nav::before {
@@ -370,6 +378,11 @@
                 display: none !important;
             }
 
+            /* Hide desktop wishlist on mobile */
+            nav > div > div > div:last-of-type {
+                display: none !important;
+            }
+
             /* Hide navigation bar visually but keep in DOM */
             nav {
                 height: 0 !important;
@@ -402,10 +415,6 @@
                 z-index: 10000 !important;
             }
 
-            /* Hide desktop wishlist on mobile */
-            nav > div:last-of-type:has(a[href*="wishlist"]) {
-                display: none !important;
-            }
 
             /* Mobile Menu Panel - Hidden by default, slides from right when open */
             #navLinks {
@@ -736,15 +745,15 @@
                     <!-- Main Navigation Links -->
                     <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
                         <!-- Mobile Menu Header (Only visible on mobile) -->
-                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 20px 20px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 16px; backdrop-filter: blur(10px);">
+                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 14px 16px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 12px; backdrop-filter: blur(10px);">
                             <!-- Reviews.io Widget for Mobile -->
-                            <div style="margin-bottom: 12px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
+                            <div style="margin-bottom: 8px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
                                 <div id="badge-ribbon-mobile"></div>
                             </div>
 
                             <!-- Contact Information -->
                             <div style="text-align: center; color: white;">
-                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
+                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 3px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
                                     <span style="color: var(--gold); margin-right: 6px;">FREEPHONE</span>
                                     <span>9am - 8pm</span>
                                 </div>
@@ -835,14 +844,6 @@
                             <path d="M3 10s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
                         </svg>
                         <span>River Cruises</span>
-                    </a>
-
-                    <!-- Wishlist -->
-                    <a href="https://www.sixstarcruises.co.uk/wishlist" class="nav-link" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: white; text-decoration: none; transition: all 0.3s; border-bottom: 3px solid transparent; white-space: nowrap;">
-                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                        </svg>
-                        <span>Wishlist</span>
                     </a>
                     </div>
 
@@ -1488,14 +1489,12 @@
 
         // ========== NAV ICON FADE-IN ANIMATION ==========
 
-        // Stagger animation for navigation icons on page load
+        // Animate navigation icons together with hero (no stagger)
         window.addEventListener('load', () => {
             const navIcons = document.querySelectorAll('.nav-icon');
-            navIcons.forEach((icon, index) => {
-                setTimeout(() => {
-                    icon.style.opacity = '1';
-                    icon.style.transform = 'translateY(0) scale(1)';
-                }, index * 50);
+            navIcons.forEach((icon) => {
+                icon.style.opacity = '1';
+                icon.style.transform = 'translateY(0) scale(1)';
             });
         });
     </script>

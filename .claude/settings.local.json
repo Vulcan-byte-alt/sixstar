@@ -10,7 +10,9 @@
       "Bash(sed:*)",
       "Bash(grep:*)",
       "Read(///**)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(wget:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

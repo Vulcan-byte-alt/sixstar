@@ -101,6 +101,13 @@
             animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0s both;
         }
 
+        /* Initial hidden state for nav icons - prevents flash before animation */
+        .nav-icon {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
         nav::before {
             content: '';
             position: absolute;
@@ -753,6 +760,17 @@
         @media (max-width: 768px) {
             .custom-dropdown-selected:active {
                 transform: scale(0.95);
+            }
+
+            /* Fix hero content spacing on mobile */
+            .hero {
+                margin-top: 0;
+                height: 100vh;
+                min-height: 100vh;
+            }
+
+            .hero-content {
+                margin-top: 0;
             }
         }
 
@@ -3510,7 +3528,13 @@
 
             /* Show mobile menu info section on mobile */
             .mobile-menu-info {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .mobile-menu-info > div {
                 display: block !important;
+                width: 100% !important;
             }
 
             /* Navigation links in mobile menu - centered */
@@ -3835,15 +3859,15 @@
                     <!-- Main Navigation Links -->
                     <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
                         <!-- Mobile Menu Header (Only visible on mobile) -->
-                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 20px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 16px; backdrop-filter: blur(10px);">
+                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 14px 16px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 12px; backdrop-filter: blur(10px);">
                             <!-- Reviews.io Widget for Mobile -->
-                            <div style="margin-bottom: 12px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
+                            <div style="margin-bottom: 8px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
                                 <div id="badge-ribbon-mobile"></div>
                             </div>
 
                             <!-- Contact Information -->
                             <div style="text-align: center; color: white;">
-                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
+                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 3px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
                                     <span style="color: var(--gold); margin-right: 6px;">FREEPHONE</span>
                                     <span>9am - 8pm</span>
                                 </div>
@@ -5966,22 +5990,13 @@
 
         // ========== ADVANCED SCROLL ANIMATIONS & MICRO-INTERACTIONS ==========
 
-        // Stagger animation for navigation icons on page load
+        // Animate navigation icons together with hero (no stagger)
         window.addEventListener('load', () => {
             const navIcons = document.querySelectorAll('.nav-icon');
-            navIcons.forEach((icon, index) => {
-                setTimeout(() => {
-                    icon.style.opacity = '1';
-                    icon.style.transform = 'translateY(0) scale(1)';
-                }, index * 50);
+            navIcons.forEach((icon) => {
+                icon.style.opacity = '1';
+                icon.style.transform = 'translateY(0) scale(1)';
             });
-        });
-
-        // Initialize nav icons with hidden state (only nav icons, nothing else!)
-        document.querySelectorAll('.nav-icon').forEach(icon => {
-            icon.style.opacity = '0';
-            icon.style.transform = 'translateY(-10px) scale(0.8)';
-            icon.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
         });
 
         // Read More functionality
