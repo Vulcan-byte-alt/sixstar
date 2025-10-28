@@ -208,12 +208,55 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(0.85);
+            /* Zoom animation - Ken Burns effect */
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Water glistening shimmer effect */
+        .hero-shimmer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent 0%,
+                transparent 40%,
+                rgba(255, 255, 255, 0.15) 50%,
+                transparent 60%,
+                transparent 100%
+            );
+            background-size: 200% 200%;
+            animation: waterGlisten 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes waterGlisten {
+            0%, 100% {
+                background-position: -200% 0%;
+                opacity: 0.3;
+            }
+            50% {
+                background-position: 200% 0%;
+                opacity: 0.6;
+            }
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.8) 100%);
+            background: radial-gradient(ellipse at center, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.5) 100%);
         }
 
         .hero-content {
@@ -302,6 +345,284 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* ========== LUXURY HERO STYLES ========== */
+        .hero-title-luxury {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6.5vw, 82px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: white;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-gold {
+            color: var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline-luxury {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(16px, 1.6vw, 22px);
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 48px;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
+        }
+
+        .btn-luxury-primary,
+        .btn-luxury-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-luxury-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-luxury-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-luxury-primary svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-luxury-primary:hover svg {
+            transform: rotate(90deg);
+        }
+
+        .btn-luxury-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-luxury-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-luxury-secondary svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-luxury-secondary:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ========== SEARCH MODAL ========== */
+        .search-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .search-modal.show {
+            opacity: 1;
+        }
+
+        .search-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 25, 41, 0.85);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .search-modal-content {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-modal.show .search-modal-content {
+            transform: scale(1);
+        }
+
+        .search-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(10, 25, 41, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--navy);
+        }
+
+        .search-modal-close:hover {
+            background: rgba(10, 25, 41, 0.15);
+            transform: rotate(90deg);
+        }
+
+        .search-modal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .search-modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .search-modal-header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--navy-light);
+            opacity: 0.8;
+        }
+
+        .search-modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .search-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .search-form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .search-form-group label svg {
+            color: var(--gold);
+        }
+
+        .search-modal-select {
+            padding: 14px 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: var(--navy);
+            background: white;
+            border: 2px solid rgba(10, 25, 41, 0.1);
+            border-radius: 12px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-modal-select:hover {
+            border-color: rgba(10, 25, 41, 0.2);
+        }
+
+        .search-modal-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.1);
+        }
+
+        .search-modal-submit {
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 24px rgba(10, 25, 41, 0.3);
+        }
+
+        .search-modal-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(10, 25, 41, 0.4);
+        }
+
+        .search-modal-submit svg {
+            transition: transform 0.3s ease;
+        }
+
+        .search-modal-submit:hover svg {
+            transform: rotate(90deg);
         }
 
         .hero-contact {
@@ -772,6 +1093,55 @@
             .hero-content {
                 margin-top: 0;
             }
+
+            /* Luxury hero mobile styles */
+            .hero-title-luxury {
+                font-size: 36px;
+                margin-bottom: 18px;
+            }
+
+            .hero-tagline-luxury {
+                font-size: 16px;
+                margin-bottom: 36px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .btn-luxury-primary,
+            .btn-luxury-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 28px;
+                font-size: 12px;
+            }
+
+            /* Search modal mobile styles */
+            .search-modal-content {
+                padding: 32px 24px;
+                max-width: 95%;
+            }
+
+            .search-modal-header h2 {
+                font-size: 24px;
+            }
+
+            .search-modal-header p {
+                font-size: 14px;
+            }
+
+            .search-modal-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .search-modal-submit {
+                padding: 18px 32px;
+                font-size: 13px;
+            }
         }
 
         .custom-dropdown-selected::before {
@@ -911,7 +1281,7 @@
 
         /* Dark Section Styles */
         .section-dark {
-            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+            background: linear-gradient(180deg, #0a1929 0%, #0f2744 50%, #0a1929 100%);
             color: white;
         }
 
@@ -2204,48 +2574,105 @@
             padding: 100px 0;
         }
 
+        /* Magazine Editorial Grid - 2 Column Classic Luxury Layout */
         .destination-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
+        /* Baroque Museum Frame - Ornate Gold Border */
         .destination-card {
             position: relative;
-            height: 420px;
-            border-radius: 12px;
-            overflow: hidden;
+            background: linear-gradient(135deg,
+                #c9a05f 0%,
+                #d4af37 15%,
+                #f4e4c1 30%,
+                #d4af37 50%,
+                #c9a05f 70%,
+                #b8935a 85%,
+                #d4af37 100%
+            );
+            padding: 16px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                inset 0 -2px 4px rgba(139, 90, 43, 0.6),
+                0 8px 16px rgba(10, 25, 41, 0.15),
+                0 16px 32px rgba(10, 25, 41, 0.1),
+                0 24px 48px rgba(10, 25, 41, 0.08);
+            border: 2px solid #8b6914;
         }
 
-        .destination-card::before {
+        /* Add ornate inner frame border */
+        .destination-card::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .destination-card-inner {
+            position: relative;
+            height: 560px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.3),
+                inset 0 0 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .destination-card-inner::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 30%, rgba(10, 25, 41, 0.85) 100%);
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                rgba(10, 25, 41, 0.15) 40%,
+                rgba(10, 25, 41, 0.75) 80%,
+                rgba(10, 25, 41, 0.9) 100%
+            );
             z-index: 1;
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .destination-card:hover::before {
-            background: linear-gradient(180deg, transparent 20%, rgba(212, 165, 116, 0.9) 100%);
+        .destination-card:hover .destination-card-inner::before {
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                rgba(10, 25, 41, 0.1) 30%,
+                rgba(10, 25, 41, 0.6) 70%,
+                rgba(10, 25, 41, 0.85) 100%
+            );
         }
 
         .destination-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(10, 25, 41, 0.2);
+            transform: translateY(-12px);
+            box-shadow:
+                inset 0 2px 4px rgba(255, 255, 255, 0.6),
+                inset 0 -2px 4px rgba(139, 90, 43, 0.7),
+                0 12px 24px rgba(10, 25, 41, 0.2),
+                0 24px 48px rgba(10, 25, 41, 0.15),
+                0 32px 64px rgba(10, 25, 41, 0.12);
         }
 
-        .destination-card img {
+        .destination-card-inner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s ease;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .destination-card:hover img {
-            transform: scale(1.1);
+        .destination-card:hover .destination-card-inner img {
+            transform: scale(1.05);
         }
 
         .destination-content {
@@ -2253,41 +2680,53 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 32px;
+            padding: 44px 40px;
             z-index: 2;
             color: white;
         }
 
         .destination-label {
-            font-size: 13px;
-            font-weight: 600;
-            opacity: 0.9;
-            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.95;
+            margin-bottom: 14px;
+            color: var(--gold);
         }
 
         .destination-title {
-            font-size: 32px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 3vw, 38px);
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 12px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
         }
 
         .destination-description {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.85;
-            margin-bottom: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 24px;
             font-weight: 400;
+            max-width: 90%;
         }
 
         .destination-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             color: white;
-            transition: gap 0.3s ease;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .destination-link:hover {
@@ -2407,159 +2846,183 @@
         }
 
         /* Awards Section */
+        /* Hall of Fame Awards Section */
         .awards-section {
-            padding: 100px 0;
-            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+            padding: 120px 0;
+            background: linear-gradient(180deg,
+                #ffffff 0%,
+                #f8f8f8 50%,
+                #ffffff 100%
+            );
             position: relative;
             overflow: hidden;
         }
 
-        .awards-section.section-dark {
-            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
-        }
-
+        /* Subtle gold glow effects */
         .awards-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+            top: -50%;
+            left: 20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
             pointer-events: none;
+            animation: spotlightMove1 20s ease-in-out infinite;
+        }
+
+        .awards-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: 20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            animation: spotlightMove2 25s ease-in-out infinite;
+        }
+
+        @keyframes spotlightMove1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(100px, 50px); }
+        }
+
+        @keyframes spotlightMove2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-80px, -60px); }
         }
 
         .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
             margin-bottom: 100px;
             position: relative;
+            z-index: 1;
         }
 
+        /* Museum Wall Plaque Style - Gold Frame */
         .award-item {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border-radius: 24px;
-            padding: 40px 28px;
+            background: linear-gradient(135deg,
+                #c9a05f 0%,
+                #d4af37 15%,
+                #f4e4c1 30%,
+                #d4af37 50%,
+                #c9a05f 70%,
+                #b8935a 85%,
+                #d4af37 100%
+            );
+            padding: 14px;
+            border-radius: 8px;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow:
-                0 8px 32px rgba(10, 25, 41, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8),
-                0 1px 2px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+                inset 0 2px 4px rgba(255, 255, 255, 0.5),
+                inset 0 -2px 4px rgba(139, 90, 43, 0.6),
+                0 12px 24px rgba(0, 0, 0, 0.4),
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(212, 175, 55, 0.2);
+            border: 2px solid #8b6914;
             position: relative;
-            animation: float 6s ease-in-out infinite;
         }
 
-        .award-item:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 16px 48px rgba(10, 25, 41, 0.15),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        /* Ornate inner gold border */
+        .award-item::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .award-item:nth-child(1) { animation-delay: 0s; }
-        .award-item:nth-child(2) { animation-delay: 0.5s; }
-        .award-item:nth-child(3) { animation-delay: 1s; }
-        .award-item:nth-child(4) { animation-delay: 1.5s; }
-        .award-item:nth-child(5) { animation-delay: 2s; }
-        .award-item:nth-child(6) { animation-delay: 2.5s; }
-
-        .section-dark .award-item {
-            background: rgba(248, 248, 248, 0.1);
-            backdrop-filter: blur(30px) saturate(200%) contrast(110%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%) contrast(110%);
-            border: 0.5px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.3) inset,
-                        0 8px 32px -4px rgba(0, 0, 0, 0.15),
-                        0 20px 50px -12px rgba(0, 0, 0, 0.08);
-        }
-
-        .section-dark .award-item::before {
+        /* Shimmer effect */
+        .award-item::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(
-                180deg,
-                rgba(255, 255, 255, 0.15) 0%,
-                rgba(255, 255, 255, 0.02) 50%,
-                rgba(0, 0, 0, 0.02) 100%
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 100%
             );
-            border-radius: 24px;
+            animation: shimmer 8s ease-in-out infinite;
+            z-index: 2;
             pointer-events: none;
-            z-index: 0;
         }
 
-        .section-dark .award-item:hover {
-            box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.4) inset,
-                        0 16px 48px -4px rgba(0, 0, 0, 0.25),
-                        0 24px 60px -12px rgba(0, 0, 0, 0.15);
+        @keyframes shimmer {
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
         }
 
-        .section-dark .award-image-box {
+        .award-item:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow:
+                inset 0 2px 4px rgba(255, 255, 255, 0.6),
+                inset 0 -2px 4px rgba(139, 90, 43, 0.7),
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 60px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Stagger animation delays for shimmer */
+        .award-item:nth-child(1)::after { animation-delay: 0s; }
+        .award-item:nth-child(2)::after { animation-delay: 1s; }
+        .award-item:nth-child(3)::after { animation-delay: 2s; }
+        .award-item:nth-child(4)::after { animation-delay: 3s; }
+        .award-item:nth-child(5)::after { animation-delay: 4s; }
+        .award-item:nth-child(6)::after { animation-delay: 5s; }
+        .award-item:nth-child(7)::after { animation-delay: 6s; }
+
+        /* Inner plaque content area */
+        .award-item > * {
             position: relative;
-            z-index: 1;
-        }
-
-        .section-dark .award-name,
-        .section-dark .award-desc {
-            position: relative;
-            z-index: 1;
+            z-index: 3;
         }
 
         .award-image-box {
             width: 100%;
-            height: 180px;
-            margin: 0 auto 24px;
+            height: 200px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 20px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 3px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 0 0 3px var(--gold),
-                        0 0 20px rgba(212, 165, 116, 0.4),
-                        inset 0 0 20px rgba(212, 165, 116, 0.1);
+            padding: 24px;
+            border-radius: 4px;
+            background: linear-gradient(135deg,
+                #f8f8f8 0%,
+                #ffffff 50%,
+                #f0f0f0 100%
+            );
+            box-shadow:
+                inset 0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.8);
             transition: all 0.5s ease;
+            overflow: hidden;
         }
 
-        .award-item:hover .award-image-box {
-            box-shadow: 0 0 0 3px var(--gold),
-                        0 0 30px rgba(212, 165, 116, 0.6),
-                        inset 0 0 25px rgba(212, 165, 116, 0.15);
-            transform: scale(1.02);
+        .award-image-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%,
+                rgba(212, 175, 55, 0.08) 0%,
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        /* Golden ring shine animation */
-        @keyframes goldenShine {
-            0%, 100% {
-                box-shadow: 0 0 0 3px var(--gold),
-                            0 0 20px rgba(212, 165, 116, 0.4),
-                            inset 0 0 20px rgba(212, 165, 116, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 0 3px var(--gold),
-                            0 0 35px rgba(212, 165, 116, 0.7),
-                            inset 0 0 30px rgba(212, 165, 116, 0.2);
-            }
+        .award-item:hover .award-image-box::before {
+            opacity: 1;
         }
 
         .award-item:nth-child(1) .award-image-box {
@@ -2593,40 +3056,37 @@
         }
 
         .award-image-box img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
-            filter: none;
+            filter: drop-shadow(0 4px 12px rgba(10, 25, 41, 0.15));
+            transition: transform 0.5s ease;
             position: relative;
             z-index: 1;
+        }
+
+        .award-item:hover .award-image-box img {
+            transform: scale(1.05);
         }
 
         .award-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 8px;
-            line-height: 1.3;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-dark .award-name {
-            color: white;
+            color: #0a1929;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            padding: 0 8px;
         }
 
         .award-desc {
-            font-family: 'Montserrat', sans-serif;
             font-size: 12px;
-            font-weight: 600;
-            color: var(--gold);
+            color: #8b6914;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            position: relative;
-            z-index: 1;
+            letter-spacing: 1.2px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
         }
 
 
@@ -3077,8 +3537,45 @@
                 gap: 40px;
             }
 
+            /* Magazine Editorial Grid - Tablet */
             .destination-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+
+            .destination-card {
+                padding: 14px;
+            }
+
+            /* Awards Grid - Tablet */
+            .awards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+
+            .award-item {
+                padding: 12px;
+            }
+
+            .award-image-box {
+                height: 160px;
+                padding: 20px;
+            }
+
+            .destination-card::after {
+                inset: 7px;
+            }
+
+            .destination-card-inner {
+                height: 480px;
+            }
+
+            .destination-content {
+                padding: 36px 32px;
+            }
+
+            .destination-title {
+                font-size: 28px;
             }
 
             .cruise-filters {
@@ -3240,8 +3737,58 @@
                 grid-template-columns: 1fr;
             }
 
+            /* Magazine Editorial Grid - Mobile */
             .destination-grid {
                 grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .destination-card {
+                padding: 12px;
+            }
+
+            .destination-card::after {
+                inset: 6px;
+            }
+
+            /* Awards Grid - Mobile */
+            .awards-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .award-item {
+                padding: 10px;
+            }
+
+            .award-image-box {
+                height: 140px;
+                padding: 16px;
+            }
+
+            .award-name {
+                font-size: 14px;
+            }
+
+            .award-desc {
+                font-size: 11px;
+            }
+
+            .destination-card-inner {
+                height: 420px;
+            }
+
+            .destination-content {
+                padding: 28px 24px;
+            }
+
+            .destination-title {
+                font-size: 24px;
+            }
+
+            .destination-description {
+                font-size: 14px;
+                margin-bottom: 18px;
             }
 
             .cruise-filters {
@@ -3978,71 +4525,157 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <video class="hero-bg" autoplay muted loop playsinline preload="auto">
+        <!-- VIDEO VERSION (COMMENTED OUT) -->
+        <!-- <video class="hero-bg" autoplay muted loop playsinline preload="auto">
             <source src="hero.mp4" type="video/mp4">
-            <!-- Fallback image if video doesn't load -->
-        </video>
+        </video> -->
+
+        <!-- IMAGE VERSION WITH ZOOM & WATER GLISTENING -->
+        <img src="hero.png" alt="Luxury Cruise" class="hero-bg">
+        <div class="hero-shimmer"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <!--
-            <div class="hero-badge">LIMITED COLLECTION</div>-->
+            <h1 class="hero-title-luxury">Discover the World in <span class="text-gold">SixStar</span> Luxury</h1>
 
-            <h1 class="hero-title-main">Extraordinary Voyages</h1>
-            <h2 class="hero-title-sub">Save Up To £500</h2>
+            <p class="hero-tagline-luxury">Handcrafted voyages aboard the world's finest ships</p>
 
-            <p class="hero-tagline">Where Royal Elegance Meets the Open Seas</p>
-
-            <p class="hero-description">
-                Limited-time offer ends 20th October. Discover the world's most exquisite destinations aboard
-                the finest vessels, curated exclusively for the discerning traveler.
-            </p>
-
-            <!--<div class="hero-buttons">
-                <button class="btn-primary">VIEW COLLECTION</button>
-            </div>-->
-
-            <!-- Premium Search Box -->
-            <div class="search-box">
-                <div class="search-grid">
-                    <div>
-                        <label>Destination</label>
-                        <select class="search-select">
-                            <option>Any Destination</option>
-                            <option>Mediterranean</option>
-                            <option>Caribbean</option>
-                            <option>Northern Europe</option>
-                            <option>Asia & Far East</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Cruise Line</label>
-                        <select class="search-select">
-                            <option>Any Cruise Line</option>
-                            <option>Regent Seven Seas</option>
-                            <option>Silversea</option>
-                            <option>Seabourn</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Duration</label>
-                        <select class="search-select">
-                            <option>Any Duration</option>
-                            <option>1-5 Days</option>
-                            <option>6-9 Days</option>
-                            <option>10-14 Days</option>
-                            <option>14+ Days</option>
-                        </select>
-                    </div>
-                    <div style="display: flex; align-items: flex-end;">
-                        <button class="btn-primary" style="width: 100%;">SEARCH CRUISES</button>
-                    </div>
-                </div>
+            <!-- Elegant CTA Buttons -->
+            <div class="hero-cta-group">
+                <button class="btn-luxury-primary" id="openSearchModal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <span>FIND YOUR PERFECT VOYAGE</span>
+                </button>
+                <button class="btn-luxury-secondary" onclick="document.getElementById('promo-section').scrollIntoView({behavior: 'smooth'})">
+                    <span>EXPLORE COLLECTIONS</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
 
+    <!-- Luxury Search Modal -->
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-overlay" id="searchModalOverlay"></div>
+        <div class="search-modal-content">
+            <button class="search-modal-close" id="closeSearchModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="search-modal-header">
+                <h2>Find Your Perfect Voyage</h2>
+                <p>Discover extraordinary destinations tailored to your preferences</p>
+            </div>
+
+            <div class="search-modal-form">
+                <div class="search-modal-grid">
+                    <div class="search-form-group">
+                        <label>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="10" r="3"/>
+                                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/>
+                            </svg>
+                            Destination
+                        </label>
+                        <select class="search-modal-select">
+                            <option value="">Any Destination</option>
+                            <option value="mediterranean">Mediterranean</option>
+                            <option value="caribbean">Caribbean</option>
+                            <option value="northern-europe">Northern Europe</option>
+                            <option value="asia">Asia & Far East</option>
+                            <option value="alaska">Alaska</option>
+                            <option value="south-pacific">South Pacific</option>
+                            <option value="south-america">South America</option>
+                            <option value="africa">Africa</option>
+                        </select>
+                    </div>
+
+                    <div class="search-form-group">
+                        <label>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Departure Date
+                        </label>
+                        <select class="search-modal-select">
+                            <option value="">Any Date</option>
+                            <option value="2026-01">January 2026</option>
+                            <option value="2026-02">February 2026</option>
+                            <option value="2026-03">March 2026</option>
+                            <option value="2026-04">April 2026</option>
+                            <option value="2026-05">May 2026</option>
+                            <option value="2026-06">June 2026</option>
+                            <option value="2026-07">July 2026</option>
+                            <option value="2026-08">August 2026</option>
+                            <option value="2026-09">September 2026</option>
+                            <option value="2026-10">October 2026</option>
+                            <option value="2026-11">November 2026</option>
+                            <option value="2026-12">December 2026</option>
+                        </select>
+                    </div>
+
+                    <div class="search-form-group">
+                        <label>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Duration
+                        </label>
+                        <select class="search-modal-select">
+                            <option value="">Any Duration</option>
+                            <option value="1-5">1-5 Nights</option>
+                            <option value="6-9">6-9 Nights</option>
+                            <option value="10-14">10-14 Nights</option>
+                            <option value="15+">15+ Nights</option>
+                        </select>
+                    </div>
+
+                    <div class="search-form-group">
+                        <label>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 15s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                                <path d="M3 20s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                                <path d="M3 10s2.5-3.5 9-3.5 9 3.5 9 3.5"/>
+                            </svg>
+                            Cruise Line
+                        </label>
+                        <select class="search-modal-select">
+                            <option value="">Any Cruise Line</option>
+                            <option value="regent">Regent Seven Seas</option>
+                            <option value="silversea">Silversea</option>
+                            <option value="seabourn">Seabourn</option>
+                            <option value="oceania">Oceania Cruises</option>
+                            <option value="azamara">Azamara</option>
+                            <option value="viking">Viking Ocean</option>
+                            <option value="explora">Explora Journeys</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="search-modal-submit">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <span>SEARCH LUXURY VOYAGES</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Promotional Banners -->
-    <section class="promo-section">
+    <section class="promo-section" id="promo-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="section-header reveal">
                 <span class="section-label">LUXURY CRUISE HOLIDAYS IN 2026, 2026 & 2027</span>
@@ -4192,11 +4825,12 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="feature-grid reveal">
                 <div class="feature-image feature-video-container">
-                    <div class="video-overlay"></div>
                     <iframe id="sixstarVideo"
-                        src="https://www.youtube.com/embed/6QpzrgjZMjU?enablejsapi=1&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1"
+                        src="https://www.youtube.com/embed/6QpzrgjZMjU?si=D2QHLWZFQAZeK6Eb&enablejsapi=1&mute=1&autoplay=0"
+                        title="YouTube video player"
                         frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen>
                     </iframe>
                 </div>
@@ -4819,9 +5453,9 @@
     <section class="destination-section" style="background: var(--cream);">
         <div class="max-w-7xl mx-auto px-6">
             <div class="section-header reveal">
-                <span class="section-label">EXPLORE OUR CRUISE DESTINATIONS</span>
-                <h2 class="section-title">Where Will You Sail?</h2>
-                <p class="section-desc">Browse our handpicked collection of luxury cruise destinations around the world</p>
+                <span class="section-label">DESTINATION COLLECTION</span>
+                <h2 class="section-title">Sail to the World's Most Exclusive Ports</h2>
+                <p class="section-desc">Discover hidden gems and iconic destinations aboard the finest ships</p>
             </div>
 
             <!-- Destination Filter Buttons -->
@@ -4837,109 +5471,121 @@
             <div class="destination-grid reveal" id="destinationGrid">
                 <!-- Luxury Cruises from the UK -->
                 <div class="destination-card" data-category="uk">
-                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=1000&fit=crop"
-                        alt="UK Cruises">
-                    <div class="destination-content">
-                        <p class="destination-label">NO-FLY CRUISES</p>
-                        <h3 class="destination-title">Luxury Cruises<br>from the UK</h3>
-                        <p class="destination-description">Hassle free no-fly luxury cruises</p>
-                        <a href="#" class="destination-link">
-                            View UK Cruises
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=1000&fit=crop"
+                            alt="UK Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">NO-FLY CRUISES</p>
+                            <h3 class="destination-title">Luxury Cruises<br>from the UK</h3>
+                            <p class="destination-description">Hassle free no-fly luxury cruises</p>
+                            <a href="#" class="destination-link">
+                                View UK Cruises
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Luxury Caribbean Cruises -->
                 <div class="destination-card" data-category="caribbean">
-                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=1000&fit=crop"
-                        alt="Caribbean">
-                    <div class="destination-content">
-                        <p class="destination-label">TROPICAL PARADISE</p>
-                        <h3 class="destination-title">Luxury Caribbean<br>Cruises</h3>
-                        <p class="destination-description">Beautiful landscapes and laid back culture</p>
-                        <a href="#" class="destination-link">
-                            Explore Caribbean
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=1000&fit=crop"
+                            alt="Caribbean">
+                        <div class="destination-content">
+                            <p class="destination-label">TROPICAL PARADISE</p>
+                            <h3 class="destination-title">Luxury Caribbean<br>Cruises</h3>
+                            <p class="destination-description">Beautiful landscapes and laid back culture</p>
+                            <a href="#" class="destination-link">
+                                Explore Caribbean
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Luxury Mediterranean Cruises -->
                 <div class="destination-card" data-category="europe">
-                    <img src="images/luxury-cruises-medditeranean-thumb-thumb.jpg"
-                        alt="Mediterranean">
-                    <div class="destination-content">
-                        <p class="destination-label">CLASSIC DESTINATIONS</p>
-                        <h3 class="destination-title">Luxury Mediterranean<br>Cruises</h3>
-                        <p class="destination-description">From historic capital cities to charming coastal towns</p>
-                        <a href="#" class="destination-link">
-                            Discover Med
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="images/luxury-cruises-medditeranean-thumb-thumb.jpg"
+                            alt="Mediterranean">
+                        <div class="destination-content">
+                            <p class="destination-label">CLASSIC DESTINATIONS</p>
+                            <h3 class="destination-title">Luxury Mediterranean<br>Cruises</h3>
+                            <p class="destination-description">From historic capital cities to charming coastal towns</p>
+                            <a href="#" class="destination-link">
+                                Discover Med
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Luxury European Cruises -->
                 <div class="destination-card" data-category="europe">
-                    <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&h=1000&fit=crop"
-                        alt="Europe">
-                    <div class="destination-content">
-                        <p class="destination-label">CULTURAL IMMERSION</p>
-                        <h3 class="destination-title">Luxury European<br>Cruises</h3>
-                        <p class="destination-description">Discover the culture of Europe in unforgettable ways</p>
-                        <a href="#" class="destination-link">
-                            Explore Europe
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&h=1000&fit=crop"
+                            alt="Europe">
+                        <div class="destination-content">
+                            <p class="destination-label">CULTURAL IMMERSION</p>
+                            <h3 class="destination-title">Luxury European<br>Cruises</h3>
+                            <p class="destination-description">Discover the culture of Europe in unforgettable ways</p>
+                            <a href="#" class="destination-link">
+                                Explore Europe
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Alaska & Norwegian Fjords -->
                 <div class="destination-card" data-category="expedition europe">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1000&fit=crop"
-                        alt="Alaska">
-                    <div class="destination-content">
-                        <p class="destination-label">WILD BEAUTY</p>
-                        <h3 class="destination-title">Alaska Cruises</h3>
-                        <p class="destination-description">Discover the best of nature</p>
-                        <a href="#" class="destination-link">
-                            View Alaska
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1000&fit=crop"
+                            alt="Alaska">
+                        <div class="destination-content">
+                            <p class="destination-label">WILD BEAUTY</p>
+                            <h3 class="destination-title">Alaska Cruises</h3>
+                            <p class="destination-description">Discover the best of nature</p>
+                            <a href="#" class="destination-link">
+                                View Alaska
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Luxury Baltic Cruises -->
                 <div class="destination-card" data-category="europe">
-                    <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&h=1000&fit=crop"
-                        alt="Baltic">
-                    <div class="destination-content">
-                        <p class="destination-label">NORTHERN WONDERS</p>
-                        <h3 class="destination-title">Luxury Baltic<br>Cruises</h3>
-                        <p class="destination-description">Sail the northern lights & midnight sun</p>
-                        <a href="#" class="destination-link">
-                            Discover Baltic
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&h=1000&fit=crop"
+                            alt="Baltic">
+                        <div class="destination-content">
+                            <p class="destination-label">NORTHERN WONDERS</p>
+                            <h3 class="destination-title">Luxury Baltic<br>Cruises</h3>
+                            <p class="destination-description">Sail the northern lights & midnight sun</p>
+                            <a href="#" class="destination-link">
+                                Discover Baltic
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -4956,9 +5602,9 @@
     <section class="destination-section section-dark">
         <div class="max-w-7xl mx-auto px-6">
             <div class="section-header reveal">
-                <span class="section-label">PLAN YOUR PERFECT CRUISE</span>
-                <h2 class="section-title">When Will You Sail?</h2>
-                <p class="section-desc">Browse by year, luxury collections, and helpful planning resources</p>
+                <span class="section-label">VOYAGE COLLECTIONS</span>
+                <h2 class="section-title">Find Your Perfect Departure</h2>
+                <p class="section-desc">Expertly curated journeys departing year-round to extraordinary destinations</p>
             </div>
 
             <!-- Planning Filter Buttons -->
@@ -4975,109 +5621,121 @@
             <div class="destination-grid reveal" id="planningGrid">
                 <!-- 2026 Luxury Cruises -->
                 <div class="destination-card" data-category="2026 luxury">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=1000&fit=crop"
-                        alt="2026 Luxury Cruises">
-                    <div class="destination-content">
-                        <p class="destination-label">BOOK NOW FOR 2026</p>
-                        <h3 class="destination-title">2026 Luxury<br>Cruises</h3>
-                        <p class="destination-description">Book your luxury cruise for 2026 today!</p>
-                        <a href="#" class="destination-link">
-                            View 2026 Cruises
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=1000&fit=crop"
+                            alt="2026 Luxury Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">BOOK NOW FOR 2026</p>
+                            <h3 class="destination-title">2026 Luxury<br>Cruises</h3>
+                            <p class="destination-description">Book your luxury cruise for 2026 today!</p>
+                            <a href="#" class="destination-link">
+                                View 2026 Cruises
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 2027 Luxury Cruises -->
                 <div class="destination-card" data-category="2027 luxury">
-                    <img src="images/best-cruise/2027-luxury-cruises-thumb-thumb.jpg"
-                        alt="2027 Luxury Cruises">
-                    <div class="destination-content">
-                        <p class="destination-label">EARLY BOOKING SAVINGS</p>
-                        <h3 class="destination-title">2027 Luxury<br>Cruises</h3>
-                        <p class="destination-description">Book ahead & take advantage of the best prices</p>
-                        <a href="#" class="destination-link">
-                            View 2027 Cruises
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/2027-luxury-cruises-thumb-thumb.jpg"
+                            alt="2027 Luxury Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">EARLY BOOKING SAVINGS</p>
+                            <h3 class="destination-title">2027 Luxury<br>Cruises</h3>
+                            <p class="destination-description">Book ahead & take advantage of the best prices</p>
+                            <a href="#" class="destination-link">
+                                View 2027 Cruises
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 2028 Luxury Cruises -->
                 <div class="destination-card" data-category="2028 luxury">
-                    <img src="images/best-cruise/2028_luxury_cruises-thumb-thumb.jpg"
-                        alt="2028 Luxury Cruises">
-                    <div class="destination-content">
-                        <p class="destination-label">PLAN AHEAD</p>
-                        <h3 class="destination-title">2028 Luxury<br>Cruises</h3>
-                        <p class="destination-description">Begin planning the ultimate luxury getaway in 2028</p>
-                        <a href="#" class="destination-link">
-                            View 2028 Cruises
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/2028_luxury_cruises-thumb-thumb.jpg"
+                            alt="2028 Luxury Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">PLAN AHEAD</p>
+                            <h3 class="destination-title">2028 Luxury<br>Cruises</h3>
+                            <p class="destination-description">Begin planning the ultimate luxury getaway in 2028</p>
+                            <a href="#" class="destination-link">
+                                View 2028 Cruises
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Luxury Expedition Cruises -->
                 <div class="destination-card" data-category="luxury">
-                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=1000&fit=crop"
-                        alt="Expedition Cruises">
-                    <div class="destination-content">
-                        <p class="destination-label">ADVENTURE AWAITS</p>
-                        <h3 class="destination-title">Luxury Expedition<br>Cruises</h3>
-                        <p class="destination-description">Discover the journey of a lifetime</p>
-                        <a href="#" class="destination-link">
-                            Explore Expeditions
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=1000&fit=crop"
+                            alt="Expedition Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">ADVENTURE AWAITS</p>
+                            <h3 class="destination-title">Luxury Expedition<br>Cruises</h3>
+                            <p class="destination-description">Discover the journey of a lifetime</p>
+                            <a href="#" class="destination-link">
+                                Explore Expeditions
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Latest Travel Advice -->
                 <div class="destination-card" data-category="resources">
-                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=1000&fit=crop"
-                        alt="Travel Advice">
-                    <div class="destination-content">
-                        <p class="destination-label">STAY INFORMED</p>
-                        <h3 class="destination-title">Latest Travel<br>Advice</h3>
-                        <p class="destination-description">Keep up to date with the latest travel advice</p>
-                        <a href="#" class="destination-link">
-                            Read More
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=1000&fit=crop"
+                            alt="Travel Advice">
+                        <div class="destination-content">
+                            <p class="destination-label">STAY INFORMED</p>
+                            <h3 class="destination-title">Latest Travel<br>Advice</h3>
+                            <p class="destination-description">Keep up to date with the latest travel advice</p>
+                            <a href="#" class="destination-link">
+                                Read More
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- SixStarCruises Brochure -->
                 <div class="destination-card" data-category="resources">
-                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&h=1000&fit=crop"
-                        alt="Cruise Brochure">
-                    <div class="destination-content">
-                        <p class="destination-label">FREE MAGAZINE</p>
-                        <h3 class="destination-title">SixStarCruises<br>Brochure</h3>
-                        <p class="destination-description">View our latest FREE Magazine</p>
-                        <a href="#" class="destination-link">
-                            Download Now
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                    <div class="destination-card-inner">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&h=1000&fit=crop"
+                            alt="Cruise Brochure">
+                        <div class="destination-content">
+                            <p class="destination-label">FREE MAGAZINE</p>
+                            <h3 class="destination-title">SixStarCruises<br>Brochure</h3>
+                            <p class="destination-description">View our latest FREE Magazine</p>
+                            <a href="#" class="destination-link">
+                                Download Now
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -5090,11 +5748,12 @@
     </section>
 
     <!-- Awards & Recognition -->
-    <section class="awards-section" style="background: linear-gradient(180deg, #f8f8f8 0%, white 100%);">
+    <section class="awards-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="section-header reveal">
                 <span class="section-label">OUR AWARD WINNING SERVICE</span>
-                <h2 class="section-title">Recognised Excellence</h2>
+                <h2 class="section-title">Hall of Excellence</h2>
+                <p class="section-desc">Recognized by the industry's most prestigious organizations</p>
             </div>
     
             <div class="awards-grid reveal">
@@ -5999,6 +6658,42 @@
             });
         });
 
+        // ========== SEARCH MODAL FUNCTIONALITY ==========
+        const searchModal = document.getElementById('searchModal');
+        const openSearchBtn = document.getElementById('openSearchModal');
+        const closeSearchBtn = document.getElementById('closeSearchModal');
+        const searchModalOverlay = document.getElementById('searchModalOverlay');
+
+        function openSearchModal() {
+            searchModal.classList.add('active');
+            // Small delay for smooth animation
+            setTimeout(() => {
+                searchModal.classList.add('show');
+            }, 10);
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSearchModal() {
+            searchModal.classList.remove('show');
+            // Wait for animation to finish
+            setTimeout(() => {
+                searchModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        openSearchBtn.addEventListener('click', openSearchModal);
+        closeSearchBtn.addEventListener('click', closeSearchModal);
+        searchModalOverlay.addEventListener('click', closeSearchModal);
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                closeSearchModal();
+            }
+        });
+
         // Read More functionality
         document.querySelectorAll('.read-more-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -6620,6 +7315,7 @@
 
         // Make function global for YouTube API
         window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
     </script>
 
     <!-- Mobile Menu Toggle Script -->
@@ -6842,3 +7538,15 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

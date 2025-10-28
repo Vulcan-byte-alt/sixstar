@@ -12,7 +12,8 @@
       "Read(///**)",
       "Bash(cat:*)",
       "Bash(wget:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(perl -i -pe:*)"
     ],
     "deny": [],
     "ask": []
