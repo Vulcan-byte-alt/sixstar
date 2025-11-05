@@ -6502,12 +6502,12 @@
                 background: linear-gradient(180deg, #0a1929 0%, #0d1f31 50%, #0a1929 100%) !important;
                 flex-direction: column !important;
                 align-items: center !important;
-                justify-content: center !important;
+                justify-content: flex-start !important;
                 gap: 0 !important;
-                padding: 100px 32px 60px 32px !important;
+                padding: 90px 32px 40px 32px !important;
                 margin: 0 !important;
                 z-index: 999999 !important;
-                overflow-y: auto !important;
+                overflow-y: scroll !important;
                 overflow-x: hidden !important;
                 -webkit-overflow-scrolling: touch !important;
                 overscroll-behavior: contain !important;
@@ -6543,8 +6543,17 @@
             }
 
             /* Hide dropdown indicators on mobile nav links */
-            #navLinks .nav-item-with-dropdown {
+            #navLinks .nav-item-with-dropdown,
+            #navLinks > span,
+            #navLinks > div:not(.mobile-menu-info):not(:last-of-type) {
                 border: none !important;
+                border-left: none !important;
+                border-right: none !important;
+                display: flex !important;
+                width: 100% !important;
+                max-width: 420px !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
 
             /* Ensure parent containers don't clip the menu when open */
@@ -6570,7 +6579,8 @@
                 width: 100% !important;
                 max-width: 420px !important;
                 padding: 24px 20px !important;
-                margin-bottom: 40px !important;
+                margin-top: 20px !important;
+                margin-bottom: 32px !important;
                 background: transparent !important;
                 border: 1px solid rgba(212, 165, 116, 0.2) !important;
                 border-radius: 16px !important;
@@ -6584,14 +6594,10 @@
 
             /* Luxurious navigation links - simplified & elegant */
             #navLinks a.nav-link {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                justify-content: center !important;
-                gap: 0 !important;
+                display: block !important;
                 width: 100% !important;
                 max-width: 420px !important;
-                padding: 20px 32px !important;
+                padding: 20px 0 !important;
                 font-family: 'Cormorant Garamond', serif !important;
                 font-size: 18px !important;
                 color: rgba(255, 255, 255, 0.95) !important;
@@ -6606,6 +6612,7 @@
                 font-weight: 500 !important;
                 letter-spacing: 1.2px !important;
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-sizing: border-box !important;
             }
 
             #navLinks a.nav-link .nav-icon {
@@ -6619,7 +6626,9 @@
                 text-shadow: 0 0 20px rgba(212, 165, 116, 0.3) !important;
             }
 
-            #navLinks a.nav-link:first-of-type {
+            /* First nav link gets top border */
+            #navLinks .nav-item-with-dropdown:first-of-type a.nav-link,
+            #navLinks > span:first-of-type a.nav-link {
                 border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
             }
 
@@ -6632,8 +6641,10 @@
                 padding: 0 !important;
                 background: transparent !important;
                 border: none !important;
+                border-left: none !important;
+                border-right: none !important;
                 border-radius: 0 !important;
-                margin: 40px 0 0 0 !important;
+                margin: 32px 0 32px 0 !important;
                 flex-shrink: 0 !important;
             }
 
