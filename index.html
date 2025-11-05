@@ -6446,11 +6446,45 @@
                 right: 20px !important;
                 left: auto !important;
                 transform: translateY(-50%) !important;
-                padding: 8px !important;
+                padding: 10px !important;
                 z-index: 10000 !important;
+                transition: all 0.3s ease !important;
             }
 
-            /* Mobile Menu Panel - Hidden by default, slides from right when open */
+            #mobileMenuBtn:hover {
+                color: var(--gold) !important;
+            }
+
+            /* Close button for mobile menu */
+            #mobileMenuCloseBtn {
+                display: block !important;
+                position: fixed !important;
+                top: 30px !important;
+                right: 30px !important;
+                width: 44px !important;
+                height: 44px !important;
+                background: transparent !important;
+                border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+                border-radius: 50% !important;
+                color: rgba(255, 255, 255, 0.8) !important;
+                font-size: 32px !important;
+                cursor: pointer !important;
+                z-index: 1000000 !important;
+                transition: all 0.3s ease !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0 !important;
+                line-height: 1 !important;
+            }
+
+            #mobileMenuCloseBtn:hover {
+                color: var(--gold) !important;
+                border-color: var(--gold) !important;
+                transform: rotate(90deg) !important;
+            }
+
+            /* Mobile Menu Panel - Luxurious & Simplistic Design */
             #navLinks {
                 display: none !important;
                 position: fixed !important;
@@ -6465,12 +6499,12 @@
                 min-height: 100vh !important;
                 max-width: none !important;
                 max-height: none !important;
-                background: linear-gradient(135deg, rgb(10, 25, 41) 0%, rgb(20, 45, 75) 50%, rgb(15, 50, 85) 100%) !important;
+                background: linear-gradient(180deg, #0a1929 0%, #0d1f31 50%, #0a1929 100%) !important;
                 flex-direction: column !important;
                 align-items: center !important;
-                justify-content: flex-start !important;
+                justify-content: center !important;
                 gap: 0 !important;
-                padding: 80px 20px 80px 20px !important;
+                padding: 100px 32px 60px 32px !important;
                 margin: 0 !important;
                 z-index: 999999 !important;
                 overflow-y: auto !important;
@@ -6487,6 +6521,30 @@
             #navLinks.mobile-menu-open {
                 display: flex !important;
                 position: fixed !important;
+                animation: fadeIn 0.3s ease-in-out !important;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            #navLinks.mobile-menu-open #mobileMenuCloseBtn {
+                display: flex !important;
+            }
+
+            /* Hide mega menus on mobile */
+            #navLinks .mega-menu {
+                display: none !important;
+            }
+
+            /* Hide dropdown indicators on mobile nav links */
+            #navLinks .nav-item-with-dropdown {
+                border: none !important;
             }
 
             /* Ensure parent containers don't clip the menu when open */
@@ -6505,10 +6563,18 @@
                 overflow: visible !important;
             }
 
-            /* Show mobile menu info section on mobile */
+            /* Elegant mobile menu header section */
             .mobile-menu-info {
                 display: flex !important;
                 flex-direction: column !important;
+                width: 100% !important;
+                max-width: 420px !important;
+                padding: 24px 20px !important;
+                margin-bottom: 40px !important;
+                background: transparent !important;
+                border: 1px solid rgba(212, 165, 116, 0.2) !important;
+                border-radius: 16px !important;
+                backdrop-filter: blur(20px) !important;
             }
 
             .mobile-menu-info > div {
@@ -6516,59 +6582,84 @@
                 width: 100% !important;
             }
 
-            /* Navigation links in mobile menu - centered */
+            /* Luxurious navigation links - simplified & elegant */
             #navLinks a.nav-link {
                 display: flex !important;
                 flex-direction: row !important;
                 align-items: center !important;
-                justify-content: flex-start !important;
-                gap: 12px !important;
+                justify-content: center !important;
+                gap: 0 !important;
                 width: 100% !important;
-                max-width: 380px !important;
-                padding: 16px 24px !important;
-                font-size: 13px !important;
-                color: white !important;
-                background: rgba(255, 255, 255, 0.05) !important;
+                max-width: 420px !important;
+                padding: 20px 32px !important;
+                font-family: 'Cormorant Garamond', serif !important;
+                font-size: 18px !important;
+                color: rgba(255, 255, 255, 0.95) !important;
+                background: transparent !important;
                 border: none !important;
-                border-radius: 12px !important;
-                margin: 4px 0 !important;
-                text-align: left !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                text-align: center !important;
                 text-decoration: none !important;
                 flex-shrink: 0 !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.5px !important;
-                transition: all 0.3s !important;
+                font-weight: 500 !important;
+                letter-spacing: 1.2px !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             }
 
             #navLinks a.nav-link .nav-icon {
-                flex-shrink: 0 !important;
+                display: none !important;
             }
 
             #navLinks a.nav-link:hover {
-                background: rgba(212, 175, 55, 0.25) !important;
+                background: transparent !important;
                 color: var(--gold) !important;
-                transform: translateX(5px) !important;
+                letter-spacing: 1.8px !important;
+                text-shadow: 0 0 20px rgba(212, 165, 116, 0.3) !important;
             }
 
-            /* Wishlist in mobile menu - centered and styled */
+            #navLinks a.nav-link:first-of-type {
+                border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            }
+
+            /* Elegant wishlist button in mobile menu */
             #navLinks > div:last-of-type {
                 display: flex !important;
                 justify-content: center !important;
                 width: 100% !important;
-                max-width: 380px !important;
-                padding: 16px 32px !important;
-                background: rgba(212, 175, 55, 0.15) !important;
-                border: 1px solid rgba(212, 175, 55, 0.3) !important;
-                border-radius: 12px !important;
-                margin: 12px 0 8px 0 !important;
+                max-width: 420px !important;
+                padding: 0 !important;
+                background: transparent !important;
+                border: none !important;
+                border-radius: 0 !important;
+                margin: 40px 0 0 0 !important;
                 flex-shrink: 0 !important;
             }
 
             #navLinks > div:last-of-type a {
-                color: white !important;
-                font-size: 14px !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.5px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 12px !important;
+                padding: 16px 40px !important;
+                color: rgba(255, 255, 255, 0.95) !important;
+                font-family: 'Cormorant Garamond', serif !important;
+                font-size: 16px !important;
+                font-weight: 500 !important;
+                letter-spacing: 1.5px !important;
+                text-decoration: none !important;
+                background: transparent !important;
+                border: 1.5px solid rgba(212, 165, 116, 0.4) !important;
+                border-radius: 50px !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+
+            #navLinks > div:last-of-type a:hover {
+                color: #0a1929 !important;
+                background: var(--gold) !important;
+                border-color: var(--gold) !important;
+                box-shadow: 0 8px 24px rgba(212, 165, 116, 0.4) !important;
             }
 
             /* Mobile menu overlay - not needed for full screen menu */
@@ -7021,26 +7112,28 @@
                 <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 24px; position: relative;">
                     <!-- Main Navigation Links -->
                     <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
-                        <!-- Mobile Menu Header (Only visible on mobile) -->
-                        <div class="mobile-menu-info" style="display: none; width: 100%; max-width: 350px; padding: 14px 16px; border-radius: 12px !important; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; margin-bottom: 12px; backdrop-filter: blur(10px);">
-                            <!-- Reviews.io Widget for Mobile -->
-                            <div style="margin-bottom: 8px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.7);">
-                                <div id="badge-ribbon-mobile"></div>
-                            </div>
+                        <!-- Close Button (Only visible on mobile) -->
+                        <button id="mobileMenuCloseBtn" style="display: none;" onclick="toggleMobileMenu()">
+                            <i class="fas fa-times"></i>
+                        </button>
 
+                        <!-- Mobile Menu Header (Only visible on mobile) -->
+                        <div class="mobile-menu-info" style="display: none;">
                             <!-- Contact Information -->
                             <div style="text-align: center; color: white;">
-                                <div style="font-size: 9px; text-transform: uppercase; margin-bottom: 3px; opacity: 0.8; letter-spacing: 0.8px; font-weight: 600;">
-                                    <span style="color: var(--gold); margin-right: 6px;">FREEPHONE</span>
-                                    <span>9am - 8pm</span>
+                                <div style="font-family: 'Cormorant Garamond', serif; font-size: 11px; text-transform: uppercase; margin-bottom: 12px; color: var(--gold); letter-spacing: 2px; font-weight: 500;">
+                                    Call Our Experts
                                 </div>
-                                <a href="tel:08082026105" style="text-decoration: none; display: block;">
-                                    <div style="font-size: 18px; font-weight: 700; color: white; letter-spacing: 0.5px;">0808 202 6105</div>
+                                <a href="tel:08082026105" style="text-decoration: none; display: block; transition: all 0.3s ease;" onmouseover="this.querySelector('div').style.color='var(--gold)'" onmouseout="this.querySelector('div').style.color='white'">
+                                    <div style="font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; color: white; letter-spacing: 1.5px; margin-bottom: 6px; transition: color 0.3s ease;">0808 202 6105</div>
                                 </a>
+                                <div style="font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.5px; font-weight: 400;">
+                                    Available 9am - 8pm
+                                </div>
                             </div>
 
                             <script>
-                                // Initialize Reviews.io for mobile menu
+                                // Initialize Reviews.io for mobile menu (hidden for cleaner look)
                                 if (typeof reviewsBadgeRibbon === 'function') {
                                     reviewsBadgeRibbon("badge-ribbon-mobile", {
                                         store: "six-star-cruises1",
