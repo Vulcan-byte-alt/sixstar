@@ -1,19 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch",
-      "WebFetch(domain:www.apple.com)",
-      "WebFetch(domain:9to5mac.com)",
-      "WebFetch(domain:applescoop.org)",
-      "WebFetch(domain:www.figma.com)",
-      "WebFetch(domain:dev.to)",
-      "Bash(sed:*)",
-      "Bash(grep:*)",
-      "Read(///**)",
-      "Bash(cat:*)",
       "Bash(wget:*)",
-      "Bash(ls:*)",
-      "Bash(perl -i -pe:*)"
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
