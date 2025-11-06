@@ -6600,9 +6600,7 @@
         overflow-y: scroll !important;
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch !important;
-        overscroll-behavior-y: none !important;
-        overscroll-behavior: none !important;
-        overscroll-behavior: auto !important;
+        overscroll-behavior: contain !important;
         animation: fadeIn 0.3s ease !important;
     }
 }
@@ -6658,6 +6656,11 @@
             .mobile-menu-info>div {
                 margin: 0 !important;
                 padding: 0 !important;
+            }
+
+            /* Remove nav link underline hover effect on mobile */
+            #navLinks.mobile-menu-open .nav-link::after {
+                display: none !important;
             }
 
             /* Reviews.io widget styling */
@@ -11233,11 +11236,22 @@
             navLinks.classList.toggle('mobile-menu-open');
             overlay.classList.toggle('active');
 
+            // Hide/show floating buttons
+            const conciergeBtn = document.querySelector('.floating-concierge');
+            const quoteBtn = document.querySelector('.floating-quote-btn');
+
             // Change icon between bars and times
             const icon = menuBtn.querySelector('i');
             if (navLinks.classList.contains('mobile-menu-open')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
+
+                // Hide floating buttons when menu is open
+                if (conciergeBtn) conciergeBtn.style.display = 'none';
+                if (quoteBtn) quoteBtn.style.display = 'none';
+
+                // Lock body scroll when menu is open (but allow menu to scroll)
+                document.body.style.overflow = 'hidden';
 
                 // Force parent containers to not clip when menu is open
                 if (nav) {
@@ -11257,6 +11271,13 @@
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+
+                // Show floating buttons when menu is closed
+                if (conciergeBtn) conciergeBtn.style.display = '';
+                if (quoteBtn) quoteBtn.style.display = '';
+
+                // Unlock body scroll when menu is closed
+                document.body.style.overflow = '';
 
                 // Restore parent containers
                 if (nav) {
@@ -11386,6 +11407,7 @@
     </script>
 
     <!-- Floating Quick Quote Button - Innovative CTA -->
+    <!-- COMMENTED OUT - Keeping only "Talk to Concierge" for cleaner UX
     <button class="floating-quote-btn" onclick="window.location.href='tel:02074713456'" aria-label="Get Quick Quote">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -11394,6 +11416,7 @@
         </svg>
         <span>Quick Quote</span>
     </button>
+    -->
 </body>
 
 </html>
