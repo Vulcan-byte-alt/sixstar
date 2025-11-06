@@ -728,16 +728,34 @@
         }
 
         .hero-title-luxury {
-            font-family: 'TheSeasons', serif;
-            font-size: clamp(48px, 7vw, 92px);
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 32px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 7.5vw, 85px);
+            font-weight: 300;
+            margin-bottom: 20px;
             color: white;
-            letter-spacing: -0.01em;
+            text-transform: uppercase;
             animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
-            text-shadow: 0 6px 32px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
             opacity: 0;
+        }
+
+        .hero-title-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(16px, 2vw, 28px);
+            width: 100%;
+            margin: 0 auto 22px;
+        }
+
+        .hero-title-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-title-line span {
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+            font-weight: 300;
         }
 
         .text-gold {
@@ -754,7 +772,7 @@
             width: 60px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto 32px;
+            margin: 0 auto 20px;
             animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
             opacity: 0;
         }
@@ -764,7 +782,7 @@
             font-size: clamp(17px, 1.8vw, 24px);
             font-weight: 300;
             line-height: 1.6;
-            margin-bottom: 56px;
+            margin-bottom: 36px;
             color: rgba(255, 255, 255, 0.92);
             letter-spacing: 0.03em;
             animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
@@ -3689,6 +3707,7 @@
 
             .cruise-body {
                 padding: 30px;
+                margin-top: 20px;
             }
 
             /* Carousel shows 1 card on mobile */
@@ -3724,24 +3743,59 @@
             padding: 100px 0;
         }
 
-        /* Magazine Editorial Grid - 2 Column Classic Luxury Layout */
-        /* Elegant 3-Column Grid with Feature Card */
-        .destination-grid {
+        /* Planning/Voyages Grid - Simple Uniform Layout */
+        .planning-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 28px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             max-width: 1280px;
             margin: 0 auto;
         }
 
-        /* Feature card spans 2 columns */
-        .destination-grid .destination-card:first-child {
+        .planning-grid .destination-card {
+            grid-column: span 1;
+        }
+
+        .planning-grid .destination-card-inner {
+            height: 460px !important;
+            min-height: 460px !important;
+            max-height: 460px !important;
+        }
+
+        /* Luxury Masonry Grid - Intentional Pattern */
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Row 1: Wide + Narrow Pattern */
+        .destination-grid .destination-card:nth-child(1) {
+            grid-column: span 4;
+        }
+
+        .destination-grid .destination-card:nth-child(2) {
             grid-column: span 2;
         }
 
-        /* Regular cards span 2 columns each (3 cards total per row) */
-        .destination-grid .destination-card:nth-child(n+2) {
+        /* Row 2: Narrow + Wide Pattern (Reversed) */
+        .destination-grid .destination-card:nth-child(3) {
             grid-column: span 2;
+        }
+
+        .destination-grid .destination-card:nth-child(4) {
+            grid-column: span 4;
+        }
+
+        /* Row 3: Two Medium Cards (Balanced) */
+        .destination-grid .destination-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        .destination-grid .destination-card:nth-child(6) {
+            grid-column: span 3;
         }
 
         /* Refined Luxury Card with Frame */
@@ -3791,18 +3845,12 @@
             flex-shrink: 0;
         }
 
-        /* Taller feature card */
-        .destination-grid .destination-card:first-child .destination-card-inner {
-            height: 540px;
-            min-height: 540px;
-            max-height: 540px;
-        }
-
-        /* Stretched cards with inline height style */
+        /* All cards same height for intentional masonry pattern */
+        .destination-grid .destination-card .destination-card-inner,
         .destination-card-inner[style*="height: 540px"] {
-            height: 540px !important;
-            min-height: 540px !important;
-            max-height: 540px !important;
+            height: 460px !important;
+            min-height: 460px !important;
+            max-height: 460px !important;
         }
 
         /* Subtle minimal overlay */
@@ -3855,12 +3903,9 @@
             color: white;
         }
 
-        .destination-grid .destination-card:first-child .destination-content {
-            padding: 36px 32px;
-        }
-
-        .destination-card-inner[style*="height: 540px"] .destination-content {
-            padding: 36px 32px;
+        /* Consistent padding for all cards */
+        .destination-content {
+            padding: 32px 28px !important;
         }
 
         .destination-label {
@@ -3886,16 +3931,6 @@
             margin-bottom: 14px;
             letter-spacing: 0.02em;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-        }
-
-        .destination-grid .destination-card:first-child .destination-title {
-            font-size: 38px;
-            line-height: 1.25;
-        }
-
-        .destination-card-inner[style*="height: 540px"] .destination-title {
-            font-size: 38px;
-            line-height: 1.25;
         }
 
         .destination-description {
@@ -4708,30 +4743,47 @@
                 gap: 40px;
             }
 
-            /* 2-Column Grid - Tablet */
+            /* Planning Grid - Tablet: Simple 2-Column */
+            .planning-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .planning-grid .destination-card {
+                grid-column: span 1;
+            }
+
+            .planning-grid .destination-card-inner {
+                height: 400px !important;
+                min-height: 400px !important;
+                max-height: 400px !important;
+            }
+
+            /* Tablet: Simplified 2-Column Masonry */
             .destination-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 24px;
+                gap: 20px;
             }
 
-            .destination-grid .destination-card:first-child {
-                grid-column: span 4;
+            /* Tablet Pattern: Alternating Wide/Narrow */
+            .destination-grid .destination-card:nth-child(1),
+            .destination-grid .destination-card:nth-child(4) {
+                grid-column: span 3;
             }
 
-            .destination-grid .destination-card:nth-child(n+2) {
+            .destination-grid .destination-card:nth-child(2),
+            .destination-grid .destination-card:nth-child(3),
+            .destination-grid .destination-card:nth-child(5),
+            .destination-grid .destination-card:nth-child(6) {
                 grid-column: span 2;
             }
 
-            .destination-grid .destination-card:first-child .destination-card-inner {
-                height: 460px;
-                min-height: 460px;
-                max-height: 460px;
-            }
-
+            /* Consistent height on tablet */
+            .destination-grid .destination-card .destination-card-inner,
             .destination-card-inner {
-                height: 400px;
-                min-height: 400px;
-                max-height: 400px;
+                height: 400px !important;
+                min-height: 400px !important;
+                max-height: 400px !important;
             }
 
             /* Awards Grid - Tablet (Flexbox Update) */
@@ -4934,19 +4986,29 @@
             }
 
             .hero-title-luxury {
-                font-size: 36px !important;
-                line-height: 1.2 !important;
+                font-size: 42px !important;
+                font-weight: 300 !important;
+                margin-bottom: 18px !important;
+            }
+
+            .hero-title-line {
+                gap: clamp(10px, 1.8vw, 20px) !important;
                 margin-bottom: 16px !important;
+            }
+
+            .hero-title-line span {
+                letter-spacing: 0.07em !important;
+                font-weight: 300 !important;
             }
 
             .hero-divider {
                 width: 60px !important;
-                margin: 20px auto !important;
+                margin: 16px auto !important;
             }
 
             .hero-tagline-luxury {
                 font-size: 14px !important;
-                margin-bottom: 24px !important;
+                margin-bottom: 28px !important;
                 line-height: 1.5 !important;
             }
 
@@ -5800,39 +5862,49 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Single Column - Mobile */
-            .destination-grid {
+            /* Planning Grid - Mobile: Single Column */
+            .planning-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
 
-            .destination-grid .destination-card:first-child,
-            .destination-grid .destination-card:nth-child(n+2) {
+            .planning-grid .destination-card {
                 grid-column: span 1;
             }
 
-            .destination-grid .destination-card:first-child .destination-card-inner {
-                height: 400px;
+            .planning-grid .destination-card-inner {
+                height: 380px !important;
+                min-height: 380px !important;
+                max-height: 380px !important;
             }
 
+            /* Mobile: Single Column Stack */
+            .destination-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            /* All cards full width on mobile */
+            .destination-grid .destination-card:nth-child(n) {
+                grid-column: span 1;
+            }
+
+            /* Consistent height on mobile */
+            .destination-grid .destination-card .destination-card-inner,
             .destination-card-inner {
-                height: 360px;
+                height: 380px !important;
+                min-height: 380px !important;
+                max-height: 380px !important;
             }
 
-            .destination-grid .destination-card:first-child .destination-content {
-                padding: 28px;
-            }
-
+            /* Consistent padding on mobile */
             .destination-content {
-                padding: 24px;
+                padding: 26px !important;
             }
 
-            .destination-grid .destination-card:first-child .destination-title {
-                font-size: 28px;
-            }
-
+            /* Consistent title size on mobile */
             .destination-title {
-                font-size: 24px;
+                font-size: 26px !important;
             }
 
             /* Awards Grid - Mobile (Flexbox Update) */
@@ -6007,7 +6079,19 @@
             }
 
             .hero-title-luxury {
-                font-size: 28px !important;
+                font-size: 32px !important;
+                font-weight: 300 !important;
+                margin-bottom: 16px !important;
+            }
+
+            .hero-title-line {
+                gap: clamp(8px, 1.5vw, 16px) !important;
+                margin-bottom: 14px !important;
+            }
+
+            .hero-title-line span {
+                letter-spacing: 0.06em !important;
+                font-weight: 300 !important;
             }
 
             .hero-title-main {
@@ -6020,7 +6104,7 @@
 
             .hero-tagline-luxury {
                 font-size: 12px !important;
-                margin-bottom: 20px !important;
+                margin-bottom: 24px !important;
             }
 
             .hero-description {
@@ -7132,7 +7216,7 @@
                 <div
                     style="display: flex; align-items: center; justify-content: space-between; padding: 0 24px; position: relative;">
                     <!-- Main Navigation Links -->
-                    <div id="navLinks" style="display: flex; align-items: center; gap: 0;" class="mobile-menu-open">
+                    <div id="navLinks" style="display: flex; align-items: center; gap: 0;">
                         <!-- Close Button (Only visible on mobile) -->
                         <button id="mobileMenuCloseBtn" style="display: none;" onclick="toggleMobileMenu()">
                             <i class="fas fa-times"></i>
@@ -7167,15 +7251,7 @@
                                 </a>
                             </div>
                     
-                            <script>
-                                // Initialize Reviews.io for mobile menu
-                                if (typeof reviewsBadgeRibbon === 'function') {
-                                    reviewsBadgeRibbon("badge-ribbon-mobile", {
-                                        store: "six-star-cruises1",
-                                        size: "small",
-                                    });
-                                }
-                            </script>
+                            
                         </div>
                     
                         <div class="nav-item-with-dropdown" style="position: relative; display: inline-block;">
@@ -7613,9 +7689,19 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-kicker">The Art of Luxury Travel</div>
-            <h1 class="hero-title-luxury">Discover the World in<br><span class="text-gold">SixStar</span> Luxury</h1>
+            <h1 class="hero-title-luxury">
+                <div class="hero-title-line">
+                    <span>EXPLORE</span>
+                    <span>THE</span>
+                    <span>WORLD</span>
+                </div>
+                <div class="hero-title-line">
+                    <span>IN</span>
+                    <span class="text-gold">LUXURY</span>
+                </div>
+            </h1>
             <div class="hero-divider"></div>
-            <p class="hero-tagline-luxury">Handcrafted voyages aboard the world's finest ships</p>
+            <p class="hero-tagline-luxury">Curated voyages aboard the world's finest ships</p>
 
             <!-- Inline Search Box -->
             <div class="hero-search-box">
@@ -8828,7 +8914,7 @@
             </div>
 
             <!-- Planning Grid -->
-            <div class="destination-grid reveal" id="planningGrid">
+            <div class="planning-grid reveal" id="planningGrid">
                 <!-- 2026 Luxury Cruises -->
                 <div class="destination-card" data-category="2026 luxury">
                     <div class="destination-card-inner">
@@ -8851,7 +8937,7 @@
 
                 <!-- 2027 Luxury Cruises -->
                 <div class="destination-card" data-category="2027 luxury">
-                    <div class="destination-card-inner" style="height: 540px;">
+                    <div class="destination-card-inner">
                         <img src="images/best-cruise/2027.png" alt="2027 Luxury Cruises">
                         <div class="destination-content">
                             <p class="destination-label">EARLY BOOKING SAVINGS</p>
@@ -8871,7 +8957,7 @@
 
                 <!-- 2028 Luxury Cruises -->
                 <div class="destination-card" data-category="2028 luxury">
-                    <div class="destination-card-inner" style="height: 540px;">
+                    <div class="destination-card-inner">
                         <img src="images/best-cruise/2028.png" alt="2028 Luxury Cruises">
                         <div class="destination-content">
                             <p class="destination-label">PLAN AHEAD</p>
@@ -9007,7 +9093,7 @@
 
                 <!-- Luxury Caribbean Cruises -->
                 <div class="destination-card" data-category="caribbean">
-                    <div class="destination-card-inner" style="height: 540px;">
+                    <div class="destination-card-inner">
                         <img src="images/destination/carribean.png" alt="Caribbean">
                         <div class="destination-content">
                             <p class="destination-label">TROPICAL PARADISE</p>
@@ -9027,7 +9113,7 @@
 
                 <!-- Luxury Mediterranean Cruises -->
                 <div class="destination-card" data-category="europe">
-                    <div class="destination-card-inner" style="height: 540px;">
+                    <div class="destination-card-inner">
                         <img src="images/destination/greece.png" alt="Mediterranean">
                         <div class="destination-content">
                             <p class="destination-label">CLASSIC DESTINATIONS</p>
