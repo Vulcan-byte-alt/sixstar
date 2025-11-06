@@ -1,0 +1,402 @@
+<!-- ULTRA-PREMIUM LUXURY DEAL CARDS -->
+<!-- Based on luxury hospitality website design principles -->
+
+<style>
+/* Luxury Card Styles */
+.luxury-deal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(10, 25, 41, 0.06);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.luxury-deal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 48px rgba(212, 165, 116, 0.15), 0 0 0 1px rgba(212, 165, 116, 0.1);
+}
+
+.luxury-image-container {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background: var(--navy);
+}
+
+.luxury-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxury-deal-card:hover .luxury-image-container img {
+    transform: scale(1.05);
+}
+
+/* Elegant Badge - Top Left Only */
+.luxury-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.luxury-badge.top-deal {
+    background: linear-gradient(135deg, #c9a55c 0%, #d4af37 100%);
+    color: white;
+}
+
+/* Save Heart Button - Minimalist */
+.luxury-heart-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.luxury-heart-btn:hover {
+    transform: scale(1.1);
+    background: rgba(212, 165, 116, 0.1);
+}
+
+.luxury-heart-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--navy);
+    stroke-width: 2;
+    transition: all 0.3s;
+}
+
+.luxury-heart-btn.saved svg {
+    fill: var(--gold);
+    stroke: var(--gold);
+}
+
+/* Card Body - Spacious & Refined */
+.luxury-card-body {
+    padding: 40px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Header with Logo & Duration */
+.luxury-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.luxury-logo img {
+    height: 28px;
+    width: auto;
+    opacity: 0.9;
+}
+
+.luxury-duration {
+    padding: 6px 16px;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(212, 165, 116, 0.12) 100%);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Title - Elegant Serif */
+.luxury-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+/* Metadata - Minimal & Clean */
+.luxury-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.luxury-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #5a6c7d;
+    font-weight: 500;
+}
+
+.luxury-meta-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+/* Special Offer - Subtle & Elegant */
+.luxury-offer {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #f8f6f3 0%, #f4f2ee 100%);
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--navy);
+}
+
+.luxury-offer-icon {
+    color: var(--gold);
+    margin-right: 8px;
+    font-size: 11px;
+}
+
+/* Price Section - Refined */
+.luxury-price-section {
+    border-top: 1px solid rgba(10, 25, 41, 0.08);
+    padding-top: 28px;
+    margin-top: auto;
+}
+
+.luxury-price-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #8a9ba8;
+    margin-bottom: 12px;
+}
+
+.luxury-price-display {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.luxury-price-old {
+    font-size: 15px;
+    color: #b8b8b8;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.luxury-price-current {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: -1px;
+}
+
+.luxury-price-suffix {
+    font-size: 16px;
+    color: var(--navy);
+    font-weight: 500;
+}
+
+/* CTA Button - Sophisticated */
+.luxury-cta {
+    width: 100%;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3447 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.luxury-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+.luxury-cta:hover::before {
+    left: 100%;
+}
+
+.luxury-cta:hover {
+    background: linear-gradient(135deg, #0a1929 0%, var(--navy) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(10, 25, 41, 0.3);
+}
+
+/* Savings Badge - Bottom Right of Image */
+.luxury-savings {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Grid */
+.luxury-deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 40px;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .luxury-deals-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .luxury-image-container {
+        height: 260px;
+    }
+
+    .luxury-card-body {
+        padding: 32px 24px;
+    }
+
+    .luxury-title {
+        font-size: 22px;
+    }
+
+    .luxury-price-current {
+        font-size: 36px;
+    }
+}
+</style>
+
+<!-- DEALS GRID -->
+<div class="luxury-deals-grid">
+
+    <!-- Luxury Deal Card Example -->
+    <article class="luxury-deal-card" data-deal-id="-29">
+        <div class="luxury-image-container">
+            <img src="images/deals/brindisi-3310820.jpg" alt="A Journey to Adriatic Wonders & Whispered Ancient Secrets">
+
+            <!-- Single Elegant Badge -->
+            <div class="luxury-badge top-deal">Exclusive Offer</div>
+
+            <!-- Heart Button -->
+            <button class="luxury-heart-btn" onclick="toggleSave(this)" aria-label="Save cruise">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+            </button>
+
+            <!-- Savings Badge -->
+            <div class="luxury-savings">Save £751</div>
+        </div>
+
+        <div class="luxury-card-body">
+            <!-- Header -->
+            <div class="luxury-header">
+                <div class="luxury-logo">
+                    <img src="images/deals/explora-journeys-logo.png" alt="Explora Journeys">
+                </div>
+                <div class="luxury-duration">7 Nights</div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="luxury-title">A Journey to Adriatic Wonders & Whispered Ancient Secrets</h3>
+
+            <!-- Metadata -->
+            <div class="luxury-meta">
+                <div class="luxury-meta-item">
+                    <svg class="luxury-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Departs 18 May 2026</span>
+                </div>
+                <div class="luxury-meta-item">
+                    <svg class="luxury-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <span>Mediterranean • Explora II</span>
+                </div>
+            </div>
+
+            <!-- Special Offer -->
+            <div class="luxury-offer">
+                <span class="luxury-offer-icon">★</span>
+                Up to £1,000 destination experience credit — Offer ends 31st October
+            </div>
+
+            <!-- Spacer -->
+            <div style="flex: 1;"></div>
+
+            <!-- Price Section -->
+            <div class="luxury-price-section">
+                <div class="luxury-price-label">From</div>
+                <div class="luxury-price-display">
+                    <span class="luxury-price-old">£5,300</span>
+                    <span class="luxury-price-current">£4,549</span>
+                    <span class="luxury-price-suffix">pp</span>
+                </div>
+
+                <!-- CTA -->
+                <button class="luxury-cta">View Details</button>
+            </div>
+        </div>
+    </article>
+
+</div>
+
+<!-- JavaScript for Heart Button -->
+<script>
+function toggleSave(btn) {
+    btn.classList.toggle('saved');
+    // Add your save logic here
+}
+</script>
