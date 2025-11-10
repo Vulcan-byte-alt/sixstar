@@ -17,6 +17,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
         :root {
             --navy: #0a1929;
             --navy-light: #1e3a52;
@@ -30,6 +35,8 @@
             color: var(--navy);
             background: var(--cream);
             overflow-x: hidden;
+            max-width: 100vw;
+            position: relative;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -1086,152 +1093,272 @@
             }
 
 
-            /* Mobile Menu Panel - Hidden by default, slides from right when open */
-            #navLinks {
+            /* Close button - hidden by default */
+            #mobileMenuCloseBtn {
                 display: none !important;
-                position: fixed !important;
-                inset: 0 !important;
-                top: 0 !important;
-                right: 0 !important;
-                left: 0 !important;
-                bottom: 0 !important;
-                width: 100vw !important;
-                height: 100vh !important;
-                height: 100dvh !important; /* Dynamic viewport height for mobile browsers */
-                min-height: 100vh !important;
-                max-width: none !important;
-                max-height: none !important;
-                background: linear-gradient(135deg, rgba(10, 25, 41, 0.98) 0%, rgba(20, 45, 75, 0.99) 50%, rgba(15, 50, 85, 0.98) 100%) !important;
-                backdrop-filter: blur(80px) saturate(200%) contrast(110%) !important;
-                -webkit-backdrop-filter: blur(80px) saturate(200%) contrast(110%) !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: flex-start !important;
-                gap: 0 !important;
-                padding: 80px 20px 80px 20px !important;
-                margin: 0 !important;
-                z-index: 999999 !important;
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-                -webkit-overflow-scrolling: touch !important;
-                overscroll-behavior: contain !important;
-                box-shadow: none !important;
-                transform: translateZ(0) !important;
-                -webkit-transform: translateZ(0) !important;
-                clip-path: none !important;
-                contain: none !important;
             }
 
+            /* Full Screen Mobile Menu - hidden by default */
+            #navLinks {
+                display: none !important;
+            }
+
+            /* Mobile menu when open */
             #navLinks.mobile-menu-open {
                 display: flex !important;
                 position: fixed !important;
-            }
-
-            /* Ensure parent containers don't clip the menu when open */
-            nav:has(#navLinks.mobile-menu-open) {
-                height: auto !important;
-                overflow: visible !important;
-            }
-
-            nav:has(#navLinks.mobile-menu-open) > div {
-                height: auto !important;
-                overflow: visible !important;
-            }
-
-            nav:has(#navLinks.mobile-menu-open) > div > div {
-                height: auto !important;
-                overflow: visible !important;
-            }
-
-            /* Show mobile menu info section on mobile */
-            .mobile-menu-info {
-                display: block !important;
-            }
-
-            /* Navigation links in mobile menu - centered */
-            #navLinks a.nav-link {
-                display: flex !important;
-                flex-direction: row !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                background: linear-gradient(180deg, #0a1929 0%, #0d1f31 50%, #0a1929 100%) !important;
+                flex-direction: column !important;
                 align-items: center !important;
                 justify-content: flex-start !important;
-                gap: 16px !important;
+                padding: 75px 18px 25px 18px !important;
+                z-index: 999999 !important;
+                overflow-y: scroll !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior: contain !important;
+                animation: fadeIn 0.3s ease !important;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* Hide mega menus and remove dropdown container borders */
+            #navLinks.mobile-menu-open .mega-menu {
+                display: none !important;
+            }
+
+            #navLinks.mobile-menu-open .nav-item-with-dropdown {
+                display: block !important;
+                border: none !important;
+                border-left: none !important;
                 width: 100% !important;
                 max-width: 380px !important;
-                padding: 16px 32px !important;
-                font-size: 14px !important;
-                font-weight: 700 !important;
-                color: white !important;
-                background: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                position: relative !important;
+            }
+
+            /* Remove white line from span wrappers in mobile menu */
+            #navLinks.mobile-menu-open span {
+                border: none !important;
+                border-left: none !important;
+                display: block !important;
+                width: 100% !important;
+                max-width: 380px !important;
+            }
+
+            /* Mobile Menu Info - Compact */
+            #navLinks.mobile-menu-open .mobile-menu-info {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                padding: 6px 10px !important;
+                margin-bottom: 12px !important;
+                background: rgba(255, 255, 255, 0.03) !important;
+                border: 1px solid rgba(212, 165, 116, 0.2) !important;
                 border-radius: 12px !important;
-                margin: 6px 0 !important;
-                border-bottom: none !important;
-                text-align: left !important;
+            }
+
+            .mobile-menu-info>div {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Remove nav link underline hover effect on mobile */
+            #navLinks.mobile-menu-open .nav-link::after {
+                display: none !important;
+            }
+
+            /* Reviews.io widget styling */
+            .mobile-menu-info>div:first-child {
+                margin-bottom: 4px !important;
+                height: auto !important;
+                min-height: 50px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .mobile-menu-info #badge-ribbon-mobile {
+                transform-origin: center !important;
+            }
+
+            /* Contact info styling */
+            .mobile-menu-info>div:nth-child(2) {
+                padding-top: 4px !important;
+            }
+
+            /* Navigation Links - Pill-shaped buttons for all links */
+            #navLinks.mobile-menu-open a.nav-link {
+                display: block !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                min-width: 380px !important;
+                padding: 14px 28px !important;
+                font-family: 'Cormorant Garamond', serif !important;
+                font-size: 16px !important;
+                color: rgba(255, 255, 255, 0.95) !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(212, 165, 116, 0.3) !important;
+                border-left: 1px solid rgba(212, 165, 116, 0.3) !important;
+                border-radius: 50px !important;
+                font-weight: 500 !important;
+                letter-spacing: 1.2px !important;
+                text-decoration: none !important;
+                transition: all 0.3s ease !important;
+                text-align: center !important;
+                margin: 8px 0 !important;
+                backdrop-filter: blur(10px) !important;
+                box-sizing: border-box !important;
+            }
+
+            #navLinks.mobile-menu-open a.nav-link:hover {
+                color: var(--gold) !important;
+                letter-spacing: 1.6px !important;
+                background: rgba(212, 165, 116, 0.15) !important;
+                border-color: var(--gold) !important;
+                box-shadow: 0 4px 16px rgba(212, 165, 116, 0.2) !important;
+                transform: translateY(-1px) !important;
+            }
+
+            #navLinks.mobile-menu-open a.nav-link .nav-icon {
+                display: none !important;
+            }
+
+            /* Wishlist Button */
+            #navLinks>div:last-of-type {
+                display: flex !important;
+                justify-content: center !important;
+                width: 100% !important;
+                max-width: 380px !important;
+                margin-top: 20px !important;
+            }
+
+            #navLinks>div:last-of-type a {
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 10px !important;
+                padding: 14px 36px !important;
+                color: rgba(255, 255, 255, 0.95) !important;
+                font-family: 'Cormorant Garamond', serif !important;
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.2px !important;
+                border: 1.5px solid rgba(212, 165, 116, 0.4) !important;
+                border-radius: 50px !important;
                 transition: all 0.3s ease !important;
             }
 
-            #navLinks a.nav-link .nav-icon {
-                width: 22px !important;
-                height: 22px !important;
-                flex-shrink: 0 !important;
+            #navLinks>div:last-of-type a:hover {
+                color: #0a1929 !important;
+                background: var(--gold) !important;
+                border-color: var(--gold) !important;
             }
 
-            #navLinks a.nav-link:hover {
-                background: rgba(212, 165, 116, 0.2) !important;
-                color: var(--gold) !important;
-                transform: translateX(5px) !important;
+            /* Mobile overlay - not needed */
+            .mobile-menu-overlay {
+                display: none !important;
             }
 
             /* Hero Section - Full Viewport Height */
             .itinerary-hero {
                 height: 100vh !important;
+                height: 100dvh !important; /* Dynamic viewport height for mobile browsers */
                 min-height: 100vh !important;
-                margin-top: -80px !important;
+                min-height: 100dvh !important;
+                margin-top: 0 !important;
                 padding-top: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            /* Hero background image - full coverage */
+            .itinerary-hero-bg {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: center !important;
+            }
+
+            /* Hero overlay */
+            .itinerary-hero-overlay {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
             }
 
             .hero-content {
                 padding: 0 20px !important;
                 margin-top: 0 !important;
+                position: relative !important;
+                z-index: 10 !important;
             }
 
             /* Hero kicker badge */
             .hero-kicker {
-                font-size: 10px !important;
+                font-size: 9px !important;
                 letter-spacing: 0.15em !important;
-                margin-bottom: 16px !important;
+                margin-bottom: 12px !important;
             }
 
             .hero-kicker::before,
             .hero-kicker::after {
-                width: 25px !important;
-                margin: 0 12px !important;
+                width: 20px !important;
+                margin: 0 10px !important;
             }
 
             /* Hero title */
             .hero-title-luxury {
-                font-size: clamp(38px, 10vw, 52px) !important;
-                margin-bottom: 16px !important;
+                font-size: clamp(32px, 9vw, 48px) !important;
+                margin-bottom: 12px !important;
+                line-height: 1.1 !important;
             }
 
             .hero-title-line {
-                gap: 10px !important;
-                margin: 0 auto 16px !important;
+                gap: 8px !important;
+                margin: 0 auto 12px !important;
+                flex-wrap: wrap !important;
             }
 
             .hero-title-line span {
                 letter-spacing: 0.05em !important;
+                font-size: clamp(32px, 9vw, 48px) !important;
             }
 
             /* Hero divider */
             .hero-divider {
-                margin: 0 auto 16px !important;
+                margin: 0 auto 12px !important;
+                width: 50px !important;
             }
 
             /* Hero tagline */
             .hero-tagline-luxury {
-                font-size: 16px !important;
-                margin-bottom: 24px !important;
+                font-size: 14px !important;
+                margin-bottom: 20px !important;
+                line-height: 1.5 !important;
             }
 
             /* Breadcrumb - Adjust for mobile */
@@ -1360,6 +1487,109 @@
                 font-size: 12px !important;
                 line-height: 1.6 !important;
             }
+
+            /* Pricing Cards - Stack on mobile */
+            section:has(.pricing-card) > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            .pricing-card {
+                padding: 32px 20px !important;
+            }
+
+            /* What's Included - Single column on mobile */
+            section:has(.included-feature-minimal) > div > div:last-child {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            .included-feature-minimal {
+                flex-direction: column !important;
+                gap: 16px !important;
+                padding: 24px !important;
+            }
+
+            /* Ship Gallery - Single column on mobile */
+            section:has(.ship-gallery-main) > div > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            /* Ship Stats - Stack on mobile */
+            section:has(.ship-gallery-main) > div > div:last-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px !important;
+            }
+
+            /* Explore the Ship Tabs - Stack on mobile */
+            .ship-tab {
+                font-size: 11px !important;
+                padding: 12px 20px !important;
+            }
+
+            .tab-content > div {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            .tab-content img {
+                height: 300px !important;
+            }
+
+            .tab-content h3 {
+                font-size: 28px !important;
+            }
+
+            /* Map Section - Route highlights stack */
+            section:has(iframe) > div > div:last-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+
+            /* Video Section - Responsive height */
+            section:has(.pricing-card) iframe {
+                height: 250px !important;
+            }
+
+            /* Need Help Choosing - Stack buttons */
+            section:has(button:has(.fa-phone)) > div > div > div:last-child {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+
+            section:has(button:has(.fa-phone)) button {
+                width: 100% !important;
+                max-width: 320px !important;
+            }
+
+            /* Ensure all sections respect viewport width */
+            section {
+                overflow-x: hidden !important;
+            }
+
+            section > div {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            /* Fix any inline grid layouts */
+            div[style*="grid-template-columns: 1.5fr 1fr"],
+            div[style*="grid-template-columns: 1.2fr 0.8fr"],
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Ensure images don't overflow */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            /* Iframe responsive */
+            iframe {
+                max-width: 100% !important;
+            }
         }
 
         @keyframes fadeInUp {
@@ -1452,35 +1682,39 @@
     
                         <!-- Mobile Menu Header (Only visible on mobile) -->
                         <div class="mobile-menu-info" style="display: none;">
+                            <!-- Reviews.io Widget for Mobile -->
+                            <div
+                                style="margin-bottom: 6px; display: flex; justify-content: center; filter: invert(1) brightness(1.2); transform: scale(0.6);">
+                                <div id="badge-ribbon-mobile"></div>
+                                <script>
+                                    if (typeof reviewsBadgeRibbon === 'function') {
+                                        reviewsBadgeRibbon("badge-ribbon-mobile", {
+                                            store: "six-star-cruises1",
+                                            size: "small",
+                                        });
+                                    }
+                                </script>
+                            </div>
+
                             <!-- Contact Information -->
                             <div style="text-align: center; color: white;">
                                 <div
-                                    style="font-family: 'Cormorant Garamond', serif; font-size: 11px; text-transform: uppercase; margin-bottom: 12px; color: var(--gold); letter-spacing: 2px; font-weight: 500;">
+                                    style="font-family: 'Cormorant Garamond', serif; font-size: 10px; text-transform: uppercase; margin-bottom: 8px; color: var(--gold); letter-spacing: 1.5px; font-weight: 500;">
                                     Call Our Experts
                                 </div>
-                                <a href="tel:08082026105"
-                                    style="text-decoration: none; display: block; transition: all 0.3s ease;"
-                                    onmouseover="this.querySelector('div').style.color='var(--gold)'"
-                                    onmouseout="this.querySelector('div').style.color='white'">
+                                <a href="tel:08082026105" style="text-decoration: none; display: block;">
                                     <div
-                                        style="font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; color: white; letter-spacing: 1.5px; margin-bottom: 6px; transition: color 0.3s ease;">
-                                        0808 202 6105</div>
+                                        style="font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 700; color: white; letter-spacing: 1px; margin-bottom: 4px;">
+                                        0808 202 6105
+                                    </div>
+                                    <div
+                                        style="font-family: 'Inter', sans-serif; font-size: 10px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.5px;">
+                                        Available 9am - 8pm
+                                    </div>
                                 </a>
-                                <div
-                                    style="font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.5px; font-weight: 400;">
-                                    Available 9am - 8pm
-                                </div>
                             </div>
-    
-                            <script>
-                                // Initialize Reviews.io for mobile menu (hidden for cleaner look)
-                                if (typeof reviewsBadgeRibbon === 'function') {
-                                    reviewsBadgeRibbon("badge-ribbon-mobile", {
-                                        store: "six-star-cruises1",
-                                        size: "small",
-                                    });
-                                }
-                            </script>
+
+
                         </div>
     
                         <div class="nav-item-with-dropdown" style="position: relative; display: inline-block;">
