@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -26,14 +26,14 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lato', sans-serif;
             color: var(--navy);
             background: var(--cream);
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
         }
 
         /* Navigation */
@@ -561,11 +561,16 @@
         /* Hero Section */
         .itinerary-hero {
             position: relative;
-            height: calc(100vh + 160px);
-            min-height: 760px;
+            height: 100vh;
+            width: 100vw;
+            min-height: 100vh;
+            margin-top: -80px;
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
             z-index: 1;
-            margin-top: -160px;
         }
 
         .itinerary-hero-bg {
@@ -575,49 +580,259 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.85);
         }
 
         .itinerary-hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, rgba(10, 25, 41, 0.5) 0%, rgba(10, 25, 41, 0.85) 100%);
+            background: radial-gradient(ellipse at center, rgba(10, 25, 41, 0.3) 0%, rgba(10, 25, 41, 0.7) 100%);
         }
 
-        /* Itinerary Day Accordion */
-        .itinerary-day {
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 165, 116, 0.25);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 1100px;
+            padding: 0 40px;
+            width: 100%;
+            margin-top: -60px;
         }
+
+        .hero-kicker {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(11px, 1vw, 13px);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+            opacity: 0;
+        }
+
+        .hero-kicker::before,
+        .hero-kicker::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            vertical-align: middle;
+            margin: 0 20px;
+        }
+
+        .hero-title-luxury {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 7.5vw, 85px);
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+            text-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+        }
+
+        .hero-title-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(16px, 2vw, 28px);
+            width: 100%;
+            margin: 0 auto 22px;
+        }
+
+        .hero-title-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-title-line span {
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+            font-weight: 300;
+        }
+
+        .text-gold {
+            color: var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 20px;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+            opacity: 0;
+        }
+
+        .hero-tagline-luxury {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(17px, 1.8vw, 24px);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            color: rgba(255, 255, 255, 0.92);
+            letter-spacing: 0.03em;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+        }
+
+        /* Itinerary Day Accordion - Glass Design with Sequential Animation */
+        .itinerary-day {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .itinerary-day.reveal-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sequential delay for each day - only during animation */
+        .itinerary-day.reveal-animate:nth-child(1) { transition-delay: 0s; }
+        .itinerary-day.reveal-animate:nth-child(2) { transition-delay: 0.15s; }
+        .itinerary-day.reveal-animate:nth-child(3) { transition-delay: 0.3s; }
+        .itinerary-day.reveal-animate:nth-child(4) { transition-delay: 0.45s; }
+        .itinerary-day.reveal-animate:nth-child(5) { transition-delay: 0.6s; }
+        .itinerary-day.reveal-animate:nth-child(6) { transition-delay: 0.75s; }
+        .itinerary-day.reveal-animate:nth-child(7) { transition-delay: 0.9s; }
+        .itinerary-day.reveal-animate:nth-child(8) { transition-delay: 1.05s; }
+        .itinerary-day.reveal-animate:nth-child(9) { transition-delay: 1.2s; }
+        .itinerary-day.reveal-animate:nth-child(10) { transition-delay: 1.35s; }
 
         .itinerary-day:hover {
-            box-shadow: 0 12px 40px rgba(212, 165, 116, 0.2),
-                        0 4px 16px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 80px rgba(212, 165, 116, 0.15);
+            transform: translateY(-6px) scale(1.01);
             border-color: rgba(212, 165, 116, 0.4);
         }
 
+        /* Ship Gallery Hover Effects */
+        .ship-gallery-main:hover {
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .ship-gallery-main:hover img {
+            transform: scale(1.05);
+        }
+
+        .ship-gallery-side:hover {
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .ship-gallery-side:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Ship Stat Cards Hover Effects */
+        .ship-stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 165, 116, 0.25);
+            border-color: rgba(212, 165, 116, 0.4);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 247, 244, 1) 100%);
+        }
+
+        .ship-stat-card:hover > div:first-child {
+            transform: scaleX(1);
+        }
+
+        /* Pricing Card Hover Effects */
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 165, 116, 0.2);
+            border-color: var(--gold);
+        }
+
+        .pricing-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Included Features Hover Effects */
+        .included-feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 50px rgba(212, 165, 116, 0.25);
+            border-color: var(--gold);
+        }
+
+        .included-feature:hover > div:first-child {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            transform: scale(1.1);
+        }
+
+        .included-feature:hover > div:first-child i {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Minimal Included Features Hover */
+        .included-feature-minimal:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(212, 165, 116, 0.2);
+            border-color: rgba(212, 165, 116, 0.3);
+        }
+
+        .included-feature-minimal:hover > div:first-child {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .included-feature-minimal:hover > div:first-child i {
+            color: white;
+            transform: scale(1.15);
+        }
+
+        /* Ship Tabs */
+        .ship-tab:hover:not(.active) {
+            background: rgba(212, 165, 116, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
         .itinerary-day-header {
-            padding: 28px 32px;
+            padding: 32px 36px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 247, 244, 1) 100%);
+            background: transparent;
         }
 
         .itinerary-day-header:hover {
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .itinerary-day.active .itinerary-day-header {
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(232, 194, 150, 0.1) 100%);
-            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+            background: rgba(212, 165, 116, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .itinerary-day-header h3 {
+            color: white;
+        }
+
+        .itinerary-day-header p {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .itinerary-day-content {
@@ -630,9 +845,17 @@
             max-height: 1000px;
         }
 
+        .itinerary-day-content p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .itinerary-day-content strong {
+            color: white;
+        }
+
         .itinerary-day-arrow {
             transition: transform 0.3s;
-            color: var(--gold);
+            color: var(--gold-light);
         }
 
         .itinerary-day.active .itinerary-day-arrow {
@@ -967,37 +1190,48 @@
                 padding-top: 0 !important;
             }
 
-            .itinerary-hero > div {
+            .hero-content {
                 padding: 0 20px !important;
+                margin-top: 0 !important;
             }
 
-            .itinerary-hero h1 {
-                font-size: 38px !important;
+            /* Hero kicker badge */
+            .hero-kicker {
+                font-size: 10px !important;
+                letter-spacing: 0.15em !important;
                 margin-bottom: 16px !important;
             }
 
-            .itinerary-hero p {
+            .hero-kicker::before,
+            .hero-kicker::after {
+                width: 25px !important;
+                margin: 0 12px !important;
+            }
+
+            /* Hero title */
+            .hero-title-luxury {
+                font-size: clamp(38px, 10vw, 52px) !important;
+                margin-bottom: 16px !important;
+            }
+
+            .hero-title-line {
+                gap: 10px !important;
+                margin: 0 auto 16px !important;
+            }
+
+            .hero-title-line span {
+                letter-spacing: 0.05em !important;
+            }
+
+            /* Hero divider */
+            .hero-divider {
+                margin: 0 auto 16px !important;
+            }
+
+            /* Hero tagline */
+            .hero-tagline-luxury {
                 font-size: 16px !important;
                 margin-bottom: 24px !important;
-            }
-
-            /* Hero Key Details Cards - Stack */
-            .itinerary-hero > div > div:last-child {
-                grid-template-columns: 1fr !important;
-                gap: 12px !important;
-                max-width: 100% !important;
-            }
-
-            .itinerary-hero > div > div:last-child > div {
-                padding: 18px 20px !important;
-            }
-
-            .itinerary-hero > div > div:last-child > div > div:first-child {
-                font-size: 10px !important;
-            }
-
-            .itinerary-hero > div > div:last-child > div > div:last-child {
-                font-size: 18px !important;
             }
 
             /* Breadcrumb - Adjust for mobile */
@@ -1669,135 +1903,297 @@
         <img src="itinerary.png" class="itinerary-hero-bg" alt="Mediterranean Cruise">
         <div class="itinerary-hero-overlay"></div>
 
-        <div style="position: relative; z-index: 10; max-width: 1280px; margin: 0 auto; padding: 160px 24px 0 24px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-            <!-- Breadcrumb -->
-            <div style="margin-bottom: 24px; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;">
-                <a href="/" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 13px;">Home</a>
-                <span style="color: rgba(255, 255, 255, 0.5); margin: 0 8px;">/</span>
-                <a href="/deals" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 13px;">Cruise Offers</a>
-                <span style="color: rgba(255, 255, 255, 0.5); margin: 0 8px;">/</span>
-                <span style="color: white; font-size: 13px;">Transatlantic Voyage</span>
-            </div>
-
-            <!-- Cruise Title -->
-            <h1 style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; color: white; margin-bottom: 16px; line-height: 1.1; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;">
-                <span style="color: var(--gold);">15-Night</span> Transatlantic Voyage
+        <div class="hero-content">
+            <div class="hero-kicker">Your Journey Awaits</div>
+            <h1 class="hero-title-luxury">
+                <div class="hero-title-line">
+                    <span>DISCOVER</span>
+                    <span>YOUR</span>
+                    <span>PERFECT</span>
+                </div>
+                <div class="hero-title-line">
+                    <span class="text-gold">VOYAGE</span>
+                </div>
             </h1>
-
-            <p style="font-size: 18px; color: rgba(255, 255, 255, 0.9); margin-bottom: 32px; max-width: 700px; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;">
-                Barcelona to Miami aboard the luxurious Regent Seven Seas Explorer
-            </p>
-
-            <!-- Key Details Cards -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both;">
-                <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.15) 100%); backdrop-filter: blur(30px); border: 1.5px solid rgba(212, 165, 116, 0.4); border-radius: 18px; padding: 24px 28px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);">
-                    <div style="font-size: 11px; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Departure</div>
-                    <div style="font-size: 22px; font-weight: 700; color: white;">18 May 2026</div>
-                </div>
-                <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.15) 100%); backdrop-filter: blur(30px); border: 1.5px solid rgba(212, 165, 116, 0.4); border-radius: 18px; padding: 24px 28px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);">
-                    <div style="font-size: 11px; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Duration</div>
-                    <div style="font-size: 22px; font-weight: 700; color: white;">15 Nights</div>
-                </div>
-                <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(232, 194, 150, 0.2) 100%); backdrop-filter: blur(30px); border: 2px solid rgba(212, 165, 116, 0.5); border-radius: 18px; padding: 24px 28px; box-shadow: 0 8px 32px rgba(212, 165, 116, 0.3);">
-                    <div style="font-size: 11px; color: rgba(255, 255, 255, 0.95); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 700;">From</div>
-                    <div style="font-size: 24px; font-weight: 800; color: white;">£4,299 <span style="font-size: 15px; font-weight: 600;">pp</span></div>
-                </div>
-            </div>
+            <div class="hero-divider"></div>
+            <p class="hero-tagline-luxury">Explore detailed itineraries for unforgettable journeys</p>
         </div>
     </section>
 
     <!-- Cruise Overview Section -->
-    <section style="background: white; padding: 80px 0; margin-top: -80px; border-radius: 40px 40px 0 0; position: relative; z-index: 20;">
+    <section style="background: url('images/promo-bg.png') center/cover fixed, white; padding: 100px 0 120px 0; margin-top: -80px; border-radius: 40px 40px 0 0; position: relative; z-index: 20;">
         <div class="max-w-7xl mx-auto px-6">
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;">
-                <!-- Left Column: Overview -->
-                <div>
-                    <h2 class="section-heading">Cruise Overview</h2>
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; align-items: start;">
+                <!-- Left Column: Overview with More Breathing Room -->
+                <div style="padding-right: 40px;">
+                    <h2 class="section-heading" style="font-family: 'Playfair Display', serif;">Cruise Overview</h2>
 
-                    <p style="font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 24px;">
+                    <p style="font-family: 'Lato', sans-serif; font-size: 18px; line-height: 1.9; color: #555; margin-bottom: 32px;">
                         Embark on an unforgettable 15-night transatlantic voyage from the vibrant streets of Barcelona to the sun-soaked shores of Miami. This epic journey crosses the Atlantic Ocean, visiting stunning ports in Spain, Portugal, Madeira, Bermuda, and Florida.
                     </p>
 
-                    <p style="font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 32px;">
+                    <p style="font-family: 'Lato', sans-serif; font-size: 18px; line-height: 1.9; color: #555; margin-bottom: 48px;">
                         Aboard the award-winning Regent Seven Seas Explorer, you'll experience the pinnacle of luxury cruising with all-inclusive amenities, gourmet dining, and personalized service that exceeds every expectation.
                     </p>
 
                     <!-- Highlights -->
-                    <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(232, 194, 150, 0.08) 100%); border-left: 4px solid var(--gold); padding: 28px 32px; border-radius: 12px; margin-bottom: 32px;">
-                        <h3 style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 20px;">Cruise Highlights</h3>
+                    <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(232, 194, 150, 0.08) 100%); border-left: 4px solid var(--gold); padding: 36px 40px; border-radius: 16px;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 24px;">Voyage Highlights</h3>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                            <li style="font-family: 'Lato', sans-serif; padding: 10px 0; color: #555; display: flex; align-items: start; gap: 14px; font-size: 16px; line-height: 1.7;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px; font-size: 18px;"></i>
                                 <span>Transatlantic crossing from Barcelona to Miami visiting Spain, Madeira, and Bermuda</span>
                             </li>
-                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                            <li style="font-family: 'Lato', sans-serif; padding: 10px 0; color: #555; display: flex; align-items: start; gap: 14px; font-size: 16px; line-height: 1.7;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px; font-size: 18px;"></i>
                                 <span>All-inclusive dining with unlimited specialty restaurants</span>
                             </li>
-                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                            <li style="font-family: 'Lato', sans-serif; padding: 10px 0; color: #555; display: flex; align-items: start; gap: 14px; font-size: 16px; line-height: 1.7;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px; font-size: 18px;"></i>
                                 <span>Complimentary shore excursions in every port of call</span>
                             </li>
-                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                            <li style="font-family: 'Lato', sans-serif; padding: 10px 0; color: #555; display: flex; align-items: start; gap: 14px; font-size: 16px; line-height: 1.7;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px; font-size: 18px;"></i>
                                 <span>Premium beverages including fine wines and champagne</span>
                             </li>
-                            <li style="padding: 8px 0; color: #555; display: flex; align-items: start; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 3px;"></i>
+                            <li style="font-family: 'Lato', sans-serif; padding: 10px 0; color: #555; display: flex; align-items: start; gap: 14px; font-size: 16px; line-height: 1.7;">
+                                <i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px; font-size: 18px;"></i>
                                 <span>Butler service in all suites for the ultimate luxury experience</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Right Column: Quick Info -->
+                <!-- Right Column: Floating Booking Card -->
                 <div>
-                    <div class="booking-sidebar">
-                        <h3 style="font-size: 26px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 28px; font-weight: 700;">Cruise Information</h3>
+                    <div class="booking-sidebar" style="box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(212, 165, 116, 0.15); position: sticky; top: 120px;">
+                        <h3 style="font-size: 28px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 32px; font-weight: 700;">Cruise Information</h3>
 
-                        <div style="margin-bottom: 20px;">
-                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Cruise Line</div>
-                            <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 40px; width: auto;">
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Cruise Line</div>
+                            <img src="https://www.sixstarcruises.co.uk/storage/media/2060693/conversions/RSSC-No-Tagline-Logo-Oct-2025.-banner_half.png" alt="Regent Seven Seas" style="height: 44px; width: auto;">
                         </div>
 
-                        <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.1);">
-                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Ship</div>
-                            <div style="font-size: 16px; font-weight: 600; color: var(--navy);">Seven Seas Explorer</div>
+                        <div style="margin-bottom: 24px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.08);">
+                            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Ship</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 17px; font-weight: 600; color: var(--navy);">Seven Seas Explorer</div>
                         </div>
 
-                        <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.1);">
-                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Departure Port</div>
-                            <div style="font-size: 16px; font-weight: 600; color: var(--navy);">Barcelona, Spain</div>
+                        <div style="margin-bottom: 24px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.08);">
+                            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Departure</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 17px; font-weight: 600; color: var(--navy);">Barcelona, Spain</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 14px; color: #999; margin-top: 4px;">18 May 2026</div>
                         </div>
 
-                        <div style="margin-bottom: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 0, 0, 0.1);">
-                            <div style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Return Port</div>
-                            <div style="font-size: 16px; font-weight: 600; color: var(--navy);">Miami, Florida, USA</div>
+                        <div style="margin-bottom: 32px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.08);">
+                            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Arrival</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 17px; font-weight: 600; color: var(--navy);">Miami, Florida</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 14px; color: #999; margin-top: 4px;">2 June 2026</div>
                         </div>
 
-                        <button class="booking-btn">
+                        <div style="background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid rgba(212, 165, 116, 0.2);">
+                            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700;">From Price</div>
+                            <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1;">£4,299<span style="font-size: 20px; font-weight: 400; color: #999;"> pp</span></div>
+                        </div>
+
+                        <button class="booking-btn" style="font-family: 'Montserrat', sans-serif;">
                             <i class="fas fa-calendar-check" style="margin-right: 10px;"></i>
                             Book Now
                         </button>
 
-                        <button style="width: 100%; padding: 16px; background: rgba(212, 165, 116, 0.12); color: var(--gold); border: 2px solid var(--gold); border-radius: 14px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 16px; transition: all 0.3s;">
+                        <button style="font-family: 'Montserrat', sans-serif; width: 100%; padding: 16px; background: rgba(212, 165, 116, 0.12); color: var(--gold); border: 2px solid var(--gold); border-radius: 14px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 14px; transition: all 0.3s;">
                             <i class="fas fa-phone" style="margin-right: 8px;"></i>
                             Request Callback
                         </button>
                     </div>
                 </div>
             </div>
+
+            <!-- Divider -->
+            <div style="padding-top: 120px; border-top: 1px solid rgba(212, 165, 116, 0.12); margin-top: 80px;"></div>
+
+            <!-- Pricing & Booking - Continues in same section -->
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 70px;">
+                <span style="font-family: 'Montserrat', sans-serif; color: var(--gold-light); font-size: clamp(11px, 1vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; display: inline-flex; align-items: center; margin-bottom: 24px;">
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-right: 24px;"></span>
+                    Select Your Suite
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-left: 24px;"></span>
+                </span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 52px); color: var(--navy); margin-top: 0; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;">Choose Your Perfect Accommodation</h2>
+                <p style="font-family: 'Lato', sans-serif; font-size: 17px; color: #666; margin-top: 24px; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.7;">All-inclusive luxury pricing with flights, excursions, and unlimited beverages</p>
+            </div>
+
+            <!-- Pricing Toggle -->
+            <div style="text-align: center; margin-bottom: 50px;">
+                <div style="display: inline-flex; background: rgba(212, 165, 116, 0.08); padding: 6px; border-radius: 50px; border: 1px solid rgba(212, 165, 116, 0.2);">
+                    <button class="price-toggle" data-type="person" style="font-family: 'Montserrat', sans-serif; padding: 12px 32px; background: white; color: var(--navy); border: none; border-radius: 50px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                        Per Person
+                    </button>
+                    <button class="price-toggle" data-type="total" style="font-family: 'Montserrat', sans-serif; padding: 12px 32px; background: transparent; color: #666; border: none; border-radius: 50px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s;">
+                        Total Price
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cabin Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 60px;">
+
+                <!-- Deluxe Veranda Suite -->
+                <div class="pricing-card" style="background: white; border: 2px solid rgba(212, 165, 116, 0.15); border-radius: 24px; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative;">
+                    <div style="position: relative; height: 220px; overflow: hidden;">
+                        <img src="images/itinerary/7.png" alt="Deluxe Veranda Suite" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                        <div style="position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; color: white; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Popular</div>
+                    </div>
+                    <div style="padding: 32px 28px;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 12px; font-weight: 600;">Deluxe Veranda Suite</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin-bottom: 24px; line-height: 1.6;">Spacious suite with private balcony and ocean views</p>
+
+                        <div style="display: flex; align-items: baseline; margin-bottom: 8px;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px;">Was</span>
+                            <span style="font-family: 'Lato', sans-serif; font-size: 18px; color: #999; text-decoration: line-through;">£6577</span>
+                        </div>
+
+                        <div style="display: flex; align-items: baseline; margin-bottom: 28px;">
+                            <span style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;" class="price-value" data-person="5485" data-total="10970">£5485</span>
+                            <span style="font-family: 'Lato', sans-serif; font-size: 16px; color: #999; margin-left: 6px;" class="price-suffix">pp</span>
+                        </div>
+
+                        <ul style="list-style: none; padding: 0; margin: 0 0 28px 0;">
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                350 sq ft with balcony
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                King-size bed
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                Walk-in closet
+                            </li>
+                        </ul>
+
+                        <button style="font-family: 'Montserrat', sans-serif; width: 100%; padding: 16px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; border: none; border-radius: 12px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(212, 165, 116, 0.3);">
+                            Select Suite
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Concierge Suite -->
+                <div class="pricing-card" style="background: white; border: 2px solid rgba(212, 165, 116, 0.15); border-radius: 24px; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative;">
+                    <div style="position: relative; height: 220px; overflow: hidden;">
+                        <img src="images/itinerary/8.png" alt="Concierge Suite" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    </div>
+                    <div style="padding: 32px 28px;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 12px; font-weight: 600;">Concierge Suite</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin-bottom: 24px; line-height: 1.6;">Enhanced service with personal concierge assistance</p>
+
+                        <div style="display: flex; align-items: baseline; margin-bottom: 8px;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px;">Was</span>
+                            <span style="font-family: 'Lato', sans-serif; font-size: 18px; color: #999; text-decoration: line-through;">£8974</span>
+                        </div>
+
+                        <div style="display: flex; align-items: baseline; margin-bottom: 28px;">
+                            <span style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;" class="price-value" data-person="6577" data-total="13154">£6577</span>
+                            <span style="font-family: 'Lato', sans-serif; font-size: 16px; color: #999; margin-left: 6px;" class="price-suffix">pp</span>
+                        </div>
+
+                        <ul style="list-style: none; padding: 0; margin: 0 0 28px 0;">
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                400 sq ft luxury suite
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                Priority reservations
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                Dedicated concierge
+                            </li>
+                        </ul>
+
+                        <button style="font-family: 'Montserrat', sans-serif; width: 100%; padding: 16px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; border: none; border-radius: 12px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(212, 165, 116, 0.3);">
+                            Select Suite
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Penthouse Suite -->
+                <div class="pricing-card" style="background: white; border: 2px solid var(--gold); border-radius: 24px; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; box-shadow: 0 12px 40px rgba(212, 165, 116, 0.15);">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); padding: 10px; text-align: center;">
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: white; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">✦ Best Value ✦</span>
+                    </div>
+                    <div style="position: relative; height: 220px; overflow: hidden; margin-top: 40px;">
+                        <img src="images/itinerary/9.png" alt="Penthouse Suite" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    </div>
+                    <div style="padding: 32px 28px;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 12px; font-weight: 600;">Penthouse Suite</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin-bottom: 24px; line-height: 1.6;">Ultimate luxury with expansive living spaces</p>
+
+                        <div style="display: flex; align-items: baseline; margin-bottom: 8px;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-right: 8px;">Was</span>
+                            <span style="font-family: 'Lato', sans-serif; font-size: 18px; color: #999; text-decoration: line-through;">£11466</span>
+                        </div>
+
+                        <div style="display: flex; align-items: baseline; margin-bottom: 28px;">
+                            <span style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;" class="price-value" data-person="8849" data-total="17698">£8849</span>
+                            <span style="font-family: 'Lato', sans-serif; font-size: 16px; color: #999; margin-left: 6px;" class="price-suffix">pp</span>
+                        </div>
+
+                        <ul style="list-style: none; padding: 0; margin: 0 0 28px 0;">
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                700+ sq ft penthouse
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                Butler service included
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin-bottom: 12px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 10px; font-size: 12px;"></i>
+                                Premium amenities
+                            </li>
+                        </ul>
+
+                        <button style="font-family: 'Montserrat', sans-serif; width: 100%; padding: 16px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; border: none; border-radius: 12px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(212, 165, 116, 0.3);">
+                            Select Suite
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Video Section - Compact -->
+            <div style="margin-top: 80px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+                <div style="position: relative; width: 100%; padding-top: 56.25%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                            src="https://www.youtube.com/embed/qPNPvaO1_Yc?autoplay=1&mute=1&loop=1&playlist=qPNPvaO1_Yc&controls=1&modestbranding=1&rel=0"
+                            title="Seven Seas Explorer - Virtual Tour"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); padding: 40px; text-align: center;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; color: white; margin-bottom: 12px; font-weight: 600;">Experience Seven Seas Explorer</h3>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 16px; color: rgba(255, 255, 255, 0.85); margin: 0;">Take a virtual tour of the world's most luxurious ship</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Itinerary Section -->
-    <section style="background: var(--cream); padding: 80px 0;">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Itinerary - Day by Day Section -->
+    <section style="background: url('images/pictorial.png') center center / cover; background-attachment: fixed; position: relative; padding: 80px 0; color: white;">
+        <div class="max-w-7xl mx-auto px-6" style="position: relative; z-index: 1;">
             <div style="text-align: center; margin-bottom: 60px;">
-                <span style="color: var(--gold); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Day by Day</span>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 52px; color: var(--navy); margin-top: 16px; font-weight: 800; line-height: 1.2;">Your Itinerary</h2>
-                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); margin: 20px auto; border-radius: 2px;"></div>
-                <p style="font-size: 17px; color: #666; margin-top: 20px; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+                <span style="font-family: 'Montserrat', sans-serif; color: var(--gold-light); font-size: clamp(11px, 1vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; display: inline-flex; align-items: center; position: relative; margin-bottom: 16px;">
+                    <span style="content: ''; display: inline-block; width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-right: 20px;"></span>
+                    Day by Day
+                    <span style="content: ''; display: inline-block; width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-left: 20px;"></span>
+                </span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); color: white; margin-top: 16px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; letter-spacing: 0.01em;">Your Itinerary</h2>
+                <p style="font-family: 'Lato', sans-serif; font-size: 18px; color: rgba(255, 255, 255, 0.8); margin-top: 20px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                     Discover the carefully planned journey that awaits you on this epic transatlantic voyage
                 </p>
             </div>
@@ -1810,8 +2206,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">1</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Barcelona, Spain</h3>
-                                <p style="font-size: 14px; color: #666;">Embarkation Day - Depart 7:00 PM</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Barcelona, Spain</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">Embarkation Day - Depart 7:00 PM</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -1822,9 +2218,9 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
                                 <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Barcelona" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85);">
                                     Begin your transatlantic adventure in the vibrant city of Barcelona. The infinite variety of street life, the nooks and crannies of the medieval Barri Gòtic, the ceramic tile and stained glass of Art Nouveau facades, Gaudí's masterpiece La Sagrada Família—Barcelona will capture your full attention. Explore the Gothic Quarter, stroll down La Rambla, and savor tapas before embarking on your epic ocean crossing.
                                 </p>
                             </div>
@@ -1838,8 +2234,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">2</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Cruising the Mediterranean Sea</h3>
-                                <p style="font-size: 14px; color: #666;">Day at Sea</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Cruising the Mediterranean Sea</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">Day at Sea</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -1850,8 +2246,8 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85);">
                                     Relax and enjoy a full day cruising through the beautiful Mediterranean Sea. Take advantage of the ship's world-class spa, attend enrichment lectures, or simply unwind on deck with a cocktail as you prepare for your Spanish coast arrival.
                                 </p>
                             </div>
@@ -1865,8 +2261,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">3</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Málaga, Spain</h3>
-                                <p style="font-size: 14px; color: #666;">8:00 AM - 6:00 PM</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Málaga, Spain</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">8:00 AM - 6:00 PM</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -1877,13 +2273,13 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
                                 <img src="https://www.sixstarcruises.co.uk/storage/media/1844082/conversions/ESAGP-Malaga-sunset-Quino-Al-banner_half.jpg" alt="Málaga" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 16px;">
                                     As you sail into Málaga, notice its idyllic setting on the famous Costa del Sol. This provincial capital sits between charming fishing villages to the east and vibrant coastal cities to the west. The Penibética Mountains provide a spectacular backdrop, sheltering the province from cold winds and creating a therapeutic climate. Málaga is the gateway to Andalusia's enchanting historic villages and the birthplace of Picasso.
                                 </p>
-                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
-                                    <strong style="color: var(--navy);">Complimentary Shore Excursion:</strong> Picasso Museum & Andalusian Old Town Walking Tour
+                                <div style="background: rgba(212, 175, 55, 0.15); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
+                                    <strong style="color: white;">Complimentary Shore Excursion:</strong> Picasso Museum & Andalusian Old Town Walking Tour
                                 </div>
                             </div>
                         </div>
@@ -1896,8 +2292,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">4</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Sailing the Atlantic Ocean</h3>
-                                <p style="font-size: 14px; color: #666;">Day at Sea</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Sailing the Atlantic Ocean</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">Day at Sea</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -1908,8 +2304,8 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85);">
                                     Enjoy a relaxing day at sea as we cross into the Atlantic Ocean. Take advantage of the ship's world-class amenities, from the Canyon Ranch SpaClub to enrichment lectures and cooking demonstrations. Unwind by the pool or indulge in afternoon tea as you watch the ocean horizons.
                                 </p>
                             </div>
@@ -1923,8 +2319,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">5</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Funchal, Madeira</h3>
-                                <p style="font-size: 14px; color: #666;">8:00 AM - 6:00 PM</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Funchal, Madeira</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">8:00 AM - 6:00 PM</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -1935,13 +2331,13 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
                                 <img src="https://www.sixstarcruises.co.uk/storage/media/1844003/conversions/PTFNC---Funchal,-Madeira,-Portugal---Photo-credit-Reinaldo-Garanito-banner_half.jpg" alt="Funchal" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 16px;">
                                     Formed by a volcanic eruption, Madeira lies in the Gulf Stream, about 500 miles due west of Casablanca. This beautiful Portuguese island is known for its dramatic landscapes, lush gardens, and fortified wine. Explore the colorful capital of Funchal with its charming old town, vibrant markets, and stunning botanical gardens perched on hillsides offering breathtaking ocean views.
                                 </p>
-                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
-                                    <strong style="color: var(--navy);">Complimentary Shore Excursion:</strong> Monte Palace Tropical Garden & Historic Funchal Walking Tour
+                                <div style="background: rgba(212, 175, 55, 0.15); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
+                                    <strong style="color: white;">Complimentary Shore Excursion:</strong> Monte Palace Tropical Garden & Historic Funchal Walking Tour
                                 </div>
                             </div>
                         </div>
@@ -1954,8 +2350,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;">6-10</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Transatlantic Crossing</h3>
-                                <p style="font-size: 14px; color: #666;">5 Days at Sea - Atlantic Ocean</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Transatlantic Crossing</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">5 Days at Sea - Atlantic Ocean</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -1966,8 +2362,8 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 16px;">
                                     Experience the romance and tranquility of a true transatlantic crossing. These five days at sea offer the ultimate luxury cruise experience with endless opportunities to relax, rejuvenate, and enjoy world-class entertainment and dining.
                                 </p>
                                 <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(232, 194, 150, 0.08) 100%); border-radius: 12px; padding: 20px; margin-top: 20px;">
@@ -1992,8 +2388,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;">11-12</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Hamilton, Bermuda</h3>
-                                <p style="font-size: 14px; color: #666;">2 Days - 8:00 AM - 10:00 PM each day</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Hamilton, Bermuda</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">2 Days - 8:00 AM - 10:00 PM each day</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -2004,16 +2400,16 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
                                 <img src="https://www.sixstarcruises.co.uk/storage/media/1938294/conversions/shutterstock_17077726-custom_banner-banner_half.jpg" alt="Hamilton, Bermuda" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 16px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 16px;">
                                     Spend two glorious days in Bermuda's charming capital. With its colorful pastel buildings, pink sand beaches, and crystal-clear turquoise waters, Hamilton offers a perfect blend of British colonial charm and island paradise. Explore the historic Royal Naval Dockyard, relax on world-famous Horseshoe Bay Beach, or discover the underwater wonders while snorkeling in the coral reefs.
                                 </p>
-                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold); margin-bottom: 16px;">
-                                    <strong style="color: var(--navy);">Day 11 Excursion:</strong> Crystal Caves & St. George's UNESCO World Heritage Town
+                                <div style="background: rgba(212, 175, 55, 0.15); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold); margin-bottom: 16px;">
+                                    <strong style="color: white;">Day 11 Excursion:</strong> Crystal Caves & St. George's UNESCO World Heritage Town
                                 </div>
-                                <div style="background: rgba(212, 175, 55, 0.1); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
-                                    <strong style="color: var(--navy);">Day 12 Excursion:</strong> Horseshoe Bay Beach Experience & Gibbs Hill Lighthouse
+                                <div style="background: rgba(212, 175, 55, 0.15); border-radius: 8px; padding: 16px; border-left: 3px solid var(--gold);">
+                                    <strong style="color: white;">Day 12 Excursion:</strong> Horseshoe Bay Beach Experience & Gibbs Hill Lighthouse
                                 </div>
                             </div>
                         </div>
@@ -2026,8 +2422,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;">13-14</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Sailing the Atlantic Ocean</h3>
-                                <p style="font-size: 14px; color: #666;">2 Days at Sea</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Sailing the Atlantic Ocean</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">2 Days at Sea</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -2038,8 +2434,8 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85);">
                                     As we approach the final leg of our transatlantic journey, enjoy two more days of pure luxury at sea. Reflect on your incredible voyage, savor farewell dinners in specialty restaurants, and prepare for your arrival in vibrant Miami.
                                 </p>
                             </div>
@@ -2053,8 +2449,8 @@
                         <div style="display: flex; align-items: center; gap: 24px;">
                             <div style="background: linear-gradient(135deg, var(--gold) 0%, #e8c296 100%); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0;">15</div>
                             <div>
-                                <h3 style="font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Miami, Florida</h3>
-                                <p style="font-size: 14px; color: #666;">Disembarkation - Arrive 7:00 AM</p>
+                                <h3 style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 4px;">Miami, Florida</h3>
+                                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">Disembarkation - Arrive 7:00 AM</p>
                             </div>
                         </div>
                         <div class="itinerary-day-arrow">
@@ -2065,9 +2461,9 @@
                     </div>
                     <div class="itinerary-day-content">
                         <div style="padding: 0 28px 28px 28px;">
-                            <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px;">
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px;">
                                 <img src="https://www.sixstarcruises.co.uk/storage/media/1844033/conversions/USMIA---Miami---Destination-Image-banner_half.jpg" alt="Miami" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                                <p style="font-size: 15px; line-height: 1.8; color: #555;">
+                                <p style="font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: rgba(255, 255, 255, 0.85);">
                                     Your unforgettable transatlantic voyage concludes in the sun-drenched Magic City. Disembark in Miami with memories of an epic ocean crossing, stunning ports of call, and the incomparable luxury of Regent Seven Seas Cruises. Consider extending your stay to explore Miami's vibrant Art Deco District, world-class shopping, and beautiful beaches.
                                 </p>
                             </div>
@@ -2078,46 +2474,361 @@
         </div>
     </section>
 
-    <!-- Ship Information Section -->
-    <section style="background: white; padding: 80px 0;">
+    <!-- What's Included & Ship Information Section - Merged with continuous promo-bg -->
+    <section style="background: url('images/promo-bg.png') center/cover fixed, white; padding: 120px 0 0 0; position: relative;">
         <div class="max-w-7xl mx-auto px-6">
+            <!-- What's Included Header -->
+            <div style="text-align: center; margin-bottom: 80px;">
+                <span style="font-family: 'Montserrat', sans-serif; color: var(--gold-light); font-size: clamp(11px, 1vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; display: inline-flex; align-items: center; margin-bottom: 24px;">
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-right: 24px;"></span>
+                    All-Inclusive Luxury
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-left: 24px;"></span>
+                </span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 56px); color: var(--navy); margin-top: 0; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">What's Included</h2>
+                <p style="font-family: 'Lato', sans-serif; font-size: clamp(16px, 1.8vw, 19px); color: #666; margin-top: 28px; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.8;">Truly all-inclusive. No hidden costs, no surprises—just exceptional value.</p>
+            </div>
+
+            <!-- Features - Minimalistic 2-Column Layout -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 80px; max-width: 1100px; margin: 0 auto 120px;">
+
+                <!-- Return Flights -->
+                <div class="included-feature-minimal" style="display: flex; gap: 28px; align-items: flex-start; padding: 48px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.1); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="flex-shrink: 0; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.4s;">
+                        <i class="fas fa-plane-departure" style="font-size: 28px; color: var(--gold); transition: all 0.4s;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 12px 0; font-weight: 600;">Return Flights</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 15px; color: #777; line-height: 1.8; margin: 0;">Business class flights from major UK airports with airport transfers included</p>
+                    </div>
+                </div>
+
+                <!-- Shore Excursions -->
+                <div class="included-feature-minimal" style="display: flex; gap: 28px; align-items: flex-start; padding: 48px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.1); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="flex-shrink: 0; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.4s;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 28px; color: var(--gold); transition: all 0.4s;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 12px 0; font-weight: 600;">Unlimited Excursions</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 15px; color: #777; line-height: 1.8; margin: 0;">Complimentary shore excursions in every port, from cultural tours to adventure activities</p>
+                    </div>
+                </div>
+
+                <!-- Gourmet Dining -->
+                <div class="included-feature-minimal" style="display: flex; gap: 28px; align-items: flex-start; padding: 48px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.1); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="flex-shrink: 0; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.4s;">
+                        <i class="fas fa-utensils" style="font-size: 28px; color: var(--gold); transition: all 0.4s;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 12px 0; font-weight: 600;">Gourmet Dining</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 15px; color: #777; line-height: 1.8; margin: 0;">Multiple specialty restaurants with open seating, no reservations required</p>
+                    </div>
+                </div>
+
+                <!-- Premium Beverages -->
+                <div class="included-feature-minimal" style="display: flex; gap: 28px; align-items: flex-start; padding: 48px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.1); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="flex-shrink: 0; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.4s;">
+                        <i class="fas fa-wine-glass-alt" style="font-size: 28px; color: var(--gold); transition: all 0.4s;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 12px 0; font-weight: 600;">Premium Beverages</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 15px; color: #777; line-height: 1.8; margin: 0;">Unlimited fine wines, champagne, spirits and cocktails throughout your voyage</p>
+                    </div>
+                </div>
+
+                <!-- WiFi & Gratuities -->
+                <div class="included-feature-minimal" style="display: flex; gap: 28px; align-items: flex-start; padding: 48px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.1); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="flex-shrink: 0; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.4s;">
+                        <i class="fas fa-wifi" style="font-size: 28px; color: var(--gold); transition: all 0.4s;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 12px 0; font-weight: 600;">WiFi & Gratuities</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 15px; color: #777; line-height: 1.8; margin: 0;">Complimentary WiFi and all staff gratuities included—stay connected worry-free</p>
+                    </div>
+                </div>
+
+                <!-- Room Service & Amenities -->
+                <div class="included-feature-minimal" style="display: flex; gap: 28px; align-items: flex-start; padding: 48px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.1); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="flex-shrink: 0; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.4s;">
+                        <i class="fas fa-concierge-bell" style="font-size: 28px; color: var(--gold); transition: all 0.4s;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); margin: 0 0 12px 0; font-weight: 600;">Luxury Services</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 15px; color: #777; line-height: 1.8; margin: 0;">24-hour room service, L'Occitane bath products, and entertainment included</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Ship Information - Continues in same section -->
+            <div style="padding-top: 80px; border-top: 1px solid rgba(212, 165, 116, 0.15);">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 80px;">
+                <span style="font-family: 'Montserrat', sans-serif; color: var(--gold-light); font-size: clamp(11px, 1vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; display: inline-flex; align-items: center; margin-bottom: 24px;">
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-right: 24px;"></span>
+                    Your Floating Resort
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-left: 24px;"></span>
+                </span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 64px); color: var(--navy); margin-top: 0; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">Seven Seas Explorer</h2>
+                <p style="font-family: 'Lato', sans-serif; font-size: clamp(16px, 1.8vw, 20px); color: #555; margin-top: 32px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 400;">Experience the pinnacle of maritime luxury aboard the most lavish ship ever built. Every detail has been meticulously crafted to exceed the expectations of the world's most discerning travelers.</p>
+            </div>
+
+            <!-- Ship Gallery - Asymmetric Layout -->
+            <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; margin-bottom: 100px;">
+                <!-- Main large image -->
+                <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; height: 100%;" class="ship-gallery-main">
+                    <img src="images/itinerary/1.png" alt="Seven Seas Explorer" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);">
+                        <h3 style="font-family: 'Playfair Display', serif; color: white; font-size: 28px; font-weight: 600; margin-bottom: 8px;">Exterior Excellence</h3>
+                        <p style="font-family: 'Lato', sans-serif; color: rgba(255, 255, 255, 0.85); font-size: 15px; margin: 0;">Elegant design meets ocean mastery</p>
+                    </div>
+                </div>
+
+                <!-- Side images stacked -->
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                    <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; flex: 1;" class="ship-gallery-side">
+                        <img src="images/itinerary/3.png" alt="Luxury Suite" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);">
+                            <h4 style="font-family: 'Playfair Display', serif; color: white; font-size: 20px; font-weight: 600; margin: 0;">Opulent Suites</h4>
+                        </div>
+                    </div>
+                    <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; flex: 1;" class="ship-gallery-side">
+                        <img src="images/itinerary/2.png" alt="Fine Dining" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);">
+                            <h4 style="font-family: 'Playfair Display', serif; color: white; font-size: 20px; font-weight: 600; margin: 0;">Culinary Excellence</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ship Features - Refined Stats -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto;">
+                <div class="ship-stat-card" style="text-align: center; padding: 48px 32px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.15); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+                    <div style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; line-height: 1;">750</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px;">Maximum</div>
+                    <div style="font-family: 'Lato', sans-serif; font-size: 15px; color: var(--navy); font-weight: 600;">Guests</div>
+                </div>
+
+                <div class="ship-stat-card" style="text-align: center; padding: 48px 32px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.15); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+                    <div style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; line-height: 1;">1:1.4</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px;">Exceptional</div>
+                    <div style="font-family: 'Lato', sans-serif; font-size: 15px; color: var(--navy); font-weight: 600;">Staff Ratio</div>
+                </div>
+
+                <div class="ship-stat-card" style="text-align: center; padding: 48px 32px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.15); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+                    <div style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; line-height: 1;">6</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px;">Gourmet</div>
+                    <div style="font-family: 'Lato', sans-serif; font-size: 15px; color: var(--navy); font-weight: 600;">Restaurants</div>
+                </div>
+
+                <div class="ship-stat-card" style="text-align: center; padding: 48px 32px; background: white; border-radius: 24px; border: 2px solid rgba(212, 165, 116, 0.15); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); transform: scaleX(0); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+                    <div style="font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; line-height: 1;">4</div>
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px;">Pristine</div>
+                    <div style="font-family: 'Lato', sans-serif; font-size: 15px; color: var(--navy); font-weight: 600;">Pools</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Explore the Ship - Tabbed Section -->
+    <section style="background: url('images/promo-bg.png') center/cover fixed, white; padding: 120px 0; position: relative;">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
             <div style="text-align: center; margin-bottom: 60px;">
-                <span style="color: var(--gold); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Your Floating Resort</span>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 52px; color: var(--navy); margin-top: 16px; font-weight: 800; line-height: 1.2;">Seven Seas Explorer</h2>
-                <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); margin: 20px auto; border-radius: 2px;"></div>
-                <p style="font-size: 17px; color: #666; margin-top: 20px; font-weight: 500;">The most luxurious ship ever built</p>
+                <span style="font-family: 'Montserrat', sans-serif; color: var(--gold-light); font-size: clamp(11px, 1vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; display: inline-flex; align-items: center; margin-bottom: 24px;">
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-right: 24px;"></span>
+                    Discover Onboard
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-left: 24px;"></span>
+                </span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 56px); color: var(--navy); margin-top: 0; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">Explore the Ship</h2>
             </div>
 
-            <!-- Ship Gallery -->
-            <div class="gallery-grid" style="margin-bottom: 60px;">
-                <div class="gallery-item">
-                    <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Ship Exterior">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.sixstarcruises.co.uk/storage/media/1843830/conversions/MCMCM-Monte-Carlo-red-coupe-on-road-Jannis-Lucas-banner_half.jpg" alt="Suite">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://www.sixstarcruises.co.uk/storage/media/1938335/conversions/cruise-to-barcelona-2-custom_banner-banner_half.jpg" alt="Dining">
+            <!-- Tabs -->
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 60px; flex-wrap: wrap;">
+                <button class="ship-tab active" data-tab="dining" style="font-family: 'Montserrat', sans-serif; padding: 16px 32px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; border: none; border-radius: 50px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(212, 165, 116, 0.3);">
+                    Dining
+                </button>
+                <button class="ship-tab" data-tab="entertainment" style="font-family: 'Montserrat', sans-serif; padding: 16px 32px; background: transparent; color: var(--navy); border: 2px solid rgba(212, 165, 116, 0.3); border-radius: 50px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s;">
+                    Entertainment
+                </button>
+                <button class="ship-tab" data-tab="wellness" style="font-family: 'Montserrat', sans-serif; padding: 16px 32px; background: transparent; color: var(--navy); border: 2px solid rgba(212, 165, 116, 0.3); border-radius: 50px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s;">
+                    Wellness
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content active" data-content="dining" style="display: block;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <img src="images/itinerary/4.png" alt="Dining" style="width: 100%; height: 500px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+                    </div>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 42px; color: var(--navy); margin-bottom: 24px; font-weight: 600; line-height: 1.2;">Gourmet Dining Experiences</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 17px; color: #666; line-height: 1.8; margin-bottom: 28px;">Indulge in world-class cuisine across six specialty restaurants, each offering a unique culinary journey. From French haute cuisine to authentic Italian trattorias, every meal is a celebration.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Compass Rose - Continental Cuisine
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Chartreuse - French Fine Dining
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Pacific Rim - Asian Fusion
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Prime 7 - Steakhouse Excellence
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Ship Features -->
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
-                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
-                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">750</div>
-                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Guests</div>
+            <div class="tab-content" data-content="entertainment" style="display: none;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <img src="images/itinerary/5.png" alt="Entertainment" style="width: 100%; height: 500px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+                    </div>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 42px; color: var(--navy); margin-bottom: 24px; font-weight: 600; line-height: 1.2;">World-Class Entertainment</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 17px; color: #666; line-height: 1.8; margin-bottom: 28px;">From Broadway-style productions to intimate piano bars, enjoy exceptional entertainment every evening. Our enrichment program features guest lecturers, cooking classes, and cultural performances.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Constellation Theater - Evening Shows
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Meridian Lounge - Live Music
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Casino & Gaming Lounge
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Enrichment Programs & Lectures
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
-                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">1:1.4</div>
-                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Staff Ratio</div>
+            </div>
+
+            <div class="tab-content" data-content="wellness" style="display: none;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <img src="images/itinerary/6.png" alt="Wellness" style="width: 100%; height: 500px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+                    </div>
+                    <div>
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 42px; color: var(--navy); margin-bottom: 24px; font-weight: 600; line-height: 1.2;">Wellness & Relaxation</h3>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 17px; color: #666; line-height: 1.8; margin-bottom: 28px;">Rejuvenate mind, body, and spirit at our world-class spa and fitness facilities. From Canyon Ranch spa treatments to jogging tracks with ocean views, wellness is woven into every day.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Canyon Ranch Spa & Salon
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                State-of-the-Art Fitness Center
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Yoga & Meditation Classes
+                            </li>
+                            <li style="font-family: 'Lato', sans-serif; font-size: 16px; color: #555; margin-bottom: 16px; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold); margin-right: 12px; font-size: 14px;"></i>
+                                Four Pools & Jacuzzis
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
-                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">6</div>
-                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Restaurants</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section style="background: url('images/promo-bg.png') center/cover fixed, white; padding: 120px 0; position: relative;">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="font-family: 'Montserrat', sans-serif; color: var(--gold-light); font-size: clamp(11px, 1vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; display: inline-flex; align-items: center; margin-bottom: 24px;">
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-right: 24px;"></span>
+                    Your Journey
+                    <span style="content: ''; display: inline-block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-left: 24px;"></span>
+                </span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 56px); color: var(--navy); margin-top: 0; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">Cruise Route Map</h2>
+                <p style="font-family: 'Lato', sans-serif; font-size: 17px; color: #666; margin-top: 24px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7;">Follow your luxurious voyage from Barcelona across the Atlantic to Miami</p>
+            </div>
+
+            <!-- Map Container -->
+            <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); background: #f5f5f5; position: relative;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d6548946.289580184!2d-42.13623168750001!3d35.523238950000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C%20Spain!3m2!1d41.3873974!2d2.168568!4m5!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL%2C%20USA!3m2!1d25.7616798!2d-80.1917902!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk"
+                        width="100%"
+                        height="600"
+                        style="border:0; display: block;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- Route Highlights -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 60px;">
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(232, 194, 150, 0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                        <i class="fas fa-ship" style="font-size: 24px; color: var(--gold);"></i>
+                    </div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 8px; font-weight: 600;">15 Nights</h4>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin: 0;">Transatlantic Voyage</p>
                 </div>
-                <div style="text-align: center; padding: 32px 24px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(232, 194, 150, 0.05) 100%); border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); transition: all 0.3s;">
-                    <div style="font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px;">4</div>
-                    <div style="font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Pools</div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(232, 194, 150, 0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                        <i class="fas fa-map-marker-alt" style="font-size: 24px; color: var(--gold);"></i>
+                    </div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 8px; font-weight: 600;">7 Ports</h4>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin: 0;">Exclusive Destinations</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(232, 194, 150, 0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                        <i class="fas fa-globe-americas" style="font-size: 24px; color: var(--gold);"></i>
+                    </div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 8px; font-weight: 600;">3,800 Miles</h4>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin: 0;">Atlantic Crossing</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(232, 194, 150, 0.1) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                        <i class="fas fa-anchor" style="font-size: 24px; color: var(--gold);"></i>
+                    </div>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 8px; font-weight: 600;">May 2026</h4>
+                    <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #777; margin: 0;">Departure Date</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Need Help Choosing CTA -->
+    <section style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); padding: 80px 0;">
+        <div class="max-w-7xl mx-auto px-6">
+            <div style="text-align: center;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 42px); color: white; margin-bottom: 20px; font-weight: 600;">Need Help Choosing?</h3>
+                <p style="font-family: 'Lato', sans-serif; font-size: 18px; color: rgba(255, 255, 255, 0.85); margin-bottom: 40px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto;">Our luxury cruise specialists are here to help you select the perfect suite for your journey</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <button style="font-family: 'Montserrat', sans-serif; padding: 18px 40px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: white; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(212, 165, 116, 0.4); display: inline-flex; align-items: center;">
+                        <i class="fas fa-phone" style="margin-right: 10px;"></i>
+                        0808 202 6105
+                    </button>
+                    <button style="font-family: 'Montserrat', sans-serif; padding: 18px 40px; background: transparent; color: white; border: 2px solid white; border-radius: 12px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center;">
+                        <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+                        Request a Quote
+                    </button>
                 </div>
             </div>
         </div>
@@ -2300,6 +3011,117 @@
             navIcons.forEach((icon) => {
                 icon.style.opacity = '1';
                 icon.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // ========== SEQUENTIAL REVEAL ANIMATION FOR ITINERARY DAYS ==========
+
+        // Intersection Observer for scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // When section header enters, reveal ALL cards sequentially
+                    const itineraryDays = document.querySelectorAll('.itinerary-day');
+                    itineraryDays.forEach(day => {
+                        day.classList.add('reveal-animate');
+                    });
+                    // Stop observing after animation triggered
+                    revealOnScroll.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe the section header, not individual cards
+        window.addEventListener('load', () => {
+            const itinerarySection = document.querySelector('section[style*="pictorial.png"]');
+            if (itinerarySection) {
+                revealOnScroll.observe(itinerarySection);
+            }
+        });
+
+        // Pricing Toggle Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButtons = document.querySelectorAll('.price-toggle');
+            const priceValues = document.querySelectorAll('.price-value');
+            const priceSuffixes = document.querySelectorAll('.price-suffix');
+
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const type = button.getAttribute('data-type');
+
+                    // Update button states
+                    toggleButtons.forEach(btn => {
+                        if (btn === button) {
+                            btn.style.background = 'white';
+                            btn.style.color = 'var(--navy)';
+                            btn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+                        } else {
+                            btn.style.background = 'transparent';
+                            btn.style.color = '#666';
+                            btn.style.boxShadow = 'none';
+                        }
+                    });
+
+                    // Update prices
+                    priceValues.forEach(priceEl => {
+                        const personPrice = priceEl.getAttribute('data-person');
+                        const totalPrice = priceEl.getAttribute('data-total');
+
+                        if (type === 'person') {
+                            priceEl.textContent = `£${personPrice}`;
+                        } else {
+                            priceEl.textContent = `£${totalPrice}`;
+                        }
+                    });
+
+                    // Update suffix
+                    priceSuffixes.forEach(suffix => {
+                        suffix.textContent = type === 'person' ? 'pp' : 'total';
+                    });
+                });
+            });
+
+            // Ship Tabs Functionality
+            const shipTabs = document.querySelectorAll('.ship-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            shipTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-tab');
+
+                    // Update tab buttons
+                    shipTabs.forEach(t => {
+                        if (t === tab) {
+                            t.classList.add('active');
+                            t.style.background = 'linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%)';
+                            t.style.color = 'white';
+                            t.style.border = 'none';
+                            t.style.boxShadow = '0 4px 16px rgba(212, 165, 116, 0.3)';
+                        } else {
+                            t.classList.remove('active');
+                            t.style.background = 'transparent';
+                            t.style.color = 'var(--navy)';
+                            t.style.border = '2px solid rgba(212, 165, 116, 0.3)';
+                            t.style.boxShadow = 'none';
+                        }
+                    });
+
+                    // Update tab content
+                    tabContents.forEach(content => {
+                        if (content.getAttribute('data-content') === tabName) {
+                            content.style.display = 'block';
+                            content.classList.add('active');
+                        } else {
+                            content.style.display = 'none';
+                            content.classList.remove('active');
+                        }
+                    });
+                });
             });
         });
     </script>

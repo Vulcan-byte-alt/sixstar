@@ -6,7 +6,15 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(python3:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(/tmp/deals_original.html)",
+      "Bash(cat:*)",
+      "Bash(for i in {5..27})",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(awk:*)",
+      "WebFetch(domain:www.silversea.com)"
     ],
     "deny": [],
     "ask": []

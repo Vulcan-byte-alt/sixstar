@@ -1,0 +1,218 @@
+[
+  {
+    "card_number": 1,
+    "title": "A Journey to Adriatic Wonders & Whispered Ancient Secrets",
+    "region": "Mediterranean",
+    "ship": "Luxury Vessel",
+    "current_image": "images/deals/brindisi-3310820.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. A Journey to Adriatic Wonders & Whispered Ancient Secrets. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 2,
+    "title": "Baltic Sea & Beyond",
+    "region": "Scandinavia",
+    "ship": "Oceania Marina",
+    "current_image": "images/deals/stockholm-sweden.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Baltic Sea & Beyond. Beautiful Scandinavia scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 3,
+    "title": "Spring In The Aegean",
+    "region": "Mediterranean",
+    "ship": "Seven Seas Splendor",
+    "current_image": "images/deals/istanbul.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Spring In The Aegean. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 4,
+    "title": "South Africa, Namibia & Cape Verde Cruise: Cape Town, Walvis Bay & Saint Helena",
+    "region": "Africa",
+    "ship": "Azamara Onward",
+    "current_image": "images/deals/cape-town.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. South Africa, Namibia & Cape Verde Cruise: Cape Town, Walvis Bay & Saint Helena. Beautiful Africa scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 5,
+    "title": "7-Day Jewels Of The Dalmatian Coast",
+    "region": "Mediterranean",
+    "ship": "Seabourn Quest",
+    "current_image": "images/deals/dubrovnik-street.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. 7-Day Jewels Of The Dalmatian Coast. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 6,
+    "title": "Fort Lauderdale to Bridgetown",
+    "region": "Caribbean",
+    "ship": "Crystal Serenity",
+    "current_image": "images/deals/san-juan.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Fort Lauderdale to Bridgetown. Beautiful Caribbean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 7,
+    "title": "A Grand Journey from Barcelona to Miami",
+    "region": "Caribbean",
+    "ship": "Explora I",
+    "current_image": "images/deals/tortola.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. A Grand Journey from Barcelona to Miami. Beautiful Caribbean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 8,
+    "title": "A Grand Journey from Andalusian Shores to Coral-Laden Lagoons",
+    "region": "Caribbean",
+    "ship": "Explora I",
+    "current_image": "images/deals/funchal-madeira.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. A Grand Journey from Andalusian Shores to Coral-Laden Lagoons. Beautiful Caribbean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 9,
+    "title": "Cairns to Darwin",
+    "region": "Australasia",
+    "ship": "Silver Nova",
+    "current_image": "images/deals/cairns-darwin.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Cairns to Darwin. Beautiful Australasia scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 10,
+    "title": "A Journey from Cliffs to Cathedrals",
+    "region": "Mediterranean",
+    "ship": "Explora II",
+    "current_image": "images/deals/nice.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. A Journey from Cliffs to Cathedrals. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 11,
+    "title": "Colorful East Coast",
+    "region": "North America",
+    "ship": "Allura",
+    "current_image": "images/deals/montreal.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Colorful East Coast. Beautiful North America scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 12,
+    "title": "10-Day Mediterranean Overture",
+    "region": "Mediterranean",
+    "ship": "Seabourn Ovation",
+    "current_image": "images/deals/monte-carlo.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. 10-Day Mediterranean Overture. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 13,
+    "title": "Athens to Civitavecchia",
+    "region": "Mediterranean",
+    "ship": "Silver Spirit",
+    "current_image": "images/deals/naples-capri.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Athens to Civitavecchia. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 14,
+    "title": "Discover Mediterranean Wonders",
+    "region": "Mediterranean",
+    "ship": "Luxury Vessel",
+    "current_image": "images/deals/greece.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Discover Mediterranean Wonders. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 15,
+    "title": "Historical echoes, a voyage from Larnaca to Athens",
+    "region": "Mediterranean",
+    "ship": "Luxury Vessel",
+    "current_image": "images/deals/greece.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Historical echoes, a voyage from Larnaca to Athens. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 16,
+    "title": "12-Day Amazon Delta & Coast Of Brazil",
+    "region": "South America",
+    "ship": "Seabourn Venture",
+    "current_image": "images/deals/salvador-brazil.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. 12-Day Amazon Delta & Coast Of Brazil. Beautiful South America scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 17,
+    "title": "Greece, Italy & France Cruise: Athens, Amalfi Coast & Nice",
+    "region": "Mediterranean",
+    "ship": "Azamara Journey",
+    "current_image": "images/deals/barcelona.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Greece, Italy & France Cruise: Athens, Amalfi Coast & Nice. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 18,
+    "title": "Chilean Fjords & Scenic Shores",
+    "region": "South America",
+    "ship": "Viking Octantis",
+    "current_image": "images/deals/chacabuco-chile.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Chilean Fjords & Scenic Shores. Beautiful South America scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 19,
+    "title": "New York City Round Trip",
+    "region": "North America",
+    "ship": "Crystal Serenity",
+    "current_image": "images/deals/new-york.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. New York City Round Trip. Beautiful North America scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 20,
+    "title": "13 Night Italy & Bermuda Transatlantic",
+    "region": "Bermuda",
+    "ship": "Celebrity Ascent",
+    "current_image": "images/deals/bermuda.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. 13 Night Italy & Bermuda Transatlantic. Beautiful Bermuda scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 21,
+    "title": "Monte Carlo to Civitavecchia",
+    "region": "Mediterranean",
+    "ship": "Silver Ray",
+    "current_image": "images/deals/naples-capri.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Monte Carlo to Civitavecchia. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 22,
+    "title": "Spotlight With Ancestry",
+    "region": "Mediterranean",
+    "ship": "Seven Seas Voyager",
+    "current_image": "images/deals/kotor-montenegro.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Spotlight With Ancestry. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 23,
+    "title": "Grand Continental Sojourn",
+    "region": "Asia & Indian Ocean",
+    "ship": "Seven Seas Navigator",
+    "current_image": "images/deals/mahe.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Grand Continental Sojourn. Beautiful Asia & Indian Ocean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 24,
+    "title": "Athens to Athens",
+    "region": "Mediterranean",
+    "ship": "Silver Whisper",
+    "current_image": "images/deals/syros.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Athens to Athens. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 25,
+    "title": "Athens to Civitavecchia",
+    "region": "Mediterranean",
+    "ship": "Silver Muse",
+    "current_image": "images/deals/rome-vatican.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Athens to Civitavecchia. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 26,
+    "title": "Bangkok, Bali & Beyond",
+    "region": "Asia & Indian Ocean",
+    "ship": "Viking Venus",
+    "current_image": "images/deals/port-klang.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. Bangkok, Bali & Beyond. Beautiful Asia & Indian Ocean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  },
+  {
+    "card_number": 27,
+    "title": "7 Night Tortola, San Juan & Puerto Plata",
+    "region": "Mediterranean",
+    "ship": "Luxury Vessel",
+    "current_image": "images/deals/miami.jpg",
+    "ai_prompt": "A stunning ultra-luxury cruise destination photograph. 7 Night Tortola, San Juan & Puerto Plata. Beautiful Mediterranean scenery with crystal clear waters, elegant coastal architecture, and golden hour lighting. Cinematic composition, professional travel photography, vibrant colors, 8K resolution, photorealistic. Focus on the natural beauty and luxury appeal of the destination."
+  }
+]
