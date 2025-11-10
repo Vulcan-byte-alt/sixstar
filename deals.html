@@ -4527,6 +4527,22 @@
                 padding: 24px 20px !important;
             }
 
+            /* Mobile menu width adjustments for smaller screens */
+            #navLinks.mobile-menu-open .nav-item-with-dropdown,
+            #navLinks.mobile-menu-open span,
+            #navLinks.mobile-menu-open a.nav-link,
+            #navLinks.mobile-menu-open .mobile-menu-info,
+            #navLinks>div:last-of-type {
+                max-width: 90vw !important;
+                min-width: 0 !important;
+                width: 100% !important;
+            }
+
+            #navLinks.mobile-menu-open a.nav-link {
+                padding: 14px 20px !important;
+                font-size: 15px !important;
+            }
+
             /* Newsletter */
             .newsletter-section .section-title {
                 font-size: 24px !important;
@@ -4535,6 +4551,306 @@
             /* Stats in testimonials */
             .testimonials-section>div:last-child>div:first-child>div div:first-child {
                 font-size: 40px !important;
+            }
+        }
+
+        /* Samsung S8+ and smaller screens - Width adjustments only */
+        @media (max-width: 400px) {
+            /* Prevent horizontal overflow */
+            body {
+                overflow-x: hidden !important;
+            }
+
+            /* Tighter container padding */
+            .max-w-7xl {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
+            /* Further compress hero content for very small screens */
+            .hero-content {
+                padding: 0 16px !important;
+            }
+
+            /* Compress main hero title even more */
+            .hero-title-luxury {
+                font-size: clamp(28px, 8vw, 42px) !important;
+                max-width: 90% !important;
+                gap: 6px !important;
+            }
+
+            .hero-title-line span {
+                font-size: 0.95em !important;
+                letter-spacing: 0.03em !important;
+            }
+
+            .hero-title-main {
+                font-size: 28px !important;
+            }
+
+            .hero-tagline {
+                font-size: 14px !important;
+            }
+
+            .hero-tagline-luxury {
+                font-size: 14px !important;
+            }
+
+            .hero-description {
+                font-size: 12px !important;
+                padding: 0 5px !important;
+            }
+
+            /* Stats bar even more compact */
+            .hero-content>div:last-child {
+                padding: 8px 12px !important;
+                gap: 16px !important;
+            }
+
+            .hero-content>div:last-child>div>div:first-child {
+                font-size: 18px !important;
+            }
+
+            .hero-content>div:last-child>div>div:last-child {
+                font-size: 8px !important;
+            }
+
+            /* Mobile menu narrower */
+            #navLinks.mobile-menu-open .nav-item-with-dropdown,
+            #navLinks.mobile-menu-open span,
+            #navLinks.mobile-menu-open a.nav-link,
+            #navLinks.mobile-menu-open .mobile-menu-info,
+            #navLinks>div:last-of-type {
+                max-width: 85vw !important;
+            }
+
+            #navLinks.mobile-menu-open a.nav-link {
+                padding: 12px 16px !important;
+                font-size: 14px !important;
+            }
+
+            /* Current Offers Section - Compress for 360px screens */
+
+            /* Ensure proper box-sizing for all elements */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box !important;
+            }
+
+            /* Main section container */
+            section[style*="padding: 80px 0"] {
+                padding: 40px 8px 60px 8px !important;
+            }
+
+            /* Max-width container */
+            .max-w-7xl {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            /* Grid container for sidebar and main content */
+            section[style*="padding: 80px 0"] > div > div[style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 !important;
+            }
+
+            /* Current Offers header section */
+            main > div:first-child {
+                padding: 0 4px !important;
+                margin-bottom: 20px !important;
+            }
+
+            #current-offers-heading {
+                padding: 0 !important;
+                text-align: center !important;
+            }
+
+            #current-offers-heading h2 {
+                font-size: 20px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 8px !important;
+            }
+
+            #current-offers-heading p {
+                font-size: 11px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* Sort dropdown wrapper */
+            #sort-dropdown-wrapper {
+                width: 100% !important;
+                margin-top: 12px !important;
+            }
+
+            #sort-dropdown-wrapper select,
+            #sort-dropdown-wrapper .custom-dropdown-selected {
+                width: 100% !important;
+                font-size: 12px !important;
+                padding: 8px 10px !important;
+            }
+
+            /* Filter button */
+            #mobile-filter-btn {
+                font-size: 12px !important;
+                padding: 10px 14px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Aside filter section */
+            aside {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Main content area */
+            main {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            /* Deal cards grid */
+            main > div:last-child {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            /* Individual deal cards */
+            article[data-deal-id] {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                border-radius: 16px !important;
+            }
+
+            /* Deal card image container */
+            article[data-deal-id] > div:first-child {
+                width: 100% !important;
+                height: 200px !important;
+                border-radius: 16px 16px 0 0 !important;
+            }
+
+            article[data-deal-id] > div:first-child img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            /* Deal card badges */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"] {
+                padding: 4px 8px !important;
+                font-size: 9px !important;
+                border-radius: 6px !important;
+            }
+
+            /* Deal card content */
+            article[data-deal-id] > div:last-child {
+                padding: 14px 12px !important;
+                width: 100% !important;
+            }
+
+            /* Deal card title */
+            article[data-deal-id] h3 {
+                font-size: 16px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* Deal card info text */
+            article[data-deal-id] > div:last-child > div:nth-child(2),
+            article[data-deal-id] > div:last-child > div:nth-child(3) {
+                font-size: 11px !important;
+                margin-bottom: 8px !important;
+            }
+
+            /* Deal card icons and labels */
+            article[data-deal-id] i {
+                font-size: 10px !important;
+            }
+
+            /* Like button container - fix oval shape, keep perfect circle */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="right"] {
+                width: 36px !important;
+                height: 36px !important;
+                min-width: 36px !important;
+                min-height: 36px !important;
+                max-width: 36px !important;
+                max-height: 36px !important;
+                padding: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="right"] i {
+                font-size: 14px !important;
+            }
+
+            /* Floating price card - prevent oval/circle shape, keep rectangle */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] {
+                border-radius: 12px !important;
+                min-height: auto !important;
+                height: auto !important;
+            }
+
+            /* USP section */
+            article[data-deal-id] > div:last-child > div[style*="gap: 12px"] {
+                gap: 8px !important;
+                flex-wrap: wrap !important;
+            }
+
+            article[data-deal-id] > div:last-child > div[style*="gap: 12px"] > div {
+                font-size: 10px !important;
+                padding: 6px 10px !important;
+            }
+
+            /* Price section */
+            article[data-deal-id] > div:last-child > div[style*="border-top"] {
+                padding-top: 12px !important;
+                margin-top: 12px !important;
+            }
+
+            /* Price display */
+            article[data-deal-id] [style*="font-size: 14px"][style*="text-decoration: line-through"] {
+                font-size: 12px !important;
+            }
+
+            article[data-deal-id] [style*="font-size: 32px"],
+            article[data-deal-id] [style*="font-size: 36px"] {
+                font-size: 24px !important;
+            }
+
+            article[data-deal-id] [style*="font-size: 16px"][style*="color: #666"] {
+                font-size: 11px !important;
+            }
+
+            /* Buttons in cards */
+            article[data-deal-id] button,
+            article[data-deal-id] a[style*="padding"] {
+                font-size: 12px !important;
+                padding: 10px 14px !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            /* View Details button */
+            article[data-deal-id] a[href*="view-offer"] {
+                padding: 10px 14px !important;
+                font-size: 12px !important;
+            }
+
+            /* Enquire Now button */
+            article[data-deal-id] button[onclick*="openEnquiryModal"] {
+                padding: 10px 14px !important;
+                font-size: 12px !important;
             }
         }
 
@@ -4789,17 +5105,27 @@
 
             /* Mobile hero title sizing */
             .hero-title-luxury {
-                font-size: clamp(38px, 10vw, 52px) !important;
+                font-size: clamp(32px, 9vw, 48px) !important;
                 margin-bottom: 16px !important;
+                max-width: 95% !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 8px !important;
             }
 
             .hero-title-line {
-                gap: 10px !important;
-                margin: 0 auto 16px !important;
+                display: contents !important;
             }
 
             .hero-title-line span {
-                letter-spacing: 0.05em !important;
+                letter-spacing: 0.04em !important;
+                white-space: normal !important;
+            }
+
+            /* Keep CRUISE and OFFERS together */
+            .hero-title-line:first-child span:last-child::after {
+                content: '\00A0' !important;
             }
 
             .hero-kicker {
@@ -5049,52 +5375,54 @@
                 width: 100% !important;
             }
 
-            /* Scale down hero content for mobile */
+            /* Scale down hero content for mobile - More Compressed */
             .hero-content>div:first-child {
-                font-size: 10px !important;
-                padding: 8px 18px !important;
-                margin-bottom: 16px !important;
+                font-size: 9px !important;
+                padding: 6px 14px !important;
+                margin-bottom: 12px !important;
             }
 
             .hero-content>div:first-child svg {
-                width: 14px !important;
-                height: 14px !important;
+                width: 12px !important;
+                height: 12px !important;
             }
 
             .hero-title-main {
-                font-size: 38px !important;
-                margin-bottom: 16px !important;
+                font-size: 32px !important;
+                margin-bottom: 12px !important;
+                line-height: 1.1 !important;
             }
 
             .hero-tagline {
-                font-size: 16px !important;
-                margin-bottom: 14px !important;
+                font-size: 15px !important;
+                margin-bottom: 12px !important;
+                line-height: 1.3 !important;
             }
 
             .hero-description {
-                font-size: 14px !important;
-                line-height: 1.5 !important;
+                font-size: 13px !important;
+                line-height: 1.4 !important;
                 max-width: 100% !important;
-                padding: 0 10px !important;
-                margin-bottom: 24px !important;
+                padding: 0 8px !important;
+                margin-bottom: 20px !important;
             }
 
-            /* Scale down stats bar */
+            /* Scale down stats bar - More Compact */
             .hero-content>div:last-child {
-                padding: 12px 20px !important;
-                gap: 24px !important;
+                padding: 10px 16px !important;
+                gap: 20px !important;
             }
 
             .hero-content>div:last-child>div>div:first-child {
-                font-size: 22px !important;
+                font-size: 20px !important;
             }
 
             .hero-content>div:last-child>div>div:last-child {
-                font-size: 10px !important;
+                font-size: 9px !important;
             }
 
             .hero-content>div:last-child>div[style*="width: 1px"] {
-                height: 30px !important;
+                height: 28px !important;
             }
 
             /* Mobile Filter Toggle - Show on mobile */
