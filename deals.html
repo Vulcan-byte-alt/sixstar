@@ -1381,11 +1381,15 @@
         }
 
         @media (max-width: 768px) {
-            /* Fix promo background flickering on mobile - disable fixed attachment */
+            /* Fix promo background flickering/lazy loading on mobile - disable fixed attachment */
             section[style*="background-attachment: fixed"],
             div[style*="background-attachment: fixed"],
             *[style*="background-attachment: fixed"] {
                 background-attachment: scroll !important;
+                -webkit-transform: translate3d(0, 0, 0) !important;
+                transform: translate3d(0, 0, 0) !important;
+                -webkit-backface-visibility: hidden !important;
+                backface-visibility: hidden !important;
             }
 
             .custom-dropdown-selected:active {
@@ -4645,11 +4649,15 @@
                 box-sizing: border-box !important;
             }
 
-            /* Fix promo background flickering on mobile - disable fixed attachment */
+            /* Fix promo background flickering/lazy loading on mobile - disable fixed attachment */
             section[style*="background-attachment: fixed"],
             div[style*="background-attachment: fixed"],
             *[style*="background-attachment: fixed"] {
                 background-attachment: scroll !important;
+                -webkit-transform: translate3d(0, 0, 0) !important;
+                transform: translate3d(0, 0, 0) !important;
+                -webkit-backface-visibility: hidden !important;
+                backface-visibility: hidden !important;
             }
 
             /* Main section container */
