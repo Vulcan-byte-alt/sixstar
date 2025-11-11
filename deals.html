@@ -1381,6 +1381,13 @@
         }
 
         @media (max-width: 768px) {
+            /* Fix promo background flickering on mobile - disable fixed attachment */
+            section[style*="background-attachment: fixed"],
+            div[style*="background-attachment: fixed"],
+            *[style*="background-attachment: fixed"] {
+                background-attachment: scroll !important;
+            }
+
             .custom-dropdown-selected:active {
                 transform: scale(0.95);
             }
@@ -4636,6 +4643,13 @@
             *::before,
             *::after {
                 box-sizing: border-box !important;
+            }
+
+            /* Fix promo background flickering on mobile - disable fixed attachment */
+            section[style*="background-attachment: fixed"],
+            div[style*="background-attachment: fixed"],
+            *[style*="background-attachment: fixed"] {
+                background-attachment: scroll !important;
             }
 
             /* Main section container */
