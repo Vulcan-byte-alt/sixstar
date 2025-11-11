@@ -1381,6 +1381,22 @@
         }
 
         @media (max-width: 768px) {
+            /* Fix choppy/laggy scrolling on mobile */
+            html, body {
+                -webkit-overflow-scrolling: touch !important;
+                overflow-scrolling: touch !important;
+            }
+
+            body {
+                -webkit-transform: translateZ(0) !important;
+                transform: translateZ(0) !important;
+            }
+
+            * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+
             .custom-dropdown-selected:active {
                 transform: scale(0.95);
             }
