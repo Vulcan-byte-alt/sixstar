@@ -4744,11 +4744,42 @@
                 object-fit: cover !important;
             }
 
-            /* Deal card badges */
-            article[data-deal-id] > div:first-child > div[style*="position: absolute"] {
+            /* Deal card badges - ONLY top badges, NOT bottom price card */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="top"] {
                 padding: 4px 8px !important;
                 font-size: 9px !important;
                 border-radius: 6px !important;
+            }
+
+            /* Floating price card smaller */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] {
+                bottom: 12px !important;
+                left: 12px !important;
+                right: 12px !important;
+                padding: 12px 16px !important;
+            }
+
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] p {
+                font-size: 10px !important;
+                margin-bottom: 4px !important;
+            }
+
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] span[style*="font-size: 30px"] {
+                font-size: 24px !important;
+            }
+
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] span[style*="font-size: 14px"] {
+                font-size: 12px !important;
+            }
+
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] span[style*="font-size: 15px"] {
+                font-size: 13px !important;
+            }
+
+            /* Discount badge in price card */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] > div > div:last-child {
+                padding: 8px 14px !important;
+                font-size: 10px !important;
             }
 
             /* Deal card content */
@@ -4776,29 +4807,39 @@
                 font-size: 10px !important;
             }
 
-            /* Like button container - fix oval shape, keep perfect circle */
-            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="right"] {
-                width: 36px !important;
-                height: 36px !important;
-                min-width: 36px !important;
-                min-height: 36px !important;
-                max-width: 36px !important;
-                max-height: 36px !important;
-                padding: 0 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-
-            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="right"] i {
-                font-size: 14px !important;
-            }
-
-            /* Floating price card - prevent oval/circle shape, keep rectangle */
-            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="bottom"] {
-                border-radius: 12px !important;
+            /* Duration badge - more compact for small screens */
+            article[data-deal-id] > div:last-child > div:first-child > div:last-child {
+                padding: 4px 8px !important;
                 min-height: auto !important;
                 height: auto !important;
+            }
+
+            article[data-deal-id] > div:last-child > div:first-child > div:last-child > div:first-child {
+                font-size: 7px !important;
+                letter-spacing: 0.8px !important;
+                margin-bottom: 1px !important;
+                line-height: 1.2 !important;
+            }
+
+            article[data-deal-id] > div:last-child > div:first-child > div:last-child > div:last-child {
+                font-size: 12px !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Cruise line logos - reduce size for smaller screens */
+            article[data-deal-id] img[alt*="Journeys"],
+            article[data-deal-id] img[alt*="Cruises"],
+            article[data-deal-id] img[alt*="Silversea"],
+            article[data-deal-id] img[alt*="Regent"],
+            article[data-deal-id] img[alt*="Seabourn"],
+            article[data-deal-id] img[alt*="Oceania"],
+            article[data-deal-id] img[alt*="Azamara"],
+            article[data-deal-id] img[alt*="Viking"],
+            article[data-deal-id] img[alt*="Celebrity"],
+            article[data-deal-id] img[style*="max-height"] {
+                max-height: 24px !important;
+                max-width: 120px !important;
+                width: auto !important;
             }
 
             /* USP section */
@@ -4837,20 +4878,58 @@
             article[data-deal-id] a[style*="padding"] {
                 font-size: 12px !important;
                 padding: 10px 14px !important;
-                width: 100% !important;
                 text-align: center !important;
             }
 
-            /* View Details button */
+            /* View Details button - wider, no wrapping */
             article[data-deal-id] a[href*="view-offer"] {
                 padding: 10px 14px !important;
                 font-size: 12px !important;
+                width: 60% !important;
+                white-space: nowrap !important;
             }
 
-            /* Enquire Now button */
+            /* Enquire Now button - narrower */
             article[data-deal-id] button[onclick*="openEnquiryModal"] {
                 padding: 10px 14px !important;
                 font-size: 12px !important;
+                width: 38% !important;
+            }
+
+            /* Heart button - keep circular shape */
+            article[data-deal-id] .heart-button {
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                max-width: 40px !important;
+                max-height: 40px !important;
+            }
+
+            /* Also target via attribute selector for heart/like button - only top-right positioned, not bottom price card */
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="right"][style*="top"] {
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                max-width: 40px !important;
+                max-height: 40px !important;
+            }
+
+            /* Heart icon - match desktop size */
+            article[data-deal-id] .heart-button .heart-icon {
+                width: 24px !important;
+                height: 24px !important;
+                min-width: 24px !important;
+                min-height: 24px !important;
+            }
+
+            article[data-deal-id] > div:first-child > div[style*="position: absolute"][style*="right"][style*="top"] svg,
+            article[data-deal-id] .heart-button svg {
+                width: 24px !important;
+                height: 24px !important;
+                min-width: 24px !important;
+                min-height: 24px !important;
             }
         }
 
