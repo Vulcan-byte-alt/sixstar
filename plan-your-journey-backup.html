@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Journey - Backup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0a1929;
+            --gold: #d4af37;
+            --cream: #f9f7f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f9f7f4;
+        }
+
+        /* Section Title Styles */
+        .section-label {
+            color: var(--gold);
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 2.8px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 500;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: 0.01em;
+        }
+
+        /* Filter Button Styles */
+        .luxury-filter-btn {
+            padding: 10px 26px;
+            background: white;
+            color: var(--navy);
+            border: none;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(6, 46, 66, 0.06);
+        }
+
+        .luxury-filter-btn.active {
+            background: var(--navy);
+            color: white;
+            box-shadow: 0 2px 6px rgba(6, 46, 66, 0.12);
+        }
+
+        .luxury-filter-btn:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        /* Planning Grid - 3 Column Layout */
+        .planning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .planning-grid .destination-card {
+            grid-column: span 1;
+        }
+
+        .planning-grid .destination-card-inner {
+            height: 460px !important;
+            min-height: 460px !important;
+            max-height: 460px !important;
+        }
+
+        /* Destination Grid - Masonry Pattern */
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Row 1: Wide + Narrow Pattern */
+        .destination-grid .destination-card:nth-child(1) {
+            grid-column: span 4;
+        }
+
+        .destination-grid .destination-card:nth-child(2) {
+            grid-column: span 2;
+        }
+
+        /* Row 2: Narrow + Wide Pattern (Reversed) */
+        .destination-grid .destination-card:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        .destination-grid .destination-card:nth-child(4) {
+            grid-column: span 4;
+        }
+
+        /* Row 3: Two Medium Cards (Balanced) */
+        .destination-grid .destination-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        .destination-grid .destination-card:nth-child(6) {
+            grid-column: span 3;
+        }
+
+        /* Destination Card Styles */
+        .destination-card {
+            position: relative;
+            background: #000;
+            border-radius: 0;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 1px 3px rgba(6, 46, 66, 0.03), 0 8px 24px rgba(6, 46, 66, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .destination-card.hidden {
+            display: none;
+        }
+
+        .destination-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            pointer-events: none;
+            z-index: 10;
+            transition: border-color 0.4s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(6, 46, 66, 0.04), 0 12px 32px rgba(6, 46, 66, 0.1);
+        }
+
+        .destination-card:hover::after {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .destination-card-inner {
+            position: relative;
+            width: 100%;
+            height: 460px;
+            min-height: 460px;
+            max-height: 460px;
+            overflow: hidden;
+            background: #000;
+            flex-shrink: 0;
+        }
+
+        /* All cards same height for intentional masonry pattern */
+        .destination-grid .destination-card .destination-card-inner,
+        .destination-card-inner[style*="height: 540px"] {
+            height: 460px !important;
+            min-height: 460px !important;
+            max-height: 460px !important;
+        }
+
+        /* Subtle minimal overlay */
+        .destination-card-inner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0.15) 50%,
+                    rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .destination-card:hover .destination-card-inner::before {
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0.1) 50%,
+                    rgba(0, 0, 0, 0.45) 100%);
+        }
+
+        .destination-card-inner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+            filter: brightness(1.08) contrast(1.06);
+            display: block;
+        }
+
+        .destination-card:hover .destination-card-inner img {
+            transform: scale(1.02);
+            filter: brightness(1.1) contrast(1.08);
+        }
+
+        .destination-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 28px !important;
+            z-index: 2;
+            color: white;
+        }
+
+        .destination-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            color: rgba(212, 175, 55, 1);
+            display: inline-block;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 16px;
+            border-left: 2px solid rgba(212, 175, 55, 0.9);
+        }
+
+        .destination-title {
+            font-family: 'Cinzel', serif;
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .destination-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.92;
+            margin-bottom: 20px;
+            font-weight: 300;
+            max-width: 90%;
+            letter-spacing: 0.03em;
+        }
+
+        .destination-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 1;
+            padding: 0;
+            max-width: fit-content;
+            margin-top: 12px;
+            position: relative;
+            padding-left: 48px;
+        }
+
+        .destination-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .destination-link:hover {
+            gap: 11px;
+            opacity: 1;
+        }
+
+        .destination-link:hover::before {
+            width: 38px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .destination-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .destination-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .planning-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .destination-grid .destination-card {
+                grid-column: span 1 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .planning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-grid .destination-card {
+                grid-column: span 1 !important;
+            }
+
+            .destination-card-inner,
+            .planning-grid .destination-card-inner {
+                height: 380px !important;
+                min-height: 380px !important;
+                max-height: 380px !important;
+            }
+
+            .destination-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Plan Your Journey -->
+    <section class="destination-section"
+        style="background: url('images/promo-bg.png') center center / cover; background-attachment: fixed; padding: 100px 0 !important;">
+        <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+            <div class="reveal" style="text-align: center; margin-bottom: 68px;">
+                <span class="section-label"
+                    style="color: var(--gold); font-size: 11.5px; font-weight: 700; letter-spacing: 2.8px;">Voyages</span>
+                <h2 class="section-title" style="color: var(--navy); margin-bottom: 14px;">Plan Your Journey</h2>
+                <p
+                    style="font-size: 15px; line-height: 1.65; color: rgba(10, 25, 41, 0.6); max-width: 520px; margin: 0 auto 30px;">
+                    Curated experiences for the discerning traveler</p>
+
+                <!-- Planning Filter Buttons -->
+                <div id="planningFilters" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    <button class="luxury-filter-btn active" data-filter="all">All</button>
+                    <button class="luxury-filter-btn" data-filter="2026">2026</button>
+                    <button class="luxury-filter-btn" data-filter="2027">2027</button>
+                    <button class="luxury-filter-btn" data-filter="2028">2028</button>
+                    <button class="luxury-filter-btn" data-filter="expedition">Expedition</button>
+                    <button class="luxury-filter-btn" data-filter="resources">Resources</button>
+                </div>
+            </div>
+
+            <!-- Planning Grid -->
+            <div class="planning-grid reveal" id="planningGrid">
+                <!-- 2026 Luxury Cruises -->
+                <div class="destination-card" data-category="2026 luxury">
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/2026.png" alt="2026 Luxury Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">BOOK NOW FOR 2026</p>
+                            <h3 class="destination-title">2026 Collection</h3>
+                            <p class="destination-description">Reserve your exclusive voyage today</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2027 Luxury Cruises -->
+                <div class="destination-card" data-category="2027 luxury">
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/2027.png" alt="2027 Luxury Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">EARLY BOOKING SAVINGS</p>
+                            <h3 class="destination-title">2027 Collection</h3>
+                            <p class="destination-description">Secure exceptional value with advance planning</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2028 Luxury Cruises -->
+                <div class="destination-card" data-category="2028 luxury">
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/2028.png" alt="2028 Luxury Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">PLAN AHEAD</p>
+                            <h3 class="destination-title">2028 Collection</h3>
+                            <p class="destination-description">Experience tomorrow's finest journeys</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury Expedition Cruises -->
+                <div class="destination-card" data-category="luxury">
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/expedition.jpeg" alt="Expedition Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">ADVENTURE AWAITS</p>
+                            <h3 class="destination-title">Expedition Voyages</h3>
+                            <p class="destination-description">Venture beyond the ordinary</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Latest Travel Advice -->
+                <div class="destination-card" data-category="resources">
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/advice.jpeg" alt="Travel Advice">
+                        <div class="destination-content">
+                            <p class="destination-label">STAY INFORMED</p>
+                            <h3 class="destination-title">Travel Insights</h3>
+                            <p class="destination-description">Essential guidance for seamless travel</p>
+                            <a href="#" class="destination-link">
+                                Read More
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SixStarCruises Brochure -->
+                <div class="destination-card" data-category="resources">
+                    <div class="destination-card-inner">
+                        <img src="images/best-cruise/brochure.png" alt="Cruise Brochure">
+                        <div class="destination-content">
+                            <p class="destination-label">COMPLIMENTARY</p>
+                            <h3 class="destination-title">Digital Brochure</h3>
+                            <p class="destination-description">Browse our curated collection</p>
+                            <a href="#" class="destination-link">
+                                Download
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Discover Extraordinary Places -->
+    <section class="destination-section"
+        style="background: url('images/promo-bg.png') center center / cover; background-attachment: fixed; padding: 100px 0 !important;">
+        <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+            <!-- Minimal Centered Header -->
+            <div class="reveal" style="text-align: center; margin-bottom: 68px;">
+                <span class="section-label"
+                    style="color: var(--gold); font-size: 11.5px; font-weight: 700; letter-spacing: 2.8px;">Destinations</span>
+                <h2 class="section-title" style="color: var(--navy); margin-bottom: 14px;">Discover Extraordinary Places
+                </h2>
+                <p
+                    style="font-size: 15px; line-height: 1.65; color: rgba(10, 25, 41, 0.6); max-width: 520px; margin: 0 auto 30px;">
+                    Explore the world's most captivating destinations</p>
+
+                <!-- Minimal Filter Buttons -->
+                <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;"
+                    id="destinationFilters">
+                    <button class="luxury-filter-btn active" data-filter="all">All</button>
+                    <button class="luxury-filter-btn" data-filter="caribbean">Caribbean</button>
+                    <button class="luxury-filter-btn" data-filter="europe">Europe</button>
+                    <button class="luxury-filter-btn" data-filter="expedition">Expedition</button>
+                    <button class="luxury-filter-btn" data-filter="uk">UK Cruises</button>
+                </div>
+            </div>
+
+            <!-- Clean 2-Column Grid -->
+            <div class="destination-grid reveal" id="destinationGrid">
+                <!-- Luxury Cruises from the UK -->
+                <div class="destination-card" data-category="uk">
+                    <div class="destination-card-inner">
+                        <img src="images/destination/uk.png" alt="UK Cruises">
+                        <div class="destination-content">
+                            <p class="destination-label">NO-FLY CRUISES</p>
+                            <h3 class="destination-title">UK Departures</h3>
+                            <p class="destination-description">Seamless luxury voyages from home</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury Caribbean Cruises -->
+                <div class="destination-card" data-category="caribbean">
+                    <div class="destination-card-inner">
+                        <img src="images/destination/carribean.png" alt="Caribbean">
+                        <div class="destination-content">
+                            <p class="destination-label">TROPICAL PARADISE</p>
+                            <h3 class="destination-title">The Caribbean</h3>
+                            <p class="destination-description">Pristine islands and timeless elegance</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury Mediterranean Cruises -->
+                <div class="destination-card" data-category="europe">
+                    <div class="destination-card-inner">
+                        <img src="images/destination/greece.png" alt="Mediterranean">
+                        <div class="destination-content">
+                            <p class="destination-label">CLASSIC DESTINATIONS</p>
+                            <h3 class="destination-title">The Mediterranean</h3>
+                            <p class="destination-description">Ancient cultures and azure coastlines</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury European Cruises -->
+                <div class="destination-card" data-category="europe">
+                    <div class="destination-card-inner">
+                        <img src="images/destination/venice.png" alt="Europe">
+                        <div class="destination-content">
+                            <p class="destination-label">CULTURAL IMMERSION</p>
+                            <h3 class="destination-title">European Ports</h3>
+                            <p class="destination-description">Timeless heritage and refined sophistication</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alaska & Norwegian Fjords -->
+                <div class="destination-card" data-category="expedition europe">
+                    <div class="destination-card-inner">
+                        <img src="images/destination/alaska.png" alt="Alaska">
+                        <div class="destination-content">
+                            <p class="destination-label">WILD BEAUTY</p>
+                            <h3 class="destination-title">Alaska</h3>
+                            <p class="destination-description">Untamed wilderness and natural grandeur</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury Baltic Cruises -->
+                <div class="destination-card" data-category="europe">
+                    <div class="destination-card-inner">
+                        <img src="images/destination/stockholm.png" alt="Baltic">
+                        <div class="destination-content">
+                            <p class="destination-label">NORTHERN WONDERS</p>
+                            <h3 class="destination-title">The Baltics</h3>
+                            <p class="destination-description">Aurora skies and enchanting summer nights</p>
+                            <a href="#" class="destination-link">
+                                Explore
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Planning Filter Functionality
+        function initPlanningFilters() {
+            const filterContainer = document.getElementById('planningFilters');
+            if (!filterContainer) return;
+
+            const filterBtns = filterContainer.querySelectorAll('.luxury-filter-btn');
+            const planningCards = document.querySelectorAll('#planningGrid .destination-card');
+
+            if (!filterBtns.length || !planningCards.length) return;
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                    });
+
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    // Get filter value
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Filter cards with smooth animation
+                    planningCards.forEach((card, index) => {
+                        const categories = card.getAttribute('data-category');
+
+                        // Show all if filter is 'all', otherwise check if category matches
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            setTimeout(() => {
+                                card.classList.remove('hidden');
+                            }, index * 50);
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Destination Filter Functionality
+        function initDestinationFilters() {
+            const filterContainer = document.getElementById('destinationFilters');
+            if (!filterContainer) return;
+
+            const filterBtns = filterContainer.querySelectorAll('.luxury-filter-btn');
+            const cruiseCards = document.querySelectorAll('#destinationGrid .destination-card');
+
+            if (!filterBtns.length || !cruiseCards.length) return;
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                    });
+
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    // Get filter value
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Filter cards with smooth animation
+                    cruiseCards.forEach((card, index) => {
+                        const categories = card.getAttribute('data-category');
+
+                        // Show all if filter is 'all', otherwise check if category matches
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            setTimeout(() => {
+                                card.classList.remove('hidden');
+                            }, index * 50);
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize both filters on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initPlanningFilters();
+            initDestinationFilters();
+        });
+    </script>
+
+</body>
+</html>

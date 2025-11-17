@@ -14,7 +14,20 @@
       "Bash(echo:*)",
       "Bash(done)",
       "Bash(awk:*)",
-      "WebFetch(domain:www.silversea.com)"
+      "WebFetch(domain:www.silversea.com)",
+      "WebFetch(domain:)",
+      "Bash(git stash:*)",
+      "WebFetch(domain:daily-dev-tips.com)",
+      "WebFetch(domain:www.w3schools.com)",
+      "Bash(/tmp/mobile_overlay.txt)",
+      "Bash(/tmp/hero_section.txt)",
+      "Bash(/tmp/cruise_holiday_section.txt)",
+      "Bash(/tmp/deals_before_header.txt)",
+      "Bash(/tmp/deals_after_hero.txt)",
+      "Bash(/tmp/deals_new.html)",
+      "Bash(/tmp/fab_script.txt)",
+      "Bash(/tmp/mobile_menu_script.txt)",
+      "Bash(/tmp/itinerary_new.html)"
     ],
     "deny": [],
     "ask": []
