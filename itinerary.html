@@ -3897,6 +3897,19 @@
             display: block;
         }
 
+        /* Ensure inline display:block from JS overrides the default */
+        #content-overview[style*="display: block"],
+        #content-itinerary[style*="display: block"],
+        #content-dining[style*="display: block"],
+        #content-ship[style*="display: block"] {
+            display: block !important;
+        }
+
+        /* Desktop tab gap */
+        div[style*="overflow-x: auto"] > div[style*="display: flex"] {
+            gap: 8px;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -6248,10 +6261,142 @@
 
             .award-name {
                 font-size: 14px;
+                text-align: center !important;
+                line-height: 1.3 !important;
             }
 
             .award-desc {
                 font-size: 11px;
+                text-align: center !important;
+            }
+
+            /* Center all award items on mobile (including expanded ones) */
+            .award-item {
+                margin: 0 auto !important;
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .award-item[style*="display: none"] {
+                display: none !important;
+            }
+
+            .award-item[style*="display: block"] {
+                display: flex !important;
+            }
+
+            .award-item .award-image-box {
+                margin: 0 auto !important;
+            }
+
+            /* ========== Sign Up for Exclusive Deals Section Mobile ========== */
+
+            /* Target the sign up section by structure */
+            section[style*="background: white"] > div[style*="max-width: 1280px"] > div[style*="display: flex"][style*="justify-content: space-between"] {
+                flex-direction: column !important;
+                gap: 24px !important;
+                text-align: center !important;
+            }
+
+            /* Sign up heading */
+            section[style*="background: white"] h2[style*="font-size: 30px"] {
+                font-size: 24px !important;
+                line-height: 1.4 !important;
+                text-align: center !important;
+            }
+
+            /* Email form container - stack vertically */
+            section[style*="background: white"] div[style*="flex: 1"][style*="display: flex"][style*="gap: 16px"] {
+                flex-direction: column !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+
+            /* Email input - full width */
+            section[style*="background: white"] input[type="email"] {
+                width: 100% !important;
+                padding: 14px 20px !important;
+                font-size: 14px !important;
+            }
+
+            /* Submit button - full width */
+            section[style*="background: white"] button[style*="background: var(--navy)"] {
+                width: 100% !important;
+                padding: 14px 24px !important;
+                white-space: normal !important;
+            }
+
+            /* ========== Sticky Action Bar - Mobile Redesign ========== */
+
+            #stickyActionBar {
+                padding: 12px 16px !important;
+            }
+
+            /* Change grid to vertical stack on mobile */
+            #stickyActionBar > div > div[style*="grid-template-columns"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            /* Price display - compact on mobile */
+            #stickyActionBar div[style*="padding: 12px 24px"] {
+                padding: 10px 16px !important;
+                width: 100% !important;
+                justify-content: space-between !important;
+            }
+
+            #stickyActionBar div[style*="font-size: 32px"] {
+                font-size: 24px !important;
+            }
+
+            #stickyActionBar div[style*="font-size: 10px"] {
+                font-size: 9px !important;
+                color: var(--gold) !important;
+            }
+
+            /* "pp" text - change to gold */
+            #stickyActionBar span[style*="font-size: 14px"][style*="color: #999"] {
+                color: var(--gold) !important;
+            }
+
+            /* Action buttons container */
+            #stickyActionBar > div > div > div[style*="display: flex"][style*="gap: 12px"] {
+                width: 100% !important;
+                gap: 6px !important;
+                flex-wrap: wrap !important;
+            }
+
+            /* Individual action buttons - smaller on mobile but keep text */
+            #stickyActionBar button[style*="padding: 14px"] {
+                padding: 10px 12px !important;
+                font-size: 10px !important;
+                flex: 1 1 auto !important;
+                min-width: 0 !important;
+                white-space: nowrap !important;
+                gap: 6px !important;
+            }
+
+            #stickyActionBar button i {
+                font-size: 12px !important;
+            }
+
+            /* Price slider button */
+            #stickyActionBar button[onclick*="togglePricingView"] {
+                padding: 8px !important;
+            }
+
+            /* ========== World Travel Holdings Logo - Center on Mobile ========== */
+
+            /* Center the WTH logo perfectly */
+            img[src*="wth-logo.png"],
+            img[alt*="World Travel Holdings"] {
+                margin-left: auto !important;
+                margin-right: auto !important;
+                display: block !important;
             }
 
             .destination-card-inner {
@@ -7618,8 +7763,925 @@
 
         @media (max-width: 768px) {
             .itinerary-hero {
-                height: 80vh;
-                min-height: 600px;
+                height: auto !important;
+                min-height: 100vh !important;
+                padding-bottom: 40px !important;
+                width: 100vw !important;
+                left: 0 !important;
+                right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            /* Hero Background Image - Full viewport width */
+            .itinerary-hero-bg {
+                width: 100vw !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                left: 0 !important;
+                right: 0 !important;
+            }
+
+            /* Hero Content Container - Mobile */
+            .itinerary-hero > div {
+                padding: 80px 16px 40px 16px !important;
+                margin-top: 0 !important;
+                max-width: 100% !important;
+            }
+
+            /* Main Hero Title - Mobile */
+            .itinerary-hero h1 {
+                font-size: 22px !important;
+                margin-bottom: 24px !important;
+                white-space: normal !important;
+                line-height: 1.3 !important;
+                text-align: center !important;
+                overflow: visible !important;
+            }
+
+            .itinerary-hero h1 span {
+                display: inline !important;
+            }
+
+            /* Logo and Price Grid - Stack vertically, each spanning width of 2 info cards */
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                margin-bottom: 24px !important;
+                max-width: 100% !important;
+            }
+
+            /* Logo Container - Span width of 2 cards (full row) */
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:first-child {
+                width: 100% !important;
+                padding: 20px !important;
+                justify-content: center !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:first-child img {
+                height: 40px !important;
+            }
+
+            /* Price Container - Span width of 2 cards (full row) */
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:nth-child(2) {
+                width: 100% !important;
+                padding: 20px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:nth-child(2) > div:last-child {
+                font-size: 26px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:nth-child(2) > div:last-child span {
+                font-size: 12px !important;
+            }
+
+            /* Info Grid - Compact 2x2 luxury grid */
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 8px !important;
+                margin-bottom: 24px !important;
+                max-width: 100% !important;
+            }
+
+            /* Info Cards - Minimal, refined styling */
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div {
+                padding: 12px 10px !important;
+                border-radius: 10px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                min-height: 70px !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            }
+
+            /* Labels - Minimal and refined */
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div > div:first-child {
+                font-size: 8px !important;
+                margin-bottom: 6px !important;
+                letter-spacing: 1.5px !important;
+                opacity: 0.85 !important;
+            }
+
+            /* Content - Compact but readable */
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div > div:last-child {
+                font-size: 13px !important;
+                font-weight: 600 !important;
+                line-height: 1.3 !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div > div:last-child span {
+                font-size: 13px !important;
+            }
+
+            /* Route Card - Compact horizontal arrow */
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div:first-child > div:last-child {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 6px !important;
+                flex-wrap: wrap !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div:first-child > div:last-child span {
+                margin-right: 0 !important;
+                font-size: 12px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div:first-child > div:last-child i {
+                transform: none !important;
+                font-size: 11px !important;
+                color: var(--gold) !important;
+            }
+
+            /* Action Buttons - Stack vertically */
+            .itinerary-hero > div > div:last-child {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 12px !important;
+            }
+
+            .itinerary-hero > div > div:last-child button {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 16px 24px !important;
+                font-size: 14px !important;
+            }
+
+            .itinerary-hero > div > div:last-child button i {
+                font-size: 14px !important;
+            }
+        }
+
+        /* Extra styles for smaller devices like S8+ */
+        @media (max-width: 400px) {
+            .itinerary-hero > div {
+                padding: 80px 12px 40px 12px !important;
+            }
+
+            .itinerary-hero h1 {
+                font-size: 19px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] {
+                gap: 10px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:first-child,
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:nth-child(2) {
+                padding: 16px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: 255px 255px 1fr 1fr"] > div:nth-child(2) > div:last-child {
+                font-size: 22px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                gap: 6px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div {
+                padding: 10px 8px !important;
+                min-height: 65px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div > div:first-child {
+                font-size: 7px !important;
+                margin-bottom: 5px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div > div:last-child,
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div > div:last-child span {
+                font-size: 12px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div:first-child > div:last-child span {
+                font-size: 11px !important;
+            }
+
+            .itinerary-hero div[style*="grid-template-columns: repeat(4, 1fr)"] > div:first-child > div:last-child i {
+                font-size: 10px !important;
+            }
+
+            .itinerary-hero > div > div:last-child button {
+                padding: 14px 20px !important;
+                font-size: 13px !important;
+            }
+        }
+
+        /* Tab Navigation - Mobile */
+        @media (max-width: 768px) {
+            /* Tab container - Grid layout to fit all tabs */
+            div[style*="overflow-x: auto"] {
+                overflow-x: visible !important;
+            }
+
+            div[style*="overflow-x: auto"] > div[style*="display: flex"] {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 8px !important;
+                padding: 0 8px !important;
+            }
+
+            /* Tab buttons - Compact to fit 4 tabs */
+            .itinerary-tab {
+                font-size: 11px !important;
+                padding: 14px 12px !important;
+                letter-spacing: 0.2px !important;
+                min-width: auto !important;
+                flex-shrink: 1 !important;
+                white-space: normal !important;
+                text-align: center !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Tab content area - Mobile */
+            .tab-content > div[style*="grid-template-columns"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 32px !important;
+            }
+
+            /* Overview section - Mobile */
+            #content-overview h2,
+            #content-itinerary h2,
+            #content-dining h2,
+            #content-ship h2 {
+                font-size: 28px !important;
+                margin-bottom: 16px !important;
+                line-height: 1.2 !important;
+            }
+
+            #content-overview h3,
+            #content-itinerary h3,
+            #content-dining h3,
+            #content-ship h3 {
+                font-size: 20px !important;
+                margin-bottom: 16px !important;
+                margin-top: 32px !important;
+            }
+
+            #content-overview p,
+            #content-itinerary p,
+            #content-dining p,
+            #content-ship p {
+                font-size: 15px !important;
+                line-height: 1.7 !important;
+                margin-bottom: 24px !important;
+            }
+
+            /* Highlight cards - Mobile */
+            .tab-content div[style*="border-left: 4px solid"] {
+                padding: 16px !important;
+                gap: 12px !important;
+            }
+
+            .tab-content div[style*="border-left: 4px solid"] i {
+                font-size: 16px !important;
+            }
+
+            .tab-content div[style*="border-left: 4px solid"] strong {
+                font-size: 14px !important;
+            }
+
+            .tab-content div[style*="border-left: 4px solid"] + div {
+                font-size: 14px !important;
+            }
+
+            /* Itinerary day cards - Mobile */
+            .tab-content div[style*="padding: 24px"] {
+                padding: 16px !important;
+            }
+
+            /* Sidebar - Mobile (now stacks below) */
+            .tab-content > div[style*="grid-template-columns"] > div:last-child {
+                order: 2 !important;
+            }
+
+            /* Cabin cards grid - Mobile 2 columns */
+            div[style*="display: grid"][style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+
+            /* Cabin option cards - Mobile */
+            .cabin-option {
+                padding: 14px 10px !important;
+            }
+
+            .cabin-option div[style*="font-size: 18px"] {
+                font-size: 15px !important;
+            }
+
+            .cabin-option div[style*="font-size: 13px"] {
+                font-size: 11px !important;
+            }
+
+            .cabin-option div[style*="font-size: 14px"] {
+                font-size: 12px !important;
+            }
+
+            /* Guest selection buttons - Mobile */
+            div[style*="gap: 16px"] > button[style*="padding: 16px 32px"] {
+                padding: 14px 24px !important;
+                font-size: 13px !important;
+            }
+
+            /* CTA buttons - Mobile */
+            button[style*="padding: 18px 40px"] {
+                padding: 16px 32px !important;
+                font-size: 14px !important;
+                width: 100% !important;
+            }
+
+            button[style*="padding: 18px 32px"] {
+                padding: 16px 28px !important;
+                font-size: 14px !important;
+                width: 100% !important;
+            }
+
+            /* Ship amenities grid - Mobile single column */
+            div[style*="grid-template-columns: repeat(2, 1fr)"][style*="gap: 20px"] {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            /* Your Journey Awaits Section - Mobile */
+
+            /* Timeline - Vertical on mobile with connecting line */
+            section.promo-section > div > div[style*="max-width: 1000px"] {
+                max-width: 100% !important;
+                margin-bottom: 40px !important;
+            }
+
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 24px !important;
+                align-items: flex-start !important;
+                padding-left: 0px !important;
+                position: relative !important;
+            }
+
+            /* Vertical timeline line */
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="position: absolute"] {
+                position: absolute !important;
+                top: 0 !important;
+                left: 26px !important;
+                width: 2px !important;
+                height: 100% !important;
+                background: linear-gradient(to bottom, var(--gold) 0%, var(--gold) 100%) !important;
+            }
+
+            /* Day markers wrapper - horizontal layout: dot on left, content on right */
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] > div {
+                display: grid !important;
+                grid-template-columns: auto 1fr !important;
+                grid-template-rows: auto auto auto !important;
+                gap: 0 16px !important;
+                align-items: start !important;
+                text-align: left !important;
+                flex: 1 !important;
+                margin-left: 0 !important;
+                padding-left: 0 !important;
+            }
+
+            /* Dot on the timeline - first column, spans all rows */
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] > div > div:first-child {
+                grid-column: 1 !important;
+                grid-row: 1 / 4 !important;
+                margin: 0 !important;
+                justify-self: start !important;
+            }
+
+            /* Day number - second column, first row */
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] > div > div:nth-child(2) {
+                grid-column: 2 !important;
+                grid-row: 1 !important;
+                font-size: 9px !important;
+                margin-bottom: 4px !important;
+                text-align: left !important;
+            }
+
+            /* Day title - second column, second row */
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] > div > div:nth-child(3) {
+                grid-column: 2 !important;
+                grid-row: 2 !important;
+                font-size: 16px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 8px !important;
+                text-align: left !important;
+            }
+
+            /* Image - second column, third row */
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] > div > img {
+                grid-column: 2 !important;
+                grid-row: 3 !important;
+            }
+
+            section.promo-section > div > div[style*="max-width: 1000px"] > div[style*="display: flex"] > div > div:last-child br {
+                display: none !important;
+            }
+
+            /* Hide duplicate image gallery on mobile */
+            div[style*="grid-template-columns: repeat(5, 1fr)"][style*="gap: 16px"] {
+                display: none !important;
+            }
+
+            /* Journey day cards - Full width (hidden but keeping styles for consistency) */
+            .day-card {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .day-card img {
+                height: 250px !important;
+            }
+
+            .day-overlay h3 {
+                font-size: 18px !important;
+            }
+
+            .day-description h3 {
+                font-size: 18px !important;
+            }
+
+            .day-description p {
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Show day images aligned with headings on mobile */
+            .day-mobile-image {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                margin-top: 0 !important;
+                margin-left: 0 !important;
+            }
+
+            /* Complete Itinerary Section - Mobile Redesign */
+
+            /* Two column layout to single column on mobile */
+            div[style*="grid-template-columns: 1fr 400px"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0 !important;
+            }
+
+            /* Port Display - Fixed at top, sticky */
+            #portDisplay {
+                order: 1 !important;
+                width: 100% !important;
+                position: sticky !important;
+                top: 0 !important;
+                z-index: 10 !important;
+                margin-bottom: 24px !important;
+            }
+
+            /* Image container - full height with proper object-fit */
+            #portImageContainer {
+                height: 250px !important;
+            }
+
+            #portImage {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            #portInfo {
+                padding: 20px !important;
+            }
+
+            #portName {
+                font-size: 22px !important;
+                margin-bottom: 8px !important;
+            }
+
+            #portDescription {
+                font-size: 13px !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Timeline sidebar - below image, full width */
+            div[style*="background: rgba(255, 255, 255, 0.65)"][style*="backdrop-filter"] {
+                order: 2 !important;
+                width: 100% !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
+            }
+
+            /* Show toggle buttons on mobile - compact design */
+            #listViewBtn,
+            #timelineViewBtn {
+                padding: 10px 12px !important;
+                font-size: 9px !important;
+                letter-spacing: 0.8px !important;
+            }
+
+            div[style*="background: rgba(255, 255, 255, 0.7)"][style*="backdrop-filter"][style*="padding: 6px"] {
+                margin-bottom: 20px !important;
+                padding: 4px !important;
+            }
+
+            /* Timeline container - default list view on mobile */
+            #timelineContainer {
+                display: flex !important;
+                flex-direction: column !important;
+                max-height: none !important;
+                overflow-y: visible !important;
+                overflow-x: visible !important;
+                gap: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            /* Mobile Timeline View - Horizontal scrollable */
+            #timelineContainer.mobile-timeline-view {
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                gap: 20px !important;
+                padding-bottom: 16px !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+
+            /* Port items - List view (default) elegant card design for mobile */
+            .port-item {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 16px !important;
+                padding: 18px 16px !important;
+                margin-bottom: 16px !important;
+                background: rgba(255, 255, 255, 0.6) !important;
+                border-radius: 12px !important;
+                border: 1px solid rgba(212, 165, 116, 0.25) !important;
+                box-shadow: 0 2px 12px rgba(10, 25, 41, 0.06) !important;
+                transition: all 0.3s ease !important;
+                cursor: pointer !important;
+            }
+
+            .port-item:active {
+                background: linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(212, 165, 116, 0.1) 100%) !important;
+                box-shadow: 0 4px 20px rgba(212, 165, 116, 0.25) !important;
+                transform: translateY(-2px) !important;
+                border-color: rgba(212, 165, 116, 0.4) !important;
+            }
+
+            /* Port item structure - maintain vertical layout with dot */
+            .port-item > div:first-child {
+                flex-shrink: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            /* Port item text content */
+            .port-item > div:last-child {
+                flex: 1 !important;
+                padding-top: 0 !important;
+            }
+
+            .port-item > div:last-child > div:first-child {
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                margin-bottom: 4px !important;
+                color: var(--navy) !important;
+            }
+
+            .port-item > div:last-child > div:last-child {
+                font-size: 11px !important;
+                color: rgba(10, 25, 41, 0.65) !important;
+            }
+
+            /* Mobile Timeline View - Horizontal cards */
+            #timelineContainer.mobile-timeline-view .port-item {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                min-width: 130px !important;
+                max-width: 130px !important;
+                flex: 0 0 130px !important;
+                padding: 16px 12px !important;
+                margin-bottom: 0 !important;
+                gap: 10px !important;
+            }
+
+            #timelineContainer.mobile-timeline-view .port-item > div:first-child {
+                align-items: center !important;
+            }
+
+            #timelineContainer.mobile-timeline-view .port-item > div:last-child {
+                text-align: center !important;
+            }
+
+            #timelineContainer.mobile-timeline-view .port-item > div:last-child > div:first-child {
+                font-size: 14px !important;
+            }
+
+            #timelineContainer.mobile-timeline-view .port-item > div:last-child > div:last-child {
+                font-size: 10px !important;
+            }
+
+            /* Plan Your Journey Section - Remove spacing from outer cards */
+            div[style*="grid-template-columns: repeat(3, 1fr)"] > div[style*="display: flex"][style*="flex-direction: column"] {
+                padding: 0 !important;
+                margin: 0 !important;
+                gap: 0 !important;
+            }
+
+            /* Ensure image containers fill completely */
+            div[style*="height: 460px"][style*="min-height: 460px"][style*="flex-shrink: 0"] {
+                position: relative !important;
+                display: block !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Force images to fill completely */
+            img[src*="best-cruise/2026.png"],
+            img[src*="best-cruise/2027.png"],
+            img[src*="best-cruise/2028.png"],
+            img[alt*="2026 Luxury Cruises"],
+            img[alt*="2027 Luxury Cruises"],
+            img[alt*="2028 Luxury Cruises"] {
+                position: absolute !important;
+                inset: 0 !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                min-height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                object-fit: cover !important;
+                object-position: center !important;
+                display: block !important;
+            }
+
+            /* ========== Explore Ships By Day Section - Mobile Redesign ========== */
+
+            /* Tabs - Stack in 2 columns */
+            div[style*="justify-content: center"] .explore-tab {
+                flex: 1 1 calc(50% - 6px) !important;
+                min-width: calc(50% - 6px) !important;
+                max-width: calc(50% - 6px) !important;
+                padding: 10px 8px !important;
+                font-size: 9px !important;
+                white-space: normal !important;
+                text-align: center !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Carousel arrows - smaller on mobile */
+            .carousel-prev,
+            .carousel-next {
+                width: 36px !important;
+                height: 36px !important;
+            }
+
+            .carousel-prev i,
+            .carousel-next i {
+                font-size: 14px !important;
+            }
+
+            /* Carousel - Single image only */
+            .carousel-track {
+                gap: 0 !important;
+                justify-content: center !important;
+            }
+
+            /* Hide side images, show only active/center image */
+            .carousel-item:not(.active) {
+                display: none !important;
+            }
+
+            .carousel-item.active {
+                flex: 1 !important;
+                max-width: 100% !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .carousel-item.active img {
+                height: 240px !important;
+                width: 100% !important;
+                border-radius: 12px !important;
+            }
+
+            /* Content description box */
+            .explore-content > div > div[style*="text-align: center"][style*="backdrop-filter"] {
+                padding: 24px 20px !important;
+                margin-top: 24px !important;
+            }
+
+            .explore-content h3 {
+                font-size: 20px !important;
+                margin-bottom: 12px !important;
+            }
+
+            .explore-content p {
+                font-size: 13px !important;
+                line-height: 1.6 !important;
+                text-align: left !important;
+            }
+
+            /* ========== Personal Cruise Experts Section - Mobile (from index.html) ========== */
+
+            /* Team Section - Mobile Landscape 2-Column */
+            .team-section {
+                padding: 40px 0 60px 0 !important;
+                margin-top: -20px !important;
+            }
+
+            .team-section > div {
+                padding: 0 20px !important;
+            }
+
+            #teamMainGrid,
+            #teamExpandedGrid > div {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 32px 20px !important;
+                padding: 0 !important;
+                margin-bottom: 40px !important;
+            }
+
+            .luxury-team-minimal {
+                text-align: center !important;
+                margin-top: 50px !important;
+            }
+
+            /* Team member arc containers - resize for mobile */
+            .luxury-team-minimal div[style*="width: 200px"][style*="height: 280px"] {
+                width: 140px !important;
+                height: 200px !important;
+                border-radius: 70px 70px 0 0 !important;
+                margin: 0 auto 20px auto !important;
+                position: relative !important;
+                overflow: hidden !important;
+            }
+
+            .luxury-team-minimal div[style*="width: 180px"],
+            .luxury-team-minimal div[style*="width: 160px"] {
+                width: 120px !important;
+                height: 120px !important;
+                margin: 0 auto 16px auto !important;
+                display: block !important;
+            }
+
+            /* Team member images - scale to fill arcs completely */
+            .luxury-team-minimal div[style*="width: 200px"][style*="height: 280px"] img {
+                width: 175% !important;
+                height: 175% !important;
+                max-width: none !important;
+                object-fit: cover !important;
+                object-position: center 20% !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+
+            .luxury-team-minimal img[src*="members/"] {
+                width: 175% !important;
+                height: 175% !important;
+                max-width: none !important;
+                object-fit: cover !important;
+                object-position: center 20% !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+
+            .luxury-team-minimal h4 {
+                font-size: 18px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 6px !important;
+            }
+
+            .luxury-team-minimal p {
+                font-size: 11px !important;
+                line-height: 1.4 !important;
+            }
+
+            .luxury-team-minimal button {
+                font-size: 11px !important;
+                padding: 10px 0 !important;
+            }
+
+            /* ========== Related Blogs Section - Fix Image Filling & Alignment ========== */
+
+            /* Blog section container - fix alignment and padding */
+            .blog-section > div {
+                padding: 0 20px !important;
+            }
+
+            /* Blog grid - ensure proper spacing */
+            .blog-section div[style*="grid-template-columns"] {
+                gap: 24px !important;
+                padding: 0 !important;
+                margin: 0 auto !important;
+            }
+
+            /* Blog card image containers */
+            .blog-card > div[style*="height: 280px"] {
+                position: relative !important;
+                overflow: hidden !important;
+                height: 250px !important;
+            }
+
+            /* Blog card images - ensure they fill completely */
+            .blog-card > div[style*="height: 280px"] img {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                min-height: 100% !important;
+                object-fit: cover !important;
+                object-position: center !important;
+                display: block !important;
+            }
+
+            /* Blog cards - ensure no overflow */
+            .blog-card {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Blog card padding - reduce for mobile */
+            .blog-card > div[style*="padding: 35px 30px"] {
+                padding: 24px 20px !important;
+            }
+
+            /* Blog card titles */
+            .blog-card h3 {
+                font-size: 18px !important;
+                line-height: 1.4 !important;
+            }
+
+            /* Blog card text */
+            .blog-card p {
+                font-size: 13px !important;
+                line-height: 1.6 !important;
+            }
+        }
+
+        /* Smaller devices - Additional refinements */
+        @media (max-width: 400px) {
+            .itinerary-tab {
+                font-size: 10px !important;
+                padding: 12px 6px !important;
+            }
+
+            #content-overview h2,
+            #content-itinerary h2,
+            #content-dining h2,
+            #content-ship h2 {
+                font-size: 24px !important;
+            }
+
+            #content-overview h3,
+            #content-itinerary h3,
+            #content-dining h3,
+            #content-ship h3 {
+                font-size: 18px !important;
+            }
+
+            #content-overview p,
+            #content-itinerary p,
+            #content-dining p,
+            #content-ship p {
+                font-size: 14px !important;
+            }
+
+            /* Journey section - Smaller devices */
+            .day-card {
+                flex: 0 0 90% !important;
+                max-width: 280px !important;
+            }
+
+            .day-card img {
+                height: 220px !important;
+            }
+
+            .day-overlay h3,
+            .day-description h3 {
+                font-size: 15px !important;
+            }
+
+            .day-description p {
+                font-size: 12px !important;
             }
         }
     </style>
@@ -9091,6 +10153,90 @@
             </div>
             <!-- End Itinerary Tab -->
 
+            <!-- Dining Tab Content - MOVED HERE -->
+            <div id="content-dining" class="tab-content" style="display: none;">
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
+                    <div>
+                        <h2 style="font-family: 'Cinzel', serif; font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 24px;">World-Class Dining</h2>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 40px;">
+                            Indulge in gourmet cuisine across multiple specialty restaurants, all included in your fare. From French haute cuisine to Italian trattorias, every meal is an unforgettable experience.
+                        </p>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 20px;">Signature Restaurants</h3>
+                        <div style="display: flex; flex-direction: column; gap: 24px;">
+                            <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(212, 165, 116, 0.15);">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Compass Rose</h4>
+                                <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #666; line-height: 1.7;">Main dining room featuring international cuisine with rotating menus</p>
+                            </div>
+                            <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(212, 165, 116, 0.15);">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Chartreuse</h4>
+                                <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #666; line-height: 1.7;">Contemporary French cuisine with wine pairings</p>
+                            </div>
+                            <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(212, 165, 116, 0.15);">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Pacific Rim</h4>
+                                <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #666; line-height: 1.7;">Pan-Asian fusion with sushi bar and teppanyaki</p>
+                            </div>
+                            <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(212, 165, 116, 0.15);">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Prime 7</h4>
+                                <p style="font-family: 'Lato', sans-serif; font-size: 14px; color: #666; line-height: 1.7;">Classic American steakhouse with premium cuts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ship Tab Content - MOVED HERE -->
+            <div id="content-ship" class="tab-content" style="display: none;">
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
+                    <div>
+                        <h2 style="font-family: 'Cinzel', serif; font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 24px;">Regent Seven Seas Explorer</h2>
+                        <p style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 40px;">
+                            The most luxurious ship ever built, featuring spacious all-suite accommodations, exquisite dining, and unparalleled service.
+                        </p>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 20px;">Ship Amenities</h3>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px;">
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-spa" style="color: var(--gold); font-size: 20px; margin-top: 4px;"></i>
+                                <div>
+                                    <h4 style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">Canyon Ranch Spa</h4>
+                                    <p style="font-family: 'Lato', sans-serif; font-size: 13px; color: #666;">Full-service spa & wellness</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-swimming-pool" style="color: var(--gold); font-size: 20px; margin-top: 4px;"></i>
+                                <div>
+                                    <h4 style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">Multiple Pools</h4>
+                                    <p style="font-family: 'Lato', sans-serif; font-size: 13px; color: #666;">Including infinity pool</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-theater-masks" style="color: var(--gold); font-size: 20px; margin-top: 4px;"></i>
+                                <div>
+                                    <h4 style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">Constellation Theater</h4>
+                                    <p style="font-family: 'Lato', sans-serif; font-size: 13px; color: #666;">Broadway-style shows</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: 12px;">
+                                <i class="fas fa-dumbbell" style="color: var(--gold); font-size: 20px; margin-top: 4px;"></i>
+                                <div>
+                                    <h4 style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">Fitness Center</h4>
+                                    <p style="font-family: 'Lato', sans-serif; font-size: 13px; color: #666;">State-of-the-art equipment</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 style="font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 16px;">Ship Specifications</h3>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                            <div style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555;"><strong>Guests:</strong> 738</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555;"><strong>Crew:</strong> 542</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555;"><strong>Tonnage:</strong> 56,000</div>
+                            <div style="font-family: 'Lato', sans-serif; font-size: 14px; color: #555;"><strong>Year Built:</strong> 2016</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- SECTION 1: Visual Day-by-Day Itinerary -->
     <section class="promo-section" style="background: url('images/promo-bg.png') center center / cover; background-attachment: fixed; padding: 100px 0; overflow: hidden; position: relative;">
         <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%); opacity: 0.25;"></div>
@@ -9116,6 +10262,7 @@
                         <div style="width: 24px; height: 24px; background: var(--gold); border-radius: 50%; margin: 0 auto 16px; border: 4px solid white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);"></div>
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: rgba(10, 25, 41, 0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Day 1</div>
                         <div style="font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy);">Barcelona</div>
+                        <img class="day-mobile-image" src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&h=350&fit=crop" alt="Barcelona" style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); display: none;">
                     </div>
 
                     <!-- Day 2 -->
@@ -9123,6 +10270,7 @@
                         <div style="width: 24px; height: 24px; background: var(--gold); border-radius: 50%; margin: 0 auto 16px; border: 4px solid white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);"></div>
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: rgba(10, 25, 41, 0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Day 2</div>
                         <div style="font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy);">Cruising The<br>Mediterranean Sea</div>
+                        <img class="day-mobile-image" src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=350&fit=crop" alt="Mediterranean Sea" style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); display: none;">
                     </div>
 
                     <!-- Day 3 -->
@@ -9130,6 +10278,7 @@
                         <div style="width: 24px; height: 24px; background: var(--gold); border-radius: 50%; margin: 0 auto 16px; border: 4px solid white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);"></div>
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: rgba(10, 25, 41, 0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Day 3</div>
                         <div style="font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy);">Málaga</div>
+                        <img class="day-mobile-image" src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=350&fit=crop" alt="Málaga" style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); display: none;">
                     </div>
 
                     <!-- Day 4 -->
@@ -9137,6 +10286,7 @@
                         <div style="width: 24px; height: 24px; background: var(--gold); border-radius: 50%; margin: 0 auto 16px; border: 4px solid white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);"></div>
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: rgba(10, 25, 41, 0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Day 4</div>
                         <div style="font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy);">Sailing The<br>Atlantic Ocean</div>
+                        <img class="day-mobile-image" src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=350&fit=crop" alt="Atlantic Ocean" style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); display: none;">
                     </div>
 
                     <!-- Day 5 -->
@@ -9144,6 +10294,7 @@
                         <div style="width: 24px; height: 24px; background: var(--gold); border-radius: 50%; margin: 0 auto 16px; border: 4px solid white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);"></div>
                         <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: rgba(10, 25, 41, 0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Day 5</div>
                         <div style="font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy);">Funchal, Madeira</div>
+                        <img class="day-mobile-image" src="https://images.unsplash.com/photo-1585159812596-fac104f2f069?w=400&h=350&fit=crop" alt="Funchal, Madeira" style="width: 100%; max-width: 120px; height: auto; border-radius: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); display: none;">
                     </div>
                 </div>
             </div>
@@ -9492,12 +10643,37 @@
                 timelineViewBtn.style.background = 'transparent';
                 timelineViewBtn.style.color = 'var(--navy)';
 
-                // Update timeline container to list view
+                // Remove mobile timeline class
+                timelineContainer.classList.remove('mobile-timeline-view');
+
+                // Reset timeline container to default (list view)
+                timelineContainer.style.display = '';
+                timelineContainer.style.overflowX = '';
+                timelineContainer.style.gap = '';
+                timelineContainer.style.paddingBottom = '';
+                timelineContainer.style.flexDirection = '';
+
+                // Update port items to list view
                 const portItems = timelineContainer.querySelectorAll('.port-item');
                 portItems.forEach(item => {
-                    item.style.display = 'flex';
-                    item.style.alignItems = 'start';
-                    item.style.gap = '16px';
+                    item.style.display = '';
+                    item.style.flexDirection = '';
+                    item.style.alignItems = '';
+                    item.style.gap = '';
+                    item.style.textAlign = '';
+                    item.style.marginBottom = '';
+                    item.style.padding = '';
+                    item.style.minWidth = '';
+                    item.style.maxWidth = '';
+                    item.style.flex = '';
+                });
+
+                // Reset text alignment for port item content
+                portItems.forEach(item => {
+                    const textContainer = item.querySelector('div:last-child');
+                    if (textContainer) {
+                        textContainer.style.textAlign = '';
+                    }
                 });
             });
 
@@ -9508,20 +10684,45 @@
                 listViewBtn.style.background = 'transparent';
                 listViewBtn.style.color = 'var(--navy)';
 
-                // Update timeline container to timeline view (horizontal)
-                const portItems = timelineContainer.querySelectorAll('.port-item');
-                portItems.forEach(item => {
-                    item.style.display = 'flex';
-                    item.style.flexDirection = 'column';
-                    item.style.alignItems = 'center';
-                    item.style.textAlign = 'center';
-                });
+                // Check if mobile (max-width: 768px)
+                const isMobile = window.innerWidth <= 768;
 
-                // Update container to horizontal scroll
-                timelineContainer.style.display = 'flex';
-                timelineContainer.style.overflowX = 'auto';
-                timelineContainer.style.gap = '24px';
-                timelineContainer.style.paddingBottom = '16px';
+                if (isMobile) {
+                    // Add mobile timeline class for CSS to handle
+                    timelineContainer.classList.add('mobile-timeline-view');
+                } else {
+                    // Desktop timeline view
+                    timelineContainer.classList.remove('mobile-timeline-view');
+
+                    // Update container to horizontal timeline
+                    timelineContainer.style.display = 'flex';
+                    timelineContainer.style.flexDirection = 'row';
+                    timelineContainer.style.overflowX = 'auto';
+                    timelineContainer.style.gap = '32px';
+                    timelineContainer.style.paddingBottom = '16px';
+
+                    // Update port items to timeline view (vertical cards)
+                    const portItems = timelineContainer.querySelectorAll('.port-item');
+                    portItems.forEach(item => {
+                        item.style.display = 'flex';
+                        item.style.flexDirection = 'column';
+                        item.style.alignItems = 'center';
+                        item.style.textAlign = 'center';
+                        item.style.gap = '12px';
+                        item.style.padding = '16px';
+                        item.style.marginBottom = '0';
+                        item.style.minWidth = '140px';
+                        item.style.flex = '0 0 auto';
+                    });
+
+                    // Center align text in timeline view
+                    portItems.forEach(item => {
+                        const textContainer = item.querySelector('div:last-child');
+                        if (textContainer) {
+                            textContainer.style.textAlign = 'center';
+                        }
+                    });
+                }
             });
         });
     </script>

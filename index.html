@@ -599,8 +599,10 @@
             }
 
             .concierge-button {
-                padding: 14px 20px;
+                padding: 12px;
                 font-size: 14px;
+                min-width: auto;
+                width: auto;
             }
 
             .concierge-button span {
@@ -2321,7 +2323,7 @@
             }
 
             /* Cruise Holiday Content Grid - Tablet: Keep 2 columns */
-            section[style*="pictorial.png"] div[style*="grid-template-columns: 1fr 1fr"] {
+            section[style*="promo-bg.png"] div[style*="grid-template-columns: 1fr 1fr"] {
                 gap: 40px !important;
             }
 
@@ -2331,7 +2333,7 @@
                 gap: 24px !important;
             }
 
-            section[style*="pictorial.png"] {
+            section[style*="promo-bg.png"] {
                 padding: 80px 40px !important;
             }
         }
@@ -3267,13 +3269,19 @@
             gap: 80px;
         }
 
-        /* Carousel Dots */
+        /* Carousel Dots - Desktop */
         .cruise-carousel-dots {
-            display: flex;
+            display: none;
             justify-content: center;
             gap: 12px;
             margin-top: 40px;
             align-items: center;
+        }
+
+        @media (min-width: 769px) {
+            .cruise-carousel-dots {
+                display: flex;
+            }
         }
 
         .cruise-carousel-dot {
@@ -4065,6 +4073,37 @@
                 border-right: 1px solid rgba(255, 255, 255, 0.15);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             }
+
+            /* Remove individual item shadow, add overall dark overlay for readability */
+            .split-item::before {
+                display: none;
+            }
+
+            /* Add dark overlay to entire grid background for text readability on mobile */
+            .split-grid-background::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            /* Adjust tab buttons for mobile */
+            .tab-navigation {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 20px;
+            }
+
+            .tab-btn {
+                padding: 12px 24px;
+                font-size: 11px;
+                width: 100%;
+            }
         }
 
         @media (max-width: 640px) {
@@ -4075,6 +4114,37 @@
             .split-grid-items {
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(3, 1fr);
+            }
+
+            /* Remove individual item shadow, add overall dark overlay for readability */
+            .split-item::before {
+                display: none;
+            }
+
+            /* Add dark overlay to entire grid background for text readability on mobile */
+            .split-grid-background::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            /* Adjust tab buttons for mobile */
+            .tab-navigation {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 20px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 10px;
+                width: 100%;
             }
         }
 
@@ -5224,6 +5294,36 @@
                 justify-content: flex-start !important;
             }
 
+            /* Hero Rating Badge - Mobile */
+            .hero-rating-badge {
+                gap: 6px !important;
+                padding: 8px 12px !important;
+                margin-top: 24px !important;
+                margin-bottom: 28px !important;
+                max-width: fit-content !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .hero-rating-stars {
+                gap: 2px !important;
+            }
+
+            .hero-rating-stars svg {
+                width: 12px !important;
+                height: 12px !important;
+            }
+
+            .hero-rating-divider {
+                display: none !important;
+            }
+
+            .hero-rating-text {
+                font-size: 10px !important;
+                letter-spacing: 0.3px !important;
+                white-space: nowrap !important;
+            }
+
             /* Hero Search Box - Mobile Landscape Grid */
             .hero-search-box {
                 max-width: 100% !important;
@@ -5292,7 +5392,7 @@
             .hero-kicker {
                 font-size: 10px !important;
                 letter-spacing: 0.15em !important;
-                margin-bottom: 16px !important;
+                margin-bottom: 8px !important;
             }
 
             .hero-kicker::before,
@@ -5525,25 +5625,59 @@
             }
 
             .cruise-featured-container {
-                padding: 0 10px !important;
-                margin-bottom: 40px !important;
+                padding: 0 !important;
+                margin-bottom: 60px !important;
+                position: relative !important;
+                overflow: visible !important;
+            }
+
+            /* Cruise carousel dots for mobile - Larger size */
+            .cruise-carousel-dots {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 10px !important;
+                margin-top: 24px !important;
+                padding: 0 20px !important;
+            }
+
+            .cruise-carousel-dot {
+                width: 10px !important;
+                height: 10px !important;
+                border-radius: 50% !important;
+                background: rgba(255, 255, 255, 0.4) !important;
+                transition: all 0.3s ease !important;
+                cursor: pointer !important;
+            }
+
+            .cruise-carousel-dot.active {
+                width: 28px !important;
+                border-radius: 5px !important;
+                background: var(--gold) !important;
             }
 
             .cruise-carousel-container {
-                padding: 0 10px !important;
+                display: flex !important;
+                overflow-x: scroll !important;
+                overflow-y: hidden !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                scroll-behavior: smooth !important;
+                gap: 20px !important;
+                padding: 0 20px 20px 20px !important;
                 margin: 0 !important;
+                scrollbar-width: none !important;
+            }
+
+            .cruise-carousel-container::-webkit-scrollbar {
+                display: none !important;
             }
 
             .cruise-grid-small {
                 display: flex !important;
                 flex-direction: row !important;
-                gap: 32px !important;
+                gap: 20px !important;
                 transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            }
-
-            .cruise-carousel-container {
-                overflow: hidden !important;
-                position: relative !important;
             }
 
             /* Vertical Card - Image Top, Content Bottom */
@@ -5555,19 +5689,25 @@
                 background: transparent !important;
                 border-radius: 20px !important;
                 overflow: visible !important;
-                margin-bottom: 40px !important;
+                margin-bottom: 0 !important;
                 line-height: 0 !important;
+                flex: 0 0 calc(100vw - 70px) !important;
+                min-width: calc(100vw - 70px) !important;
+                max-width: calc(100vw - 70px) !important;
+                scroll-snap-align: center !important;
             }
 
             .cruise-card-small {
                 display: flex !important;
                 flex-direction: column !important;
-                width: 100% !important;
-                max-width: 100% !important;
+                flex: 0 0 calc(100vw - 70px) !important;
+                min-width: calc(100vw - 70px) !important;
+                max-width: calc(100vw - 70px) !important;
                 background: transparent !important;
                 border-radius: 20px !important;
                 overflow: visible !important;
                 line-height: 0 !important;
+                scroll-snap-align: center !important;
             }
 
             .cruise-image-container {
@@ -5585,9 +5725,9 @@
             }
 
             .cruise-card-small .cruise-image-container {
-                min-height: 255px !important;
-                max-height: 255px !important;
-                height: 255px !important;
+                min-height: 300px !important;
+                max-height: 300px !important;
+                height: 300px !important;
                 border-radius: 20px 20px 0 0 !important;
                 margin-bottom: 0 !important;
                 margin-top: 0 !important;
@@ -5678,14 +5818,7 @@
             }
 
             /* Hide static HTML dots on mobile - use dynamic JS dots instead */
-            .cruise-section>div>.cruise-carousel-dots {
-                display: none !important;
-            }
-
-            /* Show dynamically created carousel dots */
-            .cruise-carousel-container .cruise-carousel-dots {
-                display: flex !important;
-            }
+            /* Cruise carousel dots are visible by default in mobile */
 
             /* Carousel Navigation - Arrows next to dots */
             .cruise-carousel-navigation {
@@ -5806,9 +5939,9 @@
 
             /* Promo Card - Mobile Centered Layout */
             .promo-card {
-                height: 520px !important;
-                min-height: 520px !important;
-                max-height: 520px !important;
+                height: 720px !important;
+                min-height: 720px !important;
+                max-height: 720px !important;
                 border-radius: 16px !important;
                 flex-direction: column !important;
                 width: 100% !important;
@@ -5817,7 +5950,7 @@
 
             .promo-content {
                 width: 100% !important;
-                padding: 24px 24px 20px 24px !important;
+                padding: 28px 24px 24px 24px !important;
                 order: 2 !important;
             }
 
@@ -5827,9 +5960,9 @@
 
             .promo-card-image {
                 width: 100% !important;
-                height: 180px !important;
-                min-height: 180px !important;
-                max-height: 180px !important;
+                height: 380px !important;
+                min-height: 380px !important;
+                max-height: 380px !important;
                 position: relative !important;
                 order: 1 !important;
                 border-radius: 16px 16px 0 0 !important;
@@ -5839,15 +5972,15 @@
             .promo-card-image>img:first-child {
                 width: 100% !important;
                 height: 100% !important;
-                min-height: 180px !important;
+                min-height: 380px !important;
                 object-fit: cover !important;
                 object-position: center !important;
                 display: block !important;
             }
 
             .promo-card .promo-card-image {
-                height: 180px !important;
-                min-height: 180px !important;
+                height: 380px !important;
+                min-height: 380px !important;
             }
 
             .promo-logo {
@@ -6103,6 +6236,16 @@
                 margin-top: 50px !important;
             }
 
+            /* Team member arc containers - resize for mobile */
+            .luxury-team-minimal div[style*="width: 200px"][style*="height: 280px"] {
+                width: 140px !important;
+                height: 200px !important;
+                border-radius: 70px 70px 0 0 !important;
+                margin: 0 auto 20px auto !important;
+                position: relative !important;
+                overflow: hidden !important;
+            }
+
             .luxury-team-minimal div[style*="width: 180px"],
             .luxury-team-minimal div[style*="width: 160px"] {
                 width: 120px !important;
@@ -6111,17 +6254,29 @@
                 display: block !important;
             }
 
-            .luxury-team-minimal img[src*="members/"] {
-                width: 150px !important;
-                height: 150px !important;
+            /* Team member images - scale to fill arcs completely */
+            .luxury-team-minimal div[style*="width: 200px"][style*="height: 280px"] img {
+                width: 175% !important;
+                height: 175% !important;
                 max-width: none !important;
-                max-height: none !important;
                 object-fit: cover !important;
-                object-position: 50% 50% !important;
-                display: block !important;
-                border-radius: 50% !important;
-                margin: -15px !important;
-                transform: scale(1.1) !important;
+                object-position: center 20% !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+
+            .luxury-team-minimal img[src*="members/"] {
+                width: 175% !important;
+                height: 175% !important;
+                max-width: none !important;
+                object-fit: cover !important;
+                object-position: center 20% !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
             }
 
             .luxury-team-minimal h4 {
@@ -6233,12 +6388,12 @@
             .award-item {
                 padding: 32px 24px;
                 width: 100%;
-                text-align: left !important;
+                text-align: center !important;
             }
 
             .award-image-box {
-                margin: 0 0 24px 0 !important;
-                justify-content: flex-start !important;
+                margin: 0 auto 24px auto !important;
+                justify-content: center !important;
             }
 
             .award-image-box {
@@ -6248,10 +6403,48 @@
 
             .award-name {
                 font-size: 14px;
+                text-align: center;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
             }
 
             .award-desc {
                 font-size: 11px;
+                text-align: center;
+            }
+
+            /* Sign Up for Exclusive Section - Mobile */
+            .signup-container {
+                flex-direction: column !important;
+                gap: 24px !important;
+                text-align: center !important;
+            }
+
+            .signup-text {
+                flex: none !important;
+                width: 100% !important;
+            }
+
+            .signup-title {
+                font-size: 22px !important;
+            }
+
+            .signup-form {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 12px !important;
+            }
+
+            .signup-input {
+                width: 100% !important;
+                padding: 14px 20px !important;
+                font-size: 14px !important;
+            }
+
+            .signup-button {
+                width: 100% !important;
+                padding: 14px 24px !important;
             }
 
             .destination-card-inner {
@@ -6620,22 +6813,22 @@
             }
 
             .promo-card {
-                height: 490px !important;
-                min-height: 490px !important;
-                max-height: 490px !important;
+                height: 680px !important;
+                min-height: 680px !important;
+                max-height: 680px !important;
                 border-radius: 14px !important;
             }
 
             .promo-content {
                 width: 100% !important;
-                padding: 20px 20px 18px 20px !important;
+                padding: 24px 20px 20px 20px !important;
             }
 
             .promo-card-image {
                 width: 100% !important;
-                height: 170px !important;
-                min-height: 170px !important;
-                max-height: 170px !important;
+                height: 360px !important;
+                min-height: 360px !important;
+                max-height: 360px !important;
                 border-radius: 14px 14px 0 0 !important;
                 overflow: hidden !important;
             }
@@ -6643,15 +6836,15 @@
             .promo-card-image>img:first-child {
                 width: 100% !important;
                 height: 100% !important;
-                min-height: 170px !important;
+                min-height: 360px !important;
                 object-fit: cover !important;
                 object-position: center !important;
                 display: block !important;
             }
 
             .promo-card .promo-card-image {
-                height: 170px !important;
-                min-height: 170px !important;
+                height: 360px !important;
+                min-height: 360px !important;
             }
 
             .promo-logo {
@@ -7261,9 +7454,20 @@
             }
 
             /* Cruise Holiday Content Grid - Mobile: Stack to single column */
-            section[style*="pictorial.png"] div[style*="grid-template-columns: 1fr 1fr"] {
+            section[style*="promo-bg.png"] div[style*="grid-template-columns: 1fr 1fr"] {
                 grid-template-columns: 1fr !important;
                 gap: 30px !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            /* Reverse order: Image first, then text */
+            section[style*="promo-bg.png"] div[style*="grid-template-columns: 1fr 1fr"] > div:first-child {
+                order: 2 !important;
+            }
+
+            section[style*="promo-bg.png"] div[style*="grid-template-columns: 1fr 1fr"] > div:last-child {
+                order: 1 !important;
             }
 
             /* Cruise Holiday Feature Boxes - Mobile: Stack to single column */
@@ -7277,12 +7481,12 @@
             }
 
             /* Cruise Holiday Section - Mobile padding */
-            section[style*="pictorial.png"] {
+            section[style*="promo-bg.png"] {
                 padding: 60px 20px 50px 20px !important;
             }
 
             /* Cruise Holiday text paragraphs - Mobile */
-            section[style*="pictorial.png"] p[style*="font-size: 16px"] {
+            section[style*="promo-bg.png"] p[style*="font-size: 16px"] {
                 font-size: 15px !important;
                 line-height: 1.7 !important;
             }
@@ -8080,8 +8284,8 @@
         <div class="hero-content">
             <div class="hero-kicker">The Art of Luxury Travel</div>
             <!-- Customer Rating Badge -->
-            <div style="display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50px; margin-bottom: 24px; opacity: 0; animation: fadeInUp 1s ease forwards 0.3s; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;">
-                <div style="display: flex; align-items: center; gap: 4px;">
+            <div class="hero-rating-badge" style="display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50px; margin-bottom: 24px; opacity: 0; animation: fadeInUp 1s ease forwards 0.3s; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;">
+                <div class="hero-rating-stars" style="display: flex; align-items: center; gap: 4px;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)" stroke="var(--gold)" stroke-width="1">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
@@ -8098,8 +8302,8 @@
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                 </div>
-                <div style="height: 20px; width: 1px; background: rgba(255, 255, 255, 0.4);"></div>
-                <span style="color: white; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">Rated 5/5 by Our Customers</span>
+                <div class="hero-rating-divider" style="height: 20px; width: 1px; background: rgba(255, 255, 255, 0.4);"></div>
+                <span class="hero-rating-text" style="color: white; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">Rated 5/5 by Our Customers</span>
             </div>
 
             <h1 class="hero-title-luxury">
@@ -9599,7 +9803,57 @@
             <div class="cruise-carousel-dots">
                 <span class="cruise-carousel-dot active"></span>
                 <span class="cruise-carousel-dot"></span>
+                <span class="cruise-carousel-dot"></span>
+                <span class="cruise-carousel-dot"></span>
+                <span class="cruise-carousel-dot"></span>
             </div>
+
+            <script>
+            // Cruise carousel dots functionality for mobile
+            (function() {
+                const container = document.querySelector('.cruise-carousel-container');
+                const dots = document.querySelectorAll('.cruise-carousel-dot');
+                const cards = document.querySelectorAll('.cruise-card-small');
+
+                if (!container || !dots.length || !cards.length) return;
+
+                // Update active dot based on scroll position
+                function updateActiveDot() {
+                    const scrollLeft = container.scrollLeft;
+                    const cardWidth = cards[0].offsetWidth + 20; // card width + gap (20px)
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+
+                    dots.forEach((dot, index) => {
+                        if (index === activeIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Scroll to card when dot is clicked
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        const cardWidth = cards[0].offsetWidth + 20; // card width + gap (20px)
+                        container.scrollTo({
+                            left: cardWidth * index,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+
+                // Update dots on scroll with debounce
+                let scrollTimeout;
+                container.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(updateActiveDot, 50);
+                });
+
+                // Initial update after page load
+                setTimeout(updateActiveDot, 500);
+            })();
+            </script>
 
             <div style="text-align: center; margin-top: 48px;" class="reveal">
                 <button class="btn-primary">VIEW ALL CRUISES</button>
@@ -10139,22 +10393,22 @@
     <!-- End Awards & Testimonials Wrapper -->
 
     <!-- Sign Up for Exclusive Deals -->
-    <section style="background: white; padding: 40px 0;">
+    <section class="signup-section" style="background: white; padding: 40px 0;">
         <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; gap: 48px;">
+            <div class="signup-container" style="display: flex; align-items: center; justify-content: space-between; gap: 48px;">
                 <!-- Left: Text -->
-                <div style="flex: 1;">
-                    <h2 style="font-family: 'Cinzel', serif; font-size: 30px; font-weight: 700; color: var(--navy); margin-bottom: 0; line-height: 1.3;">
+                <div class="signup-text" style="flex: 1;">
+                    <h2 class="signup-title" style="font-family: 'Cinzel', serif; font-size: 30px; font-weight: 700; color: var(--navy); margin-bottom: 0; line-height: 1.3;">
                         SIGN UP FOR EXCLUSIVE DEALS<br>
                         DIRECT TO YOUR INBOX
                     </h2>
                 </div>
 
                 <!-- Right: Email Form -->
-                <div style="flex: 1; display: flex; gap: 16px; align-items: center;">
-                    <input type="email" placeholder="Email Address"
+                <div class="signup-form" style="flex: 1; display: flex; gap: 16px; align-items: center;">
+                    <input type="email" placeholder="Email Address" class="signup-input"
                         style="flex: 1; padding: 16px 24px; border: 1px solid rgba(10, 25, 41, 0.2); border-radius: 8px; font-size: 15px; background: #f8f9fa; color: var(--navy);">
-                    <button style="background: var(--navy); color: white; padding: 16px 40px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: all 0.3s;">
+                    <button class="signup-button" style="background: var(--navy); color: white; padding: 16px 40px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: all 0.3s;">
                         SUBMIT
                     </button>
                 </div>
@@ -10274,9 +10528,9 @@
                     </div>
 
                     <!-- World Travel Holdings Logo -->
-                    <div style="display: flex; justify-content: center;">
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
                         <img src="https://www.sixstarcruises.co.uk/assets/images/logo/wth-logo.png"
-                            alt="World Travel Holdings" style="width: 50%; max-width: 200px;">
+                            alt="World Travel Holdings" style="width: 50%; max-width: 200px; display: block; margin: 0 auto;">
                     </div>
                 </div>
 
@@ -11266,9 +11520,15 @@
         // Initialize team carousel when page loads
         window.addEventListener('DOMContentLoaded', initTeamCarousel);
 
-        // Cruise Carousel Auto-Slide Functionality
+        // Cruise Carousel Auto-Slide Functionality - DESKTOP ONLY
         function initCruiseCarousel() {
-            console.log('=== CRUISE CAROUSEL INIT ===');
+            // Only run on desktop (screen width > 768px)
+            if (window.innerWidth <= 768) {
+                console.log('Mobile detected - skipping desktop carousel init');
+                return;
+            }
+
+            console.log('=== CRUISE CAROUSEL INIT (DESKTOP) ===');
             const container = document.querySelector('.cruise-carousel-container');
             const cards = document.querySelectorAll('.cruise-card-small');
 

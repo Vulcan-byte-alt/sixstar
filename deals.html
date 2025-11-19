@@ -5220,13 +5220,44 @@
             }
 
             .hero-content {
-                padding: 115px 20px 20px 20px !important;
+                padding: 100px 20px 20px 20px !important;
                 max-width: 100% !important;
                 width: 100% !important;
                 height: 100% !important;
                 display: flex !important;
                 flex-direction: column !important;
-                justify-content: flex-start !important;
+                justify-content: center !important;
+                margin-bottom: 130px;
+            }
+
+            /* Hero Rating Badge - Mobile */
+            .hero-rating-badge {
+                gap: 6px !important;
+                padding: 8px 12px !important;
+                margin-top: 32px !important;
+                margin-bottom: 36px !important;
+                max-width: fit-content !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .hero-rating-stars {
+                gap: 2px !important;
+            }
+
+            .hero-rating-stars svg {
+                width: 12px !important;
+                height: 12px !important;
+            }
+
+            .hero-rating-divider {
+                display: none !important;
+            }
+
+            .hero-rating-text {
+                font-size: 10px !important;
+                letter-spacing: 0.3px !important;
+                white-space: nowrap !important;
             }
 
             /* Hero Search Box - Mobile Landscape Grid */
@@ -5297,7 +5328,7 @@
             .hero-kicker {
                 font-size: 10px !important;
                 letter-spacing: 0.15em !important;
-                margin-bottom: 16px !important;
+                margin-bottom: 8px !important;
             }
 
             .hero-kicker::before,
@@ -6905,18 +6936,54 @@
 
             /* === BURGER MENU - CLEAN IMPLEMENTATION === */
 
-            /* Hamburger Button */
-            #mobileMenuBtn {
-                display: block !important;
-                position: absolute !important;
-                top: 50% !important;
+            /* Hamburger Button - Target the icon directly */
+            .fa-bars {
+                position: fixed !important;
+                top: 18px !important;
                 right: 20px !important;
-                transform: translateY(-50%) !important;
-                padding: 10px !important;
-                z-index: 10000 !important;
+                z-index: 10001 !important;
+                color: white !important;
+                font-size: 24px !important;
+                cursor: pointer !important;
             }
 
-            #mobileMenuBtn:hover {
+            #mobileMenuBtn {
+                display: block !important;
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            #mobileMenuBtn:hover .fa-bars {
+                color: var(--gold) !important;
+            }
+
+            /* Close (X) button - position at same place as burger icon */
+            .fa-times {
+                position: fixed !important;
+                top: 18px !important;
+                right: 20px !important;
+                z-index: 10001 !important;
+                color: white !important;
+                font-size: 28px !important;
+                cursor: pointer !important;
+            }
+
+            /* Hide the close button that appears inside the menu */
+            #navLinks #mobileMenuCloseBtn {
+                display: none !important;
+            }
+
+            #mobileMenuCloseBtn {
+                display: block !important;
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            #mobileMenuCloseBtn:hover .fa-times {
                 color: var(--gold) !important;
             }
 
@@ -6926,11 +6993,6 @@
                 opacity: 0 !important;
                 visibility: hidden !important;
                 pointer-events: none !important;
-            }
-
-            /* Close button - HIDDEN */
-            #mobileMenuCloseBtn {
-                display: none !important;
             }
 
             /* Full Screen Mobile Menu */
@@ -7300,6 +7362,37 @@
 
             section[style*="linear-gradient(135deg, #0a1929 0%, #1a2f42 100%)"][style*="padding: 80px 0"] {
                 padding: 50px 20px !important;
+            }
+
+            /* Cruise Holiday Content Grid - Mobile: Stack to single column and reverse order */
+            #cruiseHolidaySection div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            /* Image first, then text */
+            #cruiseHolidaySection div[style*="grid-template-columns: 1fr 1fr"] > div:first-child {
+                order: 2 !important;
+            }
+
+            #cruiseHolidaySection div[style*="grid-template-columns: 1fr 1fr"] > div:last-child {
+                order: 1 !important;
+            }
+
+            /* Remove shadow from glass container on mobile */
+            #cruiseHolidaySection div[style*="background: rgba(255, 255, 255, 0.75)"] {
+                box-shadow: none !important;
+            }
+
+            #cruiseHolidaySection {
+                padding: 60px 20px 50px 20px !important;
+            }
+
+            #cruiseHolidaySection p[style*="font-size: 16px"] {
+                font-size: 15px !important;
+                line-height: 1.7 !important;
             }
 
             /* Cruise Holiday Content Grid - Mobile: Stack to single column */
@@ -8759,8 +8852,8 @@
         <div class="hero-content">
             <div class="hero-kicker">The Art of Luxury Travel</div>
             <!-- Customer Rating Badge -->
-            <div style="display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50px; margin-bottom: 24px; opacity: 0; animation: fadeInUp 1s ease forwards 0.3s; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;">
-                <div style="display: flex; align-items: center; gap: 4px;">
+            <div class="hero-rating-badge" style="display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 50px; margin-bottom: 24px; opacity: 0; animation: fadeInUp 1s ease forwards 0.3s; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;">
+                <div class="hero-rating-stars" style="display: flex; align-items: center; gap: 4px;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)" stroke="var(--gold)" stroke-width="1">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
@@ -8777,8 +8870,8 @@
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                 </div>
-                <div style="height: 20px; width: 1px; background: rgba(255, 255, 255, 0.4);"></div>
-                <span style="color: white; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">Rated 5/5 by Our Customers</span>
+                <div class="hero-rating-divider" style="height: 20px; width: 1px; background: rgba(255, 255, 255, 0.4);"></div>
+                <span class="hero-rating-text" style="color: white; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">Rated 5/5 by Our Customers</span>
             </div>
 
             <h1 class="hero-title-luxury">
