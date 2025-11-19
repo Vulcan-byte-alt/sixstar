@@ -49,6 +49,7 @@
             overflow-x: hidden;
         }
 
+
         h1,
         h2,
         h3,
@@ -5220,22 +5221,22 @@
             }
 
             .hero-content {
-                padding: 100px 20px 20px 20px !important;
+                padding: 80px 20px 20px 20px !important;
                 max-width: 100% !important;
                 width: 100% !important;
                 height: 100% !important;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
-                margin-bottom: 130px;
+                padding-bottom: 80px !important;
             }
 
             /* Hero Rating Badge - Mobile */
             .hero-rating-badge {
                 gap: 6px !important;
                 padding: 8px 12px !important;
-                margin-top: 32px !important;
-                margin-bottom: 36px !important;
+                margin-top: 24px !important;
+                margin-bottom: 28px !important;
                 max-width: fit-content !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
@@ -5444,6 +5445,39 @@
                 font-size: 10px !important;
                 letter-spacing: 2px !important;
                 margin-bottom: 12px !important;
+            }
+
+            /* Sign Up for Exclusive Section - Mobile */
+            .signup-container {
+                flex-direction: column !important;
+                gap: 24px !important;
+                text-align: center !important;
+            }
+
+            .signup-text {
+                flex: none !important;
+                width: 100% !important;
+            }
+
+            .signup-title {
+                font-size: 22px !important;
+            }
+
+            .signup-form {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 12px !important;
+            }
+
+            .signup-input {
+                width: 100% !important;
+                padding: 14px 20px !important;
+                font-size: 14px !important;
+            }
+
+            .signup-button {
+                width: 100% !important;
+                padding: 14px 24px !important;
             }
 
             /* Header - Mobile */
@@ -6827,43 +6861,6 @@
             }
         }
 
-        /* noUiSlider Custom Golden Styling */
-        .noUi-target {
-            background: rgba(212, 165, 116, 0.1);
-            border: 1px solid rgba(212, 165, 116, 0.2);
-            border-radius: 16px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .noUi-connect {
-            background: linear-gradient(135deg, var(--gold) 0%, #c9a84b 100%);
-            box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
-        }
-
-        .noUi-handle {
-            border: 3px solid var(--gold);
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4), 0 0 0 4px rgba(212, 165, 116, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .noUi-handle:hover {
-            transform: scale(1.15);
-            box-shadow: 0 6px 16px rgba(212, 165, 116, 0.5), 0 0 0 6px rgba(212, 165, 116, 0.15);
-        }
-
-        .noUi-handle:active {
-            transform: scale(1.25);
-            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.6), 0 0 0 8px rgba(212, 165, 116, 0.2);
-        }
-
-        .noUi-handle:before,
-        .noUi-handle:after {
-            display: none;
-        }
-
         /* Comprehensive Mobile Responsive Styles */
         @media (max-width: 768px) {
 
@@ -6936,54 +6933,25 @@
 
             /* === BURGER MENU - CLEAN IMPLEMENTATION === */
 
-            /* Hamburger Button - Target the icon directly */
-            .fa-bars {
-                position: fixed !important;
-                top: 18px !important;
-                right: 20px !important;
-                z-index: 10001 !important;
-                color: white !important;
-                font-size: 24px !important;
-                cursor: pointer !important;
-            }
-
+            /* Hamburger Button */
             #mobileMenuBtn {
-                display: block !important;
-                background: none !important;
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            #mobileMenuBtn:hover .fa-bars {
-                color: var(--gold) !important;
-            }
-
-            /* Close (X) button - position at same place as burger icon */
-            .fa-times {
-                position: fixed !important;
-                top: 18px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-end !important;
+                position: absolute !important;
+                top: 50% !important;
                 right: 20px !important;
-                z-index: 10001 !important;
-                color: white !important;
-                font-size: 28px !important;
-                cursor: pointer !important;
+                transform: translateY(-50%) !important;
+                padding: 10px !important;
+                z-index: 10000 !important;
+                text-align: right !important;
             }
 
-            /* Hide the close button that appears inside the menu */
-            #navLinks #mobileMenuCloseBtn {
-                display: none !important;
-            }
-
-            #mobileMenuCloseBtn {
+            #mobileMenuBtn i {
                 display: block !important;
-                background: none !important;
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
             }
 
-            #mobileMenuCloseBtn:hover .fa-times {
+            #mobileMenuBtn:hover {
                 color: var(--gold) !important;
             }
 
@@ -6993,6 +6961,11 @@
                 opacity: 0 !important;
                 visibility: hidden !important;
                 pointer-events: none !important;
+            }
+
+            /* Close button - HIDDEN */
+            #mobileMenuCloseBtn {
+                display: none !important;
             }
 
             /* Full Screen Mobile Menu */
@@ -7362,37 +7335,6 @@
 
             section[style*="linear-gradient(135deg, #0a1929 0%, #1a2f42 100%)"][style*="padding: 80px 0"] {
                 padding: 50px 20px !important;
-            }
-
-            /* Cruise Holiday Content Grid - Mobile: Stack to single column and reverse order */
-            #cruiseHolidaySection div[style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
-                display: flex !important;
-                flex-direction: column !important;
-            }
-
-            /* Image first, then text */
-            #cruiseHolidaySection div[style*="grid-template-columns: 1fr 1fr"] > div:first-child {
-                order: 2 !important;
-            }
-
-            #cruiseHolidaySection div[style*="grid-template-columns: 1fr 1fr"] > div:last-child {
-                order: 1 !important;
-            }
-
-            /* Remove shadow from glass container on mobile */
-            #cruiseHolidaySection div[style*="background: rgba(255, 255, 255, 0.75)"] {
-                box-shadow: none !important;
-            }
-
-            #cruiseHolidaySection {
-                padding: 60px 20px 50px 20px !important;
-            }
-
-            #cruiseHolidaySection p[style*="font-size: 16px"] {
-                font-size: 15px !important;
-                line-height: 1.7 !important;
             }
 
             /* Cruise Holiday Content Grid - Mobile: Stack to single column */
@@ -7797,10 +7739,32 @@
                 overflow-x: hidden !important;
             }
 
-            /* Sidebar & Main Content Layout - HIDE Desktop Sidebar on Mobile */
+            /* Sidebar & Main Content Layout - HIDE Desktop Sidebar on Mobile by default */
             aside {
                 display: none !important;
             }
+
+            /* Show aside as modal when clicking filter button on mobile */
+            aside.mobile-open {
+                display: block !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                background: rgba(10, 25, 41, 0.95) !important;
+                z-index: 999999 !important;
+                overflow-y: auto !important;
+                padding: 20px !important;
+            }
+
+            /* Hide filter toggle button when modal is open */
+            aside.mobile-open .mobile-filter-toggle {
+                display: none !important;
+            }
+
 
             /* Show ONLY mobile filter button */
             .mobile-filter-btn,
@@ -7854,12 +7818,78 @@
 
             /* Deal Cards - Mobile Optimized Luxury Design */
             .deal-card,
-            [style*="display: grid"][style*="grid-template-columns: 500px 1fr"] {
+            [style*="display: grid"][style*="grid-template-columns: 500px 1fr"],
+            [style*="display: grid"][style*="grid-template-columns: 400px 1fr"] {
                 display: flex !important;
                 flex-direction: column !important;
                 border-radius: 16px !important;
-                overflow: hidden !important;
+                overflow: visible !important;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+                pointer-events: auto !important;
+                contain: layout !important;
+                will-change: auto !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Disable hover effects on mobile */
+            .deal-card:hover {
+                transform: none !important;
+            }
+
+            /* PAGINATION CONTROL: Hide cards marked as not visible */
+            article[data-deal-id][data-pagination-visible="false"],
+            .deal-card[data-pagination-visible="false"],
+            [style*="display: grid"][data-pagination-visible="false"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+            }
+
+            /* Replace decorative dots with Font Awesome circle icon on mobile */
+            .deal-card [style*="position: absolute"][style*="left: -7px"][style*="width: 10px"][style*="height: 10px"],
+            [style*="position: absolute"][style*="left: -7px"][style*="width: 10px"][style*="height: 10px"][style*="border-radius: 50%"] {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 0 !important;
+                min-width: 0 !important;
+                max-width: 0 !important;
+                height: 0 !important;
+                min-height: 0 !important;
+                max-height: 0 !important;
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                overflow: visible !important;
+                position: absolute !important;
+                left: -1px !important;
+                top: 2px !important;
+                font-family: 'Font Awesome 5 Free' !important;
+                font-weight: 900 !important;
+                color: #d4af37 !important;
+                font-size: 10px !important;
+                text-shadow: 0 0 6px rgba(212, 175, 55, 0.4) !important;
+                line-height: 1 !important;
+                transform: translateX(-50%) translateY(-50%) !important;
+            }
+
+            .deal-card [style*="position: absolute"][style*="left: -7px"][style*="width: 10px"][style*="height: 10px"]::before,
+            [style*="position: absolute"][style*="left: -7px"][style*="width: 10px"][style*="height: 10px"][style*="border-radius: 50%"]::before {
+                content: "\f111" !important; /* fa-circle */
+                display: block !important;
+            }
+
+            /* Hide expand-on-hover sections on mobile */
+            .deal-card .expand-on-hover,
+            .expand-on-hover {
+                display: none !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                grid-template-rows: 0fr !important;
             }
 
             /* Card Image Container - Full Width on Mobile */
@@ -7868,8 +7898,8 @@
                 width: 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
-                height: 280px !important;
-                min-height: 280px !important;
+                height: 380px !important;
+                min-height: 380px !important;
                 border-radius: 0 !important;
             }
 
@@ -7889,30 +7919,90 @@
                 height: 40px !important;
             }
 
-            /* Floating Price Card - Mobile Optimized */
+            /* Floating Price Card - Mobile Optimized - CRITICAL FIX */
+            .deal-card [style*="position: absolute"][style*="bottom: 20px"][style*="backdrop-filter"],
+            .deal-card > div:first-child > div[style*="position: absolute"][style*="bottom"],
             [style*="position: absolute"][style*="bottom: 20px"][style*="backdrop-filter"] {
                 bottom: 12px !important;
                 left: 12px !important;
                 right: 12px !important;
+                width: auto !important;
+                max-width: calc(100% - 24px) !important;
                 padding: 14px 16px !important;
                 border-radius: 14px !important;
+                box-sizing: border-box !important;
             }
 
+            .deal-card [style*="position: absolute"][style*="bottom: 20px"][style*="backdrop-filter"] > div,
             [style*="position: absolute"][style*="bottom: 20px"][style*="backdrop-filter"] > div {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 12px !important;
+                width: 100% !important;
+                max-width: 100% !important;
             }
 
-            /* Price Display - Mobile */
-            [style*="font-size: 30px"][style*="font-weight: 800"] {
+            /* Price Display - Mobile - Lock font size immediately */
+            .deal-card [style*="font-size: 30px"],
+            [style*="font-size: 30px"][style*="font-weight: 800"],
+            [style*="font-size: 30px"][style*="Playfair"] {
                 font-size: 24px !important;
+                max-width: 100% !important;
             }
 
             /* Card Body - Mobile Padding */
             .deal-card > div:last-child,
             [style*="padding: 42px 48px"] {
                 padding: 24px 20px !important;
+                overflow: visible !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                height: auto !important;
+                min-height: 0 !important;
+                contain: layout !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Force ALL child elements to respect container width - except positioned elements */
+            .deal-card > div:last-child * {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Prevent text from expanding container */
+            .deal-card h3,
+            .deal-card p,
+            .deal-card div:not([style*="position: absolute"]),
+            .deal-card span {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+
+            /* Ensure grid containers don't overflow */
+            .deal-card [style*="display: grid"],
+            .deal-card [style*="display: flex"] {
+                max-width: 100% !important;
+                width: 100% !important;
+                overflow: hidden !important;
+            }
+
+            /* Prevent buttons from causing overflow */
+            .deal-card button,
+            .deal-card a[style*="padding"] {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Ensure logo images stay within bounds */
+            .deal-card img[alt*="logo"],
+            .deal-card img[alt*="Logo"],
+            .deal-card [style*="max-width: 200px"] {
+                max-width: 180px !important;
+                width: auto !important;
+                height: auto !important;
             }
 
             /* Decorative Frames - Adjusted for Mobile */
@@ -7942,22 +8032,52 @@
             }
 
             /* Duration Badge - Full Width on Mobile */
+            .deal-card [style*="padding: 16px 28px"][style*="background: linear-gradient(135deg, rgba(212, 175, 55"],
             [style*="padding: 16px 28px"][style*="background: linear-gradient(135deg, rgba(212, 175, 55"] {
                 width: 100% !important;
-                padding: 12px 20px !important;
+                max-width: 100% !important;
+                padding: 12px 16px !important;
+                box-sizing: border-box !important;
             }
 
-            /* Title Section - Mobile Typography */
+            /* Duration Badge Text */
+            .deal-card [style*="padding: 16px 28px"] [style*="font-size: 22px"] {
+                font-size: 18px !important;
+            }
+
+            /* Title Section - Mobile Typography - LOCK SIZES */
+            .deal-card [style*="font-size: 28px"],
+            .deal-card h3,
             [style*="font-size: 28px"][style*="font-family: 'Cinzel'"] {
-                font-size: 22px !important;
+                font-size: 20px !important;
                 line-height: 1.4 !important;
                 margin-bottom: 16px !important;
+                max-width: 100% !important;
+            }
+
+            /* Lock ALL font sizes inside cards */
+            .deal-card [style*="font-size: 22px"] {
+                font-size: 18px !important;
+            }
+
+            .deal-card [style*="font-size: 16px"] {
+                font-size: 14px !important;
+            }
+
+            .deal-card [style*="font-size: 15px"] {
+                font-size: 13px !important;
+            }
+
+            .deal-card [style*="font-size: 12px"] {
+                font-size: 11px !important;
             }
 
             /* Info Grid - Single Column on Mobile */
+            .deal-card [style*="display: grid"][style*="grid-template-columns: repeat(2, 1fr)"],
             [style*="display: grid"][style*="grid-template-columns: repeat(2, 1fr)"] {
                 grid-template-columns: 1fr !important;
                 gap: 14px !important;
+                max-width: 100% !important;
             }
 
             [style*="grid-column: 1 / -1"] {
@@ -7965,20 +8085,42 @@
             }
 
             /* Rich Info Box - Mobile Padding */
+            .deal-card [style*="padding: 22px 26px"],
             [style*="padding: 22px 26px"] {
-                padding: 16px 18px !important;
+                padding: 14px 16px !important;
+                max-width: 100% !important;
             }
 
             /* Info Labels - Mobile Size */
+            .deal-card [style*="letter-spacing: 2.5px"] {
+                letter-spacing: 1px !important;
+            }
+
+            .deal-card [style*="letter-spacing: 2px"],
             [style*="font-size: 12px"][style*="letter-spacing: 2px"] {
                 font-size: 10px !important;
-                letter-spacing: 1.5px !important;
+                letter-spacing: 1px !important;
+            }
+
+            /* Reduce all large paddings inside cards */
+            .deal-card [style*="padding-left: 22px"],
+            .deal-card [style*="padding-left: 26px"],
+            .deal-card [style*="padding-left: 28px"] {
+                padding-left: 16px !important;
+            }
+
+            .deal-card [style*="padding-right: 22px"],
+            .deal-card [style*="padding-right: 26px"],
+            .deal-card [style*="padding-right: 28px"] {
+                padding-right: 16px !important;
             }
 
             /* Action Buttons - Stack on Mobile */
+            .deal-card [style*="display: flex"][style*="gap: 12px"]:has(button),
             [style*="display: flex"][style*="gap: 12px"]:has(button) {
                 flex-direction: column !important;
                 gap: 10px !important;
+                max-width: 100% !important;
             }
 
             /* Buttons - Full Width Touch Friendly */
@@ -7998,6 +8140,30 @@
                 display: none !important;
             }
 
+            /* Results Header - Center on Mobile */
+            #results-header h2 {
+                text-align: center !important;
+            }
+
+            #results-header {
+                text-align: center !important;
+            }
+
+            /* Hide Per Person toggle, Solo Cruises, and Order By controls from results header on mobile */
+            #results-header > div > div > div {
+                display: none !important;
+            }
+
+            /* Keep only the entry counter visible */
+            #results-header > div > p {
+                display: block !important;
+            }
+
+            /* Show mobile controls inside filter on mobile */
+            .mobile-only-controls {
+                display: block !important;
+            }
+
             /* Pagination - Mobile Friendly */
             #pagination {
                 padding: 24px 16px !important;
@@ -8010,25 +8176,207 @@
                 padding: 0 !important;
             }
 
-            /* Popular Destinations - Mobile Grid */
+            /* Pagination Container - Mobile Optimized */
+            .pagination-container {
+                margin-top: 20px !important;
+                margin-bottom: 0 !important;
+                padding: 0 20px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 8px !important;
+                flex-wrap: wrap !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Main tag - KILL ALL vertical (y-axis) scrolling on mobile */
+            main {
+                height: auto !important;
+                max-height: none !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                overflow-y: visible !important;
+                overflow-x: hidden !important;
+                position: static !important;
+                display: block !important;
+                scrollbar-width: none !important; /* Firefox */
+                -ms-overflow-style: none !important; /* IE/Edge */
+            }
+
+            /* Hide scrollbar for webkit browsers (Chrome, Safari) on mobile */
+            main::-webkit-scrollbar {
+                display: none !important;
+                width: 0 !important;
+                height: 0 !important;
+            }
+
+            /* Deal cards container - auto height for mobile */
+            #dealsContainer,
+            #dealsContainer.list-view,
+            #dealsContainer.grid-view {
+                height: auto !important;
+                max-height: none !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            /* Deal cards - add gap between each card */
+            article[data-deal-id],
+            .deal-card {
+                margin-bottom: 20px !important;
+            }
+
+            /* Force all cards to have consistent spacing */
+            #dealsContainer article[data-deal-id],
+            #dealsContainer .deal-card {
+                margin-bottom: 20px !important;
+                padding-bottom: 0 !important;
+            }
+
+            /* CRITICAL: Hide non-visible cards completely - remove from layout */
+            article[data-deal-id][data-pagination-visible="false"],
+            .deal-card[data-pagination-visible="false"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                min-height: 0 !important;
+                max-height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+                position: absolute !important;
+                left: -9999px !important;
+            }
+
+            /* Last visible deal card - FORCE NO bottom margin */
+            #dealsContainer article[data-deal-id]:last-of-type,
+            #dealsContainer .deal-card:last-of-type,
+            article[data-deal-id]:last-child,
+            .deal-card:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            /* Pagination Buttons - Mobile */
+            .pagination-container button {
+                width: 36px !important;
+                min-width: 36px !important;
+                max-width: 36px !important;
+                height: 36px !important;
+                min-height: 36px !important;
+                max-height: 36px !important;
+                font-size: 13px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border-radius: 8px !important;
+                flex-shrink: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            /* Pagination SVG icons - Mobile */
+            .pagination-container button svg {
+                width: 14px !important;
+                height: 14px !important;
+            }
+
+            /* Popular Destinations Section - reduce top padding on mobile */
+            section[style*="padding: 80px 0"] {
+                padding: 24px 0 60px 0 !important;
+            }
+
+            /* Popular Destinations Header Container - Center on mobile */
+            section [style*="display: flex"][style*="justify-content: space-between"][style*="margin-bottom: 48px"] {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                margin-bottom: 32px !important;
+            }
+
+            /* Center the "Our popular destinations" h2 title */
+            section [style*="display: flex"][style*="justify-content: space-between"] h2 {
+                text-align: center !important;
+                margin: 0 auto !important;
+                font-size: 28px !important;
+            }
+
+            /* Hide original "View all" link at top */
+            section [style*="display: flex"][style*="justify-content: space-between"] a[href="/destinations"] {
+                display: none !important;
+            }
+
+            /* Popular Destinations - Mobile Grid with VERTICAL spacing */
             [style*="grid-template-columns: repeat(4, 1fr)"] {
                 grid-template-columns: 1fr !important;
-                gap: 16px !important;
+                display: grid !important;
+                gap: 20px !important;
+                row-gap: 20px !important;
+                grid-row-gap: 20px !important;
+                margin-bottom: 0 !important;
             }
 
-            /* Destination Cards - Mobile Height */
+            /* Destination Cards - Mobile Height with spacing */
             [style*="grid-template-columns: repeat(4, 1fr)"] a {
                 height: 220px !important;
+                margin-bottom: 20px !important;
+                display: block !important;
             }
 
-            /* Awards Grid - Mobile 2 Columns */
+            /* Add centered "View all" button AFTER all pictures */
+            [style*="grid-template-columns: repeat(4, 1fr)"]::after {
+                content: "View all →";
+                display: block !important;
+                width: fit-content !important;
+                margin: 32px auto 0 auto !important;
+                padding: 14px 40px !important;
+                background: linear-gradient(135deg, #d4af37 0%, #c9a84b 100%) !important;
+                color: white !important;
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                border-radius: 12px !important;
+                text-align: center !important;
+                font-family: 'Inter', sans-serif !important;
+                cursor: pointer !important;
+                box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3) !important;
+                grid-column: 1 !important;
+            }
+
+            /* Awards Grid - Mobile 2 Columns with NO spacing */
             .awards-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 12px !important;
+                gap: 0 !important;
+                column-gap: 0 !important;
+                row-gap: 0 !important;
             }
 
-            .award-item {
+            .award-item[style*="display: flex"],
+            .award-item:not([style*="display: none"]) {
                 padding: 16px 12px !important;
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            /* Respect JavaScript display: none */
+            .award-item[style*="display: none"] {
+                display: none !important;
+            }
+
+            /* Center award text that wraps to multiple lines */
+            .award-item p,
+            .award-item span,
+            .award-item div {
+                text-align: center !important;
             }
 
             /* Testimonials - Mobile Single Column */
@@ -8101,7 +8449,7 @@
 
             .deal-card > div:first-child {
                 width: 100% !important;
-                height: 280px !important;
+                height: 380px !important;
                 border-radius: 16px 16px 0 0 !important;
             }
 
@@ -8113,6 +8461,67 @@
             /* Deal Card Hover Effects - Disable transform on mobile */
             .deal-card:hover {
                 transform: none !important;
+            }
+
+            /* CRITICAL: Ensure pagination works - hide cards not visible on current page */
+            article[data-deal-id][data-pagination-visible="false"],
+            .deal-card[data-pagination-visible="false"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            /* CRITICAL: Override list-view specific styles on mobile */
+            #dealsContainer.list-view .deal-card,
+            #dealsContainer.list-view article.deal-card,
+            #dealsContainer.list-view article[data-deal-id] {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: unset !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            #dealsContainer.list-view .deal-card > div:first-child,
+            #dealsContainer.list-view article.deal-card > div:first-child {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                height: 380px !important;
+                min-height: 380px !important;
+                border-radius: 16px 16px 0 0 !important;
+            }
+
+            #dealsContainer.list-view .deal-card > div:last-child {
+                width: 100% !important;
+                padding: 24px 20px 28px !important;
+                max-width: 100% !important;
+            }
+
+            /* CRITICAL: Pagination must work on mobile - hide non-visible cards */
+            article[data-deal-id][data-pagination-visible="false"],
+            .deal-card[data-pagination-visible="false"],
+            #dealsContainer.list-view article[data-deal-id][data-pagination-visible="false"],
+            #dealsContainer.list-view .deal-card[data-pagination-visible="false"] {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                pointer-events: none !important;
+            }
+
+            #dealsContainer.list-view .deal-card h3 {
+                font-size: 20px !important;
+                line-height: 1.4 !important;
+                margin-bottom: 16px !important;
+            }
+
+            #dealsContainer.list-view .deal-card button:not(.heart-button) {
+                padding: 12px 20px !important;
+                font-size: 11px !important;
             }
 
             /* View Toggle Buttons - Always visible on mobile */
@@ -9104,7 +9513,7 @@
                 <!-- Filter Sidebar -->
                 <aside class="active" style="position: relative;">
                     <!-- Mobile Filter Toggle Button -->
-                    <button class="mobile-filter-toggle active" onclick="console.log('FILTER CRUISES BUTTON CLICKED!'); toggleMobileFilters();">
+                    <button class="mobile-filter-toggle active" onclick="toggleMobileFilters();">
                         <span style="display: flex; align-items: center; gap: 10px;">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5">
@@ -9133,16 +9542,60 @@
                             <div style="width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto 0;"></div>
                         </div>
 
+                        <!-- Mobile Only: Per Person Toggle, Solo Cruises, Order By -->
+                        <div class="mobile-only-controls" style="display: none; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(212, 165, 116, 0.15);">
+                            <!-- Per Person / Total Price Toggle -->
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
+                                    Price Display
+                                </label>
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; background: white; padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(212, 165, 116, 0.2); box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04);">
+                                    <span style="font-size: 13px; color: var(--navy); font-weight: 500; font-family: 'Inter', sans-serif;">Per Person</span>
+                                    <label style="position: relative; display: inline-block; width: 48px; height: 24px; cursor: pointer;">
+                                        <input type="checkbox" id="priceToggleMobile" style="opacity: 0; width: 0; height: 0;" onchange="document.getElementById('priceToggle').checked = this.checked; togglePriceDisplay()">
+                                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(212, 165, 116, 0.2); transition: 0.3s; border-radius: 24px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);"></span>
+                                        <span style="position: absolute; content: ''; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; transition: 0.3s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></span>
+                                    </label>
+                                    <span style="font-size: 13px; color: #888; font-weight: 500; font-family: 'Inter', sans-serif;">Total Price</span>
+                                </div>
+                            </div>
+
+                            <!-- Solo Cruises -->
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
+                                    Solo Cruises
+                                </label>
+                                <select id="soloCruisesMobile" onchange="document.getElementById('soloCruises').value = this.value; filterSoloCruises()" style="width: 100%; padding: 14px 45px 14px 18px; background: white; border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px; font-size: 14px; font-weight: 400; font-family: 'Cinzel', serif; cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none; color: var(--navy); outline: none; box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04); transition: all 0.3s; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d4a574%22 stroke-width=%222%22%3e%3cpolyline points=%226 9 12 15 18 9%22/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 16px center;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(212, 165, 116, 0.15)'" onblur="this.style.borderColor='rgba(212, 165, 116, 0.2)'; this.style.boxShadow='0 2px 8px rgba(10, 25, 41, 0.04)'">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                            </div>
+
+                            <!-- Order By -->
+                            <div style="margin-bottom: 0;">
+                                <label style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
+                                    Order By
+                                </label>
+                                <select id="orderBySelectMobile" onchange="document.getElementById('orderBySelect').value = this.value; document.getElementById('orderBySelect').dispatchEvent(new Event('change'))" style="width: 100%; padding: 14px 45px 14px 18px; background: white; border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px; font-size: 14px; font-weight: 400; font-family: 'Cinzel', serif; cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none; color: var(--navy); outline: none; box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04); transition: all 0.3s; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d4a574%22 stroke-width=%222%22%3e%3cpolyline points=%226 9 12 15 18 9%22/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 16px center;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(212, 165, 116, 0.15)'" onblur="this.style.borderColor='rgba(212, 165, 116, 0.2)'; this.style.boxShadow='0 2px 8px rgba(10, 25, 41, 0.04)'">
+                                    <option value="date">Date</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="duration-short">Duration: Shortest</option>
+                                    <option value="duration-long">Duration: Longest</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- Departure Date -->
                         <div style="margin-bottom: 32px;">
                             <label
                                 style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
                                 Departure Date
                             </label>
-                            <input type="text" placeholder="e.g., May 2026 or 05/2026" style="width: 100%; padding: 16px 20px;
+                            <input type="text" placeholder="Select your voyage date" style="width: 100%; padding: 16px 20px; 
 background: white;
 border: 1px solid rgba(212, 165, 116, 0.2);
-border-radius: 16px;
+border-radius: 8px;
 font-size: 14px;
 font-weight: 400;
 font-family: 'Cinzel', serif;
@@ -9158,10 +9611,10 @@ outline: none;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxSha
                                 style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
                                 Departing From UK
                             </label>
-                            <div class="custom-select-wrapper"><select style="width: 100%; padding: 16px 45px 16px 20px;
+                            <div class="custom-select-wrapper"><select style="width: 100%; padding: 16px 45px 16px 20px; 
 background: white;
 border: 1px solid rgba(212, 165, 116, 0.2);
-border-radius: 16px;
+border-radius: 8px;
 font-size: 14px;
 font-weight: 400;
 font-family: 'Cinzel', serif;
@@ -9188,10 +9641,10 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif;">
                                 Cruise Type
                             </label>
-                            <div class="custom-select-wrapper"><select style="padding: 14px 45px 14px 18px;
+                            <div class="custom-select-wrapper"><select style="padding: 14px 45px 14px 18px; 
 background: white;
 border: 1px solid rgba(212, 165, 116, 0.2);
-border-radius: 16px;
+border-radius: 8px;
 font-size: 14px;
 font-weight: 400;
 font-family: 'Cinzel', serif;
@@ -9569,10 +10022,10 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 </svg>
                                 <span>Cabin Type</span>
                             </label>
-                            <div class="custom-select-wrapper"><select style="padding: 14px 45px 14px 18px;
+                            <div class="custom-select-wrapper"><select style="padding: 14px 45px 14px 18px; 
 background: white;
 border: 1px solid rgba(212, 165, 116, 0.2);
-border-radius: 16px;
+border-radius: 8px;
 font-size: 14px;
 font-weight: 400;
 font-family: 'Cinzel', serif;
@@ -9629,6 +10082,10 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 <main>
                     <!-- Results Header -->
                     <div id="results-header" style="margin-bottom: 32px;">
+                        <!-- Section Label -->
+                        <span class="section-label" style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-family: 'Montserrat', sans-serif; margin-bottom: 16px; text-align: center;">
+                            EXCLUSIVE COLLECTION
+                        </span>
                         <!-- Page Title -->
                         <h2 style="font-size: 32px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 24px;">
                             Current Offers
@@ -9647,7 +10104,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 <div style="display: flex; align-items: center; gap: 24px;">
                                     <!-- Per Person / Total Price Toggle -->
                                     <div style="display: flex; align-items: center; gap: 10px;">
-                                        <span style="font-size: 13px; color: var(--navy); font-weight: 600; font-family: 'Inter', sans-serif;">Per Person</span>
+                                        <span style="font-size: 13px; color: var(--navy); font-weight: 500; font-family: 'Inter', sans-serif;">Per Person</span>
                                         <label style="position: relative; display: inline-block; width: 48px; height: 24px; cursor: pointer;">
                                             <input type="checkbox" id="priceToggle" style="opacity: 0; width: 0; height: 0;" onchange="togglePriceDisplay()">
                                             <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(212, 165, 116, 0.2); transition: 0.3s; border-radius: 24px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);"></span>
@@ -9659,7 +10116,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                     <!-- Solo Cruises Dropdown -->
                                     <div style="display: flex; align-items: center; gap: 8px;">
                                         <span style="font-size: 13px; color: var(--navy); font-weight: 500; font-family: 'Inter', sans-serif;">Solo Cruises</span>
-                                        <select id="soloCruises" onchange="filterSoloCruises()" style="padding: 8px 32px 8px 12px; background: white; border: 1px solid rgba(212, 165, 116, 0.3); border-radius: 12px; font-size: 13px; font-family: 'Cinzel', serif; cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none; color: var(--navy); outline: none; box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04); transition: all 0.3s; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d4a574%22 stroke-width=%222%22%3e%3cpolyline points=%226 9 12 15 18 9%22/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 10px center;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(212, 165, 116, 0.15)'" onblur="this.style.borderColor='rgba(212, 165, 116, 0.3)'; this.style.boxShadow='0 2px 8px rgba(10, 25, 41, 0.04)'">
+                                        <select id="soloCruises" onchange="filterSoloCruises()" style="padding: 8px 32px 8px 12px; background: white; border: 1px solid rgba(212, 165, 116, 0.3); border-radius: 8px; font-size: 13px; font-family: 'Cinzel', serif; cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none; color: var(--navy); outline: none; box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04); transition: all 0.3s; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d4a574%22 stroke-width=%222%22%3e%3cpolyline points=%226 9 12 15 18 9%22/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 10px center;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(212, 165, 116, 0.15)'" onblur="this.style.borderColor='rgba(212, 165, 116, 0.3)'; this.style.boxShadow='0 2px 8px rgba(10, 25, 41, 0.04)'">
                                             <option value="no">No</option>
                                             <option value="yes">Yes</option>
                                         </select>
@@ -9671,7 +10128,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                     <!-- Order By Dropdown -->
                                     <div style="display: flex; align-items: center; gap: 8px;">
                                         <span style="font-size: 13px; color: var(--navy); font-weight: 500; font-family: 'Inter', sans-serif;">Order By:</span>
-                                        <select id="orderBySelect" style="padding: 8px 32px 8px 12px; background: white; border: 1px solid rgba(212, 165, 116, 0.3); border-radius: 12px; font-size: 13px; font-family: 'Cinzel', serif; cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none; color: var(--navy); outline: none; box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04); transition: all 0.3s; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d4a574%22 stroke-width=%222%22%3e%3cpolyline points=%226 9 12 15 18 9%22/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 10px center;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(212, 165, 116, 0.15)'" onblur="this.style.borderColor='rgba(212, 165, 116, 0.3)'; this.style.boxShadow='0 2px 8px rgba(10, 25, 41, 0.04)'">
+                                        <select id="orderBySelect" style="padding: 8px 32px 8px 12px; background: white; border: 1px solid rgba(212, 165, 116, 0.3); border-radius: 8px; font-size: 13px; font-family: 'Cinzel', serif; cursor: pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none; color: var(--navy); outline: none; box-shadow: 0 2px 8px rgba(10, 25, 41, 0.04); transition: all 0.3s; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d4a574%22 stroke-width=%222%22%3e%3cpolyline points=%226 9 12 15 18 9%22/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 10px center;" onfocus="this.style.borderColor='var(--gold)'; this.style.boxShadow='0 4px 16px rgba(212, 165, 116, 0.15)'" onblur="this.style.borderColor='rgba(212, 165, 116, 0.3)'; this.style.boxShadow='0 2px 8px rgba(10, 25, 41, 0.04)'">
                                             <option value="date">Date</option>
                                             <option value="price-low">Price: Low to High</option>
                                             <option value="price-high">Price: High to Low</option>
@@ -9706,7 +10163,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                         </div>
 
                         <!-- Mobile Filter Button -->
-                        <button id="mobile-filter-btn" class="mobile-filter-btn-custom" onclick="console.log('BUTTON CLICKED'); openMobileFilterModal()">
+                        <button id="mobile-filter-btn" class="mobile-filter-btn-custom" onclick="openMobileFilterModal()">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
                             </svg>
@@ -11840,7 +12297,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 <!-- Header with Logo & Duration Badge -->
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; position: relative; z-index: 1;">
                                     <div>
-                                        <img src="images/deals/regent-seven-seas-logo.png" alt="Regent Seven Seas"
+                                        <img src="images/deals/default-logo.png" alt="Cruise Line"
                                             style="max-height: 48px; width: auto; max-width: 200px; object-fit: contain; opacity: 0.92;">
                                         <!-- Gold Decorative Underline -->
                                         <div style="display: flex; gap: 4px; margin-top: 12px;">
@@ -11998,7 +12455,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 <!-- Header with Logo & Duration Badge -->
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; position: relative; z-index: 1;">
                                     <div>
-                                        <img src="images/deals/oceania-cruises-logo.jpg" alt="Oceania Cruises"
+                                        <img src="images/deals/default-logo.png" alt="Cruise Line"
                                             style="max-height: 48px; width: auto; max-width: 200px; object-fit: contain; opacity: 0.92;">
                                         <!-- Gold Decorative Underline -->
                                         <div style="display: flex; gap: 4px; margin-top: 12px;">
@@ -12792,7 +13249,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 <!-- Header with Logo & Duration Badge -->
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; position: relative; z-index: 1;">
                                     <div>
-                                        <img src="images/deals/silversea-logo.png" alt="Silversea"
+                                        <img src="images/deals/celebrity-cruises-logo.png" alt="Celebrity Cruises"
                                             style="max-height: 48px; width: auto; max-width: 200px; object-fit: contain; opacity: 0.92;">
                                         <!-- Gold Decorative Underline -->
                                         <div style="display: flex; gap: 4px; margin-top: 12px;">
@@ -13903,7 +14360,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                                 <!-- Header with Logo & Duration Badge -->
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; position: relative; z-index: 1;">
                                     <div>
-                                        <img src="images/deals/azamara-logo.png" alt="Azamara"
+                                        <img src="images/deals/default-logo.png" alt="Cruise Line"
                                             style="max-height: 48px; width: auto; max-width: 200px; object-fit: contain; opacity: 0.92;">
                                         <!-- Gold Decorative Underline -->
                                         <div style="display: flex; gap: 4px; margin-top: 12px;">
@@ -14057,9 +14514,15 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
         <div class="max-w-7xl mx-auto px-6">
             <!-- Section Header -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px;">
-                <h2 style="font-size: 42px; font-family: 'Playfair Display', serif; color: var(--navy); font-weight: 400; margin: 0;">
-                    Our popular <span style="color: var(--gold); font-style: italic;">destinations</span>
-                </h2>
+                <div>
+                    <!-- Section Label -->
+                    <span class="section-label" style="display: block; font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-family: 'Montserrat', sans-serif; margin-bottom: 16px;">
+                        EXPLORE THE WORLD
+                    </span>
+                    <h2 style="font-size: 42px; font-family: 'Playfair Display', serif; color: var(--navy); font-weight: 400; margin: 0;">
+                        Our popular <span style="color: var(--gold); font-style: italic;">destinations</span>
+                    </h2>
+                </div>
                 <a href="/destinations" style="color: var(--gold); font-size: 16px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; transition: gap 0.3s ease;"
                    onmouseover="this.style.gap='12px'"
                    onmouseout="this.style.gap='8px'">
@@ -14411,21 +14874,21 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
     <!-- End Awards & Testimonials Wrapper -->
 
     <!-- Sign Up for Exclusive Deals -->
-    <section style="background: white; padding: 40px 0;">
+    <section class="signup-section" style="background: white; padding: 40px 0;">
         <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; gap: 48px;">
+            <div class="signup-container" style="display: flex; align-items: center; justify-content: space-between; gap: 48px;">
                 <!-- Left: Text -->
-                <div style="flex: 1;">
-                    <h2 style="font-family: 'Cinzel', serif; font-size: 30px; font-weight: 700; color: var(--navy); margin-bottom: 0; line-height: 1.3;">
+                <div class="signup-text" style="flex: 1;">
+                    <h2 class="signup-title" style="font-family: 'Cinzel', serif; font-size: 30px; font-weight: 700; color: var(--navy); margin-bottom: 0; line-height: 1.3;">
                         SIGN UP FOR EXCLUSIVE DEALS<br>
                         DIRECT TO YOUR INBOX
                     </h2>
                 </div>
 
                 <!-- Right: Email Form -->
-                <div style="flex: 1; display: flex; gap: 16px; align-items: center;">
-                    <input type="email" placeholder="Email Address" style="flex: 1; padding: 16px 24px; border: 1px solid rgba(10, 25, 41, 0.2); border-radius: 8px; font-size: 15px; background: #f8f9fa; color: var(--navy);">
-                    <button style="background: var(--navy); color: white; padding: 16px 40px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: all 0.3s;">
+                <div class="signup-form" style="flex: 1; display: flex; gap: 16px; align-items: center;">
+                    <input type="email" placeholder="Email Address" class="signup-input" style="flex: 1; padding: 16px 24px; border: 1px solid rgba(10, 25, 41, 0.2); border-radius: 8px; font-size: 15px; background: #f8f9fa; color: var(--navy);">
+                    <button class="signup-button" style="background: var(--navy); color: white; padding: 16px 40px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: all 0.3s;">
                         SUBMIT
                     </button>
                 </div>
@@ -14773,53 +15236,55 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
             font-size: 9px !important;
         }
 
-        /* List View Card Styles (Default) - Override inline styles */
-        #dealsContainer.list-view article[data-deal-id][data-pagination-visible="true"],
-        #dealsContainer.list-view .deal-card[data-pagination-visible="true"] {
-            display: grid !important;
-            grid-template-columns: 400px 1fr !important;
-        }
+        /* List View Card Styles (Default) - DESKTOP ONLY - Override inline styles */
+        @media (min-width: 769px) {
+            #dealsContainer.list-view article[data-deal-id][data-pagination-visible="true"],
+            #dealsContainer.list-view .deal-card[data-pagination-visible="true"] {
+                display: grid !important;
+                grid-template-columns: 400px 1fr !important;
+            }
 
-        /* Force 400px image width in list view */
-        #dealsContainer.list-view article.deal-card > div:first-child,
-        #dealsContainer.list-view .deal-card > div:first-child {
-            width: 400px !important;
-            height: 100% !important;
-            min-height: 400px !important;
-            min-width: 400px !important;
-            max-width: 400px !important;
-        }
+            /* Force 400px image width in list view */
+            #dealsContainer.list-view article.deal-card > div:first-child,
+            #dealsContainer.list-view .deal-card > div:first-child {
+                width: 400px !important;
+                height: 100% !important;
+                min-height: 400px !important;
+                min-width: 400px !important;
+                max-width: 400px !important;
+            }
 
-        /* Ensure images fill container in list view */
-        #dealsContainer.list-view .deal-card > div:first-child img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            object-position: center center !important;
-            display: block !important;
-        }
+            /* Ensure images fill container in list view */
+            #dealsContainer.list-view .deal-card > div:first-child img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: center center !important;
+                display: block !important;
+            }
 
-        #dealsContainer.list-view .deal-card > div:last-child {
-            padding: 42px 48px 40px !important;
-        }
+            #dealsContainer.list-view .deal-card > div:last-child {
+                padding: 42px 48px 40px !important;
+            }
 
-        #dealsContainer.list-view .deal-card h3 {
-            font-size: 28px !important;
-            line-height: 1.3 !important;
-            margin-bottom: 20px !important;
-        }
+            #dealsContainer.list-view .deal-card h3 {
+                font-size: 28px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 20px !important;
+            }
 
-        #dealsContainer.list-view .deal-card img[alt*="Journeys"],
-        #dealsContainer.list-view .deal-card img[alt*="Cruises"],
-        #dealsContainer.list-view .deal-card img[alt*="Cruise"] {
-            max-height: 48px !important;
-        }
+            #dealsContainer.list-view .deal-card img[alt*="Journeys"],
+            #dealsContainer.list-view .deal-card img[alt*="Cruises"],
+            #dealsContainer.list-view .deal-card img[alt*="Cruise"] {
+                max-height: 48px !important;
+            }
 
-        /* List view buttons - exclude heart button! */
-        #dealsContainer.list-view .deal-card button:not(.heart-button) {
-            padding: 16px 28px !important;
-            font-size: 11px !important;
-            letter-spacing: 2.5px !important;
+            /* List view buttons - exclude heart button! */
+            #dealsContainer.list-view .deal-card button:not(.heart-button) {
+                padding: 16px 28px !important;
+                font-size: 11px !important;
+                letter-spacing: 2.5px !important;
+            }
         }
 
         /* Fix wishlist/like button in GRID view - prevent oval shape, make perfect circle */
@@ -15072,9 +15537,9 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                     </div>
 
                     <!-- World Travel Holdings Logo -->
-                    <div style="display: flex; justify-content: center;">
+                    <div style="display: flex; justify-content: center; align-items: center;">
                         <img src="https://www.sixstarcruises.co.uk/assets/images/logo/wth-logo.png"
-                            alt="World Travel Holdings" style="width: 50%; max-width: 200px;">
+                            alt="World Travel Holdings" style="width: 50%; max-width: 200px; margin: 0 auto; display: block;">
                     </div>
                 </div>
 
@@ -15236,7 +15701,6 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 soloCruises.selectedIndex = 0;
             }
 
-            console.log('All filters cleared!');
             applyFilters(); // Reapply filters (show all deals)
         }
 
@@ -15302,8 +15766,6 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
 
             // Reorder DOM elements
             allDeals.forEach(deal => dealsContainer.appendChild(deal));
-
-            console.log('Deals sorted by:', sortValue);
 
             // Refresh pagination display
             showPage(currentPage, false);
@@ -15392,17 +15854,10 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 }
 
                 // Filter by Solo Cruises
-                // Note: This shows deals that mention solo/single OR shows all deals if none explicitly mention solo
-                // You may want to add data-solo="true" attributes to specific cards for better filtering
                 if (soloCruises === 'yes') {
-                    // Check if card has solo-friendly indicators
-                    const hasSoloInfo = cardContent.includes('solo') ||
-                                       cardContent.includes('single') ||
-                                       cardContent.includes('alone') ||
-                                       cardContent.includes('no single supplement');
-                    // For now, show all deals - you should add data attributes to mark solo-friendly deals
-                    // Uncomment the line below if you want strict filtering:
-                    // if (!hasSoloInfo) show = false;
+                    if (!cardContent.includes('solo') && !cardContent.includes('single')) {
+                        show = false;
+                    }
                 }
 
                 // Filter by duration
@@ -15481,8 +15936,6 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 entriesCount.textContent = visibleCount;
             }
 
-            console.log('Filters applied. Visible deals:', visibleCount);
-
             // Update pagination after filtering
             // Don't scroll to top when applying filters - stay at current position
             showPage(1, false); // Go back to first page after filtering
@@ -15560,34 +16013,30 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                     setTimeout(() => particle.remove(), 800);
                 }
 
-                // Show toast notification (optional)
-                console.log('Added to saved cruises');
-            } else {
-                console.log('Removed from saved');
             }
         }
 
         // Mobile filter toggle functionality
         function toggleMobileFilters() {
-            console.log('toggleMobileFilters called');
             const aside = document.querySelector('aside');
             const toggleButton = document.querySelector('.mobile-filter-toggle');
-
-            console.log('aside element:', aside);
-            console.log('toggleButton element:', toggleButton);
+            const mobileFilterBtn = document.getElementById('mobile-filter-btn');
 
             if (aside) {
-                aside.classList.toggle('active');
-                console.log('aside active class toggled. Has active:', aside.classList.contains('active'));
-            } else {
-                console.error('aside element not found!');
+                aside.classList.toggle('mobile-open');
             }
 
             if (toggleButton) {
                 toggleButton.classList.toggle('active');
-                console.log('toggleButton active class toggled');
-            } else {
-                console.error('toggleButton element not found!');
+            }
+
+            // Hide/show the mobile filter button
+            if (mobileFilterBtn) {
+                if (aside && aside.classList.contains('mobile-open')) {
+                    mobileFilterBtn.style.display = 'none';
+                } else {
+                    mobileFilterBtn.style.display = 'flex';
+                }
             }
         }
 
@@ -15602,28 +16051,21 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
         }
 
         function showPage(pageNum, shouldScroll = true) {
-            console.log('=== showPage called ===');
-            console.log('Page number:', pageNum);
-            console.log('Should scroll:', shouldScroll);
             currentPage = pageNum;
 
             const dealsPerPage = getDealsPerPage();
-            console.log('Deals per page:', dealsPerPage);
 
             // Get all deal article elements
             const allDeals = document.querySelectorAll('article[data-deal-id]');
-            console.log('Total deals found:', allDeals.length);
 
             // Get only visible (non-filtered) deals
             const visibleDeals = Array.from(allDeals).filter(deal => {
                 return deal.getAttribute('data-filtered') !== 'true';
             });
-            console.log('Visible deals after filtering:', visibleDeals.length);
 
             // Calculate which deals to show
             const startIndex = (pageNum - 1) * dealsPerPage;
             const endIndex = startIndex + dealsPerPage;
-            console.log('Showing deals from index', startIndex, 'to', endIndex - 1);
 
             // First, hide all deals with pagination attribute
             allDeals.forEach(deal => {
@@ -15634,7 +16076,6 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
             visibleDeals.forEach((deal, index) => {
                 if (index >= startIndex && index < endIndex) {
                     deal.setAttribute('data-pagination-visible', 'true');
-                    console.log('Showing deal', index);
                 } else {
                     deal.setAttribute('data-pagination-visible', 'false');
                 }
@@ -15683,12 +16124,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
         }
 
         // Initialize pagination - run immediately since script is at end of document
-        console.log('PAGINATION SCRIPT STARTING...');
-        console.log('Document readyState:', document.readyState);
-
         function initPagination() {
-            console.log('=== initPagination called ===');
-
             // Show first page
             showPage(1);
 
@@ -17114,10 +17550,10 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
     <!-- Mobile Filter Modal (Horizontal Layout) -->
     <div id="mobile-filter-modal" style="display: none;">
         <!-- Backdrop -->
-        <div id="mobile-filter-backdrop" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 25, 41, 0.7); backdrop-filter: blur(4px); z-index: 9998;" onclick="closeMobileFilterModal()"></div>
+        <div id="mobile-filter-backdrop" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 25, 41, 0.7); backdrop-filter: blur(4px); z-index: 999998;" onclick="closeMobileFilterModal()"></div>
 
         <!-- Modal -->
-        <div id="mobile-filter-content" style="position: fixed; bottom: 0; left: 0; right: 0; background: white; border-radius: 24px 24px 0 0; max-height: 80vh; display: flex; flex-direction: column; z-index: 9999; box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);">
+        <div id="mobile-filter-content" style="position: fixed; bottom: 0; left: 0; right: 0; background: white; border-radius: 24px 24px 0 0; max-height: 80vh; display: flex; flex-direction: column; z-index: 999999; box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);">
 
             <!-- Drag Handle -->
             <div style="position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 40px; height: 4px; background: rgba(212, 175, 55, 0.3); border-radius: 2px;"></div>
@@ -17126,11 +17562,8 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
             <div style="padding: 24px 20px 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.1); flex-shrink: 0;">
                 <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px;">
                     <h3 style="font-size: 20px; font-family: 'Playfair Display', serif; color: var(--navy); margin: 0;">Filter Cruises</h3>
-                    <button onclick="closeMobileFilterModal()" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(212, 175, 55, 0.1); color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
+                    <button onclick="closeMobileFilterModal()" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(212, 175, 55, 0.1); color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; min-width: 32px; max-width: 32px;">
+                        <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
@@ -17158,6 +17591,7 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
         // Mobile Filter Modal Functions
         function openMobileFilterModal() {
             const modal = document.getElementById('mobile-filter-modal');
+
             if (modal) {
                 // Populate horizontal filters
                 populateHorizontalFilters();
@@ -17193,6 +17627,49 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 }
             }, 300);
         }
+
+        // Add drag-to-close functionality
+        (function() {
+            let startY = 0;
+            let currentY = 0;
+            let isDragging = false;
+
+            const content = document.getElementById('mobile-filter-content');
+            if (!content) return;
+
+            content.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+                isDragging = true;
+                content.style.transition = 'none';
+            });
+
+            content.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentY = e.touches[0].clientY;
+                const diff = currentY - startY;
+
+                // Only allow dragging down
+                if (diff > 0) {
+                    content.style.transform = `translateY(${diff}px)`;
+                }
+            });
+
+            content.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                content.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+
+                const diff = currentY - startY;
+
+                // Close if dragged more than 100px down
+                if (diff > 100) {
+                    closeMobileFilterModal();
+                } else {
+                    // Snap back
+                    content.style.transform = 'translateY(0)';
+                }
+            });
+        })();
 
         function populateHorizontalFilters() {
             const container = document.getElementById('mobile-horizontal-filters');
@@ -17684,12 +18161,6 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
             const slider = toggle.nextElementSibling;
             const knob = slider ? slider.nextElementSibling : null;
 
-            // Find the label texts (Per Person and Total Price)
-            const toggleContainer = toggle.closest('div');
-            const spans = toggleContainer.querySelectorAll('span');
-            const perPersonSpan = spans[0]; // First span is "Per Person"
-            const totalPriceSpan = spans[2]; // Last span is "Total Price"
-
             if (isTotal) {
                 if (slider) {
                     slider.style.background = 'linear-gradient(135deg, var(--gold), #c9a84b)';
@@ -17697,29 +18168,12 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 if (knob) {
                     knob.style.transform = 'translateX(24px)';
                 }
-                // Update text colors
-                if (perPersonSpan) {
-                    perPersonSpan.style.color = '#888';
-                }
-                if (totalPriceSpan) {
-                    totalPriceSpan.style.color = 'var(--navy)';
-                    totalPriceSpan.style.fontWeight = '600';
-                }
             } else {
                 if (slider) {
                     slider.style.background = 'rgba(212, 165, 116, 0.2)';
                 }
                 if (knob) {
                     knob.style.transform = 'translateX(0)';
-                }
-                // Update text colors
-                if (perPersonSpan) {
-                    perPersonSpan.style.color = 'var(--navy)';
-                    perPersonSpan.style.fontWeight = '600';
-                }
-                if (totalPriceSpan) {
-                    totalPriceSpan.style.color = '#888';
-                    totalPriceSpan.style.fontWeight = '500';
                 }
             }
 
@@ -18273,6 +18727,237 @@ background-position: right 16px center;" onfocus="this.style.borderColor='var(--
                 });
             }
         });
+    </script>
+
+    <!-- Fix Mobile Deal Cards - Remove Hover Events & Force Visibility -->
+    <script>
+        // MOBILE ONLY: Disable all hover effects and fix visibility
+        if (window.innerWidth <= 768) {
+            // Function to fix deal cards
+            function fixMobileDealCards() {
+                const dealCards = document.querySelectorAll('.deal-card, article.deal-card, article[data-deal-id]');
+
+                dealCards.forEach((card) => {
+                    // 1. REMOVE inline event handlers completely
+                    card.onmouseover = null;
+                    card.onmouseout = null;
+                    card.removeAttribute('onmouseover');
+                    card.removeAttribute('onmouseout');
+
+                    // 2. Override inline style overflow to visible
+                    card.style.setProperty('overflow', 'visible', 'important');
+                    card.style.setProperty('display', 'flex', 'important');
+                    card.style.setProperty('flex-direction', 'column', 'important');
+
+                    // 3. Hide ALL expand-on-hover sections permanently
+                    const expandSections = card.querySelectorAll('.expand-on-hover');
+                    expandSections.forEach(section => {
+                        section.style.setProperty('display', 'none', 'important');
+                        section.style.setProperty('grid-template-rows', '0fr', 'important');
+                        section.style.setProperty('opacity', '0', 'important');
+                        section.style.setProperty('height', '0', 'important');
+                        section.style.setProperty('overflow', 'hidden', 'important');
+                        section.style.setProperty('visibility', 'hidden', 'important');
+                    });
+
+                    // 4. Force content section (div:last-child) to be visible
+                    const contentSection = card.querySelector(':scope > div:last-child');
+                    if (contentSection) {
+                        contentSection.style.setProperty('display', 'block', 'important');
+                        contentSection.style.setProperty('opacity', '1', 'important');
+                        contentSection.style.setProperty('visibility', 'visible', 'important');
+                        contentSection.style.setProperty('overflow', 'visible', 'important');
+                        contentSection.style.setProperty('height', 'auto', 'important');
+                        contentSection.style.setProperty('max-height', 'none', 'important');
+                    }
+
+                    // 5. Disable any pointer events that might trigger hover
+                    card.style.setProperty('pointer-events', 'auto', 'important');
+                });
+            }
+
+            // Run immediately
+            fixMobileDealCards();
+
+            // Run after DOM is fully loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', fixMobileDealCards);
+            }
+
+            // Also run after a short delay to catch any dynamically loaded cards
+            setTimeout(fixMobileDealCards, 100);
+            setTimeout(fixMobileDealCards, 500);
+            setTimeout(fixMobileDealCards, 1000);
+        }
+    </script>
+
+    <!-- CRITICAL FIX: Override Tailwind CDN styles on mobile - Load LAST -->
+    <style id="mobile-override-styles">
+        @media (max-width: 768px) {
+            /* ULTRA HIGH SPECIFICITY - Override Tailwind CDN after it loads */
+
+            /* Lock deal card container widths - prevent expansion */
+            body .deal-card,
+            body article.deal-card,
+            body article[data-deal-id],
+            body [style*="display: grid"][style*="grid-template-columns"],
+            body #dealsContainer.list-view .deal-card,
+            body #dealsContainer.list-view article.deal-card,
+            body #dealsContainer.list-view article[data-deal-id] {
+                max-width: 100vw !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            /* Lock all content sections inside cards */
+            body .deal-card > div:last-child,
+            body .deal-card > div:last-child > *,
+            body article.deal-card > div:last-child,
+            body article[data-deal-id] > div:last-child,
+            body #dealsContainer.list-view .deal-card > div:last-child,
+            body #dealsContainer.list-view article.deal-card > div:last-child {
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Lock first child (image container) for list-view */
+            body #dealsContainer.list-view .deal-card > div:first-child,
+            body #dealsContainer.list-view article.deal-card > div:first-child {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                height: 380px !important;
+                min-height: 380px !important;
+            }
+
+            /* Lock font sizes - prevent Tailwind from increasing them */
+            body .deal-card [style*="font-size: 30px"],
+            body .deal-card span[style*="font-size: 30px"] {
+                font-size: 24px !important;
+            }
+
+            body .deal-card [style*="font-size: 28px"],
+            body .deal-card h3 {
+                font-size: 20px !important;
+            }
+
+            body .deal-card [style*="font-size: 22px"] {
+                font-size: 18px !important;
+            }
+
+            body .deal-card [style*="font-size: 16px"] {
+                font-size: 14px !important;
+            }
+
+            body .deal-card [style*="font-size: 15px"] {
+                font-size: 13px !important;
+            }
+
+            body .deal-card [style*="font-size: 12px"] {
+                font-size: 11px !important;
+            }
+
+            /* Lock padding - prevent expansion */
+            body .deal-card > div:last-child[style*="padding: 42px"],
+            body .deal-card [style*="padding: 42px 48px"],
+            body #dealsContainer.list-view .deal-card > div:last-child,
+            body #dealsContainer.list-view .deal-card [style*="padding: 42px 48px"] {
+                padding: 24px 20px !important;
+            }
+
+            body .deal-card [style*="padding: 22px 26px"] {
+                padding: 14px 16px !important;
+            }
+
+            body .deal-card [style*="padding: 16px 28px"] {
+                padding: 12px 16px !important;
+            }
+
+            /* Lock image containers */
+            body .deal-card > div:first-child {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 380px !important;
+            }
+
+            /* Lock floating price card */
+            body .deal-card [style*="position: absolute"][style*="bottom"] {
+                left: 12px !important;
+                right: 12px !important;
+                width: auto !important;
+                max-width: calc(100% - 24px) !important;
+            }
+
+            /* Prevent any child from breaking layout */
+            body .deal-card *:not([style*="position: absolute"]) {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+        }
+    </style>
+
+    <!-- Monitor for Tailwind CDN loading and re-apply fixes -->
+    <script>
+        if (window.innerWidth <= 768) {
+            // Watch for Tailwind CDN to finish loading and immediately re-apply mobile fixes
+            let tailwindCheckCount = 0;
+            const maxChecks = 20; // Check for 2 seconds (20 * 100ms)
+
+            const tailwindMonitor = setInterval(() => {
+                tailwindCheckCount++;
+
+                // Check if Tailwind has loaded by looking for its generated classes
+                const tailwindLoaded = document.querySelector('style[data-tw-version]') ||
+                                      document.querySelector('style') ||
+                                      tailwindCheckCount >= maxChecks;
+
+                if (tailwindLoaded || tailwindCheckCount >= maxChecks) {
+                    // Re-run the mobile card fixes to override any Tailwind changes
+                    if (typeof fixMobileDealCards === 'function') {
+                        fixMobileDealCards();
+                    }
+
+                    // Also ensure our override styles are still in the DOM
+                    const overrideStyles = document.getElementById('mobile-override-styles');
+                    if (overrideStyles && overrideStyles.parentNode) {
+                        // Move our styles to the very end to ensure they're last
+                        document.head.appendChild(overrideStyles);
+                    }
+
+                    clearInterval(tailwindMonitor);
+                }
+            }, 100);
+
+            // Also use MutationObserver to catch when Tailwind injects styles
+            const styleObserver = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.addedNodes.length) {
+                        mutation.addedNodes.forEach((node) => {
+                            // If a new style tag is added (likely Tailwind), re-apply our fixes
+                            if (node.nodeName === 'STYLE' && node.textContent.length > 1000) {
+                                setTimeout(() => {
+                                    if (typeof fixMobileDealCards === 'function') {
+                                        fixMobileDealCards();
+                                    }
+                                }, 50);
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Observe the head for style tag additions
+            styleObserver.observe(document.head, { childList: true, subtree: true });
+
+            // Stop observing after 3 seconds
+            setTimeout(() => {
+                styleObserver.disconnect();
+            }, 3000);
+        }
     </script>
 </body>
 
